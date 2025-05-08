@@ -5,7 +5,7 @@ const nextConfig = {
     BASE_URL: "http://hardware.in-sourceit.com/", // Update based on your Next.js development URL
     
     // Keep the API URLs pointing to your local backend
-    API_PROD_URL: "http://api.in-sourceit.com/api", // Local Laravel API URL
+    API_PROD_URL: "https://api.in-sourceit.com/api", // Local Laravel API URL
     storageURL: "https://api.in-sourceit.com/", // Local Laravel Storage URL
   },
 
