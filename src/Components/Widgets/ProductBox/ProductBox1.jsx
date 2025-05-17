@@ -22,6 +22,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
           <span>{productState?.product?.reviews_count}</span>
         </div>
 
+        {/* new */}
+
         <div className="cart-info">
           <CartButton classes={"addto-cart-bottom"} productState={productState} selectedVariation={productState?.selectedVariation} text="Add to Cart" />
           <ProductHoverButton productstate={productState?.product} />
