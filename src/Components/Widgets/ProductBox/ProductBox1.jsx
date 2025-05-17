@@ -12,6 +12,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
   const { convertCurrency } = useContext(SettingContext);
   const { t } = useTranslation("common");
 
+  // hello
+
   return (
     <div className={`basic-product ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""}`}>
       <div className="img-wrapper">
