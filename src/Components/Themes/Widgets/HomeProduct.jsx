@@ -84,16 +84,16 @@ const HomeProduct = ({ type, style, slider = false, productIds, product_box_styl
             )}
           </div>
         ) : (
-         <>
-          <Row className={rowClass ? rowClass : "row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 m-0"}>
-            {products?.map((product, index) => (
-              <div key={index} className={classForVertical}>
-                <ProductBox product={product} style={style} />
-              </div>
-            ))}
+          <>
+            <Row className={rowClass ? rowClass : "row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 m-0"}>
+              {products?.map((product, index) => (
+                <div key={index} className={classForVertical}>
+                  <ProductBox product={product} style={style} />
+                </div>
+              ))}
             </Row>
             {products?.length === 0 && <NoDataFound title="no_product" customClass="no-data-added" />}
-            </>
+          </>
         )
       ) : null}
     </>

@@ -28,56 +28,137 @@ const FooterTwo = () => {
 
   return (
     <footer>
-      <div className="dark-layout">
+      <div className="top-column feature-icons-bar py-4 border-bottom">
         <Container>
-          <section className="section-b-space border-b">
-            <Row className="footer-theme2">
-              <Col lg="3">
-                <div className="footer-content">
-                  <FooterLogo />
-                  <FooterAbout />
+          <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
+            {[
+              {
+                icon: "/assets/images/icon.png",
+                title: "Free Shipping",
+                subtitle: "Orders $50 or more",
+              },
+              {
+                icon: "/assets/images/icon1.png",
+                title: "Save Money",
+                subtitle: "At lowest price",
+              },
+              {
+                icon: "/assets/images/icon2.png",
+                title: "100% Return Policy",
+                subtitle: "Any Time Return Product",
+              },
+              {
+                icon: "/assets/images/icon3.png",
+                title: "Best Deal Offer",
+                subtitle: "Grab Your Gear and Go",
+              },
+              {
+                icon: "/assets/images/icon4.png",
+                title: "Support 24/7",
+                subtitle: "Contact us 24 hours a day",
+              },
+            ].map((item, i) => (
+              <Col key={i}>
+                <div className="d-flex flex-column align-items-center gap-2">
+                  <img src={item.icon} alt={item.title} width={40} height={40} />
+                  <div>
+                    <h6 className="mb-0 text-white fw-semibold">{item.title}</h6>
+                    <p className="mb-0 text-light small">{item.subtitle}</p>
+                  </div>
                 </div>
               </Col>
-              <Col lg="6" className="subscribe-wrapper">
+            ))}
+          </Row>
+        </Container>
+      </div>
+
+      {/* 2nd */}
+      <div className="dark-layout newsletter-bar">
+        <Container>
+          <Row className="align-items-center newsletter py-4 border-bottom">
+            <Col md="6" className="d-flex align-items-center gap-3">
+              <img src="/assets/images/newsletter.png" alt="Newsletter Icon" />
+              <div>
+                <h4 className="mb-1 text-white">Learn first about discounts</h4>
+                <p className="mb-0 text-light small">As well as news, special offers and promotions</p>
+              </div>
+            </Col>
+            {/* <Col md="4">
+              <input type="email" className="form-control" placeholder="Enter your email address" />
+            </Col>
+            <Col md="2">
+              <button className="btn btn-primary w-100">Subscribe</button>
+            </Col> */}
+
+            <Col md="6" className="subscribe-wrapper">
                 <FooterNewsLetter style="simple" />
               </Col>
-              <Col lg="3">
-                <FooterStoreInformation icon={false} />
-              </Col>
-            </Row>
-          </section>
+          </Row>
         </Container>
       </div>
-      <div className="dark-layout">
+
+
+
+      {/* 3rd */}
+      <div className="dark-layout links-grid">
         <Container>
-          <section className="small-section">
-            <Row className=" footer-theme2">
-              <Col className="p-set">
-                <div className="footer-link" onClick={() => toggle("categories")}>
-                  <div className={`footer-title ${openClose?.categories ? "show" : ""}`}>
-                    <h4>{t("categories")}</h4>
-                  </div>
-                  <FooterCategories />
-                </div>
-                <div className="footer-link-b" onClick={() => toggle("useFulLinks")}>
-                  <div className={`footer-title ${openClose?.useFulLinks ? "show" : ""}`}>
-                    <h4>{t("useful_links")}</h4>
-                  </div>
-                  <FooterUsefulLinks />
-                </div>
-                <div className="footer-link-b" onClick={() => toggle("helpCenter")}>
-                  <div className={`footer-title ${openClose?.helpCenter ? "show" : ""}`}>
-                    <h4>{t("help_center")}</h4>
-                  </div>
-                  <FooterHelpCenter />
-                </div>
+          <Row className="py-5 text-white row-cols-2 row-cols-md-4 row-cols-lg-7 g-4">
+            {[
+              "Categories",
+              "Network Devices",
+              "Storage",
+              "Motherboards",
+              "Processors",
+              "Memory",
+              "Printers",
+            ].map((title, idx) => (
+              <Col key={idx}>
+                <h6 className="fw-bold text-white mb-3 text-uppercase">{title}</h6>
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <p key={i} className="small text-white mb-1">{
+                    `${title} Placed Here`
+                  }</p>
+                ))}
               </Col>
-            </Row>
-          </section>
+            ))}
+          </Row>
         </Container>
       </div>
-      <SubFooter classes={{ sectionClass: "darker-subfooter" }} />
+
+
+      {/* 4th */}
+
+      <div className="dark-layout copyright-bar py-3">
+        <Container>
+          <Row className="align-items-center text-white">
+            <Col md="4" className="text-center text-md-start">
+              <p className="mb-0 text-white small">© 2025, <strong>The Hardware Box</strong> All rights reserved</p>
+            </Col>
+            <Col md="4" className="text-center">
+              <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
+                {/* <i className="fa fa-phone me-2"></i> */}
+                <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
+                <div className="text-start">
+                  <strong>1900 - 6666</strong><br />
+                  <span className="small">Working 8:00 - 22:00</span>
+                </div>
+
+                {/* <div>
+                  <i className="fa fa-headphones me-2"></i>
+                  <strong>1900 - 8888</strong><br />
+                  <span className="small">24/7 Support Center</span>
+                </div> */}
+              </div>
+            </Col>
+            <Col md="4" className="text-start payment-col  text-md-end">
+              <p className="mb-1 text-white fw-bold small">Secured Payment Gateways</p>
+              <img src="/assets/images/payment.png" className="img-fluid" alt="Payment Gateways" />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </footer>
+
   );
 };
 

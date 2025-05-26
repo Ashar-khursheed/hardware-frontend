@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Sintony&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Sintony&display=swap');
+
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Sintony', sans-serif !important;
+}
+
+.btn {
+    font-family: 'Sintony', sans-serif !important;
+}
+
+a {
+    font-family: 'Sintony', sans-serif !important;
+}
+
+p {
+    font-family: 'Inter', sans-serif !important;
+}
 .theme-color-1 {
     --theme-color: #ff4c3b
 }
@@ -603,7 +622,7 @@ hr.style1 {
 }
 
 .dark-layout {
-    background-color: #2d2a25
+    background-color: #233A95 !important;
 }
 
 .light-layout {
@@ -29077,7 +29096,7 @@ body.dark {
     }
 
     .service-w-bg .service-block .media {
-        padding: 13px;
+        padding: 20px;
         height: 100%
     }
 
@@ -41028,4 +41047,241 @@ body.rtl .account-setting {
     .rtl .timer span .padding-l {
         padding-right: 10px
     }
+}
+
+
+
+
+
+/* new css for home banner */
+
+
+
+
+/* .banner-background {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 0;
+} */
+
+
+
+
+
+
+@media (min-width: 1200px) {
+
+    /* .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1366px !important;
+    } */
+    .mycon {
+
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
+
+.new-banner {
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    padding-left: 3rem;
+}
+
+.slider-contain {
+    position: relative;
+}
+
+.slider-contain video,
+.slider-contain img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.mainheading {
+    font-size: 46px !important;
+    color: white !important;
+}
+
+.offerbanner2 {
+    font-size: 46px !important;
+    color: white !important;
+}
+
+.bannnertext {
+    font-size: 16px !important;
+    color: white;
+}
+
+
+.btn {
+    background-color: #233A95 !important;
+    color: white;
+    padding: 10px 20px;
+}
+
+.slider-contain video,
+.slider-contain img {
+    width: 100%;
+    height: revert-layer !important;
+    display: block;
+}
+
+
+
+.basic-product {
+    background-color: #EFF1F5 !important;
+    padding: 15px;
+}
+
+
+.reviewscol {
+    border: 1px solid #303030 !important;
+}
+
+
+.reviewtext {
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #3E445A;
+}
+
+
+.dark-layout {
+    background-color: #15226c;
+    color: white;
+}
+
+.newsletter-bar input.form-control {
+    border-radius: 0;
+    padding: 0.5rem;
+}
+
+.newsletter-bar .btn {
+    border-radius: 0;
+    background-color:#2BBEF9 !important ;
+}
+
+.links-grid p {
+    color: #cccccc;
+}
+
+.copyright-bar {
+    background-color: #0f1a4b;
+    font-size: 0.875rem;
+}
+
+.auth-modal .number-btn {
+    color: white !important;
+}
+
+@media (max-width: 768px) {
+    .row-cols-lg-7>* {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .offerbanner2 {
+        font-size: 30px !important;
+    }
+
+    .mainheading {
+        font-size: 30px !important;
+        color: white !important;
+    }
+
+    .header-compact .top-header {
+        display: none;
+    }
+
+
+    .brand-logo img {
+        width: 200px !important;
+        height: auto;
+    }
+
+    .container.new-banner.position-absolute.top-50.start-0.translate-middle-y.text-white.ps-5 {
+        transform: translateY(-30%) !important;
+    }
+    
+    .shippingrow {
+        justify-content: center !important;
+    }
+
+    
+
+    
+
+
+}
+
+
+@media (max-width: 500px) {
+   .newsletter {
+        gap: 15px !important;
+    }
+
+    .payment-col {
+        margin-top: 20px !important;
+    }
+}
+
+
+/* .locationimg{
+    height:40px !important;
+} */
+
+
+.btn-search.btn.btn-transparent {
+    background-color: #f8f8f8 !important;
+}
+
+/* footer */
+
+.links-grid {
+    border-top: 1px solid #E2E8F0;
+}
+
+.copyright-bar {
+    border-top: 1px solid #E2E8F0;
+}
+
+.top-column {
+    background-color: #383838 !important;
+}
+
+
+.phoneimg {
+    width: 40px !important;
+}
+
+
+.hero-banner-section {
+  background-image: url('/assets/images/mainbanner.png'); /* Replace with actual path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 0;
+}
+
+.btn:hover {
+    background-color: white !important;
+    /* border: 1px solid white; */
+    color: black !important;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+
+.contactjoin span{
+    color: white !important;
 }
