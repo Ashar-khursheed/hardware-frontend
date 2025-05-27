@@ -63,7 +63,7 @@ const FooterNewsLetter = ({ style }) => {
       )}
       {style == "simple" && (
         <div className="subscribe-block">
-          <h2>{t("newsletter")}</h2>
+          {/* <h2>{t("newsletter")}</h2> */}
           <Formik
             initialValues={{ email: "" }}
             validationSchema={emailValidationSchema}
@@ -73,17 +73,23 @@ const FooterNewsLetter = ({ style }) => {
           >
             {({ touched, errors }) => (
               <Form>
-                <div className="form-group">
-                  <Field type="email" className="form-control" placeholder={t("enter_email_address")} name="email" />
-                  {(errors.email || touched.email) && (
-                    <span>
-                      <ErrorMessage name="email" />
-                    </span>
-                  )}
-                  <Btn loading={isLoading} className="btn-solid" type="submit">
-                    {t("subscribe")}
-                  </Btn>
+                <div className="row g-3 d-flex">
+                  <Col md="8">
+                    <Field type="email" className="form-control" placeholder={t("enter_email_address")} name="email" />
+                    {(errors.email || touched.email) && (
+                      <span>
+                        <ErrorMessage name="email" />
+                      </span>
+                    )}
+                  </Col>
+
+                  <Col md="3">
+                    <Btn loading={isLoading} className="btn" type="submit">
+                      {t("subscribe")}
+                    </Btn>
+                  </Col>
                 </div>
+
               </Form>
             )}
           </Formik>
@@ -109,7 +115,7 @@ const FooterNewsLetter = ({ style }) => {
                   </span>
                 )}
               </FormGroup>
-              <Btn loading={isLoading}  className="btn-solid mb-sm-2" id="subscribe" type="submit">
+              <Btn loading={isLoading} className="btn-solid mb-sm-2" id="subscribe" type="submit">
                 {t("subscribe")}
               </Btn>
             </Form>

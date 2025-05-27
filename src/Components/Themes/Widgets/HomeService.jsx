@@ -32,7 +32,7 @@ const HomeServices = ({ services, type }) => {
               <div className={`${filteredServices.length === 4 ? "col-xl-3 col-sm-6" : filteredServices.length === 3 ? "col-lg-4 col-sm-6" : filteredServices.length === 2 ? "col-sm-6" : "col-12"}`}>
                 <div className="service-block">
                   <div className="media">
-                  {service?.image_url && <Image height={59} width={59} src={storageURL + service?.image_url} alt={service.title} />}
+                    {service?.image_url && <Image height={59} width={59} src={storageURL + service?.image_url} alt={service.title} />}
                     <div className="skeleton-img-box"></div>
                     <div className="media-body">
                       <h4>{service.title}</h4>
