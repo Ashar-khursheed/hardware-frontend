@@ -2,7 +2,7 @@
 const nextConfig = {
   env: {
     // If testing locally, update this to your local frontend URL
-    BASE_URL: "http://hardware.in-sourceit.com/", // Update based on your Next.js development URL
+    BASE_URL: "https://hardware.in-sourceit.com/", // Update based on your Next.js development URL
     
     // Keep the API URLs pointing to your local backend
     API_PROD_URL: "https://api.in-sourceit.com/api", // Local Laravel API URL
