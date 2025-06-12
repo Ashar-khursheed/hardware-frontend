@@ -91,8 +91,8 @@ const FooterTwo = () => {
             </Col> */}
 
             <Col md="6" className="subscribe-wrapper">
-                <FooterNewsLetter style="simple" />
-              </Col>
+              <FooterNewsLetter style="simple" />
+            </Col>
           </Row>
         </Container>
       </div>
@@ -101,29 +101,30 @@ const FooterTwo = () => {
 
       {/* 3rd */}
       <div className="dark-layout links-grid">
-        <Container>
-          <Row className="py-5 text-white row-cols-2 row-cols-md-4 row-cols-lg-7 g-4">
-            {[
-              "Categories",
-              "Network Devices",
-              "Storage",
-              "Motherboards",
-              "Processors",
-              "Memory",
-              "Printers",
-            ].map((title, idx) => (
-              <Col key={idx}>
-                <h6 className="fw-bold text-white mb-3 text-uppercase">{title}</h6>
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <p key={i} className="small text-white mb-1">{
-                    `${title} Placed Here`
-                  }</p>
-                ))}
-              </Col>
-            ))}
-          </Row>
-        </Container>
-      </div>
+  <Container>
+    <Row className="py-5 text-white g-4">
+      {[
+        "Categories",
+        "Network Devices",
+        "Storage",
+        "Motherboards",
+      ].map((title, idx) => (
+        <Col key={idx} xs={12} md={6} lg={3}>
+          <h6 className="fw-bold text-white mb-3 text-uppercase">{title}</h6>
+          {Array.from({ length: 8 }).map((_, i) => (
+            <p key={i} className="small text-white mb-1">
+              {`${title} Placed Here`}
+            </p>
+          ))}
+        </Col>
+      ))}
+    </Row>
+  </Container>
+</div>
+
+
+
+ 
 
 
       {/* 4th */}
@@ -131,7 +132,7 @@ const FooterTwo = () => {
       <div className="dark-layout copyright-bar py-3">
         <Container>
           <Row className="align-items-center text-white">
-            <Col md="4" className="text-center text-md-start">
+            <Col md="4" className="text-center text-md-start text-sm-start">
               <p className="mb-0 text-white small">© 2025, <strong>The Hardware Box</strong> All rights reserved</p>
             </Col>
             <Col md="4" className="text-center">
@@ -139,7 +140,10 @@ const FooterTwo = () => {
                 {/* <i className="fa fa-phone me-2"></i> */}
                 <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
                 <div className="text-start">
-                  <strong>1900 - 6666</strong><br />
+                  <strong>
+                    <a className="text-white" href="tel:+191630466066">(+1) 916 304 66066</a>
+                  </strong><br />
+
                   <span className="small">Working 8:00 - 22:00</span>
                 </div>
 

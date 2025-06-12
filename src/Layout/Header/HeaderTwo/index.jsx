@@ -56,7 +56,7 @@ const HeaderTwo = () => {
                         <HeaderCart />
                       </li>
                       <li className="onhover-div">
-                        <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick  }>
+                        <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick}>
                           <RiUserLine />
                         </Link>
                       </li>
@@ -95,11 +95,14 @@ const HeaderTwo = () => {
                   </div>
                 </div>
               </div>
-              <div className="delivery-area d-xl-flex d-none ms-auto me-0">
+              <div className="delivery-area buttonhead d-xl-flex d-none ms-auto me-0">
                 <div>
-                  <h5>
-                    {t("call_us")}: {themeOption?.header?.support_number}
+                  <h5 className="numb">
+                    <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
+                      {t()} {themeOption?.header?.support_number}
+                    </a>
                   </h5>
+
                 </div>
               </div>
             </Col>

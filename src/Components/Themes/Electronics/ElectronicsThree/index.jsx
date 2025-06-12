@@ -97,6 +97,7 @@ const ElectronicsThree = () => {
           <style jsx global>{`
             .custom-slick-wrapper .slick-track {
               width: auto !important;
+              display: flex !important;
             }
           `}</style>
 
@@ -361,9 +362,8 @@ const ElectronicsThree = () => {
 
 
       {/* reviews section */}
-      <section className="py-5 mt-4 bg-light">
+      {/* <section className="py-5 mt-4 bg-light">
         <div className="container">
-          {/* Header Row */}
           <div className="row align-items-center mb-4">
             <div className="col-md-6">
               <h3 className="fw-bold text-black  ps-2">NEW ARRIVALS</h3>
@@ -371,7 +371,6 @@ const ElectronicsThree = () => {
             <div className="col-md-6 text-md-end d-flex justify-content-end gap-3 text-center">
               <div>
                 <span className="fw-bold me-2">Excellent</span>
-                {/* <span className="text-success me-2">⭐ ⭐ ⭐ ⭐ ⭐</span> */}
                 <img src="/assets/images/reviewshead.png" alt="Google" />
               </div>
               <div>
@@ -381,13 +380,11 @@ const ElectronicsThree = () => {
             </div>
           </div>
 
-          {/* Review Cards */}
           <div className="row g-4">
             {[1, 2, 3, 4].map((item) => (
               <div className="col-md-6 col-lg-3" key={item}>
                 <div className="p-3 border rounded bg-white h-100 d-flex flex-column justify-content-between reviewscol">
                   <div>
-                    {/* <div className="text-warning mb-2">⭐ ⭐ ⭐ ⭐ ⭐</div> */}
                     <img className="mb-2" src="/assets/images/revieewstar.png" alt="Google" />
                     <p className="text-muted small mb-0 reviewtext">
                       Lorem Ipsum Dolor Sit Amet Consectetur. Ullamcorper Enim Nulla Sem Libero Dictumst Habitasse.
@@ -413,7 +410,7 @@ const ElectronicsThree = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       {/* contact section */}
@@ -435,11 +432,11 @@ const ElectronicsThree = () => {
                   </div>
                   <div>
                     <h4 className="fw-bold text-black mb-1">Office Address</h4>
-                    <p className="text-muted mb-0">Level 6, 541 St Kilda Road<br />Melbourne, VIC 3004</p>
+                    <p className="text-muted mb-0">5 Benedict Court<br />Sacramento, CA 95823 USA</p>
                   </div>
                 </div>
 
-                <div className="d-flex align-items-start mb-4">
+                <div className="d-flex align-items-center mb-4">
                   <div className="me-3">
                     <div className="phone">
                       <img src="/assets/images/phone2.png" className="locationimg" alt="Phone" />
@@ -447,11 +444,14 @@ const ElectronicsThree = () => {
                   </div>
                   <div>
                     <h4 className="fw-bold text-black mb-1">Phone Number</h4>
-                    <p className="text-muted mb-0">Telephone: (+111) 1254-6985<br />Mobile: (+123) 652 8595</p>
+                    <p className="text-muted mb-0">
+                      <a href="tel:+19163046606">(+1) 916 304 6606</a>
+                    </p>
+
                   </div>
                 </div>
 
-                <div className="d-flex align-items-start">
+                <div className="d-flex align-items-center">
                   <div className="me-3">
                     <div className="email">
                       <img src="/assets/images/email.png" className="locationimg" alt="Email" />
@@ -459,7 +459,10 @@ const ElectronicsThree = () => {
                   </div>
                   <div>
                     <h4 className="fw-bold text-black mb-1">Email Address</h4>
-                    <p className="text-muted mb-0">info@domain.com<br />company@domain.com</p>
+                    <p className="text-muted mb-0">
+                      <a href="mailto:info@convexns.com">info@convexns.com</a>
+                    </p>
+
                   </div>
                 </div>
               </div>

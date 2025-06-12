@@ -24,15 +24,19 @@ const TopBar = ({ classes }) => {
                   {t("welcome_to")} {settingData?.general?.site_name}
                 </li>
                 <li>
-                  <i className="ri-phone-fill"></i> {t("call_us")} : {themeOption?.header?.support_number}
+                  <i className="ri-phone-fill"></i> {t("call_us")} :{" "}
+                  <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
+                    {themeOption?.header?.support_number}
+                  </a>
                 </li>
+
               </ul>
             </div>
           </Col>
           <Col lg={6} className="text-end">
             <ul className="right-nav-about">
               {settingData?.activation?.zone_enable && (
-                  <ZoneBar/>
+                <ZoneBar />
               )}
               <li className="right-nav-list">
                 <HeaderLanguage />

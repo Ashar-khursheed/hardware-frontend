@@ -81,10 +81,10 @@ const HeaderOne = () => {
                           <HeaderCart />
                         </li>
                         <li className="onhover-div">
-                      <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick}>
-                        <RiUserLine />
-                      </Link>
-                    </li>
+                          <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick}>
+                            <RiUserLine />
+                          </Link>
+                        </li>
                       </ul>
                     </div>
                   </div>
