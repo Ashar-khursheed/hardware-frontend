@@ -205,7 +205,7 @@ const ElectronicsThree = () => {
       {/* Offer Banner 2 Styled Section */}
       {data?.offer_banner_1?.status && (
         <section
-          className="container mt-8 offer-banner-section d-flex align-items-center text-white text-center"
+          className="container mt-5 offer-banner-section d-flex align-items-center text-white text-center"
           style={{
             backgroundImage: `url(${storageURL + data?.offer_banner_1?.image_url})`,
             backgroundSize: 'cover',
