@@ -33,27 +33,27 @@ const FooterTwo = () => {
           <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
             {[
               {
-                icon: "/assets/images/icon.png",
+                icon: "/assets/images/Icon.png",
                 title: "Free Shipping",
                 subtitle: "Orders $50 or more",
               },
               {
-                icon: "/assets/images/icon1.png",
+                icon: "/assets/images/Icon1.png",
                 title: "Save Money",
                 subtitle: "At lowest price",
               },
               {
-                icon: "/assets/images/icon2.png",
+                icon: "/assets/images/Icon2.png",
                 title: "100% Return Policy",
                 subtitle: "Any Time Return Product",
               },
               {
-                icon: "/assets/images/icon3.png",
+                icon: "/assets/images/Icon3.png",
                 title: "Best Deal Offer",
                 subtitle: "Grab Your Gear and Go",
               },
               {
-                icon: "/assets/images/icon4.png",
+                icon: "/assets/images/Icon4.png",
                 title: "Support 24/7",
                 subtitle: "Contact us 24 hours a day",
               },
