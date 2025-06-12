@@ -36494,11 +36494,16 @@ body.dark {
     }
 
     .home-slider .slider-contain {
-        height: 45vh
+        height: 80vh;
+        text-align: -webkit-center;
     }
 
     .home-slider .slider-contain h1 {
         font-size: 28px
+    }
+    .container.new-banner.position-absolute.top-50.start-0.translate-middle-y.text-white.ps-5 {
+        transform: translateY(-45%) !important;
+        margin-left:-15px;
     }
 
     .home-slider .slider-contain h4 {
@@ -37172,7 +37177,11 @@ body.dark {
     .home-slider .slider-contain h4 {
         letter-spacing: 0.01em
     }
-
+  .home-slider .slider-contain
+     {
+         height: 70vh;
+        text-align: -webkit-center;
+     }
     .home-slider .slider-contain .btn-solid,
     .home-slider .slider-contain .btn-outline {
         margin-top: 10px;
@@ -37562,6 +37571,10 @@ body.dark {
     .service_slide .home-slider .slider-contain {
         height: 50vh
     }
+     .home-slider .slider-contain
+     {
+         height: 70vh   
+     }
 
     .tools-parallax-product .tools-description .tools-form .search-box {
         width: 92%
@@ -41189,7 +41202,12 @@ body.rtl .account-setting {
 .auth-modal .number-btn {
     color: white !important;
 }
+@media (min-width: 600px) and (max-width: 768px) {
 
+ .container.new-banner.position-absolute.top-50.start-0.translate-middle-y.text-white.ps-5 {
+        transform: translateY(-30%) !important;
+    }
+} 
 @media (max-width: 768px) {
     .row-cols-lg-7>* {
         flex: 0 0 50%;
@@ -41215,9 +41233,9 @@ body.rtl .account-setting {
         height: auto;
     }
 
-    .container.new-banner.position-absolute.top-50.start-0.translate-middle-y.text-white.ps-5 {
+    /* .container.new-banner.position-absolute.top-50.start-0.translate-middle-y.text-white.ps-5 {
         transform: translateY(-30%) !important;
-    }
+    } */
 
     .shippingrow {
         justify-content: center !important;

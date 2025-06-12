@@ -13,7 +13,7 @@ const HomeSlider = ({ bannerData, height, width, sliderClass }) => {
         <div className="col-lg-8 col-md-8 col-sm-10">
           <h2 className="fw-bold display-5 mainheading">Hard To Find Computer Parts? We Think Otherwise.</h2>
           <p className="mt-3 bannnertext">
-            Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has Been The Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley Of Type And Scrambled It To Make A Type Specimen Book. It Has Survived Not Only Five Centuries, But Also The Leap Into Electronic Typesetting, Remaining Essentially Unchanged.
+            Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry.Text Ever Since The 1500s, When An Unknown Printer Into Electronic Typesetting, Remaining Essentially Unchanged.
           </p>
           <a href="#" className="btn btn-primary mt-3">Shop Now</a>
         </div>
