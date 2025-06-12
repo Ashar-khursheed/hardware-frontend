@@ -51,20 +51,57 @@ const ElectronicsThree = () => {
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/assets/css/style.css" />   
+                
       </Head>
 
       {/* Home Banners */}
-      {/* <WrapperComponent classes={{ sectionClass: "small-section ", fluidClass: "container-fluid mycon" }} noRowCol={true}>
+      {/* { <WrapperComponent classes={{ sectionClass: "small-section ", fluidClass: "container-fluid mycon" }} noRowCol={true}>
         <div className="home-slider">
           <HomeSlider bannerData={data?.home_banner} height={539} width={1376} />
         </div>
-      </WrapperComponent> */}
+      </WrapperComponent> } */}
+
+      <>
+        <WrapperComponent
+          classes={{
+            sectionClass: "home-slider-section p-0 m-0",
+            fluidClass: "container-fluid p-0",
+          }}
+          noRowCol={true}
+        >
+          <div className="home-slider w-100 mb-5">
+            <HomeSlider bannerData={data?.home_banner} height={539} width={1376} />
+          </div>
+        </WrapperComponent>
+
+        <style jsx>{`
+          .home-slider-section {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .home-slider {
+            width: 100%;
+          }
+
+          .container-fluid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+
+          /* Optional: reset body margin if not already */
+          body, html {
+            margin: 0;
+            padding: 0;
+          }
+        `}</style>
+      </>
 
 
 
-
-      <section className="hero-banner-section text-white mb-5 d-flex align-items-center">
+      {/* <section className="hero-banner-section text-white mb-5 d-flex align-items-center">
         <div className="container">
           <div className="row">
             <div className="col-md-7">
@@ -81,7 +118,7 @@ const ElectronicsThree = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
       {/* Services */}
