@@ -14475,6 +14475,7 @@ header.stickycls {
     .pixelstrap .full-mega-menu.layout-3 {
         margin-left: 0 !important
     }
+
 }
 
 @media (max-width: 1367px) {
@@ -14489,6 +14490,11 @@ header.stickycls {
     .pixelstrap a:hover,
     .pixelstrap a:active {
         font-size: 14px
+    }
+
+    header .navbar-nav>li>a , li.nav-item.dropdown.dropdown-mega
+    {
+        font-size: 14px !important;
     }
 }
 
