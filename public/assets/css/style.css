@@ -28200,6 +28200,15 @@ body.dark {
     }
 }
 
+@media (min-width: 1199px) and (max-width: 1300px) 
+ {
+
+    header .navbar-expand-xl .dropdown:hover .dropdown-menu-2
+    {
+                transform: translateX(-43%) translateY(0) !important;
+    }
+}
+
 @media (max-width: 1199px) {
     .dark .sm-horizontal {
         background-color: #2b2b2b;
