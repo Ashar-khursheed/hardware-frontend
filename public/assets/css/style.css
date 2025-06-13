@@ -14492,7 +14492,13 @@ header.stickycls {
         font-size: 14px
     }
 
-  
+   header .navbar-nav>li>a , li.nav-item.dropdown.dropdown-mega
+    {
+        font-size: 14px !important;
+    }
+    header .navbar-expand-xl .dropdown-mega .dropdown-menu .dropdown-item {
+    font-size: 14px !important;
+}
 }
 
 @media (max-width: 1199px) {
@@ -28204,13 +28210,7 @@ body.dark {
     {
                 transform: translateX(-43%) translateY(0) !important;
     }
-      header .navbar-nav>li>a , li.nav-item.dropdown.dropdown-mega
-    {
-        font-size: 14px !important;
-    }
-    header .navbar-expand-xl .dropdown-mega .dropdown-menu .dropdown-item {
-    font-size: 14px !important;
-}
+     
 
 }
 
