@@ -159,7 +159,7 @@ const ElectronicsThree = () => {
 
     @media (max-width: 768px) {
       .home-slider {
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 0;
         padding-top: 0%;
       }
 
@@ -181,7 +181,7 @@ const ElectronicsThree = () => {
 
     @media (max-width: 480px) {
       .home-slider {
-        aspect-ratio: 3 / 4;
+        aspect-ratio: 0;
         padding-top: 0%;
       }
       .bg-img.w-100.img-fluid img {
