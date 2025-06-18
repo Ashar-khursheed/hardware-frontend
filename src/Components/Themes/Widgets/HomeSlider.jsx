@@ -23,7 +23,7 @@ const HomeSlider = ({ bannerData, height, width, sliderClass }) => {
 
   return (
     <div className="container-fluid p-0 w-100 banner-con">
-      <div className="position-relative">
+      <div className="position-relative newimg">
         {bannerData?.banners?.length > 1 ? (
           <Slider {...homeBannerSettings} className={sliderClass || ""}>
             {bannerData.banners.map((banner, index) => {

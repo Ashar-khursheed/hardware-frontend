@@ -63,183 +63,169 @@ const ElectronicsThree = () => {
       </WrapperComponent> } */}
 
      <>
-        <WrapperComponent
-          classes={{
-            sectionClass: "home-slider-section p-0 m-0",
-            fluidClass: "container-fluid p-0",
-          }}
-          noRowCol={true}
-        >
-          <div className="home-slider w-100 mb-5">
-            <HomeSlider 
-              bannerData={data?.home_banner} 
-              height={539} 
-              width={1376}
-              className="responsive-slider"
-            />
-          </div>
-        </WrapperComponent>
+  <WrapperComponent
+    classes={{
+      sectionClass: "home-slider-section",
+      fluidClass: "container-fluid p-0",
+    }}
+    noRowCol={true}
+  >
+    <div className="home-slider mb-5">
+      <HomeSlider
+        bannerData={data?.home_banner}
+        height={539}
+        width={1376}
+        className="responsive-slider"
+      />
+    </div>
+  </WrapperComponent>
 
-        <style jsx>{`
-          .home-slider-section {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-          }
+  <style jsx>{`
+    .home-slider-section {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
 
-          .home-slider {
-            width: 100%;
-            min-height: 300px; /* Minimum height for mobile */
-          }
+    .home-slider {
+      width: 100%;
+      position: relative;
+    }
 
-          .container-fluid {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-          }
+    :global(.responsive-slider) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-          /* Responsive slider styles */
-          :global(.responsive-slider) {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 300px;
-          }
+    :global(.responsive-slider img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-          /* Target slider content containers */
-          :global(.responsive-slider .slide-content),
-          :global(.responsive-slider .banner-content),
-          :global(.responsive-slider .slider-item) {
-            min-height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px;
-            box-sizing: border-box;
-          }
+    :global(.responsive-slider .slide-content),
+    :global(.responsive-slider .banner-content),
+    :global(.responsive-slider .slider-item) {
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3); /* Optional overlay for contrast */
+    }
 
-          /* Responsive text sizing */
-          :global(.responsive-slider h1),
-          :global(.responsive-slider .banner-title) {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-          }
+    :global(.responsive-slider h1),
+    :global(.responsive-slider .banner-title) {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: #fff;
+      word-break: break-word;
+    }
 
-          :global(.responsive-slider p),
-          :global(.responsive-slider .banner-description) {
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-          }
+    :global(.responsive-slider p),
+    :global(.responsive-slider .banner-description) {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
 
-          :global(.responsive-slider .btn),
-          :global(.responsive-slider button) {
-            font-size: clamp(0.85rem, 2vw, 1rem);
-            padding: 0.75rem 1.5rem;
-          }
+    :global(.responsive-slider .btn),
+    :global(.responsive-slider button) {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      padding: 0.75rem 1.5rem;
+      background-color: #0044cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
 
-          /* Mobile responsive breakpoints */
-          @media (max-width: 768px) {
-            .home-slider {
-              min-height: 400px; /* Increased min-height for mobile */
-            }
+    @media (max-width: 1024px) {
+      .home-slider {
+        aspect-ratio: 4 / 2;
+        padding-top: 0%;
+      }
+    }
 
-            :global(.responsive-slider) {
-              min-height: 400px !important;
-            }
+    @media (max-width: 768px) {
+      .home-slider {
+        aspect-ratio: 4 / 3;
+        padding-top: 0%;
+      }
 
-            :global(.responsive-slider .slide-content),
-            :global(.responsive-slider .banner-content),
-            :global(.responsive-slider .slider-item) {
-              min-height: 400px;
-              padding: 30px 20px;
-              text-align: center;
-            }
+      :global(.responsive-slider .slide-content),
+      :global(.responsive-slider .banner-content),
+      :global(.responsive-slider .slider-item) {
+        padding: 1.5rem 1rem;
+      }
 
-            /* Ensure images don't overflow */
-            :global(.responsive-slider img) {
-              max-width: 100%;
-              height: auto;
-              object-fit: cover;
-            }
-          }
+      :global(.responsive-slider .swiper-button-next),
+      :global(.responsive-slider .swiper-button-prev) {
+        display: none;
+      }
 
-          @media (max-width: 480px) {
-            .home-slider {
-              min-height: 350px;
-            }
+      :global(.responsive-slider .swiper-pagination) {
+        bottom: 10px;
+      }
+    }
 
-            :global(.responsive-slider) {
-              min-height: 350px !important;
-            }
+    @media (max-width: 480px) {
+      .home-slider {
+        aspect-ratio: 3 / 4;
+        padding-top: 0%;
+      }
+      .bg-img.w-100.img-fluid img {
+        height:500px !important;
+        }
 
-            :global(.responsive-slider .slide-content),
-            :global(.responsive-slider .banner-content),
-            :global(.responsive-slider .slider-item) {
-              min-height: 350px;
-              padding: 25px 15px;
-            }
+      :global(.responsive-slider h1),
+      :global(.responsive-slider .banner-title) {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+        margin-bottom: 0.75rem;
+      }
 
-            /* Smaller text on very small screens */
-            :global(.responsive-slider h1),
-            :global(.responsive-slider .banner-title) {
-              font-size: clamp(1.25rem, 5vw, 2rem);
-              margin-bottom: 0.75rem;
-            }
+      :global(.responsive-slider p),
+      :global(.responsive-slider .banner-description) {
+        font-size: clamp(0.8rem, 3vw, 0.95rem);
+        margin-bottom: 1rem;
+      }
 
-            :global(.responsive-slider p),
-            :global(.responsive-slider .banner-description) {
-              font-size: clamp(0.8rem, 3vw, 0.95rem);
-              margin-bottom: 1rem;
-            }
-          }
+      :global(.responsive-slider .btn),
+      :global(.responsive-slider button) {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
 
-          /* Landscape mobile orientation */
-          @media (max-width: 768px) and (orientation: landscape) {
-            .home-slider {
-              min-height: 280px;
-            }
+    /* Header logo fix for small screens */
+    @media (max-width: 480px) {
+      .site-header .logo img,
+      .site-header .logo {
+        max-width: 120px;
+        height: auto;
+        object-fit: contain;
+        overflow: hidden;
+      }
+    }
 
-            :global(.responsive-slider) {
-              min-height: 280px !important;
-            }
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+    }
+  `}</style>
+</>
 
-            :global(.responsive-slider .slide-content),
-            :global(.responsive-slider .banner-content),
-            :global(.responsive-slider .slider-item) {
-              min-height: 280px;
-              padding: 15px 20px;
-            }
-          }
-
-          /* Ensure proper aspect ratio maintenance */
-          :global(.responsive-slider .slider-wrapper),
-          :global(.responsive-slider .swiper-container) {
-            width: 100%;
-            height: auto !important;
-            min-height: inherit;
-          }
-
-          /* Fix for slider navigation buttons on mobile */
-          @media (max-width: 768px) {
-            :global(.responsive-slider .slider-nav),
-            :global(.responsive-slider .swiper-button-next),
-            :global(.responsive-slider .swiper-button-prev) {
-              display: none;
-            }
-
-            :global(.responsive-slider .slider-dots),
-            :global(.responsive-slider .swiper-pagination) {
-              bottom: 20px;
-            }
-          }
-
-          /* Optional: reset body margin if not already */
-          body, html {
-            margin: 0;
-            padding: 0;
-          }
-        `}</style>
-      </>
 
 
       {/* <section className="hero-banner-section text-white mb-5 d-flex align-items-center">

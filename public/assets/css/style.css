@@ -5671,6 +5671,14 @@ button.btn.btn-outline:active {
 }
 
 @media (max-width: 767px) {
+
+    .position-relative.newimg img {
+    height: auto !important;
+    min-height: 400px;
+        }
+        section.home-slider-section {
+    padding-top: 0px;
+        }
     .nft-collection-section .nft-collection-box .custom-grid>div:first-child {
         grid-column: 1 / 4
     }
@@ -14468,6 +14476,9 @@ header.stickycls {
 }
 
 @media (max-width: 1440px) {
+        section.home-slider-section {
+    padding-top: 0px;
+        }
     .pixelstrap .category-menu {
         width: 698px !important
     }
