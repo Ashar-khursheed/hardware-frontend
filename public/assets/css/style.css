@@ -14472,8 +14472,10 @@ header.stickycls {
         width: 698px !important
     }
     ul.dropdown-menu {
-    width: 210px !important;
-}
+width: auto !important;
+    min-width: 100% !important;
+    white-space: nowrap;
+    }
 
     .pixelstrap .full-mega-menu.layout-3 {
         margin-left: 0 !important
