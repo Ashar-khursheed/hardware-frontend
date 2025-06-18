@@ -14475,6 +14475,8 @@ header.stickycls {
 width: auto !important;
     min-width: 100% !important;
     white-space: nowrap;
+      min-width: unset !important;
+
     }
 
     .pixelstrap .full-mega-menu.layout-3 {
