@@ -14485,6 +14485,9 @@ header.stickycls {
     .pixelstrap .full-mega-menu.layout-3 {
         width: 1079px !important
     }
+    a.nav-link.dropdown-toggle span {
+    font-size: 14px !important;
+}
 
     .pixelstrap a {
         font-size: 14px
