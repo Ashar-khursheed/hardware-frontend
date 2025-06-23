@@ -65,7 +65,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               </a>
             </div>
           )}
-          <div className="price-text">
+          {/* <div className="price-text">
             <h3>
               <span className="text-dark fw-normal">MRP:</span>
               {productState?.selectedVariation?.sale_price ? convertCurrency(productState?.selectedVariation?.sale_price) : convertCurrency(productState?.product?.sale_price)}
@@ -79,8 +79,28 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               ) : null}
             </h3>
             <span>{t("inclusive_text")}</span>
-          </div>
-          {productState?.product.short_description && <p className="description-text">{productState?.product.short_description}</p>}
+          </div> */}
+          <div className="price-text">
+          <h3>
+            <span className="text-dark fw-normal">MRP:</span>
+            {productState?.selectedVariation?.sale_price ?? productState?.product?.sale_price}
+
+            {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
+              <del>
+                {productState?.selectedVariation?.price ?? productState?.product?.price}
+              </del>
+            )}
+
+            {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
+              <span className="discounted-price">
+                {productState?.selectedVariation?.discount ?? productState?.product?.discount} % {t("off")}
+              </span>
+            )}
+          </h3>
+          <span>{t("inclusive_text")}</span>
+        </div>
+
+                  {productState?.product.short_description && <p className="description-text">{productState?.product.short_description}</p>}
           {productState?.product?.read_document && (
             <a className="btn btn-md read-btn" href={productState?.product?.read_document.original_url} target="_blank">
               {productState?.product?.read_button_text || "read"}{" "}
