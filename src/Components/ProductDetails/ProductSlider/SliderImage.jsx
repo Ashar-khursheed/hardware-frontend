@@ -1,3 +1,6 @@
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import { ProductDetailTopSlider } from "@/Data/SliderSetting";
 import Image from "next/image";
 import { useState } from "react";
