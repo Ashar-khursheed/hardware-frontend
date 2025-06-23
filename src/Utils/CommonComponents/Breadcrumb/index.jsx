@@ -26,17 +26,17 @@
 // };
 
 // export default Breadcrumbs;
-import { useLocation } from "react-router-dom";
+import { useRouter } from "next/router";
 import { Href } from "@/Utils/Constants";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb, Container } from "reactstrap";
 
 const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
   const { t } = useTranslation("common");
-  const location = useLocation();
+  const router = useRouter();
 
-  // ✅ Hide breadcrumbs if on product detail page
-  if (location.pathname.includes("/product/")) {
+  // ✅ Hide breadcrumbs on product detail pages
+  if (router.pathname.startsWith("/product/") || router.asPath.startsWith("/product/")) {
     return null;
   }
 
