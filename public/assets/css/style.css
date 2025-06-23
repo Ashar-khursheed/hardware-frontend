@@ -41372,6 +41372,11 @@ body.rtl .account-setting {
     letter-spacing: 0.07em;
     padding: 6px 14px;
 }
+.dropdown-column.col-xl-3 ul .custom-heading {
+    font-size: 12px !important;
+    font-family: 'Sintony', sans-serif !important;
+
+}
 
 .custom-link {
     font-size: 13px !important;
