@@ -83,7 +83,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
           <div className="price-text">
           <h3>
             <span className="text-dark fw-normal">MRP:</span>
-            {productState?.selectedVariation?.sale_price ?? productState?.product?.sale_price}
+            $ {productState?.selectedVariation?.sale_price ?? productState?.product?.sale_price}
 
             {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
               <del>
@@ -93,7 +93,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
 
             {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
               <span className="discounted-price">
-                {productState?.selectedVariation?.discount ?? productState?.product?.discount} % {t("off")}
+                ${productState?.selectedVariation?.discount ?? productState?.product?.discount} % {t("off")}
               </span>
             )}
           </h3>
