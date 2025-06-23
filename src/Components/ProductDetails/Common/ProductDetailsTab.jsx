@@ -13,8 +13,8 @@ const ProductDetailsTab = ({ productState }) => {
   const [activeTab, setActiveTab] = useState(1);
   const ProductDetailsTabTitle = [
     { id: 1, name: "Description" },
-    { id: 2, name: "Review" },
-    { id: 3, name: "QA" },
+    // { id: 2, name: "Review" },
+    // { id: 3, name: "QA" },
   ];
 
   const seeMore = () => {
