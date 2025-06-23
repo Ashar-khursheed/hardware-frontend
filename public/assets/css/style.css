@@ -41361,3 +41361,37 @@ body.rtl .account-setting {
     color: white !important;
     font-family: 'Sintony', sans-serif !important;
 }
+
+
+.custom-heading {
+    font-size: 14px !important;
+    font-family: 'Sintony', sans-serif !important;
+    color: #222222 !important;
+    font-weight: 500;
+    text-decoration: auto;
+    letter-spacing: 0.07em;
+    padding: 6px 14px;
+}
+
+.custom-link {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    display: block;
+    color: #333 !important;
+    text-decoration: none;
+}
+
+
+
+@media (max-width: 1025px) {
+    .custom-heading {
+        font-size: 13px !important;
+        font-family: 'Sintony', sans-serif !important;
+        color: #222222 !important;
+        font-weight: 500;
+        text-decoration: auto;
+        letter-spacing: 0.07em;
+        padding: 12px 0 0 0 !important;
+    }
+
+}
