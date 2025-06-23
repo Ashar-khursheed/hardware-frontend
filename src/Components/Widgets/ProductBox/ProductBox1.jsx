@@ -50,20 +50,29 @@ const ProductBox1 = ({ productState, setProductState }) => {
           <h6>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h6>
         </Link>
 
+    
+
         <h4 className="price">
-          {productState?.selectedVariation ? convertCurrency(Number(productState?.selectedVariation.sale_price).toFixed(2)) : convertCurrency(Number(productState?.product?.sale_price).toFixed(2))}
+          {productState?.selectedVariation
+            ? `$${Number(productState?.selectedVariation.sale_price).toFixed(2)}`
+            : `$${Number(productState?.product?.sale_price).toFixed(2)}`}
+
           {productState?.selectedVariation ? (
             <>
-              {/* <del>{convertCurrency(Number(productState?.selectedVariation?.price).toFixed(2))}</del> */}
-              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price || (productState?.product?.price != productState?.product?.sale_price && <del>{convertCurrency(productState?.product?.price)}</del>)}
+              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price ||
+              (productState?.product?.price != productState?.product?.sale_price) ? (
+                <del>${Number(productState?.selectedVariation?.price ?? productState?.product?.price).toFixed(2)}</del>
+              ) : null}
               <span className="discounted-price">
                 {productState?.selectedVariation?.discount}% {t("off")}
               </span>
             </>
           ) : (
             <>
-              {/* <del>{convertCurrency(Number(productState?.product?.price).toFixed(2))}</del> */}
-              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price || (productState?.product?.price != productState?.product?.sale_price && <del>{convertCurrency(productState?.product?.price)}</del>)}
+              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price ||
+              (productState?.product?.price != productState?.product?.sale_price) ? (
+                <del>${Number(productState?.product?.price).toFixed(2)}</del>
+              ) : null}
               <span className="discounted-price">
                 {productState?.product?.discount}% {t("off")}
               </span>
