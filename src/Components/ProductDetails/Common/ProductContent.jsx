@@ -97,7 +97,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               </span>
             )}
           </h3>
-          <span>{t("inclusive_text")}</span>
+          {/* <span>{t("inclusive_text")}</span> */}
         </div>
 
                   {productState?.product.short_description && <p className="description-text">{productState?.product.short_description}</p>}
