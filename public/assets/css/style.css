@@ -41437,3 +41437,7 @@ body.rtl .account-setting {
 button.dropdown-toggle.btn.btn-secondary {
     color: #fff !important;
 }
+
+.header-style-5 .search-suggestion-box{
+    z-index:999 !important;
+}
