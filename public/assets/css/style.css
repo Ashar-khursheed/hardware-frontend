@@ -14765,8 +14765,14 @@ width: auto !important;
 
 @media (max-width: 991px) {
     .top-header .header-contact {
-        display: none
+        display: flex;
+        padding:0px !important;
     }
+    .top-header .right-nav-about
+    {
+        display:none !important;
+    }
+    
 }
 
 @media (min-width: 578px) {
@@ -14797,7 +14803,7 @@ width: auto !important;
 
 @media (max-width: 577px) {
     .top-header {
-        height: 0
+        height: 40px;
     }
 
     .main-nav-center .toggle-nav {
