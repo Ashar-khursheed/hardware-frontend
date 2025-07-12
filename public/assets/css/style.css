@@ -14786,6 +14786,13 @@ width: auto !important;
     .main-menu .menu-right .icon-nav .mobile-search .show-div .form-inline button i {
         display: inline-block
     }
+    .main-menu {
+
+        z-index: 1 !important;
+    }
+    section.home-slider-section {
+        padding-top: 0px !important;
+    }
 }
 
 @media (max-width: 577px) {
