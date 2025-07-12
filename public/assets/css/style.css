@@ -14796,9 +14796,7 @@ width: auto !important;
 
         z-index: 1 !important;
     }
-    section.home-slider-section {
-        padding-top: 0px !important;
-    }
+  
 }
 
 @media (max-width: 577px) {
@@ -14992,6 +14990,9 @@ width: auto !important;
     .toggle-nav {
         padding-top: 25px;
         padding-bottom: 25px
+    }
+    section.home-slider-section {
+        padding-top: 0px !important;
     }
 }
 
