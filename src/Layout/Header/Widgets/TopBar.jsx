@@ -1,111 +1,86 @@
-// import SettingContext from "@/Context/SettingContext";
-// import ThemeOptionContext from "@/Context/ThemeOptionsContext";
-// import React, { useContext } from "react";
-// import { useTranslation } from "react-i18next";
-// import { RiPhoneFill } from "react-icons/ri";
-// import { Col, Row } from "reactstrap";
-// import HeaderCurrency from "./HeaderCurrency";
-// import HeaderLanguage from "./HeaderLanguage";
-// import ZoneBar from "./ZoneBar";
-
-// const TopBar = ({ classes }) => {
-//   const { t } = useTranslation("common");
-//   const { themeOption } = useContext(ThemeOptionContext);
-//   const { settingData } = useContext(SettingContext);
-
-//   return (
-//     <div className={`top-header ${classes?.top_bar_class ? classes?.top_bar_class : ""}`}>
-//       <div className={`${classes?.container_class ? classes?.container_class : "container"}`}>
-//         <Row>
-//           <Col lg={6}>
-//             <div className="header-contact">
-//               <ul>
-//                 <li>
-//                   {t("welcome_to")} {settingData?.general?.site_name}
-//                 </li>
-//                 <li>
-//                   <i className="ri-phone-fill"></i> {t("call_us")} :{" "}
-//                   <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
-//                     {themeOption?.header?.support_number}
-//                   </a>
-//                 </li>
-
-//               </ul>
-//             </div>
-//           </Col>
-//           <Col lg={6} className="text-end">
-//             <ul className="right-nav-about">
-//               {settingData?.activation?.zone_enable && (
-//                 <ZoneBar />
-//               )}
-//               <li className="right-nav-list">
-//                 <HeaderLanguage />
-//               </li>
-//               <li className="right-nav-list">
-//                 <HeaderCurrency />
-//               </li>
-//             </ul>
-//           </Col>
-//         </Row>
-//       </div>
-//     </div>
-//   );
-// };
-// export default TopBar;
+import React, { useContext, useEffect, useState } from "react";
 import SettingContext from "@/Context/SettingContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
-import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { RiPhoneFill } from "react-icons/ri";
 import { Col, Row } from "reactstrap";
 import HeaderCurrency from "./HeaderCurrency";
 import HeaderLanguage from "./HeaderLanguage";
 import ZoneBar from "./ZoneBar";
+import { AnnouncementAPI } from "@/Utils/AxiosUtils/API";
 
 const TopBar = ({ classes }) => {
   const { t } = useTranslation("common");
   const { themeOption } = useContext(ThemeOptionContext);
   const { settingData } = useContext(SettingContext);
 
-  return (
-    <div className={`top-header ${classes?.top_bar_class ? classes?.top_bar_class : ""}`}>
-      <div className={`${classes?.container_class ? classes?.container_class : "container"}`}>
-        <Row>
-          <Col lg={6}>
-            <div className="header-contact">
-              <ul className="d-flex flex-wrap align-items-center gap-3">
-                <li>
-                  {t("welcome_to")} {settingData?.general?.site_name}
-                </li>
-                <li>
-                  <i className="ri-phone-fill"></i> {t("call_us")} :{" "}
-                  <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
-                    {themeOption?.header?.support_number}
-                  </a>
-                </li>
+  const [announcement, setAnnouncement] = useState(null);
 
-                {/* ✅ Add announcement bar content */}
-                {themeOption?.header?.topbar_content_1 && (
-                  <li dangerouslySetInnerHTML={{ __html: themeOption.header.topbar_content_1 }} />
-                )}
-                {themeOption?.header?.topbar_content_2 && (
-                  <li dangerouslySetInnerHTML={{ __html: themeOption.header.topbar_content_2 }} />
-                )}
-                {themeOption?.header?.topbar_content_3 && (
-                  <li dangerouslySetInnerHTML={{ __html: themeOption.header.topbar_content_3 }} />
-                )}
+  useEffect(() => {
+    const fetchAnnouncement = async () => {
+      try {
+        const res = await fetch(AnnouncementAPI);
+        const data = await res.json();
+        if (data.success && data.data) {
+          setAnnouncement(data.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch announcement:", error);
+      }
+    };
+
+    fetchAnnouncement();
+  }, []);
+
+  return (
+    <>
+      {announcement && announcement.status === 1 && (
+        <div
+          style={{
+            backgroundColor: announcement.background_color || "#ffff00",
+            color: announcement.text_color || "#000000",
+            textAlign: "center",
+            padding: "8px 0",
+            fontWeight: "bold",
+          }}
+        >
+          {announcement.message}
+        </div>
+      )}
+
+      <div className={`top-header ${classes?.top_bar_class ? classes?.top_bar_class : ""}`}>
+        <div className={`${classes?.container_class ? classes?.container_class : "container"}`}>
+          <Row>
+            <Col lg={6}>
+              <div className="header-contact">
+                <ul>
+                  <li>
+                    {t("welcome_to")} {settingData?.general?.site_name}
+                  </li>
+                  <li>
+                    <RiPhoneFill /> {t("call_us")} :{" "}
+                    <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
+                      {themeOption?.header?.support_number}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </Col>
+            <Col lg={6} className="text-end">
+              <ul className="right-nav-about">
+                {settingData?.activation?.zone_enable && <ZoneBar />}
+                <li className="right-nav-list">
+                  <HeaderLanguage />
+                </li>
+                <li className="right-nav-list">
+                  <HeaderCurrency />
+                </li>
               </ul>
-            </div>
-          </Col>
-          <Col lg={6} className="text-end">
-            <ul className="right-nav-about">
-              {settingData?.activation?.zone_enable && <ZoneBar />}
-              <li className="right-nav-list"><HeaderLanguage /></li>
-              <li className="right-nav-list"><HeaderCurrency /></li>
-            </ul>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
