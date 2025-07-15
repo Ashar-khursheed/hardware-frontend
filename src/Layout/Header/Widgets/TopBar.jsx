@@ -7,7 +7,8 @@ import { Col, Row } from "reactstrap";
 import HeaderCurrency from "./HeaderCurrency";
 import HeaderLanguage from "./HeaderLanguage";
 import ZoneBar from "./ZoneBar";
-import "./style.css"; // ⬅️ Import CSS file for scrolling animation
+import "@/assets/css/style.css"; // ✅ CSS for scrolling, animations, etc.
+
 
 const TopBar = ({ classes }) => {
   const { t } = useTranslation("common");
