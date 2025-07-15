@@ -7,7 +7,7 @@ import { Col, Row } from "reactstrap";
 import HeaderCurrency from "./HeaderCurrency";
 import HeaderLanguage from "./HeaderLanguage";
 import ZoneBar from "./ZoneBar";
-import "@/assets/css/style.css"; // ✅ CSS for scrolling, animations, etc.
+import "../../../assets/css/style.css"; // ✅ adjust based on folder depth
 
 
 const TopBar = ({ classes }) => {
