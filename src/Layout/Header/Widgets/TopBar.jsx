@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import SettingContext from "@/Context/SettingContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import { useTranslation } from "react-i18next";
@@ -7,49 +7,24 @@ import { Col, Row } from "reactstrap";
 import HeaderCurrency from "./HeaderCurrency";
 import HeaderLanguage from "./HeaderLanguage";
 import ZoneBar from "./ZoneBar";
-import { AnnouncementAPI } from "@/Utils/AxiosUtils/API";
 
 const TopBar = ({ classes }) => {
   const { t } = useTranslation("common");
   const { themeOption } = useContext(ThemeOptionContext);
   const { settingData } = useContext(SettingContext);
 
-  const [announcement, setAnnouncement] = useState(null);
-
-  useEffect(() => {
-    const fetchAnnouncement = async () => {
-      try {
-        const res = await fetch(AnnouncementAPI);
-        const data = await res.json();
-        if (data.success && data.data) {
-          setAnnouncement(data.data);
-        } else {
-          // fallback default message
-          setAnnouncement({
-            status: 1,
-            background_color: "#ffff00",
-            text_color: "#000000",
-            message: "Welcome to our store!",
-          });
-        }
-      } catch (error) {
-        console.error("Failed to fetch announcement:", error);
-        // fallback on error
-        setAnnouncement({
-          status: 1,
-          background_color: "#ffff00",
-          text_color: "#000000",
-          message: "Welcome to our store!",
-        });
-      }
-    };
-
-    fetchAnnouncement();
-  }, []);
+  // Get announcement from themeOption, with fallback
+  const announcement = themeOption?.header?.announcement || {
+    status: 1,
+    background_color: "#ffff00",
+    text_color: "#000000",
+    message: "Welcome to our store!",
+  };
 
   return (
     <>
-      {announcement && announcement.status === 1 && (
+      {/* Announcement Bar */}
+      {announcement?.status && (
         <div
           style={{
             backgroundColor: announcement.background_color || "#ffff00",
@@ -59,12 +34,13 @@ const TopBar = ({ classes }) => {
             fontWeight: "bold",
           }}
         >
-          {announcement.message}
+          {announcement.message || "Welcome to our store!"}
         </div>
       )}
 
-      <div className={`top-header ${classes?.top_bar_class ? classes?.top_bar_class : ""}`}>
-        <div className={`${classes?.container_class ? classes?.container_class : "container"}`}>
+      {/* Top Header */}
+      <div className={`top-header ${classes?.top_bar_class || ""}`}>
+        <div className={`${classes?.container_class || "container"}`}>
           <Row>
             <Col lg={6}>
               <div className="header-contact">
@@ -74,7 +50,10 @@ const TopBar = ({ classes }) => {
                   </li>
                   <li>
                     <RiPhoneFill /> {t("call_us")} :{" "}
-                    <a className="text-white" href={`tel:${themeOption?.header?.support_number}`}>
+                    <a
+                      className="text-white"
+                      href={`tel:${themeOption?.header?.support_number}`}
+                    >
                       {themeOption?.header?.support_number}
                     </a>
                   </li>
