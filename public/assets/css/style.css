@@ -41394,9 +41394,9 @@ body.rtl .account-setting {
     padding: 6px 14px;
 }
 .dropdown-column.col-xl-3 ul .custom-heading {
-    font-size: 12px !important;
+    font-size: 14px !important;
     font-family: 'Sintony', sans-serif !important;
-   color: #222222 !important;
+    color: #000000 !important;
 }
 
 .custom-link {
