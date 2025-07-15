@@ -56,7 +56,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               </li>
             )}
           </ul>
-          {!productState?.product?.is_external && (
+          {/* {!productState?.product?.is_external && (
             <div className="product-rating">
               <RatingBox totalRating={productState?.selectedVariation?.rating_count ?? productState?.product?.rating_count} />
               <span className="divider">|</span>
@@ -64,7 +64,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
                 {productState?.selectedVariation?.reviews_count || productState?.product?.reviews_count || 0} {t("review")}
               </a>
             </div>
-          )}
+          )} */}
           {/* <div className="price-text">
             <h3>
               <span className="text-dark fw-normal">MRP:</span>
@@ -125,6 +125,9 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               <a href={Href} onClick={() => setModal("qna")}>
                 <RiQuestionnaireLine /> {t("ask_a_question")}
               </a>
+              
+              <a href="tel:+15551865359">Inquiry on Call</a>
+
             </div>
             {modal && activeModal[modal]}
           </>
