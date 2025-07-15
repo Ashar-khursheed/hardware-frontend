@@ -7,13 +7,13 @@ import { Col, Row } from "reactstrap";
 import HeaderCurrency from "./HeaderCurrency";
 import HeaderLanguage from "./HeaderLanguage";
 import ZoneBar from "./ZoneBar";
+import "./style.css"; // ⬅️ Import CSS file for scrolling animation
 
 const TopBar = ({ classes }) => {
   const { t } = useTranslation("common");
   const { themeOption } = useContext(ThemeOptionContext);
   const { settingData } = useContext(SettingContext);
 
-  // Get announcement from themeOption, with fallback
   const announcement = themeOption?.header?.announcement || {
     status: 1,
     background_color: "#ffff00",
@@ -23,18 +23,18 @@ const TopBar = ({ classes }) => {
 
   return (
     <>
-      {/* Announcement Bar */}
+      {/* Announcement Bar with Scrolling */}
       {announcement?.status && (
         <div
+          className="announcement-bar"
           style={{
             backgroundColor: announcement.background_color || "#ffff00",
             color: announcement.text_color || "#000000",
-            textAlign: "center",
-            padding: "8px 0",
-            fontWeight: "bold",
           }}
         >
-          {announcement.message || "Welcome to our store!"}
+          <div className="announcement-text">
+            {announcement.message || "Welcome to our store!"}
+          </div>
         </div>
       )}
 
