@@ -23,9 +23,24 @@ const TopBar = ({ classes }) => {
         const data = await res.json();
         if (data.success && data.data) {
           setAnnouncement(data.data);
+        } else {
+          // fallback default message
+          setAnnouncement({
+            status: 1,
+            background_color: "#ffff00",
+            text_color: "#000000",
+            message: "Welcome to our store!",
+          });
         }
       } catch (error) {
         console.error("Failed to fetch announcement:", error);
+        // fallback on error
+        setAnnouncement({
+          status: 1,
+          background_color: "#ffff00",
+          text_color: "#000000",
+          message: "Welcome to our store!",
+        });
       }
     };
 
