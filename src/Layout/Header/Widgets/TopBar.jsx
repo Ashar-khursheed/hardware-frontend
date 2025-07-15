@@ -30,13 +30,16 @@ const TopBar = ({ classes }) => {
           style={{
             backgroundColor: announcement.background_color || "#ffff00",
             color: announcement.text_color || "#000000",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
           }}
         >
-          <div className="announcement-text">
+          <div className="announcement-text scroll" style={{ display: "inline-block" }}>
             {announcement.message || "Welcome to our store!"}
           </div>
         </div>
       )}
+
 
       {/* Top Header */}
       <div className={`top-header ${classes?.top_bar_class || ""}`}>

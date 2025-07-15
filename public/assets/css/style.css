@@ -41467,6 +41467,10 @@ button.dropdown-toggle.btn.btn-secondary {
   animation: scroll-left 15s linear infinite;
 }
 
+.announcement-bar:hover .announcement-text {
+  animation-play-state: paused;
+}
+
 @keyframes scroll-left {
   0% {
     transform: translateX(0%);
