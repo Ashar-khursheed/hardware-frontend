@@ -22,11 +22,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
     >
       <div className="img-wrapper">
         <ImageVariant
-          thumbnail={
-            productState?.selectedVariation?.variation_image
-              ? productState?.selectedVariation?.variation_image
-              : productState?.product?.product_thumbnail
-          }
+          thumbnail={productState?.product?.product_thumbnail}
+
           gallery_images={productState?.product?.product_galleries}
           product={productState?.product}
           width={750}
