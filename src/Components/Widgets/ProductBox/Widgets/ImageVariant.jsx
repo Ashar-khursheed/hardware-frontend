@@ -44,11 +44,20 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+// const getThumbnailUrl = (thumbnail) => {
+//   return typeof thumbnail === "string"
+//     ? thumbnail
+//     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
+// };
 const getThumbnailUrl = (thumbnail) => {
-  return typeof thumbnail === "string"
+  const rawUrl = typeof thumbnail === "string"
     ? thumbnail
     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
+
+  // Remove duplicate slashes except after "https://"
+  return rawUrl.replace(/([^:]\/)\/+/g, "$1");
 };
+
 
 const ImageVariant = ({ item, variant = "image_zoom", thumbnail, gallery_images, product, width, height }) => {
   return (
