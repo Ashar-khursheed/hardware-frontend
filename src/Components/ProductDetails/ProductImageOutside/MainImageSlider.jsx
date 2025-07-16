@@ -29,7 +29,7 @@ const MainImageSlider = ({ productState, nav2, sliderRef1, setNav1 }) => {
                 </ul>
               ) : null}
 
-              <Slider adaptiveHeight={true} asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)} prevArrow={<RiArrowLeftSLine />} nextArrow={<RiArrowRightSLine />}>
+              <Slider adaptiveHeight={true} asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)}  afterChange={() => window.dispatchEvent(new Event('resize'))} prevArrow={<RiArrowLeftSLine />} nextArrow={<RiArrowRightSLine />}>
                 {currentVariation?.map((image, i) => (
                   <div key={i}>
                     <div className="slider-image">
