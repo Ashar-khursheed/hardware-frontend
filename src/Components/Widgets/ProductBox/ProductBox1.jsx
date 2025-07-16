@@ -8,10 +8,6 @@ import ImageVariant from "./Widgets/ImageVariant";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 
-const normalizeUrl = (url) => {
-  return url?.replace(/([^:]\/)\/+/g, '$1'); // replaces all double slashes except after `https:`
-};
-
 
 const ProductBox1 = ({ productState, setProductState }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -28,15 +24,14 @@ const ProductBox1 = ({ productState, setProductState }) => {
         <ImageVariant
           thumbnail={
             productState?.selectedVariation?.variation_image
-              ? normalizeUrl(productState?.selectedVariation?.variation_image)
-              : normalizeUrl(productState?.product?.product_thumbnail)
+              ? productState?.selectedVariation?.variation_image
+              : productState?.product?.product_thumbnail
           }
           gallery_images={productState?.product?.product_galleries}
           product={productState?.product}
           width={750}
           height={750}
         />
-
 
         <div className="rating-label">
           <RiStarSFill />
