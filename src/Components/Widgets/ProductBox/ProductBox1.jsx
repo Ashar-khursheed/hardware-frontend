@@ -50,7 +50,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
           <h6>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h6>
         </Link>
 
-    
+
 
         <h4 className="price">
           {productState?.selectedVariation
@@ -59,26 +59,35 @@ const ProductBox1 = ({ productState, setProductState }) => {
 
           {productState?.selectedVariation ? (
             <>
-              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price ||
-              (productState?.product?.price != productState?.product?.sale_price) ? (
-                <del>${Number(productState?.selectedVariation?.price ?? productState?.product?.price).toFixed(2)}</del>
-              ) : null}
-              <span className="discounted-price">
-                {productState?.selectedVariation?.discount}% {t("off")}
-              </span>
+              {(productState?.selectedVariation?.price !== productState?.selectedVariation?.sale_price ||
+                productState?.product?.price !== productState?.product?.sale_price) && (
+                  <del>
+                    ${Number(productState?.selectedVariation?.price ?? productState?.product?.price).toFixed(2)}
+                  </del>
+                )}
+
+              {productState?.selectedVariation?.discount &&
+                productState?.selectedVariation?.discount !== 0 && (
+                  <span className="discounted-price">
+                    {productState?.selectedVariation?.discount}% {t("off")}
+                  </span>
+                )}
             </>
           ) : (
             <>
-              {productState?.selectedVariation?.price != productState?.selectedVariation?.sale_price ||
-              (productState?.product?.price != productState?.product?.sale_price) ? (
+              {(productState?.product?.price !== productState?.product?.sale_price) && (
                 <del>${Number(productState?.product?.price).toFixed(2)}</del>
-              ) : null}
-              <span className="discounted-price">
-                {productState?.product?.discount}% {t("off")}
-              </span>
+              )}
+
+              {productState?.product?.discount && productState?.product?.discount !== 0 && (
+                <span className="discounted-price">
+                  {productState?.product?.discount}% {t("off")}
+                </span>
+              )}
             </>
           )}
         </h4>
+
 
         <ProductBoxVariantAttribute setProductState={setProductState} productState={productState} showVariableType={["color", "rectangle", "circle", "radio", "dropdown", "image"]} />
       </div>
