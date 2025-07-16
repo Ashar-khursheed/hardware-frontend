@@ -7,6 +7,8 @@ export const VerifyTokenAPI = "/verify-otp";
 export const UpdatePasswordAPI = "/update-password";
 export const LogoutAPI = "/logout";
 
+export const AnnouncementAPI = "/announcement";
+
 // Brand Logo API
 export const BrandLogo = "/brand";
 

@@ -19,6 +19,12 @@ const HeaderFive = () => {
   const isAuthenticated = Cookies.get("uat_multikart");
   const router = useRouter();
   const UpScroll = useHeaderScroll(false);
+
+   console.log("🔍 themeOption.header:", themeOption?.header);
+  console.log("🔍 page_top_bar_enable:", themeOption?.header?.page_top_bar_enable);
+  console.log("🔍 topbar_content_1:", themeOption?.header?.topbar_content_1);
+  console.log("🔍 topbar_content_2:", themeOption?.header?.topbar_content_2);
+  console.log("🔍 topbar_content_3:", themeOption?.header?.topbar_content_3);
   const handleProfileClick = (path) => {
     isAuthenticated ? router.push("/account/dashboard") : setOpenAuthModal(true);
   };

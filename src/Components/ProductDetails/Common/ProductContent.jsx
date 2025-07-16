@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiQuestionnaireLine, RiRulerLine, RiTruckLine } from "react-icons/ri";
+import { RiPhoneLine } from "react-icons/ri";
 import AddToCartButton from "./AddToCartButton";
 import DeliveryReturnModal from "./AllModal/DeliveryReturnModal";
 import QuestionAnswerModal from "./AllModal/QuestionAnswerModal";
@@ -56,7 +57,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               </li>
             )}
           </ul>
-          {!productState?.product?.is_external && (
+          {/* {!productState?.product?.is_external && (
             <div className="product-rating">
               <RatingBox totalRating={productState?.selectedVariation?.rating_count ?? productState?.product?.rating_count} />
               <span className="divider">|</span>
@@ -64,7 +65,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
                 {productState?.selectedVariation?.reviews_count || productState?.product?.reviews_count || 0} {t("review")}
               </a>
             </div>
-          )}
+          )} */}
           {/* <div className="price-text">
             <h3>
               <span className="text-dark fw-normal">MRP:</span>
@@ -81,26 +82,26 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
             <span>{t("inclusive_text")}</span>
           </div> */}
           <div className="price-text">
-          <h3>
-            <span className="text-dark fw-normal">MRP:</span>
-            $ {productState?.selectedVariation?.sale_price ?? productState?.product?.sale_price}
+            <h3>
+              <span className="text-dark fw-normal">MRP:</span>
+              $ {productState?.selectedVariation?.sale_price ?? productState?.product?.sale_price}
 
-            {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
-              <del>
-                {productState?.selectedVariation?.price ?? productState?.product?.price}
-              </del>
-            )}
+              {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
+                <del>
+                  {productState?.selectedVariation?.price ?? productState?.product?.price}
+                </del>
+              )}
 
-            {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
-              <span className="discounted-price">
-                ${productState?.selectedVariation?.discount ?? productState?.product?.discount} % {t("off")}
-              </span>
-            )}
-          </h3>
-          {/* <span>{t("inclusive_text")}</span> */}
-        </div>
+              {(productState?.selectedVariation?.discount || productState?.product?.discount) && (
+                <span className="discounted-price">
+                  ${productState?.selectedVariation?.discount ?? productState?.product?.discount} % {t("off")}
+                </span>
+              )}
+            </h3>
+            {/* <span>{t("inclusive_text")}</span> */}
+          </div>
 
-                  {productState?.product.short_description && <p className="description-text">{productState?.product.short_description}</p>}
+          {productState?.product.short_description && <p className="description-text">{productState?.product.short_description}</p>}
           {productState?.product?.read_document && (
             <a className="btn btn-md read-btn" href={productState?.product?.read_document.original_url} target="_blank">
               {productState?.product?.read_button_text || "read"}{" "}
@@ -125,6 +126,12 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               <a href={Href} onClick={() => setModal("qna")}>
                 <RiQuestionnaireLine /> {t("ask_a_question")}
               </a>
+
+              <a href="tel:+15551865359">
+                <RiPhoneLine style={{ marginRight: "8px" }} />
+                Inquiry on Call
+              </a>
+
             </div>
             {modal && activeModal[modal]}
           </>
