@@ -41449,7 +41449,9 @@ button.dropdown-toggle.btn.btn-secondary {
 }
 
 .header-style-5 .search-suggestion-box{
-    z-index:999 !important;
+    position: absolute; /* or relative if already inside a positioned container */
+    z-index: 9999 !important;
+    background: white; /* to ensure it's not transparent */
 }
 
 .announcement-bar {

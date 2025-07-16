@@ -15,9 +15,22 @@ const ProductBox1 = ({ productState, setProductState }) => {
   // hello
 
   return (
-    <div className={`basic-product ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""}`}>
+    <div
+      className={`basic-product ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""
+        }`}
+    >
       <div className="img-wrapper">
-        <ImageVariant thumbnail={productState?.selectedVariation?.variation_image ? productState?.selectedVariation?.variation_image : productState?.product?.product_thumbnail} gallery_images={productState?.product?.product_galleries} product={productState?.product} width={750} height={750} />
+        <ImageVariant
+          thumbnail={
+            productState?.selectedVariation?.variation_image
+              ? productState?.selectedVariation?.variation_image
+              : productState?.product?.product_thumbnail
+          }
+          gallery_images={productState?.product?.product_galleries}
+          product={productState?.product}
+          width={750}
+          height={750}
+        />
 
         <div className="rating-label">
           <RiStarSFill />
@@ -27,12 +40,19 @@ const ProductBox1 = ({ productState, setProductState }) => {
         {/* new commentttt */}
 
         <div className="cart-info">
-          <CartButton classes={"addto-cart-bottom"} productState={productState} selectedVariation={productState?.selectedVariation} text="Add to Cart" />
+          <CartButton
+            classes={"addto-cart-bottom"}
+            productState={productState}
+            selectedVariation={productState?.selectedVariation}
+            text="Add to Cart"
+          />
           <ProductHoverButton productstate={productState?.product} />
         </div>
 
         <ul className="trending-label">
-          {productState?.product?.stock_status === "out_of_stock" ? <li className="out_of_stock">{t("sold_out")}</li> : null}
+          {productState?.product?.stock_status === "out_of_stock" ? (
+            <li className="out_of_stock">{t("sold_out")}</li>
+          ) : null}
           {productState?.product?.is_sale_enable ? <li>{t("sale")}</li> : null}
           {productState?.product?.is_featured ? <li>{t("featured")}</li> : null}
           {productState?.product?.is_trending ? <li>{t("trending")}</li> : null}
@@ -41,16 +61,21 @@ const ProductBox1 = ({ productState, setProductState }) => {
 
       <div className="product-detail">
         {productState?.product?.brand && (
-          <Link className="product-title" href={`/brand/${productState?.product?.brand.slug}`}>
+          <Link
+            className="product-title"
+            href={`/brand/${productState?.product?.brand.slug}`}
+          >
             {productState?.product?.brand?.name}
           </Link>
         )}
 
         <Link href={`/product/${productState?.product?.slug}`}>
-          <h6>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h6>
+          <h6>
+            {productState?.selectedVariation
+              ? productState?.selectedVariation?.name
+              : productState?.product?.name}
+          </h6>
         </Link>
-
-
 
         <h4 className="price">
           {productState?.selectedVariation
@@ -89,7 +114,18 @@ const ProductBox1 = ({ productState, setProductState }) => {
         </h4>
 
 
-        <ProductBoxVariantAttribute setProductState={setProductState} productState={productState} showVariableType={["color", "rectangle", "circle", "radio", "dropdown", "image"]} />
+        <ProductBoxVariantAttribute
+          setProductState={setProductState}
+          productState={productState}
+          showVariableType={[
+            "color",
+            "rectangle",
+            "circle",
+            "radio",
+            "dropdown",
+            "image",
+          ]}
+        />
       </div>
     </div>
   );
