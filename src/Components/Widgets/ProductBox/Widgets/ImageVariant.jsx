@@ -54,12 +54,15 @@ const getThumbnailUrl = (thumbnail) => {
     ? thumbnail
     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
 
-  // If the URL is relative, prepend the domain
   if (rawUrl && rawUrl.startsWith("/storage")) {
     rawUrl = `https://api.in-sourceit.com${rawUrl}`;
   }
-    return rawUrl.replace(/([^:]\/)\/+/g, "$1");
+
+  const finalUrl = rawUrl.replace(/([^:]\/)\/+/g, "$1");
+  console.log("Final image URL:", finalUrl); // 👈 Debug log
+  return finalUrl;
 };
+
 
 
 const ImageVariant = ({ item, variant = "image_zoom", thumbnail, gallery_images, product, width, height }) => {
