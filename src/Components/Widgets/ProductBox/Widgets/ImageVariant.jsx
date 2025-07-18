@@ -50,12 +50,15 @@ import React from "react";
 //     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
 // };
 const getThumbnailUrl = (thumbnail) => {
-  const rawUrl = typeof thumbnail === "string"
+  let rawUrl = typeof thumbnail === "string"
     ? thumbnail
     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
 
-  // Remove duplicate slashes except after "https://"
-  return rawUrl.replace(/([^:]\/)\/+/g, "$1");
+  // If the URL is relative, prepend the domain
+  if (rawUrl && rawUrl.startsWith("/storage")) {
+    rawUrl = `https://api.in-sourceit.com${rawUrl}`;
+  }
+    return rawUrl.replace(/([^:]\/)\/+/g, "$1");
 };
 
 
