@@ -42,7 +42,7 @@ const LoginContent = () => {
 
             <div className='sign-up-box'>
               <h4>{t("no_account")}?</h4>
-              <Link href={`/auth/register`} legacyBehavior><a>Sign In</a></Link>
+              <Link href={`/auth/register`}>Sign In</Link>
             </div>
           </div>
         </Col>

@@ -47,7 +47,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <ul className="sm pixelstrap sm-vertical" id="sub-menu">
               {mainCategories?.map((category, index) => (
                 <li key={index}>
-                  <Link href={`/category/${category?.slug}`} legacyBehavior><a>{category?.name}</a></Link>{" "}
+                  <Link href={`/category/${category?.slug}`}>{category?.name}</Link>{" "}
                 </li>
               ))}
             </ul>

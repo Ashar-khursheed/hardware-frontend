@@ -14,7 +14,7 @@ const SellerClassicCard = ({ StoreData }) => {
       <div className="profile-left">
         <div className="profile-image">
           <div>
-            {/* <Link href={Href} legacyBehavior><a>{</a></Link> */}
+            {/* <Link href={Href}>{</Link> */}
             <Link href={Href} legacyBehavior>
               <a>
                 {StoreData?.store_logo?.original_url ? (

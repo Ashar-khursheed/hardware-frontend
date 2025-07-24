@@ -7,7 +7,7 @@ const BlogCardContain = ({ blog }) => {
   return (
     <>
       <div className="blog-image">
-        {/* <Link href={`/blogs/${blog.slug}`} legacyBehavior><a>{</a></Link> */}
+        {/* <Link href={`/blogs/${blog.slug}`}>{</Link> */}
         <Link href={`/blogs/${blog.slug}`} legacyBehavior>
           <a>
             {blog?.blog_thumbnail?.original_url && (

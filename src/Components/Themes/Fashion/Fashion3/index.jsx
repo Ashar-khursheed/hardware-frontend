@@ -82,11 +82,13 @@ const Fashion3 = () => {
         {/* Full Or Parallax Banner */}
         {data?.full_banner?.status && (
           <div className="p-0 banner-sale">
-            <Link
-              href={redirectBannerLink(data?.full_banner?.redirect_link)}
-              legacyBehavior>
-              <img src={storageURL + data?.full_banner?.image_url} className="bg-img w-100 " alt="banner" />
+            <Link href={redirectBannerLink(data?.full_banner?.redirect_link) || "/"} legacyBehavior>
+              <a>
+                <img src={storageURL + data?.full_banner?.image_url} className="bg-img w-100 " alt="banner" />
+              </a>
             </Link>
+
+
           </div>
         )}
 

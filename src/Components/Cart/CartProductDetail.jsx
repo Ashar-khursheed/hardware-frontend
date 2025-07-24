@@ -10,12 +10,21 @@ const CartProductDetail = ({ elem }) => {
   const { convertCurrency } = useContext(SettingContext);
   return (
     <td>
-      <Link
-        href={`/product/${elem?.product?.slug}`}
-        className="product-image"
-        legacyBehavior>
-        <Avatar customeClass="product-image" customImageClass={"img-fluid"} data={elem?.variation?.variation_image ?? elem?.product?.product_thumbnail} placeHolder={placeHolderImage} name={elem?.product?.name} />
-      </Link>
+     <Link
+  href={`/product/${elem?.product?.slug}`}
+  legacyBehavior
+>
+  <a className="product-image">
+    <Avatar
+      customeClass="product-image"
+      customImageClass="img-fluid"
+      data={elem?.variation?.variation_image ?? elem?.product?.product_thumbnail}
+      placeHolder={placeHolderImage}
+      name={elem?.product?.name}
+    />
+  </a>
+</Link>
+
     </td>
   );
 };

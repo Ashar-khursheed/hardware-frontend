@@ -107,7 +107,7 @@ const FooterLogo = () => {
   }, [theme, themeOption?.logo?.footer_logo]);
   return (
     <div className="footer-logo">
-      {/* <Link href="/" legacyBehavior><a>{</a></Link> */}
+      {/* <Link href="/">{</Link> */}
       {logoAbc?.original_url ? (
         <Link href="/" legacyBehavior>
           <a>
