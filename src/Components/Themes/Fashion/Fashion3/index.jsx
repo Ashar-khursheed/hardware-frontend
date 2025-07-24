@@ -66,7 +66,6 @@ const Fashion3 = () => {
       <WrapperComponent classes={{ sectionClass: "p-0 overflow-hidden", fluidClass: "slide-1 home-slider" }}>
         <HomeSlider bannerData={data?.home_banner} height={621} width={1920} />
       </WrapperComponent>
-
       <div className="container box-layout bg-image">
         {/* Product List  */}
         {data?.products_list?.status && (
@@ -83,7 +82,9 @@ const Fashion3 = () => {
         {/* Full Or Parallax Banner */}
         {data?.full_banner?.status && (
           <div className="p-0 banner-sale">
-            <Link href={redirectBannerLink(data?.full_banner?.redirect_link)}>
+            <Link
+              href={redirectBannerLink(data?.full_banner?.redirect_link)}
+              legacyBehavior>
               <img src={storageURL + data?.full_banner?.image_url} className="bg-img w-100 " alt="banner" />
             </Link>
           </div>

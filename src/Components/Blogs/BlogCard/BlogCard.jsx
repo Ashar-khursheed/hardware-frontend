@@ -7,7 +7,20 @@ const BlogCardContain = ({ blog }) => {
   return (
     <>
       <div className="blog-image">
-        <Link href={`/blogs/${blog.slug}`}>{blog?.blog_thumbnail?.original_url && <Image src={blog?.blog_thumbnail?.original_url || placeHolderImage} alt="blog-image" height={900} width={900} />}</Link>
+        {/* <Link href={`/blogs/${blog.slug}`} legacyBehavior><a>{</a></Link> */}
+        <Link href={`/blogs/${blog.slug}`} legacyBehavior>
+          <a>
+            {blog?.blog_thumbnail?.original_url && (
+              <Image
+                src={blog?.blog_thumbnail?.original_url || placeHolderImage}
+                alt="blog-image"
+                height={900}
+                width={900}
+              />
+            )}
+          </a>
+        </Link>
+
       </div>
       <BlogContain blog={blog} />
     </>

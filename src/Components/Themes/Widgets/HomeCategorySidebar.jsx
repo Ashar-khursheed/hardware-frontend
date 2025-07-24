@@ -47,7 +47,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <ul className="sm pixelstrap sm-vertical" id="sub-menu">
               {mainCategories?.map((category, index) => (
                 <li key={index}>
-                  <Link href={`/category/${category?.slug}`}>{category?.name}</Link>{" "}
+                  <Link href={`/category/${category?.slug}`} legacyBehavior><a>{category?.name}</a></Link>{" "}
                 </li>
               ))}
             </ul>
@@ -56,12 +56,26 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <ul className="pixelstrap sm-vertical">
               {mainCategories?.map((category, index) => (
                 <li key={index}>
-                  <Link href={`/category/${category?.slug}`}>
-                    <img height={height ? height : ""} width={width ? width : ""} src={category?.category_icon ? category?.category_icon?.original_url : `${ImagePath}/placeholder/category.png`} alt="" className="img-fluid me-2 rounded-0 rounded-0" />
-                    <div className="skeleton-category-img"></div>
-                    <span>{category?.name}</span>
-                    <span className="skeleton-category-text"></span>
+                  <Link href={`/category/${category?.slug}`} legacyBehavior>
+                    <a>
+                      {category?.name}
+                      <img
+                        height={height ? height : ""}
+                        width={width ? width : ""}
+                        src={
+                          category?.category_icon
+                            ? category?.category_icon?.original_url
+                            : `${ImagePath}/placeholder/category.png`
+                        }
+                        alt=""
+                        className="img-fluid me-2 rounded-0"
+                      />
+                      <div className="skeleton-category-img"></div>
+                      <span>{category?.name}</span>
+                      <span className="skeleton-category-text"></span>
+                    </a>
                   </Link>
+
                 </li>
               ))}
             </ul>
@@ -70,33 +84,59 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <Slider {...categorySliderSettingMain}>
               {mainCategories?.map((category, index) => (
                 <div key={index}>
-                  <Link href={`/category/${category?.slug}`}>
-                    <div className="category-boxes">
-                      <div className="img-sec">
-                        <img height={height ? height : 58} width={width ? width : 58} src={category.category_icon ? category.category_icon.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category?.name} />
-                        <div className="skeleton-img-sec"></div>
+                  <Link href={`/category/${category?.slug}`} legacyBehavior>
+                    <a>
+                      <div className="category-boxes">
+                        <div className="img-sec">
+                          <img
+                            height={height ? height : 58}
+                            width={width ? width : 58}
+                            src={
+                              category.category_icon
+                                ? category.category_icon.original_url
+                                : `${ImagePath}/placeholder/category.png`
+                            }
+                            className="img-fluid"
+                            alt={category?.name}
+                          />
+                          <div className="skeleton-img-sec"></div>
+                        </div>
+                        <h4>{category.name}</h4>
                       </div>
-                      <h4>{category.name}</h4>
-                    </div>
+                    </a>
                   </Link>
                 </div>
               ))}
             </Slider>
           )}
+
           {style == "gradient" && (
             <Row className=" g-4">
               {mainCategories?.map((category, i) => (
                 <Col key={i} xl="2" md="3" sm="4" xs="6">
-                  <Link href={`/category/${category?.slug}`}>
-                    <div className={`gradient-category ${i == 1 ? "hover-effect" : ""}`}>
-                      <div className="gradient-border">
-                        <div className="img-sec">
-                          <img height={height ? height : ""} width={width ? width : ""} src={category.category_image ? category?.category_image?.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category.name} />
+                  <Link href={`/category/${category?.slug}`} legacyBehavior>
+                    <a>
+                      <div className={`gradient-category ${i == 1 ? "hover-effect" : ""}`}>
+                        <div className="gradient-border">
+                          <div className="img-sec">
+                            <img
+                              height={height ? height : ""}
+                              width={width ? width : ""}
+                              src={
+                                category.category_image
+                                  ? category?.category_image?.original_url
+                                  : `${ImagePath}/placeholder/category.png`
+                              }
+                              className="img-fluid"
+                              alt={category.name}
+                            />
+                          </div>
                         </div>
+                        <h4>{category.name}</h4>
                       </div>
-                      <h4>{category.name}</h4>
-                    </div>
+                    </a>
                   </Link>
+
                 </Col>
               ))}
             </Row>
@@ -117,20 +157,27 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                         </div>
                       )}
                       <h4>
-                        <Link href={`/category/${category?.slug}`}>{category?.name}</Link>
+                        <Link href={`/category/${category?.slug}`} legacyBehavior>
+                          <a>{category?.name}</a>
+                        </Link>
+
                       </h4>
                       <ul className="category-link">
                         {category?.subcategories
                           ? category?.subcategories?.slice(0, 5)?.map((sub) => (
-                              <li>
-                                <Link href={`/category/${sub?.slug}`}>{sub?.name}</Link>
-                              </li>
-                            ))
+                            <li>
+                              <Link href={`/category/${category?.slug}`} legacyBehavior>
+                                <a>{category?.name}</a>
+                              </Link>
+                            </li>
+                          ))
                           : ""}
                       </ul>
-                      <a className="btn btn-classic btn-outline" href={`/category/${category?.slug}`}>
-                        {t("view_more")}
-                      </a>
+                      <Link href={`/category/${category?.slug}`}>
+                        <a className="btn btn-classic btn-outline">
+                          {t("view_more")}
+                        </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -141,20 +188,24 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <Row className="g-sm-4 g-3">
               {mainCategories?.map((category, i) => (
                 <Col key={category.slug}>
-                  <Link href={`/category/${category.slug}`} className="btn btn-outline btn-block">
-                    {category.name}
+                  <Link href={`/category/${category.slug}`} legacyBehavior>
+                    <a className="btn btn-outline btn-block">{category.name}</a>
                   </Link>
                 </Col>
               ))}
             </Row>
           )}
+
           {style === "books2" && (
             <Row className="g-sm-4 g-3">
               <Slider {...categorySliderSettingMain}>
                 {mainCategories?.map((category, i) => (
                   <Col key={category.slug}>
-                    <Link href={`/category/${category.slug}`} className="btn btn-outline btn-block">
-                      {category.name}
+                    <Link
+                      href={`/category/${category.slug}`}
+                      className="btn btn-outline btn-block"
+                      legacyBehavior>
+                      <a> {category.name}</a>
                     </Link>
                   </Col>
                 ))}
@@ -168,7 +219,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                   <Slider {...categorySliderSettingMain}>
                     {mainCategories?.map((category, i) => (
                       <div key={i} className="category-block">
-                        <Link href={`/category/${category?.slug}`}>
+                        <Link href={`/category/${category?.slug}`} legacyBehavior>
                           <div className="category-image svg-image">
                             <div className="img-sec">
                               <img src={category.category_icon ? category.category_icon.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category?.name} />
@@ -176,7 +227,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                           </div>
                         </Link>
                         <div className="category-details">
-                          <Link href={`/category/${category?.slug}`}>
+                          <Link href={`/category/${category?.slug}`} legacyBehavior>
                             <h5>{category.name}</h5>
                           </Link>
                         </div>
@@ -188,7 +239,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                 mainCategories?.map((category, i) => (
                   <div key={i} className="col-xl-2 col-sm-3 col-4">
                     <div className="category-block">
-                      <Link href={`/category/${category?.slug}`}>
+                      <Link href={`/category/${category?.slug}`} legacyBehavior>
                         <div className="category-image svg-image">
                           <div className="img-sec">
                             <img src={category.category_icon ? category.category_icon.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category?.name} />
@@ -196,7 +247,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                         </div>
                       </Link>
                       <div className="category-details">
-                        <Link href={`/category/${category?.slug}`}>
+                        <Link href={`/category/${category?.slug}`} legacyBehavior>
                           <h5>{category.name}</h5>
                         </Link>
                       </div>
@@ -210,13 +261,13 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             <Slider {...categorySliderSettingMain}>
               {mainCategories?.map((category, i) => (
                 <div key={i} className="category-block">
-                  <Link href={`/category/${category?.slug}`}>
+                  <Link href={`/category/${category?.slug}`} legacyBehavior>
                     <div className="category-image">
                       <img src={category.category_icon ? category.category_icon.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category?.name} />
                     </div>
                   </Link>
                   <div className="category-details">
-                    <Link href={`/category/${category?.slug}`}>
+                    <Link href={`/category/${category?.slug}`} legacyBehavior>
                       <h5>{category.name}</h5>
                     </Link>
                   </div>
@@ -233,7 +284,7 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                       <img src={category.category_image ? category?.category_image?.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid lazyload bg-img" alt={category?.name} />
                     </div>
                     <div className="category-box">
-                      <Link href={`/category/${category?.slug}`}>
+                      <Link href={`/category/${category?.slug}`} legacyBehavior>
                         <h2>{category.name}</h2>
                       </Link>
                     </div>
@@ -250,13 +301,13 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                     <Slider {...categorySliderSettingMain}>
                       {mainCategories.map((category, index) => (
                         <div className="category-block" key={index}>
-                          <Link href={`/category/${category?.slug}`}>
+                          <Link href={`/category/${category?.slug}`} legacyBehavior>
                             <div className="category-image">
                               <img src={category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category.name} />
                             </div>
                           </Link>
                           <div className="category-details">
-                            <Link href={`/category/${category?.slug}`}>
+                            <Link href={`/category/${category?.slug}`} legacyBehavior>
                               <h5>{category?.name}</h5>
                             </Link>
                           </div>
@@ -269,14 +320,14 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                 mainCategories.map((category, index) => (
                   <div className="col-xl-2 col-sm-3 col-4" key={index}>
                     <div className="category-block">
-                      <Link href={`/category/${category?.slug}`}>
+                      <Link href={`/category/${category?.slug}`} legacyBehavior>
+
                         <div className="category-image">
                           <img src={category?.category_image ? category?.category_image?.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category.name} />
                         </div>
                       </Link>
                       <div className="category-details">
-                        <Link href={`/category/${category?.slug}`}>
-                          <h5>{category.name}</h5>
+                        <Link href={`/category/${category?.slug}`} legacyBehavior>  <a> {category.name}</a>
                         </Link>
                       </div>
                     </div>
@@ -290,15 +341,28 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
               {!slider ? (
                 mainCategories?.map((category, index) => (
                   <Col xl="2" sm="3" xs="4" key={index}>
-                    <Link href={`/category/${category?.slug}`}>
-                      <div className="img-category">
-                        <div className="img-sec bg-size" style={{ backgroundImage: `url(${category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`})` }}>
-                          <img src={category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid bg-img" alt={category.name} />
+                    <Link href={`/category/${category?.slug}`} legacyBehavior>
+                      <a>
+                        <div className="img-category">
+                          <div
+                            className="img-sec bg-size"
+                            style={{
+                              backgroundImage: `url(${category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`})`,
+                            }}
+                          >
+                            <img
+                              src={
+                                category.category_image
+                                  ? category.category_image.original_url
+                                  : `${ImagePath}/placeholder/category.png`
+                              }
+                              className="img-fluid bg-img"
+                              alt={category.name}
+                            />
+                          </div>
+                          <h4>{category?.name}</h4>
                         </div>
-                        <h4>
-                          <Link href={`/category/${category?.slug}`}>{category.name}</Link>
-                        </h4>
-                      </div>
+                      </a>
                     </Link>
                   </Col>
                 ))
@@ -306,15 +370,28 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
                 <Col xs="12">
                   <Slider {...categorySliderSettingMain}>
                     {mainCategories?.map((category, index) => (
-                      <Link key={index} href={`/category/${category?.slug}`}>
-                        <div className="img-category">
-                          <div className="img-sec bg-size" style={{ backgroundImage: `url(${category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`})` }}>
-                            <img src={category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid bg-img" alt={category.name} />
+                      <Link href={`/category/${category?.slug}`} legacyBehavior key={index}>
+                        <a>
+                          <div className="img-category">
+                            <div
+                              className="img-sec bg-size"
+                              style={{
+                                backgroundImage: `url(${category.category_image ? category.category_image.original_url : `${ImagePath}/placeholder/category.png`})`,
+                              }}
+                            >
+                              <img
+                                src={
+                                  category.category_image
+                                    ? category.category_image.original_url
+                                    : `${ImagePath}/placeholder/category.png`
+                                }
+                                className="img-fluid bg-img"
+                                alt={category.name}
+                              />
+                            </div>
+                            <h4>{category?.name}</h4>
                           </div>
-                          <h4>
-                            <Link href={`/category/${category.slug}`}>{category.name}</Link>
-                          </h4>
-                        </div>
+                        </a>
                       </Link>
                     ))}
                   </Slider>
@@ -323,11 +400,12 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
             </Row>
           )}
 
+
           {style == "books" && (
             <Slider {...categorySliderSettingMain}>
               {mainCategories?.map((category, i) => (
                 <div key={i}>
-                  <Link href={`/category/${category?.slug}`}>
+                  <Link href={`/category/${category?.slug}`} legacyBehavior>
                     <div className="img-category">
                       <div className="img-sec">
                         <img src={category.category_icon ? category.category_icon.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category.name} />
@@ -345,15 +423,27 @@ const HomeCategorySidebar = ({ categoryIds, height, width, style, slider, slider
               {mainCategories?.map((category, index) => (
                 <div key={index}>
                   <div className="category-nft">
-                    <Link href={`/category/${category?.slug}`}>
-                      <div className="category-image">
-                        <img src={category.category_image ? category?.category_image?.original_url : `${ImagePath}/placeholder/category.png`} className="img-fluid" alt={category?.name} />
-                      </div>
+                    <Link href={`/category/${category?.slug}`} legacyBehavior>
+                      <a>
+                        {category?.name}
+                        <div className="category-image">
+                          <img
+                            src={
+                              category.category_image
+                                ? category?.category_image?.original_url
+                                : `${ImagePath}/placeholder/category.png`
+                            }
+                            className="img-fluid"
+                            alt={category?.name}
+                          />
+                        </div>
 
-                      <div className="category-details">
-                        <h5>{category.name}</h5>
-                      </div>
+                        <div className="category-details">
+                          <h5>{category.name}</h5>
+                        </div>
+                      </a>
                     </Link>
+
                   </div>
                 </div>
               ))}

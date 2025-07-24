@@ -38,7 +38,7 @@ const SubTable = ({ data }) => {
                     </div>
                   </td>
                   <td>
-                    <Link href={`/account/order/details/${subOrder.order_number}`}>
+                    <Link href={`/account/order/details/${subOrder.order_number}`} legacyBehavior>
                       <RiEyeLine />
                     </Link>
                   </td>

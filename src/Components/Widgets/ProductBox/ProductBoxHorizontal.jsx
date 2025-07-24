@@ -18,11 +18,14 @@ const ProductBoxHorizontal = ({ productState, style }) => {
           </div>
           <div className="deal-content">
             {productState?.product?.brand && (
-              <Link href={`/brand/${productState?.product?.brand.slug}`} className="product-title">
+              <Link
+                href={`/brand/${productState?.product?.brand.slug}`}
+                className="product-title"
+                legacyBehavior>
                 <h5 className="gradient-text">{productState?.product?.brand?.name}</h5>
               </Link>
             )}
-            <Link href={`/product/ ${productState?.product?.slug}`}>
+            <Link href={`/product/ ${productState?.product?.slug}`} legacyBehavior>
               <h2>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h2>
             </Link>
             {productState?.product?.short_description && <p>{productState?.product?.short_description}</p>}
@@ -33,13 +36,13 @@ const ProductBoxHorizontal = ({ productState, style }) => {
       ) : (
         <div className="media">
           {productState?.product?.product_thumbnail && (
-            <Link href={`/product/${productState?.product?.slug}`}>
+            <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
               <img className="img-fluid" src={productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : `${ImagePath}/placeholder.png`} alt="" />
             </Link>
           )}
           <div className="media-body align-self-center">
             <ProductRating totalRating={productState?.product?.rating_count} />
-            <Link href={`/product/${productState?.product?.slug}`}>
+            <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
               <h6>{productState?.product?.name}</h6>
             </Link>
             <h4>

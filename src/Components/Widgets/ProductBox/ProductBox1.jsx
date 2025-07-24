@@ -59,18 +59,17 @@ const ProductBox1 = ({ productState, setProductState }) => {
           {productState?.product?.is_trending ? <li>{t("trending")}</li> : null}
         </ul>
       </div>
-
       <div className="product-detail">
         {productState?.product?.brand && (
           <Link
             className="product-title"
             href={`/brand/${productState?.product?.brand.slug}`}
-          >
-            {productState?.product?.brand?.name}
+            legacyBehavior>
+            <a> {productState?.product?.brand?.name}</a> 
           </Link>
         )}
 
-        <Link href={`/product/${productState?.product?.slug}`}>
+        <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
           <h6>
             {productState?.selectedVariation
               ? productState?.selectedVariation?.name

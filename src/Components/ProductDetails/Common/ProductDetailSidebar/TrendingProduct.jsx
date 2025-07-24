@@ -33,7 +33,7 @@ const TrendingProduct = ({ productState }) => {
             <ImageLink imgUrl={elem?.product_galleries[0]?.original_url} width={105} height={120} />
             <Media body>
               <RatingBox totalRating={elem?.rating_count ?? productState?.product?.rating_count} />
-              <Link href={`/product/${elem?.slug}`}>
+              <Link href={`/product/${elem?.slug}`} legacyBehavior>
                 <h6>{elem?.name}</h6>
               </Link>
               <h4>

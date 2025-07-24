@@ -11,28 +11,28 @@ const FooterSocial = () => {
         <ul>
           {themeOption?.footer?.facebook && (
             <li>
-              <Link href={themeOption?.footer?.facebook} target="_blank">
+              <Link href={themeOption?.footer?.facebook} target="_blank" legacyBehavior>
                 <RiFacebookFill />
               </Link>
             </li>
           )}
           {themeOption?.footer?.twitter && (
             <li>
-              <Link href={themeOption?.footer?.twitter} target="_blank">
+              <Link href={themeOption?.footer?.twitter} target="_blank" legacyBehavior>
                 <RiTwitterFill />
               </Link>
             </li>
           )}
           {themeOption?.footer?.instagram && (
             <li>
-              <Link href={themeOption?.footer?.instagram} target="_blank">
+              <Link href={themeOption?.footer?.instagram} target="_blank" legacyBehavior>
                 <RiInstagramFill />
               </Link>
             </li>
           )}
           {themeOption?.footer?.pinterest && (
             <li>
-              <Link href={themeOption?.footer?.pinterest} target="_blank">
+              <Link href={themeOption?.footer?.pinterest} target="_blank" legacyBehavior>
                 <RiPinterestFill />
               </Link>
             </li>

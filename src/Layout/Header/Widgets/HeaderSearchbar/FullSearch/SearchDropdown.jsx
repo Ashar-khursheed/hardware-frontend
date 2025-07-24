@@ -12,8 +12,9 @@ const RecursiveCategory = ({ categories }) => (
             pathname: `/collections`,
             query: { category: category?.slug },
           }}
+          legacyBehavior
         >
-          {category.name}
+          <a>{category.name}</a>
         </Link>
       </Fragment>
     ))}
@@ -25,9 +26,16 @@ const SearchDropDown = React.forwardRef((props, ref) => {
   const { t } = useTranslation("common");
   const skeleton = Array.from({ length: 3 }, (_, index) => index);
   const queryParams = searchValue ? { search: searchValue } : null;
+
   return (
     <div className="search-suggestion-box" ref={ref}>
-      <div className={!(categoryData?.length || categoryLoading) ? "mb-4 mt-0 recent-search-section" : "recent-search-section mb-4"}>
+      <div
+        className={
+          !(categoryData?.length || categoryLoading)
+            ? "mb-4 mt-0 recent-search-section"
+            : "recent-search-section mb-4"
+        }
+      >
         {categoryLoading ? (
           <div className="filter-row filter-skeleton">
             {skeleton.map((number) => (
@@ -36,23 +44,24 @@ const SearchDropDown = React.forwardRef((props, ref) => {
           </div>
         ) : (
           <>
-            {categoryData?.length > 0 ? (
+            {categoryData?.length > 0 && (
               <>
                 <h4 className="page-title">{t("related_categories")}</h4>
                 <div className="filter-row">
                   <RecursiveCategory categories={categoryData} />
                 </div>
               </>
-            ) : null}
+            )}
           </>
         )}
       </div>
+
       <div className="recent-search-section">
-        <h4 className="page-title">
-          {t("related_product")}
-          <Link href={{ pathname: `/search`, query: queryParams }}>{t("see_all")}</Link>
-        </h4>
-        {searchArr?.length == 0 ? (
+        <Link href={{ pathname: `/search`, query: queryParams }} legacyBehavior>
+          <a>{t("view_all")}</a>
+        </Link>
+
+        {searchArr?.length === 0 ? (
           <div className="not-found-box">
             <h5>
               No results for <span>{searchValue}</span>
@@ -61,20 +70,41 @@ const SearchDropDown = React.forwardRef((props, ref) => {
         ) : (
           <ul>
             {searchArr?.map((data, index) => (
-              <li id={`searchItem_${index}`} className={` result-item ${selectedItemIndex == index ? " selected" : ""}`} key={index}>
+              <li
+                id={`searchItem_${index}`}
+                className={`result-item ${selectedItemIndex == index ? "selected" : ""}`}
+                key={index}
+              >
                 <div className="suggestion-image">
-                  <Image height={50} width={50} src={data?.original_url ? data?.original_url : "/assets/images/placeholder.png"} alt="product image" />
+                  <Image
+                    height={50}
+                    width={50}
+                    src={data?.original_url || "/assets/images/placeholder.png"}
+                    alt="product image"
+                  />
                 </div>
+
                 <div className="suggestion-category">
-                  <Link href={`/product/${data?.slug}`}>{data.title}</Link>
-                  <div>
-                    {data?.categories?.map((category, index) => (
-                      <p key={index}>
-                        <Link href={{ pathname: "/collections", query: { category: category?.slug } }}>{category.name}</Link>
-                      </p>
-                    ))}
-                  </div>
+                  <Link href={`/product/${data?.slug}`} legacyBehavior>
+                    <a>
+                      <div>
+                        <h5>{data?.name}</h5>
+                        <img src={data?.image_url} alt={data?.name} />
+                      </div>
+                    </a>
+                  </Link>
                 </div>
+
+                {data?.categories?.map((category, catIndex) => (
+                  <p key={catIndex}>
+                    <Link
+                      href={{ pathname: "/collections", query: { category: category?.slug } }}
+                      legacyBehavior
+                    >
+                      <a>{category.name}</a>
+                    </Link>
+                  </p>
+                ))}
               </li>
             ))}
           </ul>

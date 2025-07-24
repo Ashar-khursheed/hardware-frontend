@@ -83,13 +83,13 @@ const ProductBundle = ({ productState, setProductState }) => {
                   <input type="checkbox" className="form-check-input checkbox_animated" id={`crosssell-${elem?.id}`} value={elem?.id} onChange={(e) => onProductCheck(e)} />
                 </div>
                 <div className="bundle-image">
-                  <Link href={`/product/${elem?.slug}`}>
+                  <Link href={`/product/${elem?.slug}`} legacyBehavior>
                     <Avatar customeClass={"img-fluid"} data={elem?.product_thumbnail} name={elem?.name} placeHolder={placeHolderImage} height={70} width={70} />
                   </Link>
                 </div>
                 <div className="bundle-content">
                   <div>
-                    <Link href={`/product/${elem?.slug}`}>
+                    <Link href={`/product/${elem?.slug}`} legacyBehavior>
                       <h4>{elem?.name}</h4>
                     </Link>
                   </div>

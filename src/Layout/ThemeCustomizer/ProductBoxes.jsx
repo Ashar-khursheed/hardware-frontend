@@ -30,10 +30,13 @@ const ProductBoxes = () => {
             {productBoxOptions?.map((item, i) => (
               <div className="text-center demo-effects " key={i}>
                 <div className="set-position" onClick={() => { setActive(item); }} >
-                  <Link className={`layout-container ${active == item ? "active" : ""}`} href={Href}>
+                  <Link
+                    className={`layout-container ${active == item ? "active" : ""}`}
+                    href={Href}
+                    legacyBehavior>
                     <Image className="img-fluid bg-img bg-top" src={`${ImagePath}/product_box/${item.toLowerCase()}.png`} height={275} width={180} alt={`demo${i + 1}`} />
                   </Link>
-                  <Link className="demo-text" href={Href}>
+                  <Link className="demo-text" href={Href} legacyBehavior>
                     <h4>
                       {t("Style")} {item}
                     </h4>

@@ -35,7 +35,7 @@ const RecentPost = () => {
                 </div>
                 <div className="media-body blog-content">
                   <h6>{showMonthWiseDateAndTime(blog?.created_at)}</h6>
-                  <Link href={`/blogs/${blog?.slug}`}>
+                  <Link href={`/blogs/${blog?.slug}`} legacyBehavior>
                     <h5>{blog.title}</h5>
                   </Link>
                 </div>

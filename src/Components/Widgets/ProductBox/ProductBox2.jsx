@@ -46,7 +46,7 @@ const ProductBox2 = ({ productState, setProductState }) => {
             </div>
           ) : null}
 
-          <Link href={`/product/${productState?.product?.slug}`}>
+          <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid bg-img" alt={productState?.product?.name} />
           </Link>
           <div className="rating-label">

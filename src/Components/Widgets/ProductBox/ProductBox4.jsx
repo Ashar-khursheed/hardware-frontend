@@ -15,7 +15,7 @@ const ProductBox4 = ({ productState }) => {
       <div className={`basic-product theme-product-3 ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""}`}>
         <div className="img-wrapper">
           {productState?.product?.discount && <div className="ribbon-round">{productState?.product?.discount}%</div>}
-          <Link href={`/product/${productState?.product?.slug}`}>
+          <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <img src={productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt={productState?.product?.name} />
           </Link>
           <div className="cart-info">

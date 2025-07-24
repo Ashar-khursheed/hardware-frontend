@@ -15,7 +15,7 @@ const FooterLogo = () => {
   useEffect(() => {
     let logo = themeOption?.logo?.footer_logo;
     if (theme) {
-      if (theme == "fashion_one" || theme == "full_page" || theme == "game" || theme == "tools" || theme == "left_sidebar" || theme == "video" ) {
+      if (theme == "fashion_one" || theme == "full_page" || theme == "game" || theme == "tools" || theme == "left_sidebar" || theme == "video") {
         logo = { original_url: `${ImagePath}/icon/logo/1-light.png` };
       } else if (theme == "fashion_two") {
         logo = { original_url: `${ImagePath}/icon/logo/2-light.png` };
@@ -107,7 +107,32 @@ const FooterLogo = () => {
   }, [theme, themeOption?.logo?.footer_logo]);
   return (
     <div className="footer-logo">
-      <Link href="/">{logoAbc?.original_url ? <Image src={logoAbc?.original_url} height={34} width={180} alt={settingData?.general?.site_name ? settingData?.general?.site_name : "multikart-logo"} /> : settingData?.general?.site_name && <h2 className="f-w-600">{settingData?.general?.site_name ? settingData?.general?.site_name.split(" ")[0] : "Logo Here"}</h2>}</Link>
+      {/* <Link href="/" legacyBehavior><a>{</a></Link> */}
+      {logoAbc?.original_url ? (
+        <Link href="/" legacyBehavior>
+          <a>
+            <Image
+              src={logoAbc.original_url}
+              height={34}
+              width={180}
+              alt={
+                settingData?.general?.site_name
+                  ? settingData.general.site_name
+                  : "multikart-logo"
+              }
+            />
+          </a>
+        </Link>
+      ) : settingData?.general?.site_name ? (
+        <Link href="/" legacyBehavior>
+          <a>
+            <h2 className="f-w-600">
+              {settingData.general.site_name.split(" ")[0]}
+            </h2>
+          </a>
+        </Link>
+      ) : null}
+
     </div>
   );
 };

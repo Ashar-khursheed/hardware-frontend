@@ -85,7 +85,11 @@ const PublicationMainPage = ({ slug }) => {
                                         {
                                             publication?.facebook && 
                                             <li>
-                                                <Link href={publication?.facebook} target="_blank" className="fb">
+                                                <Link
+                                                    href={publication?.facebook}
+                                                    target="_blank"
+                                                    className="fb"
+                                                    legacyBehavior>
                                                     <RiFacebookFill />
                                                 </Link>
                                             </li>
@@ -93,7 +97,11 @@ const PublicationMainPage = ({ slug }) => {
                                         {
                                             publication?.instagram && 
                                             <li>
-                                                <Link href={publication?.instagram} target="_blank" className="insta">
+                                                <Link
+                                                    href={publication?.instagram}
+                                                    target="_blank"
+                                                    className="insta"
+                                                    legacyBehavior>
                                                     <RiInstagramFill />
                                                 </Link>
                                             </li>
@@ -101,7 +109,11 @@ const PublicationMainPage = ({ slug }) => {
                                         {
                                             publication?.twitter && 
                                             <li>
-                                                <Link href={publication?.twitter} target="_blank" className="twitter">
+                                                <Link
+                                                    href={publication?.twitter}
+                                                    target="_blank"
+                                                    className="twitter"
+                                                    legacyBehavior>
                                                     <RiTwitterXFill />
                                                 </Link>
                                             </li>
@@ -109,7 +121,11 @@ const PublicationMainPage = ({ slug }) => {
                                         {
                                             publication?.youtube && 
                                             <li>
-                                                <Link href={publication?.youtube} target="_blank" className="youtube">
+                                                <Link
+                                                    href={publication?.youtube}
+                                                    target="_blank"
+                                                    className="youtube"
+                                                    legacyBehavior>
                                                     <RiYoutubeFill />
                                                 </Link>
                                             </li>
@@ -117,7 +133,11 @@ const PublicationMainPage = ({ slug }) => {
                                         {
                                             publication?.pinterest && 
                                             <li>
-                                                <Link href={publication?.pinterest} target="_blank" className="pinterest">
+                                                <Link
+                                                    href={publication?.pinterest}
+                                                    target="_blank"
+                                                    className="pinterest"
+                                                    legacyBehavior>
                                                     <RiPinterestFill />
                                                 </Link>
                                             </li>

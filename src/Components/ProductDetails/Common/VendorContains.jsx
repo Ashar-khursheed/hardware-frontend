@@ -8,24 +8,30 @@ const VendorContains = ({ productState }) => {
   return (
     <>
       <div className="vendor-contain">
-        <Link href={`/seller/store/${productState?.product?.store?.slug}`}>
+        <Link
+          href={`/seller/store/${productState?.product?.store?.slug}`}
+          legacyBehavior>
           <div className="vendor-image">
             <Avatar data={productState?.product?.store?.store_logo} height={64} width={64} name={productState?.product?.store?.store_name} />
           </div>
         </Link>
 
         <div className="vendor-name">
-          <Link href={`/seller/store/${productState?.product?.store?.slug}`}>
-            <h5 className="fw-500">{productState?.product?.store?.store_name}</h5>
-            <div className="product-rating mt-1">
-              <span>{`(${productState?.product?.store?.reviews_count ?? 0} Reviews)`}</span>
-            </div>
+          <Link href={`/seller/store/${productState?.product?.store?.slug}`} legacyBehavior>
+            <a>
+              <h5 className="fw-500">{productState?.product?.store?.store_name}</h5>
+              <div className="product-rating mt-1">
+                <span>{`(${productState?.product?.store?.reviews_count ?? 0} Reviews)`}</span>
+              </div>
+            </a>
           </Link>
-          <Link href={`/seller/store/${productState?.product?.store?.slug}`}>
-            <div className="store-btn">
+
+          <Link href={`/seller/store/${productState?.product?.store?.slug}`} legacyBehavior>
+            <a className="store-btn">
               {t("GoToStore")} <RiArrowRightLine />
-            </div>
+            </a>
           </Link>
+
         </div>
       </div>
       <div className="vendor-detail">

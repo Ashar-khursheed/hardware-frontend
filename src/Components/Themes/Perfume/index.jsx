@@ -69,7 +69,6 @@ const Perfume = ({ slug }) => {
       <WrapperComponent classes={{ sectionClass: "p-0 position-relative overflow-hidden", fluidClass: "home-slider" }}>
         <HomeSlider bannerData={data?.home_banner} height={650} width={1920} />
       </WrapperComponent>
-
       {/* Offer Banners */}
       <WrapperComponent classes={{ sectionClass: "banner-padding banner-section ratio2_3", fluidClass: "container-fluid", row: "g-sm-4 g-3" }} customCol={true}>
         {banners.map((banner, i) =>
@@ -94,7 +93,6 @@ const Perfume = ({ slug }) => {
           ) : null
         )}
       </WrapperComponent>
-
       {/* Category Products */}
       {data?.category_product?.status && (
         <>
@@ -104,14 +102,12 @@ const Perfume = ({ slug }) => {
           </WrapperComponent>
         </>
       )}
-
       {/* Collection Banner  */}
       {data?.collection_banner?.status && (
         <section className="p-0">
           <Image src={storageURL + data?.collection_banner?.image_url} alt={data?.collection_banner?.image_url} className="img-fluid w-auto h-auto" width={1835} height={590} />
         </section>
       )}
-
       {/* Product List And Offer Button */}
       {data?.product_list?.status && (
         <WrapperComponent classes={{ fluidClass: "container" }} customCol={true}>
@@ -123,8 +119,11 @@ const Perfume = ({ slug }) => {
                     <h3>{data?.product_list?.left_panel?.title}</h3>
                     <p>{data?.product_list?.left_panel?.description}</p>
                     {data?.product_list?.left_panel?.more_button && (
-                      <Link href={`/${data?.product_list?.left_panel?.redirect_link?.link_type=='collection'?'category':data?.product_list?.left_panel?.redirect_link?.link_type}/${data?.product_list?.left_panel?.redirect_link?.link}`} className="btn btn-outline btn-sm">
-                        {data?.product_list?.left_panel?.button_text}
+                      <Link
+                        href={`/${data?.product_list?.left_panel?.redirect_link?.link_type=='collection'?'category':data?.product_list?.left_panel?.redirect_link?.link_type}/${data?.product_list?.left_panel?.redirect_link?.link}`}
+                        className="btn btn-outline btn-sm"
+                        legacyBehavior>
+                       <a>{data?.product_list?.left_panel?.button_text}</a> 
                       </Link>
 
                     )}
@@ -138,14 +137,12 @@ const Perfume = ({ slug }) => {
           )}
         </WrapperComponent>
       )}
-
       {/* Offer Banner 2 */}
       {data?.offer_banner_2?.status && (
         <WrapperComponent classes={{ fluidClass: "container" }} noRowCol={true}>
           <Image src={storageURL + data?.offer_banner_2?.image_url} alt="offer" className="img-fluid" width={1376} height={243} />
         </WrapperComponent>
       )}
-
       {/* Brand */}
       {data?.brand?.status && (
         <section className="section-b-space blog-wo-bg">

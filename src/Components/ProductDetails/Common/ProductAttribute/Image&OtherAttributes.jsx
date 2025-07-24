@@ -40,7 +40,7 @@ const ImageOtherAttributes = ({ setVariant, productState, elem, soldOutAttribute
                     {/* <Image id={item?.value} src={item?.variation_image ? item?.variation_image?.original_url : placeHolderImage} onClick={() => setVariant(productState?.product?.variations, item, "click")} onMouseOver={() => setVariant(productState?.product?.variations, item, "hover")} onMouseOut={() => setVariant(productState?.product?.variations, item, "out")} height={65} width={65} alt="Product" />{" "} */}
                   </a>
                 ) : (
-                  <>
+                  (<>
                     {noHoverEffect ? (
                       <Btn color="transparent" id={item?.value} onClick={() => setVariant(productState?.product?.variations, item, "click")}>
                         <div>{item?.value}</div>
@@ -50,7 +50,7 @@ const ImageOtherAttributes = ({ setVariant, productState, elem, soldOutAttribute
                         <div>{item?.value}</div>
                       </Btn>
                     )}
-                  </>
+                  </>)
                   // <Btn color="transparent" id={item?.value} onClick={() => setVariant(productState?.product?.variations, item, "click")} onMouseOver={() => setVariant(productState?.product?.variations, item, "hover")} onMouseOut={() => setVariant(productState?.product?.variations, item, "out")}>
                   //   <div>{item?.value}</div>
                   // </Btn>

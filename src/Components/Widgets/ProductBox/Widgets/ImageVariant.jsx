@@ -16,7 +16,7 @@ const ImageVariant = ({ item, variant = "image_zoom", thumbnail, gallery_images,
         <div className="flip">
           {flipImage?.slice(0, 2)?.map((image, index) => (
             <div key={index} className={i == 0 ? "front" : "back"}>
-              <Link href={`/product/${product.slug}`}>
+              <Link href={`/product/${product.slug}`} legacyBehavior>
                 <Image src={thumbnail?.original_url ? thumbnail?.original_url : `${ImagePath}/placeholder.png`} className="img-fluid bg-img" alt={product.name} />
               </Link>
             </div>
@@ -24,12 +24,12 @@ const ImageVariant = ({ item, variant = "image_zoom", thumbnail, gallery_images,
         </div>
       ) : variant === "image_zoom" ? (
         <div className="zoom">
-          <Link href={`/product/${product?.slug}`}>
+          <Link href={`/product/${product?.slug}`} legacyBehavior>
             <Image src={thumbnail?.original_url ? thumbnail?.original_url : `${ImagePath}/placeholder.png`} className="img-fluid bg-img" alt={product?.name} width={width} height={height} />
           </Link>
         </div>
       ) : (
-        <Link href={`/product/${product.slug}`}>
+        <Link href={`/product/${product.slug}`} legacyBehavior>
           <Image src={thumbnail?.original_url ? thumbnail?.original_url : `${ImagePath}/placeholder.png`} className="img-fluid bg-img" alt={product?.name} />
         </Link>
       )}

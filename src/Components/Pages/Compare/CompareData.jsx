@@ -43,7 +43,7 @@ const CompareData = () => {
                 </Btn>
                 <div className="img-section">
                   <div>{product.product_thumbnail.original_url && <Image src={product.product_thumbnail ? product.product_thumbnail.original_url : placeHolderImage} className="img-fluid" alt={product.name} height={156} width={156} />}</div>
-                  <Link href={`/product/${product?.slug}`}>
+                  <Link href={`/product/${product?.slug}`} legacyBehavior>
                     <h5 className="text-title">{product?.name}</h5>
                   </Link>
                 </div>

@@ -13,10 +13,13 @@ const FooterSubTitle = ({ data, customContent, classes }) => {
             <ul>
               {data?.map((item, i) => (
                 <li key={i}>
-                  <Link href={Href}>{item?.name}</Link>
+                  <Link href={Href} legacyBehavior>
+                    <a>{item?.name}</a>
+                  </Link>
                 </li>
               ))}
             </ul>
+
           </div>
         )}
       </div>

@@ -24,7 +24,10 @@ const ProductBox7 = ({ productState }) => {
             {productState?.product?.is_trending ? <li>{t("trending")}</li> : null}
           </ul>
 
-          <Link href={`/product/${productState?.product?.slug}`} className="img-fluid lazyload bg-img bg-top">
+          <Link
+            href={`/product/${productState?.product?.slug}`}
+            className="img-fluid lazyload bg-img bg-top"
+            legacyBehavior>
             <img src={productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt="product-image" />
           </Link>
           <div className="cart-info">
@@ -32,7 +35,10 @@ const ProductBox7 = ({ productState }) => {
           </div>
         </div>
         <div className="product-detail">
-          <Link href={`/product/${productState?.product?.slug}`} className="product-title">
+          <Link
+            href={`/product/${productState?.product?.slug}`}
+            className="product-title"
+            legacyBehavior>
             {productState?.product?.name}
           </Link>
           <div className="rating-w-count">

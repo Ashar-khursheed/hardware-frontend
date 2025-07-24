@@ -25,10 +25,13 @@ const Demos = () => {
             {data?.map((item, i) => (
               <Col xs="6" className="text-center demo-effects" key={i}>
                 <div className="set-position">
-                  <Link className="layout-container" href={`/?theme=${item?.slug}`}>
+                  <Link
+                    className="layout-container"
+                    href={`/?theme=${item?.slug}`}
+                    legacyBehavior>
                     <Image className="img-fluid bg-img bg-top" src={storageURL + item?.image} height={130} width={180} alt={`demo${i + 1}`} />
                   </Link>
-                  <Link className="demo-text" href={`/?theme=${item?.slug}`}>
+                  <Link className="demo-text" href={`/?theme=${item?.slug}`} legacyBehavior>
                     <h4>{item?.name}</h4>
                   </Link>
                 </div>

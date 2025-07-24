@@ -143,9 +143,26 @@ const HeaderLogo = ({ extraClass }) => {
   }, [theme, themeOption?.logo?.header_logo]);
   return (
     <>
-      <Link href="/" className={`${extraClass ? extraClass : ""}`}>
-        {logo?.original_url ? <Image className="img-fluid" src={logo?.original_url} height={34} width={173} alt={settingData?.general?.site_name ? settingData?.general?.site_name : 'multikart-logo'} /> : settingData?.general?.site_name && <h2 className="f-w-600 m-0">{settingData?.general?.site_name ? settingData?.general?.site_name.split(" ")[0] : "Logo Here"}</h2>}
+      <Link href="/" legacyBehavior>
+        <a className={`${extraClass ? extraClass : ""}`}>
+          {logo?.original_url ? (
+            <Image
+              className="img-fluid"
+              src={logo.original_url}
+              height={34}
+              width={173}
+              alt={settingData?.general?.site_name || 'multikart-logo'}
+            />
+          ) : settingData?.general?.site_name ? (
+            <h2 className="f-w-600 m-0">
+              {settingData.general.site_name.split(" ")[0]}
+            </h2>
+          ) : (
+            <h2 className="f-w-600 m-0">Logo Here</h2>
+          )}
+        </a>
       </Link>
+
     </>
   );
 };

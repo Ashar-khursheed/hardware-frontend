@@ -19,8 +19,11 @@ const FooterCategories = () => {
         <ul>
           {filteredCategories?.map((category) => (
             <li key={category.id}>
-              <Link href={`/collections?category=${category?.slug}`} className="text-content">
-                {t(category?.name)}
+              <Link
+                href={`/collections?category=${category?.slug}`}
+                className="text-content"
+                legacyBehavior>
+               <a> {t(category?.name)}</a>
               </Link>
             </li>
           ))}

@@ -18,18 +18,24 @@ const StoreName = ({ elem, classicImage }) => {
       </div>
       <h3>{elem?.store_name}</h3>
       {classicImage && (
-        <Link href={`/seller/stores/${elem?.slug}`} className="btn btn-sm theme-bg-color text-white fw-bold d-inline-flex">
-          {t("visit_store")}
-          <RiArrowRightLine className="ms-2" />
+        <Link
+          href={`/seller/stores/${elem?.slug}`}
+          legacyBehavior
+        >
+          <a className="btn btn-sm theme-bg-color text-white fw-bold d-inline-flex">
+            {t("visit_store")}
+            <RiArrowRightLine className="ms-2" />
+          </a>
         </Link>
-      )}
 
+      )}
       {!classicImage && (
-        <Link href={`/seller/store/${elem?.slug}`}>
-          <span className="product-label">
+        <Link href={`/seller/store/${elem?.slug}`} legacyBehavior>
+          <a className="product-label">
             {elem?.products_count} {t("products")}
-          </span>
+          </a>
         </Link>
+
       )}
       {classicImage && <StoreImage customClass={"grid-image"} elem={elem} />}
     </div>

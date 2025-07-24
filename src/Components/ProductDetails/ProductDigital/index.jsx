@@ -86,11 +86,18 @@ const ProductDigital = ({ productState, setProductState }) => {
               <div className="product-info">
                 <ul className="product-info-list product-info-list-2">
                   <li>
-                    {t("created_at")} :<Link href={Href}>{dateFormate(productState?.product?.created_at)}</Link>
+                    {t("created_at")} :
+                    <Link href={Href} legacyBehavior>
+                      <a>{productState?.product?.created_at}</a>
+                    </Link>
                   </li>
+
                   {productState.product.updated_at && (
                     <li>
-                      {"Last Update "}:<Link href={Href}>{dateFormate(productState?.product?.updated_at)}</Link>
+                      {"Last Update"} :
+                      <Link href={Href} legacyBehavior>
+                        <a>{productState.product.updated_at}</a>
+                      </Link>
                     </li>
                   )}
 
@@ -100,13 +107,19 @@ const ProductDigital = ({ productState, setProductState }) => {
                       <ul className="tag-list">
                         {productState?.product?.tags?.map((tag, i) => (
                           <li key={i}>
-                            <Link href={Href}>{tag.name}</Link>
+                            <Link
+                              href={{ pathname: `/blogs`, query: { tag: tag.slug } }}
+                              legacyBehavior
+                            >
+                              <a>{tag.name}</a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
                     </li>
                   ) : null}
                 </ul>
+
               </div>
             </div>
           </div>

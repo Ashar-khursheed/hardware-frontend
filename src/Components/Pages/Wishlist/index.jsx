@@ -52,12 +52,15 @@ const WishlistContent = () => {
                 {wishlistProducts?.map((product, i) => (
                   <tr key={i}>
                     <td>
-                      <Link href={`/product/${product?.slug}`}>
+                      <Link href={`/product/${product?.slug}`} legacyBehavior>
                         <img height={90} width={90} src={product?.product_galleries[0]?.original_url || product?.product_galleries[1]?.original_url} alt={product?.slug} />
                       </Link>
                     </td>
                     <td>
-                      <Link href={`/product/${product?.slug}`}>{product?.name}</Link>
+                      <Link href={`/product/${product?.slug}`} legacyBehavior>
+                        <a>{product?.name}</a>
+                      </Link>
+
                       <div className="mobile-cart-content row">
                         <div className="col">
                           <p>{product?.stock_status?.replaceAll("_", " ")}</p>

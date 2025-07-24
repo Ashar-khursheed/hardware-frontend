@@ -48,12 +48,12 @@ const SelectedCart = ({ modal, setSelectedVariation, setModal }) => {
           {cartProducts.map((elem, i) => (
             <li className="product-box-contain" key={i}>
               <div className="media">
-                <Link href={`/product/${elem?.product?.slug}`}>
+                <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
                   <Avatar customeClass={""} data={elem?.variation?.variation_image ?? elem?.product?.product_thumbnail} placeHolder={placeHolderImage} name={elem?.product?.name} height={72} width={87} />
                 </Link>
 
                 <div className="media-body">
-                  <Link href={`/product/${elem?.product?.slug}`}>
+                  <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
                     <h4>{elem?.variation?.name ?? elem?.product?.name}</h4>
                   </Link>
                   <h4 className="quantity">
@@ -87,7 +87,11 @@ const SelectedCart = ({ modal, setSelectedVariation, setModal }) => {
             </li>
             <li>
               <div className="buttons">
-                <Link href={`/cart`} className="btn view-cart" onClick={() => setCartCanvas(false)}>
+                <Link
+                  href={`/cart`}
+                  className="btn view-cart"
+                  onClick={() => setCartCanvas(false)}
+                  legacyBehavior>
                   {t("view_cart")}
                 </Link>
                 <Link
@@ -96,7 +100,7 @@ const SelectedCart = ({ modal, setSelectedVariation, setModal }) => {
                   onClick={() => {
                     setCartCanvas(false), handelCheckout;
                   }}
-                >
+                  legacyBehavior>
                   {t("checkout")}
                 </Link>
               </div>

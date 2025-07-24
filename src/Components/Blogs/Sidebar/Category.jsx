@@ -16,10 +16,17 @@ const Category = () => {
         <ul className="categories">
           {categoryData?.map((category, index) => (
             <li key={index}>
-              <Link className="category-name" href={{ pathname: `/blogs`, query: { category: category?.slug } }}>
-                <h5>{category.name}</h5>
-                <span>({category?.blogs_count})</span>
+              <Link
+                href={{ pathname: `/blogs`, query: { category: category?.slug } }}
+                legacyBehavior
+              >
+                <a className="category-name">
+                  <h5>{category.name}</h5>
+                  <span>({category?.blogs_count})</span>
+                </a>
               </Link>
+
+
             </li>
           ))}
         </ul>

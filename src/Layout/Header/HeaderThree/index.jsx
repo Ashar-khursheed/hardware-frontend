@@ -95,7 +95,10 @@ const HeaderThree = () => {
                           <HeaderSearchbar />
                         </li>
                         <li className="onhover-div">
-                          <Link href={isAuthenticated ? "/wishlist" : Href} onClick={handleWishlistClick}>
+                          <Link
+                            href={isAuthenticated ? "/wishlist" : Href}
+                            onClick={handleWishlistClick}
+                            legacyBehavior>
                             <RiHeartLine />
                           </Link>
                         </li>
@@ -103,7 +106,10 @@ const HeaderThree = () => {
                           <HeaderCart />
                         </li>
                         <li className="onhover-div">
-                      <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick}>
+                      <Link
+                        href={isAuthenticated ? "/account/dashboard" : Href}
+                        onClick={handleProfileClick}
+                        legacyBehavior>
                         <RiUserLine />
                       </Link>
                     </li>

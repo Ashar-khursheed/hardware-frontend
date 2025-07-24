@@ -14,14 +14,17 @@ const FooterUsefulLinks = () => {
         <ul>
           {themeOption?.footer?.useful_link?.map((item, i) => (
             <li key={i}>
-              <Link href={`/${item?.value}`}>{t(item?.name)}</Link>
+              <Link href={`/${item?.value}`} legacyBehavior>
+                <a>{item?.label || item?.value}</a>
+              </Link>
             </li>
           ))}
         </ul>
+
       ) : (
         <NoDataFound customClass={"no-data-footer"} title={"no_link_found"} />
       )}
-    </div>  
+    </div>
   );
 };
 

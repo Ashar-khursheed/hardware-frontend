@@ -88,7 +88,6 @@ const FurnitureDark = ({ slug }) => {
       <WrapperComponent classes={{ sectionClass: "p-0", fluidClass: "slide-1 home-slider" }} noRowCol={true}>
         <HomeSlider bannerData={data?.home_banner} height={650} width={1920} />
       </WrapperComponent>
-
       {/* Offer Banners */}
       <WrapperComponent classes={{ sectionClass: "banner-padding absolute-banner banner-style-2 pb-0 ratio2_1", fluidClass: "absolute-bg" }} noRowCol={true}>
         <div className="container">
@@ -151,7 +150,6 @@ const FurnitureDark = ({ slug }) => {
           </Row>
         </div>
       </WrapperComponent>
-
       {/* Products List 1  */}
       {data?.products_list_1?.status && (
         <>
@@ -161,7 +159,6 @@ const FurnitureDark = ({ slug }) => {
           </WrapperComponent>
         </>
       )}
-
       {/* Product Categories */}
       {data?.categories_icon_list?.status && (
         <div className="container category-button button-dark">
@@ -170,10 +167,23 @@ const FurnitureDark = ({ slug }) => {
               <Slider {...DarkCategory}>
                 {mainCategories?.map((category, index) => (
                   <div key={index} className="me-2">
-                    <Link className="btn btn-outline btn-block" href={`/category/${category?.slug}`}>
-                      <Image className="img-fluid" src={category?.category_icon?.original_url ? category?.category_icon?.original_url : `${ImagePath}/placeholder/category.png`} height={200} width={200} alt={category?.slug} />
-                      <span>{category?.name}</span>
+                    <Link href={`/category/${category?.slug}`} legacyBehavior>
+                      <a className="btn btn-outline btn-block">
+                        <Image
+                          className="img-fluid"
+                          src={
+                            category?.category_icon?.original_url
+                              ? category.category_icon.original_url
+                              : `${ImagePath}/placeholder/category.png`
+                          }
+                          height={200}
+                          width={200}
+                          alt={category?.slug}
+                        />
+                        <span>{category?.name}</span>
+                      </a>
                     </Link>
+
                   </div>
                 ))}
               </Slider>
@@ -181,7 +191,6 @@ const FurnitureDark = ({ slug }) => {
           </section>
         </div>
       )}
-
       {/* Banners */}
       {data?.banner?.status && (
         <div className="category-bg onerow-cat ratio3_2">
@@ -200,7 +209,6 @@ const FurnitureDark = ({ slug }) => {
           </Container>
         </div>
       )}
-
       {/* Products */}
       {data?.product_list_2?.status && (
         <WrapperComponent classes={{ sectionClass: "container" }} customCol={true}>
@@ -226,7 +234,6 @@ const FurnitureDark = ({ slug }) => {
           )}
         </WrapperComponent>
       )}
-
       {/* Services */}
       {data?.services && (
         <Container className="section-t-space">
@@ -235,7 +242,6 @@ const FurnitureDark = ({ slug }) => {
           </section>
         </Container>
       )}
-
       {/* Blogs */}
       {data?.featured_blogs?.status && (
         <>
@@ -251,7 +257,6 @@ const FurnitureDark = ({ slug }) => {
           </WrapperComponent>
         </>
       )}
-
       {/* Brands */}
       {data?.brand?.status && (
         <section className="section-b-space">

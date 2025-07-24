@@ -22,7 +22,7 @@ const DigitalImageOptions = ({ product }) => {
           </div>
         ) : product.preview_type == "url" && product.preview_url ? (
           <div className="preview-btn">
-            <Link href={product.preview_url} target="_blank">
+            <Link href={product.preview_url} target="_blank" legacyBehavior>
               <span>
                 <i className="ri-share-box-line"></i> {t("live_preview")}{" "}
               </span>

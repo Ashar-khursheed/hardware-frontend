@@ -48,7 +48,7 @@ const CompareSidebar = () => {
               compareState?.map((item, i) => (
                 <li key={i}>
                   <Media>
-                    <Link href={`/product/${item?.slug}`}>
+                    <Link href={`/product/${item?.slug}`} legacyBehavior>
                       <Image src={item?.product_thumbnail?.original_url} height={90} width={90} alt="product-image" />
                     </Link>
                     <Media body>

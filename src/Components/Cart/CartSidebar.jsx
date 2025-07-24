@@ -51,8 +51,11 @@ const CartSidebar = () => {
         <div className="button-group cart-button">
           <ul>
             <li>
-              <Link href={isAuth ? `/checkout` : `${setOpenAuthModal(true)}`} className="btn btn-animation proceed-btn fw-bold">
-                {t("ProcessToCheckout")}
+              <Link
+                href={isAuth ? `/checkout` : `${setOpenAuthModal(true)}`}
+                className="btn btn-animation proceed-btn fw-bold"
+                legacyBehavior>
+               <a> {t("ProcessToCheckout")}</a>
               </Link>
             </li>
 

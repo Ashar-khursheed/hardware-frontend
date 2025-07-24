@@ -13,7 +13,7 @@ const BlogContain = ({ blog }) => {
   const router = useRouter();
   return (
     <div className="blog-contain">
-      <Link href={`/blogs/${blog.slug}`}>
+      <Link href={`/blogs/${blog.slug}`} legacyBehavior>
         <h3>{blog?.title}</h3>
       </Link>
       <div className="blog-label">

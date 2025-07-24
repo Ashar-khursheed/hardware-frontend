@@ -28,16 +28,21 @@ const MobileMenu = () => {
     <div className="mobile-menu d-md-none d-block mobile-cart">
       <ul>
         <li className={active == "1" ? "active" : ""} onClick={() => handleActive(1)}>
-          <Link href={"/"}>
-            <RiHome2Line />
-            <span>{t("home")}</span>
+          <Link href="/" className="your-class">
+            <span className="flex items-center gap-1">
+              <RiHome2Line />
+              <span>{t("home")}</span>
+            </span>
           </Link>
         </li>
         <li className={active == "2" ? "active" : ""}>
-          <Link href={"/search"} onClick={() => handleActive(2)}>
-            <RiSearch2Line />
-            <span>{t("search")}</span>
+          <Link href="/search" legacyBehavior>
+            <a onClick={() => handleActive(2)}>
+              <RiSearch2Line />
+              <span>{t("search")}</span>
+            </a>
           </Link>
+
         </li>
         <li className={active == "3" ? "active" : ""}>
           <a href={Href} onClick={() => setCartCanvas(true)}>

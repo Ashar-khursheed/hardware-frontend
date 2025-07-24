@@ -50,114 +50,124 @@ const AuthorMainPage = ({ slug }) => {
             }));
     }, [category, brand, attribute, price, rating, sortBy, field, page]);    
     
-    return <>
-        <Breadcrumbs title={`Author: ${slug}`} subNavigation={[{ name: slug }]} />
-        <section className="author-section">
-            <div className="container-fluid-lg">
-                <div className="author-main-box">
-                    <div className="cover-image">
-                        {author?.author_cover_image ? 
-                            <img src={author?.author_cover_image?.original_url} alt='author__cover_image' /> :
-                            <img src={ImagePath + '/author_placeholder.png'} alt='author__cover_image' className="img-fluid" /> 
-                        }
-                    </div>
-                    <div className="author-box">
-                        <Image className="img-fluid author-image" src={author?.author_image?.original_url} height={248} width={248} alt='author_image' />
-                        <div className="right-side-box">
-                            <div>
-                                <div className="author-name">
-                                    <h4>{author?.author_name}</h4>
-                                    <p>{author?.bio}</p>
-                                </div>
-                                <div className="author-bottom-box">
-                                    <div>
-                                        <h5>{t("author_details")}:</h5>
-                                        <ul className="country-list">
-                                            <li>
-                                                <span>{t("country")} : </span> {author?.country.name}
-                                            </li>
-                                            <li>
-                                                <span>{t("state")} : </span> {author?.state.name}
-                                            </li>
-                                            <li>
-                                                <span>{t("city")} : </span> {author?.city}
-                                            </li>
-                                        </ul>
+    return (
+        <>
+            <Breadcrumbs title={`Author: ${slug}`} subNavigation={[{ name: slug }]} />
+            <section className="author-section">
+                <div className="container-fluid-lg">
+                    <div className="author-main-box">
+                        <div className="cover-image">
+                            {author?.author_cover_image ? 
+                                <img src={author?.author_cover_image?.original_url} alt='author__cover_image' /> :
+                                <img src={ImagePath + '/author_placeholder.png'} alt='author__cover_image' className="img-fluid" /> 
+                            }
+                        </div>
+                        <div className="author-box">
+                            <Image className="img-fluid author-image" src={author?.author_image?.original_url} height={248} width={248} alt='author_image' />
+                            <div className="right-side-box">
+                                <div>
+                                    <div className="author-name">
+                                        <h4>{author?.author_name}</h4>
+                                        <p>{author?.bio}</p>
                                     </div>
-                                    <div>
-                                        <ul className="country-list">
-                                            {author?.birth_date && <li>
-                                                <span>{t("born_date")} : </span> {dateFormate(author?.birth_date, true)}
-                                            </li>}
-                                            {author?.death_date && <li>
-                                                <span>{t("death_date")} : </span> {dateFormate(author?.death_date, true)}
-                                            </li>}
-                                        </ul>
+                                    <div className="author-bottom-box">
+                                        <div>
+                                            <h5>{t("author_details")}:</h5>
+                                            <ul className="country-list">
+                                                <li>
+                                                    <span>{t("country")} : </span> {author?.country.name}
+                                                </li>
+                                                <li>
+                                                    <span>{t("state")} : </span> {author?.state.name}
+                                                </li>
+                                                <li>
+                                                    <span>{t("city")} : </span> {author?.city}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <ul className="country-list">
+                                                {author?.birth_date && <li>
+                                                    <span>{t("born_date")} : </span> {dateFormate(author?.birth_date, true)}
+                                                </li>}
+                                                {author?.death_date && <li>
+                                                    <span>{t("death_date")} : </span> {dateFormate(author?.death_date, true)}
+                                                </li>}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div className="social-list-box">
-                                <h5>{t("social_links")}:</h5>
-                                    <ul className="social-list">
-                                        {author?.language && 
-                                        <li>
-                                            <Link href={author?.language} target="_blank" className="language">
-                                                <RiGlobalLine />
-                                            </Link>
-                                        </li>}
-                                        {
-                                            author?.facebook && 
+                                <div className="social-list-box">
+                                    <h5>{t("social_links")}:</h5>
+                                        <ul className="social-list">
+                                            {author?.language && 
                                             <li>
-                                                <Link href={author?.facebook} target="_blank" className="fb">
-                                                    <RiFacebookFill />
+                                                <Link
+                                                    href={author?.language}
+                                                    target="_blank"
+                                                    className="language"
+                                                    legacyBehavior>
+                                                    <RiGlobalLine />
                                                 </Link>
-                                            </li>
-                                        }
-                                        {
-                                            author?.instagram && 
-                                            <li>
-                                                <Link href={author?.instagram} target="_blank" className="insta">
-                                                    <RiInstagramFill />
-                                                </Link>
-                                            </li>
-                                        }
-                                        {
-                                            author?.twitter && 
-                                            <li>
-                                                <Link href={author?.twitter} target="_blank" className="twitter">
-                                                    <RiTwitterXFill />
-                                                </Link>
-                                            </li>
-                                        }
-                                        {
-                                            author?.youtube && 
-                                            <li>
-                                                <Link href={author?.youtube} target="_blank" className="youtube">
-                                                    <RiYoutubeFill />
-                                                </Link>
-                                            </li>
-                                        }
-                                        {
-                                            author?.pinterest && 
-                                            <li>
-                                                <Link href={author?.pinterest} target="_blank" className="pinterest">
-                                                    <RiPinterestFill />
-                                                </Link>
-                                            </li>
-                                        }
-                                    </ul>
+                                            </li>}
+                                            {
+                                                author?.facebook && 
+                                                <li>
+                                                    <Link href={author?.facebook} target="_blank" className="fb" legacyBehavior>
+                                                        <RiFacebookFill />
+                                                    </Link>
+                                                </li>
+                                            }
+                                            {
+                                                author?.instagram && 
+                                                <li>
+                                                    <Link href={author?.instagram} target="_blank" className="insta" legacyBehavior>
+                                                        <RiInstagramFill />
+                                                    </Link>
+                                                </li>
+                                            }
+                                            {
+                                                author?.twitter && 
+                                                <li>
+                                                    <Link href={author?.twitter} target="_blank" className="twitter" legacyBehavior>
+                                                        <RiTwitterXFill />
+                                                    </Link>
+                                                </li>
+                                            }
+                                            {
+                                                author?.youtube && 
+                                                <li>
+                                                    <Link href={author?.youtube} target="_blank" className="youtube" legacyBehavior>
+                                                        <RiYoutubeFill />
+                                                    </Link>
+                                                </li>
+                                            }
+                                            {
+                                                author?.pinterest && 
+                                                <li>
+                                                    <Link
+                                                        href={author?.pinterest}
+                                                        target="_blank"
+                                                        className="pinterest"
+                                                        legacyBehavior>
+                                                        <RiPinterestFill />
+                                                    </Link>
+                                                </li>
+                                            }
+                                        </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
- 
-        <WrapperComponent classes={{fluidClass: "container-fluid-lg", sectionClass: 'section-b-space shop-section' }} customCol={true}>
-            <MainCollection filter={filter} setFilter={setFilter} initialGrid={5} noSidebar={true} authorSlug={slug} />
-        </WrapperComponent>
-    </>;
+            </section>
+     
+            <WrapperComponent classes={{fluidClass: "container-fluid-lg", sectionClass: 'section-b-space shop-section' }} customCol={true}>
+                <MainCollection filter={filter} setFilter={setFilter} initialGrid={5} noSidebar={true} authorSlug={slug} />
+            </WrapperComponent>
+        </>
+    );
 };
 
 export default AuthorMainPage;

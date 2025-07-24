@@ -51,183 +51,178 @@ const ElectronicsThree = () => {
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="/assets/css/style.css" />   
-                
-      </Head>
+        <link rel="stylesheet" href="/assets/css/style.css" />
 
+      </Head>
       {/* Home Banners */}
       {/* { <WrapperComponent classes={{ sectionClass: "small-section ", fluidClass: "container-fluid mycon" }} noRowCol={true}>
         <div className="home-slider">
           <HomeSlider bannerData={data?.home_banner} height={539} width={1376} />
         </div>
       </WrapperComponent> } */}
+      <>
+        <WrapperComponent
+          classes={{
+            sectionClass: "home-slider-section",
+            fluidClass: "container-fluid p-0",
+          }}
+          noRowCol={true}
+        >
+          <div className="home-slider mb-5">
+            <HomeSlider
+              bannerData={data?.home_banner}
+              height={539}
+              width={1376}
+              className="responsive-slider"
+            />
+          </div>
+        </WrapperComponent>
 
-     <>
-  <WrapperComponent
-    classes={{
-      sectionClass: "home-slider-section",
-      fluidClass: "container-fluid p-0",
-    }}
-    noRowCol={true}
-  >
-    <div className="home-slider mb-5">
-      <HomeSlider
-        bannerData={data?.home_banner}
-        height={539}
-        width={1376}
-        className="responsive-slider"
-      />
-    </div>
-  </WrapperComponent>
+        <style jsx>{`
+     .home-slider-section {
+       width: 100%;
+       position: relative;
+       overflow: hidden;
+     }
 
-  <style jsx>{`
-    .home-slider-section {
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-    }
+     .home-slider {
+       width: 100%;
+       position: relative;
+     }
 
-    .home-slider {
-      width: 100%;
-      position: relative;
-    }
+     :global(.responsive-slider) {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+     }
 
-    :global(.responsive-slider) {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+     :global(.responsive-slider img) {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       display: block;
+     }
 
-    :global(.responsive-slider img) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+     :global(.responsive-slider .slide-content),
+     :global(.responsive-slider .banner-content),
+     :global(.responsive-slider .slider-item) {
+       width: 100%;
+       height: 100%;
+       padding: 2rem;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       box-sizing: border-box;
+       text-align: center;
+       background: rgba(0, 0, 0, 0.3); /* Optional overlay for contrast */
+     }
 
-    :global(.responsive-slider .slide-content),
-    :global(.responsive-slider .banner-content),
-    :global(.responsive-slider .slider-item) {
-      width: 100%;
-      height: 100%;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.3); /* Optional overlay for contrast */
-    }
+     :global(.responsive-slider h1),
+     :global(.responsive-slider .banner-title) {
+       font-size: clamp(1.5rem, 4vw, 3rem);
+       line-height: 1.2;
+       margin-bottom: 1rem;
+       color: #fff;
+       word-break: break-word;
+     }
 
-    :global(.responsive-slider h1),
-    :global(.responsive-slider .banner-title) {
-      font-size: clamp(1.5rem, 4vw, 3rem);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: #fff;
-      word-break: break-word;
-    }
+     :global(.responsive-slider p),
+     :global(.responsive-slider .banner-description) {
+       font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+       line-height: 1.4;
+       margin-bottom: 1.5rem;
+       color: #fff;
+     }
 
-    :global(.responsive-slider p),
-    :global(.responsive-slider .banner-description) {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      line-height: 1.4;
-      margin-bottom: 1.5rem;
-      color: #fff;
-    }
+     :global(.responsive-slider .btn),
+     :global(.responsive-slider button) {
+       font-size: clamp(0.85rem, 2vw, 1rem);
+       padding: 0.75rem 1.5rem;
+       background-color: #0044cc;
+       color: white;
+       border: none;
+       cursor: pointer;
+       margin-top: 1rem;
+     }
 
-    :global(.responsive-slider .btn),
-    :global(.responsive-slider button) {
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      padding: 0.75rem 1.5rem;
-      background-color: #0044cc;
-      color: white;
-      border: none;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
+     @media (max-width: 1024px) {
+       .home-slider {
+         aspect-ratio: 4 / 2;
+         padding-top: 0%;
+       }
+     }
 
-    @media (max-width: 1024px) {
-      .home-slider {
-        aspect-ratio: 4 / 2;
-        padding-top: 0%;
-      }
-    }
+     @media (max-width: 768px) {
+       .home-slider {
+         aspect-ratio: 0;
+         padding-top: 0%;
+       }
 
-    @media (max-width: 768px) {
-      .home-slider {
-        aspect-ratio: 0;
-        padding-top: 0%;
-      }
+       :global(.responsive-slider .slide-content),
+       :global(.responsive-slider .banner-content),
+       :global(.responsive-slider .slider-item) {
+         padding: 1.5rem 1rem;
+       }
 
-      :global(.responsive-slider .slide-content),
-      :global(.responsive-slider .banner-content),
-      :global(.responsive-slider .slider-item) {
-        padding: 1.5rem 1rem;
-      }
+       :global(.responsive-slider .swiper-button-next),
+       :global(.responsive-slider .swiper-button-prev) {
+         display: none;
+       }
 
-      :global(.responsive-slider .swiper-button-next),
-      :global(.responsive-slider .swiper-button-prev) {
-        display: none;
-      }
+       :global(.responsive-slider .swiper-pagination) {
+         bottom: 10px;
+       }
+     }
 
-      :global(.responsive-slider .swiper-pagination) {
-        bottom: 10px;
-      }
-    }
+     @media (max-width: 480px) {
+       .home-slider {
+         aspect-ratio: 0;
+         padding-top: 0%;
+       }
+       .bg-img.w-100.img-fluid img {
+         height:500px !important;
+         }
 
-    @media (max-width: 480px) {
-      .home-slider {
-        aspect-ratio: 0;
-        padding-top: 0%;
-      }
-      .bg-img.w-100.img-fluid img {
-        height:500px !important;
-        }
+       :global(.responsive-slider h1),
+       :global(.responsive-slider .banner-title) {
+         font-size: clamp(1.25rem, 5vw, 2rem);
+         margin-bottom: 0.75rem;
+       }
 
-      :global(.responsive-slider h1),
-      :global(.responsive-slider .banner-title) {
-        font-size: clamp(1.25rem, 5vw, 2rem);
-        margin-bottom: 0.75rem;
-      }
+       :global(.responsive-slider p),
+       :global(.responsive-slider .banner-description) {
+         font-size: clamp(0.8rem, 3vw, 0.95rem);
+         margin-bottom: 1rem;
+       }
 
-      :global(.responsive-slider p),
-      :global(.responsive-slider .banner-description) {
-        font-size: clamp(0.8rem, 3vw, 0.95rem);
-        margin-bottom: 1rem;
-      }
+       :global(.responsive-slider .btn),
+       :global(.responsive-slider button) {
+         font-size: 0.9rem;
+         padding: 0.6rem 1.2rem;
+       }
+     }
 
-      :global(.responsive-slider .btn),
-      :global(.responsive-slider button) {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.2rem;
-      }
-    }
+     /* Header logo fix for small screens */
+     @media (max-width: 480px) {
+       .site-header .logo img,
+       .site-header .logo {
+         max-width: 120px;
+         height: auto;
+         object-fit: contain;
+         overflow: hidden;
+       }
+     }
 
-    /* Header logo fix for small screens */
-    @media (max-width: 480px) {
-      .site-header .logo img,
-      .site-header .logo {
-        max-width: 120px;
-        height: auto;
-        object-fit: contain;
-        overflow: hidden;
-      }
-    }
-
-    body,
-    html {
-      margin: 0;
-      padding: 0;
-    }
-  `}</style>
-</>
-
-
-
+     body,
+     html {
+       margin: 0;
+       padding: 0;
+     }
+   `}</style>
+      </>
       {/* <section className="hero-banner-section text-white mb-5 d-flex align-items-center">
         <div className="container">
           <div className="row">
@@ -246,15 +241,12 @@ const ElectronicsThree = () => {
           </div>
         </div>
       </section> */}
-
-
       {/* Services */}
       {data?.services && (
         <WrapperComponent classes={{ sectionClass: "service-w-bg pt-0 tools-service", fluidClass: "container" }} noRowCol={true}>
           <HomeServices services={data?.services?.banners} />
         </WrapperComponent>
       )}
-
       {/* Product List 1 */}
       {data?.products_list_1?.status && (
         <>
@@ -281,7 +273,6 @@ const ElectronicsThree = () => {
           </WrapperComponent>
         </>
       )}
-
       {/*Banners*/}
       <section className="banner-style-1">
         <div className="full-box">
@@ -290,11 +281,16 @@ const ElectronicsThree = () => {
               {data?.banner?.main_banner?.status && (
                 <Col lg="5" md="7" className="card-margin">
                   <div className="banner-padding pt-0">
-                    <Link href={Href}>
-                      <div className="collection-banner tl-content">
-                        <ImageLink imgUrl={data?.banner.main_banner} bgImg={true} classes="img-part custom-height" />
-                      </div>
+                    <Link href={Href} legacyBehavior>
+                      <a className="collection-banner tl-content">
+                        <ImageLink
+                          imgUrl={data?.banner.main_banner}
+                          bgImg={true}
+                          classes="img-part custom-height"
+                        />
+                      </a>
                     </Link>
+
                   </div>
                 </Col>
               )}
@@ -304,7 +300,7 @@ const ElectronicsThree = () => {
                     <Row>
                       {data?.banner?.grid_banner_1?.status && (
                         <Col xs="12" className="mb-4">
-                          <Link href={Href}>
+                          <Link href={Href} legacyBehavior>
                             <div className="collection-banner">
                               <ImageLink imgUrl={data?.banner.grid_banner_1} bgImg={true} classes="img-part" />
                             </div>
@@ -313,7 +309,7 @@ const ElectronicsThree = () => {
                       )}
                       {data?.banner?.grid_banner_2?.status && (
                         <Col xs="12">
-                          <Link href={Href}>
+                          <Link href={Href} legacyBehavior>
                             <div className="collection-banner">
                               <ImageLink imgUrl={data?.banner.grid_banner_2} bgImg={true} classes="img-part" />
                             </div>
@@ -327,7 +323,7 @@ const ElectronicsThree = () => {
               {data?.banner?.grid_banner_3?.status && (
                 <Col lg="3" xs="12" className="d-lg-block d-none">
                   <div className="banner-padding pt-0">
-                    <Link href={Href}>
+                    <Link href={Href} legacyBehavior>
                       <div className="collection-banner tl-content">
                         <ImageLink imgUrl={data?.banner.grid_banner_3} bgImg={true} classes="img-part custom-height" />
                       </div>
@@ -339,7 +335,6 @@ const ElectronicsThree = () => {
           </Container>
         </div>
       </section>
-
       {/* Category Product 1 */}
       {data?.category_product_1?.status && (
         <WrapperComponent classes={{ sectionClass: "container" }} customCol={true}>
@@ -363,9 +358,7 @@ const ElectronicsThree = () => {
           )}
         </WrapperComponent>
       )}
-
       {/* Offer Banner 2 */}
-
       {/* Offer Banner 2 Styled Section */}
       {data?.offer_banner_1?.status && (
         <section
@@ -395,9 +388,6 @@ const ElectronicsThree = () => {
           </div>
         </section>
       )}
-
-
-
       <WrapperComponent classes={{ sectionClass: "ratio2_1 banner-padding", fluidClass: "container", row: "g-sm-4 g-3" }} customCol={true}>
         {data?.offer_banner_2?.banner_1?.status && (
           <div className={data?.offer_banner_2?.banner_2?.status ? "col-md-6" : "col-12"}>
@@ -410,11 +400,6 @@ const ElectronicsThree = () => {
           </div>
         )}
       </WrapperComponent>
-
-
-
-
-
       {/* Category Products 2 */}
       {data?.category_product_2?.status && (
         <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section", fluidClass: "container" }} noRowCol={true}>
@@ -425,9 +410,6 @@ const ElectronicsThree = () => {
           </Row>
         </WrapperComponent>
       )}
-
-
-
       {/* airpods and gaming laptop sec */}
       {/* <section className="py-5 bg-white">
         <div className="container">
@@ -476,7 +458,6 @@ const ElectronicsThree = () => {
           </div>
         </div>
       </section> */}
-
       <section className="py-5 bg-white">
         <div className="container">
           <div className="row g-4">
@@ -502,17 +483,12 @@ const ElectronicsThree = () => {
           </div>
         </div>
       </section>
-
-
       {/* Brands */}
       {data?.brand?.status && (
         <section className="section-b-space blog-wo-bg">
           <HomeBrand brandIds={data?.brand?.brand_ids} />
         </section>
       )}
-
-
-
       {/* Category Products 2 */}
       {data?.category_product_2?.status && (
         <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section", fluidClass: "container" }} noRowCol={true}>
@@ -523,8 +499,6 @@ const ElectronicsThree = () => {
           </Row>
         </WrapperComponent>
       )}
-
-
       {/* reviews section */}
       {/* <section className="py-5 mt-4 bg-light">
         <div className="container">
@@ -575,8 +549,6 @@ const ElectronicsThree = () => {
           </div>
         </div>
       </section> */}
-
-
       {/* contact section */}
       <section className="pt-5 bg-white">
         <div className="container">
@@ -667,11 +639,6 @@ const ElectronicsThree = () => {
           </div>
         </div>
       </section>
-
-
-
-
-
     </>
   );
 };

@@ -48,21 +48,23 @@ const LinkBox = ({ menu }) => {
       ) : (
         <>
           {menu.link_type === "link" && menu.is_target_blank === 0 ? (
-            <Link href={menu?.path.charAt(0) === "/" ? menu?.path : `/${menu?.path}`}>
-              <a className="custom-link">
-                {menu.title}
-              </a>
+            <Link
+              href={menu?.path.charAt(0) === "/" ? menu?.path : `/${menu?.path}`}
+              className="custom-link"
+              legacyBehavior>
+
+             <a>  {menu.title}</a>
+
             </Link>
           ) : (
-            <Link href={menu?.path} target="_blank">
-              <a className="custom-link">
-                {menu.title}
-              </a>
+            <Link href={menu?.path} target="_blank" className="custom-link" legacyBehavior>
+
+              <a> {menu.title}</a>
+
             </Link>
           )}
         </>
       )}
-
       {menu.child && (
         <ul>
           {menu?.child?.map((link, i) => (

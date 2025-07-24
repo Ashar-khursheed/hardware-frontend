@@ -16,7 +16,7 @@ const ProductBox12 = ({ productState, setProductState }) => {
     <>
       <div className="basic-product theme-product-11">
         <div className="img-wrapper">
-          <Link href={`/product/${productState?.product?.slug}`}>
+          <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid" alt={productState?.product?.name} />
           </Link>
           <div className="cart-info">
@@ -26,9 +26,12 @@ const ProductBox12 = ({ productState, setProductState }) => {
         </div>
         <div className="product-detail">
           {productState?.product?.brand && (
-            <Link href={`/brand/${productState?.product?.brand?.slug}`} className="product-title">
-              {productState?.product?.brand?.name}
-            </Link>
+            <Link
+              href={`/brand/${productState?.product?.brand?.slug}`}
+              className="product-title"
+              legacyBehavior>
+              
+            <a>{productState?.product?.brand?.name}</a>  </Link>
           )}
           <h6>{productState?.product?.name}</h6>
           <h4 className="price">
@@ -52,8 +55,11 @@ const ProductBox12 = ({ productState, setProductState }) => {
         <div className="abs-product">
           <div className="product-detail mt-0">
             {productState?.product?.brand && (
-              <Link href={`/brand/${productState?.product?.brand.slug}`} className="product-title mb-2">
-                {productState?.product?.brand.name}
+              <Link
+                href={`/brand/${productState?.product?.brand.slug}`}
+                className="product-title mb-2"
+                legacyBehavior>
+                 <a> {productState?.product?.brand.name} </a>
               </Link>
             )}
             <h4 className="price">

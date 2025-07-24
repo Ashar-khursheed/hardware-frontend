@@ -81,7 +81,10 @@ const HeaderSix = () => {
                 <div className="icon-nav">
                   <ul>
                     <li className="onhover-div">
-                      <Link href={isAuthenticated ? "/wishlist" : Href} onClick={handleWishlistClick}>
+                      <Link
+                        href={isAuthenticated ? "/wishlist" : Href}
+                        onClick={handleWishlistClick}
+                        legacyBehavior>
                         <RiHeartLine />
                       </Link>
                     </li>
@@ -89,7 +92,10 @@ const HeaderSix = () => {
                       <HeaderCart />
                     </li>
                     <li className="onhover-div">
-                      <Link href={isAuthenticated ? "/account/dashboard" : Href} onClick={handleProfileClick}>
+                      <Link
+                        href={isAuthenticated ? "/account/dashboard" : Href}
+                        onClick={handleProfileClick}
+                        legacyBehavior>
                         <RiUserLine />
                       </Link>
                     </li>
@@ -115,10 +121,13 @@ const HeaderSix = () => {
                   <ul>
                     {categories?.map((item, i) => (
                       <li key={i} onClick={() => setActiveCategory(item?.name)}>
-                        <Link href={`/category/${item?.slug}`}>{item?.name}</Link>
+                        <Link href={`/category/${item?.slug}`} legacyBehavior>
+                          <a>{item?.name}</a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
+
                 </nav>
               </div>
             </Col>

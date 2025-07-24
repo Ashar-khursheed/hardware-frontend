@@ -62,7 +62,6 @@ const Bag = () => {
       <WrapperComponent classes={{ sectionClass: "p-0 overflow-hidden", fluidClass: "slide-1 home-slider" }}>
         <HomeSlider bannerData={data?.home_banner} height={650} width={1920} />
       </WrapperComponent>
-
       {/* Product slider*/}
       {data?.category_product?.status && (
         <>
@@ -72,7 +71,6 @@ const Bag = () => {
           </WrapperComponent>
         </>
       )}
-
       {/* Categories  */}
       {data?.category?.status && (
         <Container className="category-button">
@@ -81,14 +79,12 @@ const Bag = () => {
           </WrapperComponent>
         </Container>
       )}
-
       {/* Full Banner  */}
       {data?.full_banner?.status && (
         <section className="p-0">
           <ImageLink imgUrl={data?.full_banner} classes="banner-layout-3" height={1032} width={1835} />
         </section>
       )}
-
       {/*  Product Slider  */}
       {data?.product_banner?.status && (
         <WrapperComponent classes={{ fluidClass: "container season-sale-section", row: "row g-sm-4 g-3" }} customCol={true}>
@@ -122,7 +118,6 @@ const Bag = () => {
           )}
         </WrapperComponent>
       )}
-
       {/* Services  */}
       {data?.services && (
         <Container>
@@ -131,7 +126,6 @@ const Bag = () => {
           </section>
         </Container>
       )}
-
       {/* Bag Categories And Banners  */}
       <div className="category-bg ratio_square">
         <Container fluid className="p-0">
@@ -154,7 +148,9 @@ const Bag = () => {
                           {banner?.offer}
                         </Btn>
                       )}
-                      <Link href={`/${banner?.redirect_link?.link_type}/${banner?.redirect_link?.link}`}>
+                      <Link
+                        href={`/${banner?.redirect_link?.link_type}/${banner?.redirect_link?.link}`}
+                        legacyBehavior>
                         <h6>
                           <span>{banner?.button_text}</span>
                         </h6>
@@ -167,7 +163,6 @@ const Bag = () => {
           </Row>
         </Container>
       </div>
-
       {/* Product Slider Section */}
       {data?.products_list?.status && (
         <Container>
@@ -177,7 +172,6 @@ const Bag = () => {
           </WrapperComponent>
         </Container>
       )}
-
       {/* Blog Section  */}
       {data?.featured_blogs?.status && (
         <WrapperComponent classes={{ sectionClass: "blog ratio3_2", fluidClass: "container" }} colProps={{ md: "12" }}>
@@ -185,14 +179,12 @@ const Bag = () => {
           <HomeBlog blogIds={data?.featured_blogs?.blog_ids || []} />
         </WrapperComponent>
       )}
-
       {/* Social Media Section  */}
       {data?.social_media?.banners?.length && data?.social_media?.status && (
         <section className="instagram ratio_square">
           <HomeSocialMedia media={data?.social_media || []} type="borderless" />
         </section>
       )}
-
       {/* Brand Section  */}
       {data?.brand?.status && (
         <section className="section-b-space">

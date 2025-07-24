@@ -47,13 +47,18 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
               <li className="brand-box-suggestion">
                 {"Author"} :{" "}
                 {productState?.product?.authors?.map((author) => (
-                  <Link href={`/author/${author?.slug}`} key={author.id}>{author.author_name}</Link>
+                  <Link href={`/author/${author?.slug}`} key={author.id} legacyBehavior>
+                    <a>{author.name}</a>
+                  </Link>
+
                 ))}
               </li>
             )}
             {productState?.product?.publication && (
               <li className="brand-box-suggestion">
-                {"Publication"} : <Link href={`/publication/${productState?.product?.publication?.slug}`}>{productState?.product?.publication.publisher_name}</Link>
+                {"Publication"} : <Link
+                  href={`/publication/${productState?.product?.publication?.slug}`}
+                  legacyBehavior><a>{productState?.product?.publication.publisher_name}</a></Link>
               </li>
             )}
           </ul>
@@ -137,7 +142,6 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
           </>
         ) : null
       ) : null}
-
       {!noQuantityButtons && (
         <>
           {productState?.selectedVariation?.short_description && (

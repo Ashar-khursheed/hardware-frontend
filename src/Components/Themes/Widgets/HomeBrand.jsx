@@ -29,9 +29,14 @@ const HomeBrand = ({ bgLight, brandIds, sliderOptions }) => {
               <Slider {...brandSliderOption}>
                 {filteredBrand?.map((item, index) => (
                   <div key={index}>
-                    <Link className="logo-block" key={index} href={`/brand/${item?.slug}`}>
-                      {item.brand_image?.original_url ? <img src={item.brand_image?.original_url} alt="" className="img-fluid" /> : <h4>{item?.name}</h4>}
-                    </Link>
+                    <Link
+                      className="logo-block"
+                      key={index}
+                      href={`/brand/${item?.slug}`}
+                      legacyBehavior>
+                      <a>
+                        {item.brand_image?.original_url ? <img src={item.brand_image?.original_url} alt="" className="img-fluid" /> : <h4>{item?.name}</h4>}
+                      </a> </Link>
                   </div>
                 ))}
               </Slider>

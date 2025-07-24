@@ -16,8 +16,11 @@ const ProductBox3 = ({ productState, setProductState }) => {
     <>
       <div className={`basic-product theme-product-2 ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""}`}>
         <div className="product-detail mt-0">
-          <Link className="product-title" href={`/product/${productState?.product?.slug}`}>
-            {productState?.selectedVariation ? productState?.selectedVariation.name : productState?.product?.name}
+          <Link
+            className="product-title"
+            href={`/product/${productState?.product?.slug}`}
+            legacyBehavior>
+           <a> {productState?.selectedVariation ? productState?.selectedVariation.name : productState?.product?.name}</a>
           </Link>
           <div className="rating">
             <ProductRatingBox ratingCount={productState?.rating_count} />
@@ -32,7 +35,7 @@ const ProductBox3 = ({ productState, setProductState }) => {
           </div>
         </div>
         <div className="img-wrapper">
-          <Link href={`/product/${productState?.product?.slug}`}>
+          <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid" alt={productState?.product?.name} />
           </Link>
           <div className="quick-view-part">

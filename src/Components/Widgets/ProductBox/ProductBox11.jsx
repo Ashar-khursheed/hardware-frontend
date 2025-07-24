@@ -22,10 +22,16 @@ const ProductBox11 = ({ productState, setProductState }) => {
         </div>
         <div className="product-detail">
           {productState?.product?.brand && (
-            <Link href={`/brand/${productState?.product?.brand.name}`} className="product-title">{productState?.product?.brand.name}</Link>
+            <Link
+              href={`/brand/${productState?.product?.brand.name}`}
+              className="product-title"
+              legacyBehavior>{productState?.product?.brand.name}</Link>
           )}
 
-          <Link href={`/product/${productState?.product?.slug}`} className="product-title">
+          <Link
+            href={`/product/${productState?.product?.slug}`}
+            className="product-title"
+            legacyBehavior>
             <h6>{productState?.selectedVariation ? productState?.selectedVariation.name : productState?.product?.name}</h6>
           </Link>
 

@@ -39,10 +39,21 @@ const MenuList = ({ menu, isOpen, setIsOpen, level }) => {
         )}
 
         {menu.link_type === "link" && menu.is_target_blank === 0 && (
-          <Link onClick={() => protectedRoute(menu.path)} className={`dropdown-item ${isOpen[level] === menu.title ? "show" : ""}`} href={`${menu.path.charAt(0) == "/" ? menu.path : `/${menu.path}`}`}>
-            {t(menu.title)}
-            {menu.badge_text && <label className={`menu-label ${menu?.badge_color ? menu?.badge_color : ""}`}>{menu?.badge_text}</label>}
+          <Link
+            onClick={() => protectedRoute(menu.path)}
+            href={`${menu.path.charAt(0) == "/" ? menu.path : `/${menu.path}`}`}
+            legacyBehavior
+          >
+            <a className={`dropdown-item ${isOpen[level] === menu.title ? "show" : ""}`}>
+              {t(menu.title)}
+              {menu.badge_text && (
+                <label className={`menu-label ${menu?.badge_color ? menu?.badge_color : ""}`}>
+                  {menu?.badge_text}
+                </label>
+              )}
+            </a>
           </Link>
+
         )}
 
         {menu?.is_target_blank === 1 && (

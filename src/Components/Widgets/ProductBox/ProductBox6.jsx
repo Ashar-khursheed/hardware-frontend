@@ -17,7 +17,7 @@ const ProductBox6 = ({ productState }) => {
       <div className="basic-product theme-product-5">
         <div className="img-wrapper">
           {productState?.product?.sale_starts_at && productState?.product?.sale_expired_at && <div className="d-none d-sm-flex"><OfferTimer productState={productState} noHeading /></div>}
-          <Link href={`/product/${productState?.product?.slug}`}>
+          <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <img src={productState?.selectedVariation ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt={productState?.product?.name} />
           </Link>
           <div className="cart-info">
@@ -29,7 +29,10 @@ const ProductBox6 = ({ productState }) => {
         <div className="product-detail">
           <div className="brand-w-color">
             {productState?.product?.brand && (
-              <Link className="product-title" href={`/brand/${productState?.product?.brand.slug}`}>
+              <Link
+                className="product-title"
+                href={`/brand/${productState?.product?.brand.slug}`}
+                legacyBehavior>
                 {productState?.product?.brand.name}
               </Link>
             )}

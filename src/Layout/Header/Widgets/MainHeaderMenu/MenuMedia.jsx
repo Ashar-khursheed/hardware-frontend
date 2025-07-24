@@ -27,7 +27,7 @@ const MenuMedia = ({ menu }) => {
     data: filteredBlog,
     refetch,
     isLoading,
-  } = useQuery([BlogAPI,"menuMedia"], () => request({ url: BlogAPI, params: { ids: Array.from(new Set(menu?.blog_ids))?.join(",") } }, router), {
+  } = useQuery([BlogAPI, "menuMedia"], () => request({ url: BlogAPI, params: { ids: Array.from(new Set(menu?.blog_ids))?.join(",") } }, router), {
     enabled: false,
     refetchOnWindowFocus: false,
     select: (data) => data.data.data,
@@ -81,11 +81,23 @@ const MenuMedia = ({ menu }) => {
       )}
       {menu.mega_menu_type === "side_banner" && (
         <Col xl={3} className="dropdown-column d-xl-block d-none">
-          <div className="menu-img-banner">
-            <Link href={`/product/deliciously-sweet-watermelon`} className="text-title">
-              {menu?.banner_image && <Image src={menu?.banner_image ? menu?.banner_image?.original_url : SideBanner} alt="banner" className="img-fluid" height={511} width={270} />}
-            </Link>
-          </div>
+          <Link
+            href={`/product/deliciously-sweet-watermelon`}
+            legacyBehavior
+          >
+            <a className="text-title">
+              {menu?.banner_image && (
+                <Image
+                  src={menu?.banner_image?.original_url || SideBanner}
+                  alt="banner"
+                  className="img-fluid"
+                  height={511}
+                  width={270}
+                />
+              )}
+            </a>
+          </Link>
+
         </Col>
       )}
       {menu.mega_menu_type === "bottom_banner" && (
@@ -101,14 +113,17 @@ const MenuMedia = ({ menu }) => {
                 <Col xs={6} key={i}>
                   <div className="blog-box sticky-blog">
                     <div className="blog-box-image">
-                      <Link href={`/blogs/${blog?.slug}`} className="blog-image">
+                      <Link href={`/blogs/${blog?.slug}`} className="blog-image" legacyBehavior>
                         {blog?.blog_thumbnail && <Image src={blog?.blog_thumbnail ? blog?.blog_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={blog.title} height={299} width={398} />}
                       </Link>
                     </div>
-                    <Link href={`/blogs/${blog?.slug}`} className="blog-detail">
-                      <h6>{showMonthWiseDateAndTime(blog.created_at)}</h6>
-                      <h5>{blog?.title}</h5>
+                    <Link href={`/blogs/${blog?.slug}`} legacyBehavior>
+                      <a className="blog-detail">
+                        <h6>{showMonthWiseDateAndTime(blog.created_at)}</h6>
+                        <h5>{blog?.title}</h5>
+                      </a>
                     </Link>
+
                   </div>
                 </Col>
               ))}

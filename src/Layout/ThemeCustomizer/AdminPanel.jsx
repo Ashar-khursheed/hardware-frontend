@@ -8,8 +8,11 @@ const AdminPanel = () => {
   return (
     <div className="setting-section">
       <div className="setting-inner-title">
-        <Link target="_blank" href="https://multikart-admin-next-rest.vercel.app/">
-          {t("admin")}
+        <Link
+          target="_blank"
+          href="https://multikart-admin-next-rest.vercel.app/"
+          legacyBehavior>
+          <a>{t("admin")}</a>
         </Link>
         <p>{t("backend_admin_panel")}</p>
       </div>

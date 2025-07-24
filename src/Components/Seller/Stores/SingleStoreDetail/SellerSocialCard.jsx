@@ -11,35 +11,35 @@ const SellerSocialCard = ({ StoreData }) => {
         <ul>
           {StoreData?.facebook && (
             <li>
-              <Link href={String(StoreData?.facebook)} target="_blank">
+              <Link href={String(StoreData?.facebook)} target="_blank" legacyBehavior>
                 <RiFacebookFill />
               </Link>
             </li>
           )}
           {StoreData?.twitter && (
             <li>
-              <Link href={String(StoreData?.twitter)} target="_blank">
+              <Link href={String(StoreData?.twitter)} target="_blank" legacyBehavior>
                 <RiTwitterFill />
               </Link>
             </li>
           )}
           {StoreData?.instagram && (
             <li>
-              <Link href={String(StoreData?.instagram)} target="_blank">
+              <Link href={String(StoreData?.instagram)} target="_blank" legacyBehavior>
                 <RiInstagramLine />
               </Link>
             </li>
           )}
           {StoreData?.youtube && (
             <li>
-              <Link href={String(StoreData?.youtube)} target="_blank">
+              <Link href={String(StoreData?.youtube)} target="_blank" legacyBehavior>
                 <RiYoutubeFill />
               </Link>
             </li>
           )}
           {StoreData?.pinterest && (
             <li>
-              <Link href={String(StoreData?.pinterest)} target="_blank">
+              <Link href={String(StoreData?.pinterest)} target="_blank" legacyBehavior>
                 <RiPinterestFill />
               </Link>
             </li>

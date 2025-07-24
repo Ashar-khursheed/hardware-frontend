@@ -21,7 +21,13 @@ const Tags = () => {
         <ul className="tags">
           {BlogTagData?.map((tags, index) => (
             <li key={index}>
-              <Link href={{ pathname: `/blogs`, query: { tag: tags?.slug } }}>{tags.name}</Link>
+              <Link
+                href={{ pathname: `/blogs`, query: { tag: tags?.slug } }}
+                legacyBehavior
+              >
+                <a>{tags?.name}</a>
+              </Link>
+
             </li>
           ))}
         </ul>

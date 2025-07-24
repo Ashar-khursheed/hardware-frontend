@@ -56,7 +56,7 @@ const RecentPurchase = () => {
         <div>
           <div className="title">{t("someone_recently_purchased")}</div>
           {product?.name && (
-            <Link href={`/product/${product?.slug}`}>
+            <Link href={`/product/${product?.slug}`} legacyBehavior>
               <span className="product-name">{product?.name}</span>
             </Link>
           )}

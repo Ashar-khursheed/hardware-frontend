@@ -25,7 +25,10 @@ const CartData = ({ elem }) => {
     <tr>
       <CartProductDetail elem={elem} />
       <td>
-        <Link href={`/product/${elem?.product?.slug}`}>{elem?.variation?.name ?? elem?.product?.name}</Link>
+        <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
+          <a>{elem?.product?.name}</a>
+        </Link>
+
         <Row className="mobile-cart-content">
           <Col>
             <div className="qty-box">
@@ -56,17 +59,14 @@ const CartData = ({ elem }) => {
           </h6>
         ) : null}
       </td>
-
       <td>
         <div className="qty-box">
           <HandleQuantity productObj={elem?.product} classes={{ customClass: "quantity-price" }} elem={elem} />
         </div>
       </td>
-
       <td className="subtotal">
         <h2 className="td-color">{convertCurrency(elem?.sub_total)}</h2>
       </td>
-
       <td>
         <a href={Href} className="icon remove-btn" onClick={removeItem}>
           <RiCloseLine />

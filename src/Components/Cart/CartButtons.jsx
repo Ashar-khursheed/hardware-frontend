@@ -8,13 +8,13 @@ const CartButtons = () => {
   return (
     <Row className=" cart-buttons">
       <Col xs="6">
-        <Link href="/collections" className="btn">
-          {t("continue_shopping")}
+        <Link href="/collections" legacyBehavior>
+          <a className="btn">{t("continue_shopping")}</a>
         </Link>
       </Col>
       <Col xs="6">
-        <Link href="/checkout" className="btn">
-          {t("check_out")}
+        <Link href="/checkout" legacyBehavior>
+          <a className="btn">{t("check_out")}</a>
         </Link>
       </Col>
     </Row>

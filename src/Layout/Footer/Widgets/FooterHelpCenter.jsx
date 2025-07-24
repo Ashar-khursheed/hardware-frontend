@@ -14,8 +14,11 @@ const FooterHelpCenter = () => {
         <ul>
           {themeOption?.footer?.help_center?.map((item, i) => (
             <li key={i}>
-              <Link href={item?.value?.charAt(0) == "/" ? item?.value : `/${item?.value}`} className="text-content">
-                {t(item?.name)}
+              <Link
+                href={item?.value?.charAt(0) == "/" ? item?.value : `/${item?.value}`}
+                className="text-content"
+                legacyBehavior>
+                 <a> {t(item?.name)} </a>
               </Link>
             </li>
           ))}

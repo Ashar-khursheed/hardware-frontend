@@ -17,7 +17,10 @@ const ProductBox9 = ({ productState, setProductState }) => {
     <>
       <div className={`basic-product theme-product-8 ${productState?.product?.stock_status === "out-of-stock" ? "sold-out" : ""}`}>
         <div className="img-wrapper">
-          <Link href={`/product/${productState?.product?.slug}`} className="img-fluid lazyload bg-img bg-top">
+          <Link
+            href={`/product/${productState?.product?.slug}`}
+            className="img-fluid lazyload bg-img bg-top"
+            legacyBehavior>
             <img  src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt="product-image" />
           </Link>
           <div className="cart-info">
@@ -31,7 +34,10 @@ const ProductBox9 = ({ productState, setProductState }) => {
           )}
         </div>
         <div className="product-detail">
-          <Link href={`/product/${productState?.product?.slug}`} className="product-title">
+          <Link
+            href={`/product/${productState?.product?.slug}`}
+            className="product-title"
+            legacyBehavior>
             {productState?.product?.name}
           </Link>
           <h4 className="price">
