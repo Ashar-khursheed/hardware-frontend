@@ -4,9 +4,9 @@ import ColorAttribute from "./ColorAttribute";
 import DropdownAttribute from "./DropdownAttribute";
 import ImageOtherAttributes from "./Image&OtherAttributes";
 import RadioAttribute from "./RadioAttribute";
-
+//w
 const ProductAttribute = ({ productState, setProductState, stickyAddToCart, noHoverEffect }) => {
-  
+
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [soldOutAttributesIds, setSoldOutAttributesIds] = useState([]);
   const { cartProducts } = useContext(CartContext);
