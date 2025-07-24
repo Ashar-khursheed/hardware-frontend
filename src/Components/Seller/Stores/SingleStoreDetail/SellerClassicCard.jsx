@@ -15,8 +15,8 @@ const SellerClassicCard = ({ StoreData }) => {
         <div className="profile-image">
           <div>
             {/* <Link href={Href}>{</Link> */}
-            <Link href={Href} legacyBehavior>
-              <a>
+            <Link href={Href} legacyBehavior><span>
+<a>
                 {StoreData?.store_logo?.original_url ? (
                   <Image
                     src={StoreData.store_logo.original_url}
@@ -29,7 +29,7 @@ const SellerClassicCard = ({ StoreData }) => {
                   <h1>{StoreData?.store_name?.toString().charAt(0).toUpperCase()}</h1>
                 )}
               </a>
-            </Link>
+</span></Link>
 
             <h3>{StoreData?.store_name}</h3>
             <div className="rating">

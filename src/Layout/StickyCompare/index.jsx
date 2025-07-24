@@ -8,11 +8,11 @@ const StickyCompare = ({ CompareData }) => {
   const { t } = useTranslation("common");
   return (
     <div className="compare-fix ">
-      <Link href="/compare" legacyBehavior>
-        <h5>
+      <Link href="/compare" legacyBehavior><span>
+<h5>
           {t("Compare")} <span>{`(${CompareData?.length})`}</span>
         </h5>
-      </Link>
+</span></Link>
     </div>
   );
 };

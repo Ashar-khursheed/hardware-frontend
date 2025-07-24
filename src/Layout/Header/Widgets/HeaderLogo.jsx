@@ -143,8 +143,8 @@ const HeaderLogo = ({ extraClass }) => {
   }, [theme, themeOption?.logo?.header_logo]);
   return (
     <>
-      <Link href="/" legacyBehavior>
-        <a className={`${extraClass ? extraClass : ""}`}>
+      <Link href="/" legacyBehavior><span>
+<a className={`${extraClass ? extraClass : ""}`}>
           {logo?.original_url ? (
             <Image
               className="img-fluid"
@@ -161,7 +161,7 @@ const HeaderLogo = ({ extraClass }) => {
             <h2 className="f-w-600 m-0">Logo Here</h2>
           )}
         </a>
-      </Link>
+</span></Link>
 
     </>
   );

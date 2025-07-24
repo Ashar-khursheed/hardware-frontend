@@ -85,14 +85,14 @@ const SearchDropDown = React.forwardRef((props, ref) => {
                 </div>
 
                 <div className="suggestion-category">
-                  <Link href={`/product/${data?.slug}`} legacyBehavior>
-                    <a>
+                  <Link href={`/product/${data?.slug}`} legacyBehavior><span>
+<a>
                       <div>
                         <h5>{data?.name}</h5>
                         <img src={data?.image_url} alt={data?.name} />
                       </div>
                     </a>
-                  </Link>
+</span></Link>
                 </div>
 
                 {data?.categories?.map((category, catIndex) => (

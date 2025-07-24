@@ -150,11 +150,11 @@ const Bag = () => {
                       )}
                       <Link
                         href={`/${banner?.redirect_link?.link_type}/${banner?.redirect_link?.link}`}
-                        legacyBehavior>
-                        <h6>
+                        legacyBehavior><span>
+<h6>
                           <span>{banner?.button_text}</span>
                         </h6>
-                      </Link>
+</span></Link>
                     </div>
                   </div>
                 )}

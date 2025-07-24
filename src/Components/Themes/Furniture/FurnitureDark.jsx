@@ -167,7 +167,7 @@ const FurnitureDark = ({ slug }) => {
               <Slider {...DarkCategory}>
                 {mainCategories?.map((category, index) => (
                   <div key={index} className="me-2">
-                    <Link href={`/category/${category?.slug}`} legacyBehavior>
+                    <Link href={`/category/${category?.slug}`} legacyBehavior><span>
                       <a className="btn btn-outline btn-block">
                         <Image
                           className="img-fluid"
@@ -182,7 +182,7 @@ const FurnitureDark = ({ slug }) => {
                         />
                         <span>{category?.name}</span>
                       </a>
-                    </Link>
+                    </span></Link>
 
                   </div>
                 ))}

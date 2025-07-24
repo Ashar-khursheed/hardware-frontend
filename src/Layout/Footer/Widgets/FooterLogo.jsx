@@ -124,13 +124,13 @@ const FooterLogo = () => {
           </a>
         </Link>
       ) : settingData?.general?.site_name ? (
-        <Link href="/" legacyBehavior>
-          <a>
+        <Link href="/" legacyBehavior><span>
+<a>
             <h2 className="f-w-600">
               {settingData.general.site_name.split(" ")[0]}
             </h2>
           </a>
-        </Link>
+</span></Link>
       ) : null}
 
     </div>

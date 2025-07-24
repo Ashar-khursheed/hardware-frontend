@@ -33,10 +33,11 @@ const HomeBrand = ({ bgLight, brandIds, sliderOptions }) => {
                       className="logo-block"
                       key={index}
                       href={`/brand/${item?.slug}`}
-                      legacyBehavior>
-                      <a>
+                      legacyBehavior><span>
+<a>
                         {item.brand_image?.original_url ? <img src={item.brand_image?.original_url} alt="" className="img-fluid" /> : <h4>{item?.name}</h4>}
-                      </a> </Link>
+                      </a>
+</span></Link>
                   </div>
                 ))}
               </Slider>

@@ -40,21 +40,19 @@ const MenuList = ({ menu, isOpen, setIsOpen, level }) => {
 
         {menu.link_type === "link" && menu.is_target_blank === 0 && (
           <Link
+            href={`${menu.path.charAt(0) === "/" ? menu.path : `/${menu.path}`}`}
             onClick={() => protectedRoute(menu.path)}
-            href={`${menu.path.charAt(0) == "/" ? menu.path : `/${menu.path}`}`}
-            legacyBehavior
+            className={`dropdown-item ${isOpen[level] === menu.title ? "show" : ""}`}
           >
-            <a className={`dropdown-item ${isOpen[level] === menu.title ? "show" : ""}`}>
-              {t(menu.title)}
-              {menu.badge_text && (
-                <label className={`menu-label ${menu?.badge_color ? menu?.badge_color : ""}`}>
-                  {menu?.badge_text}
-                </label>
-              )}
-            </a>
+            {t(menu.title)}
+            {menu.badge_text && (
+              <label className={`menu-label ${menu?.badge_color ? menu?.badge_color : ""}`}>
+                {menu?.badge_text}
+              </label>
+            )}
           </Link>
-
         )}
+
 
         {menu?.is_target_blank === 1 && (
           <a className={`dropdown-item ${isOpen[level] === menu?.title ? "show" : ""}`} href={menu?.path}>
@@ -109,7 +107,7 @@ const MenuList = ({ menu, isOpen, setIsOpen, level }) => {
             ))}
           </ul>
         )}
-      </li>
+      </li >
     </>
   );
 };

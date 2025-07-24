@@ -36,12 +36,12 @@ const MobileMenu = () => {
           </Link>
         </li>
         <li className={active == "2" ? "active" : ""}>
-          <Link href="/search" legacyBehavior>
-            <a onClick={() => handleActive(2)}>
+          <Link href="/search" legacyBehavior><span>
+<a onClick={() => handleActive(2)}>
               <RiSearch2Line />
               <span>{t("search")}</span>
             </a>
-          </Link>
+</span></Link>
 
         </li>
         <li className={active == "3" ? "active" : ""}>

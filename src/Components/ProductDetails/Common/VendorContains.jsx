@@ -17,14 +17,14 @@ const VendorContains = ({ productState }) => {
         </Link>
 
         <div className="vendor-name">
-          <Link href={`/seller/store/${productState?.product?.store?.slug}`} legacyBehavior>
-            <a>
+          <Link href={`/seller/store/${productState?.product?.store?.slug}`} legacyBehavior><span>
+<a>
               <h5 className="fw-500">{productState?.product?.store?.store_name}</h5>
               <div className="product-rating mt-1">
                 <span>{`(${productState?.product?.store?.reviews_count ?? 0} Reviews)`}</span>
               </div>
             </a>
-          </Link>
+</span></Link>
 
           <Link href={`/seller/store/${productState?.product?.store?.slug}`} legacyBehavior>
             <a className="store-btn">

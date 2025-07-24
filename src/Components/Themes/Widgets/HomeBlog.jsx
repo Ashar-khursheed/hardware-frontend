@@ -37,8 +37,8 @@ const HomeBlog = ({ blogIds, blogEffect, type, sliderClass, slideOptions }) => {
             <div key={index}>
               {type === "simple" ? (
                 <div className="blog-wrap">
-                  <Link href={`/blogs/${blog?.slug}`} legacyBehavior>
-                    <a className="d-block text-decoration-none">
+                  <Link href={`/blogs/${blog?.slug}`} legacyBehavior><span>
+<a className="d-block text-decoration-none">
                       <div className="blog-image">
                         <img
                           src={blog.blog_thumbnail.original_url}
@@ -61,19 +61,19 @@ const HomeBlog = ({ blogIds, blogEffect, type, sliderClass, slideOptions }) => {
                         <h6>By: {blog.created_by.name}</h6>
                       </div>
                     </a>
-                  </Link>
+</span></Link>
 
                 </div>
               ) : (
                 <div className="col-12">
-                  <Link href={`/blogs/${blog?.slug}`} legacyBehavior>
-                    <div className={blogEffect ? blogEffect : "classic-effect"}>
+                  <Link href={`/blogs/${blog?.slug}`} legacyBehavior><span>
+<div className={blogEffect ? blogEffect : "classic-effect"}>
                       <div className="bg-size" style={{ backgroundImage: `url(${blog.blog_thumbnail.original_url})` }}>
                         <img src={blog.blog_thumbnail.original_url} className="img-fluid bg-img d-none" alt="blog-image" />
                       </div>
                       <span></span>
                     </div>
-                  </Link>
+</span></Link>
                   <div className="blog-details">
                     <h4>{new Date(blog?.created_at).toLocaleString("en-US", { day: "2-digit", month: "short", year: "numeric", hour: "numeric", minute: "numeric", hour12: true })}</h4>
                     <Link href={`/blogs/${blog?.slug}`} legacyBehavior>

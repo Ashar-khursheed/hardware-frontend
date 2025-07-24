@@ -117,12 +117,12 @@ const MenuMedia = ({ menu }) => {
                         {blog?.blog_thumbnail && <Image src={blog?.blog_thumbnail ? blog?.blog_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={blog.title} height={299} width={398} />}
                       </Link>
                     </div>
-                    <Link href={`/blogs/${blog?.slug}`} legacyBehavior>
-                      <a className="blog-detail">
+                    <Link href={`/blogs/${blog?.slug}`} legacyBehavior><span>
+<a className="blog-detail">
                         <h6>{showMonthWiseDateAndTime(blog.created_at)}</h6>
                         <h5>{blog?.title}</h5>
                       </a>
-                    </Link>
+</span></Link>
 
                   </div>
                 </Col>

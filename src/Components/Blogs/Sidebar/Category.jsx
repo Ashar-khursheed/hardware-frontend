@@ -19,12 +19,12 @@ const Category = () => {
               <Link
                 href={{ pathname: `/blogs`, query: { category: category?.slug } }}
                 legacyBehavior
-              >
-                <a className="category-name">
+              ><span>
+<a className="category-name">
                   <h5>{category.name}</h5>
                   <span>({category?.blogs_count})</span>
                 </a>
-              </Link>
+</span></Link>
 
 
             </li>
