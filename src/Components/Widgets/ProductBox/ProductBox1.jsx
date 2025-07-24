@@ -8,6 +8,7 @@ import ImageVariant from "./Widgets/ImageVariant";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 
+
 const ProductBox1 = ({ productState, setProductState }) => {
   const { convertCurrency } = useContext(SettingContext);
   const { t } = useTranslation("common");
@@ -16,9 +17,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
 
   return (
     <div
-      className={`basic-product ${
-        productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""
-      }`}
+      className={`basic-product ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""
+        }`}
     >
       <div className="img-wrapper">
         <ImageVariant
@@ -79,43 +79,40 @@ const ProductBox1 = ({ productState, setProductState }) => {
 
         <h4 className="price">
           {productState?.selectedVariation
-            ? `$${Number(productState.selectedVariation.sale_price).toFixed(2)}`
-            : `$${Number(productState.product?.sale_price).toFixed(2)}`}
+            ? `$${Number(productState?.selectedVariation.sale_price).toFixed(2)}`
+            : `$${Number(productState?.product?.sale_price).toFixed(2)}`}
 
           {productState?.selectedVariation ? (
             <>
-              {(productState.selectedVariation.price !==
-                productState.selectedVariation.sale_price ||
-                productState.product?.price !==
-                  productState.product?.sale_price) && (
-                <del>
-                  $
-                  {Number(
-                    productState.selectedVariation.price ??
-                      productState.product?.price
-                  ).toFixed(2)}
-                </del>
-              )}
-              {productState.selectedVariation.discount > 0 && (
-                <span className="discounted-price">
-                  {productState.selectedVariation.discount}% {t("off")}
-                </span>
-              )}
+              {(productState?.selectedVariation?.price !== productState?.selectedVariation?.sale_price ||
+                productState?.product?.price !== productState?.product?.sale_price) && (
+                  <del>
+                    ${Number(productState?.selectedVariation?.price ?? productState?.product?.price).toFixed(2)}
+                  </del>
+                )}
+
+              {productState?.selectedVariation?.discount &&
+                productState?.selectedVariation?.discount !== 0 && (
+                  <span className="discounted-price">
+                    {productState?.selectedVariation?.discount}% {t("off")}
+                  </span>
+                )}
             </>
           ) : (
             <>
-              {productState.product?.price !==
-                productState.product?.sale_price && (
-                <del>${Number(productState.product?.price).toFixed(2)}</del>
+              {(productState?.product?.price !== productState?.product?.sale_price) && (
+                <del>${Number(productState?.product?.price).toFixed(2)}</del>
               )}
-              {productState.product?.discount > 0 && (
+
+              {productState?.product?.discount && productState?.product?.discount !== 0 && (
                 <span className="discounted-price">
-                  {productState.product.discount}% {t("off")}
+                  {productState?.product?.discount}% {t("off")}
                 </span>
               )}
             </>
           )}
         </h4>
+
 
         <ProductBoxVariantAttribute
           setProductState={setProductState}
