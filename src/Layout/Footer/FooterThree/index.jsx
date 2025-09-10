@@ -30,57 +30,202 @@ const FooterThree = () => {
 
   return (
     <footer className="footer-style-1" style={{ backgroundColor: themeOption?.footer?.bg_color }}>
-      <section className="section-b-space darken-layout">
+      <div className="top-column feature-icons-bar py-4 border-bottom">
         <Container>
-          <Row className="footer-theme g-md-5 g-2">
-            <Col xl="3" lg="5" md="6" className="sub-title">
-              <div>
-                <FooterLogo />
-                <FooterAbout />
-                <FooterStoreInformation icon={true} />
-              </div>
-            </Col>
-            <Col xl="2" lg="3" className="col-md-4 " onClick={() => toggle("categories")}>
-              <div className="sub-title">
-                <div className={`footer-title ${openClose?.categories ? "show" : ""}`}>
-                  <h4>{t("categories")}</h4>
+          <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
+            {[
+              {
+                icon: "/assets/images/Icon.png",
+                title: "Free Shipping",
+                subtitle: "Orders $50 or more",
+              },
+              {
+                icon: "/assets/images/Icon1.png",
+                title: "Save Money",
+                subtitle: "At lowest price",
+              },
+              {
+                icon: "/assets/images/Icon2.png",
+                title: "100% Return Policy",
+                subtitle: "Any Time Return Product",
+              },
+              {
+                icon: "/assets/images/Icon3.png",
+                title: "Best Deal Offer",
+                subtitle: "Grab Your Gear and Go",
+              },
+              {
+                icon: "/assets/images/Icon4.png",
+                title: "Support 24/7",
+                subtitle: "Contact us 24 hours a day",
+              },
+            ].map((item, i) => (
+              <Col key={i}>
+                <div className="d-flex flex-column align-items-center gap-2">
+                  <img src={item.icon} alt={item.title} width={40} height={40} />
+                  <div>
+                    <h6 className="mb-0 text-white fw-semibold">{item.title}</h6>
+                    <p className="mb-0 text-light small">{item.subtitle}</p>
+                  </div>
                 </div>
-                <FooterCategories />
-              </div>
-            </Col>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
 
-            <Col lg="2" md="3" onClick={() => toggle("useFulLinks")}>
-              <div className="sub-title">
-                <div className={`footer-title ${openClose?.useFulLinks ? "show" : ""}`}>
-                  <h4>{t("useful_links")}</h4>
-                </div>
-                <FooterUsefulLinks />
+      {/* 2nd */}
+      <div className="dark-layout newsletter-bar">
+        <Container>
+          <Row className="align-items-center newsletter py-4 border-bottom">
+            <Col md="6" className="d-flex align-items-center gap-3">
+              <img src="/assets/images/newsletter.png" alt="Newsletter Icon" />
+              <div>
+                <h4 className="mb-1 text-white">Learn first about discounts</h4>
+                <p className="mb-0 text-light small">As well as news, special offers and promotions</p>
               </div>
             </Col>
-            <Col xl="2" md="3" onClick={() => toggle("helpCenter")}>
-              <div className="sub-title">
-                <div className={`footer-title ${openClose?.helpCenter ? "show" : ""}`}>
-                  <h4>{t("help_center")}</h4>
-                </div>
-                <FooterHelpCenter />
-              </div>
-            </Col>
-            <Col xl="3" lg="4" md="6" onClick={() => toggle("storeInfo")}>
-              <div className="sub-title">
-                <div className={`footer-title ${openClose?.storeInfo ? "show" : ""}`}>
-                  <h4>{t("follow_us")}</h4>
-                </div>
-                <div className="footer-content">
-                  <p className="mb-cls-content">{t("newsletter_text")}</p>
-                  <FooterNewsLetter style="classic" />
-                  {themeOption?.footer?.social_media_enable && <FooterSocial />}
-                </div>
-              </div>
+            {/* <Col md="4">
+                    <input type="email" className="form-control" placeholder="Enter your email address" />
+                  </Col>
+                  <Col md="2">
+                    <button className="btn btn-primary w-100">Subscribe</button>
+                  </Col> */}
+
+            <Col md="6" className="subscribe-wrapper">
+              <FooterNewsLetter style="simple" />
             </Col>
           </Row>
         </Container>
-      </section>
-      <SubFooter classes={{ sectionClass: "dark-subfooter" }} />
+      </div>
+
+
+
+      {/* 3rd */}
+      <div className="dark-layout links-grid">
+        <Container>
+          <Row className="py-5 text-white g-4">
+
+            {/* Column 1 - Processors */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Processors</h4>
+              <p className="small text-white mb-1">Intel Xeon E5-2670</p>
+              <p className="small text-white mb-1">AMD Ryzen 7 5800X</p>
+              <p className="small text-white mb-1">Intel Core i9-10900K</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 2 - Network Devices */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Network Devices</h4>
+              <p className="small text-white mb-1">Cisco Router 2901</p>
+              <p className="small text-white mb-1">Netgear Switch 24-Port</p>
+              <p className="small text-white mb-1">Ubiquiti UniFi AP</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 3 - Power Supplies */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Power Supplies</h4>
+              <p className="small text-white mb-1">Corsair RM750x</p>
+              <p className="small text-white mb-1">EVGA 600 BR</p>
+              <p className="small text-white mb-1">Seasonic Focus GX-850</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 4 - Storage Devices */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Storage Devices</h4>
+              <p className="small text-white mb-1">Samsung 970 EVO Plus</p>
+              <p className="small text-white mb-1">WD Blue HDD 1TB</p>
+              <p className="small text-white mb-1">Seagate Barracuda 2TB</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Processors</h4>
+              <p className="small text-white mb-1">Intel Xeon E5-2670</p>
+              <p className="small text-white mb-1">AMD Ryzen 7 5800X</p>
+              <p className="small text-white mb-1">Intel Core i9-10900K</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 2 - Network Devices */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Network Devices</h4>
+              <p className="small text-white mb-1">Cisco Router 2901</p>
+              <p className="small text-white mb-1">Netgear Switch 24-Port</p>
+              <p className="small text-white mb-1">Ubiquiti UniFi AP</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 3 - Power Supplies */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Power Supplies</h4>
+              <p className="small text-white mb-1">Corsair RM750x</p>
+              <p className="small text-white mb-1">EVGA 600 BR</p>
+              <p className="small text-white mb-1">Seasonic Focus GX-850</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+
+            {/* Column 4 - Storage Devices */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">Storage Devices</h4>
+              <p className="small text-white mb-1">Samsung 970 EVO Plus</p>
+              <p className="small text-white mb-1">WD Blue HDD 1TB</p>
+              <p className="small text-white mb-1">Seagate Barracuda 2TB</p>
+              <p className="small text-white mb-1">See More</p>
+
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+
+
+
+
+
+      {/* 4th */}
+
+      <div className="dark-layout copyright-bar py-3">
+        <Container>
+          <Row className="align-items-center text-white">
+            <Col md="4" className="text-center text-md-start text-sm-start">
+              <p className="mb-0 text-white small">© 2025, <strong>The Hardware Box</strong> All rights reserved</p>
+            </Col>
+            <Col md="4" className="text-center">
+              <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
+                {/* <i className="fa fa-phone me-2"></i> */}
+                <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
+                <div className="text-start">
+                  <strong>
+                    <a className="text-white" href="tel:+191630466066">(+1) 916 304 66066</a>
+                  </strong><br />
+
+                  <span className="small">Working 8:00 - 22:00</span>
+                </div>
+
+                {/* <div>
+                        <i className="fa fa-headphones me-2"></i>
+                        <strong>1900 - 8888</strong><br />
+                        <span className="small">24/7 Support Center</span>
+                      </div> */}
+              </div>
+            </Col>
+            <Col md="4" className="text-start payment-col  text-md-end">
+              <p className="mb-1 text-white fw-bold small">Secured Payment Gateways</p>
+              <img src="/assets/images/payment.png" className="img-fluid" alt="Payment Gateways" />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     </footer>
   );
 };

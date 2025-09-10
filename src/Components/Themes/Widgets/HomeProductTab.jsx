@@ -185,19 +185,19 @@ const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle,
               <Row className={`${classes ? classes : "g-3 g-sm-4 row-cols-2 row-cols-md-3 row-cols-xl-4"} ${product_box_style === "horizontal" ? "product-tab" : ""}`}>
                 {style === "horizontal" && product_box_style === "horizontal"
                   ? product?.map((product) => (
-                      <div>
-                        <div key={product.id} className='tab-box'>
-                          <div className='product-box2'>
-                            <ProductBox product={product} style={style} />
-                          </div>
+                    <div>
+                      <div key={product.id} className='tab-box'>
+                        <div className='product-box2'>
+                          <ProductBox product={product} style={style} />
                         </div>
                       </div>
-                    ))
+                    </div>
+                  ))
                   : product?.map((product, i) => (
-                      <Col key={i}>
-                        <ProductBox key={product.id} product={product} style={style} />
-                      </Col>
-                    ))}
+                    <Col key={i}>
+                      <ProductBox key={product.id} product={product} style={style} />
+                    </Col>
+                  ))}
               </Row>
             ) : (
               <NoDataFound customClass='no-data-added' title='no_product' />

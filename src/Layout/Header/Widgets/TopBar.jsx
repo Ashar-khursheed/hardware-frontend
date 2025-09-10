@@ -24,7 +24,7 @@ const TopBar = ({ classes }) => {
   return (
     <>
       {/* Announcement Bar with Scrolling */}
-      {announcement?.status && (
+      {/* {announcement?.status && (
         <div
           className="announcement-bar"
           style={{
@@ -38,7 +38,7 @@ const TopBar = ({ classes }) => {
             {announcement.message || "Welcome to our store!"}
           </div>
         </div>
-      )}
+      )} */}
 
 
       {/* Top Header */}

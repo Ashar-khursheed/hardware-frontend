@@ -101,30 +101,30 @@ const FooterTwo = () => {
 
       {/* 3rd */}
       <div className="dark-layout links-grid">
-  <Container>
-    <Row className="py-5 text-white g-4">
-      {[
-        "Categories",
-        "Network Devices",
-        "Storage",
-        "Motherboards",
-      ].map((title, idx) => (
-        <Col key={idx} xs={12} md={6} lg={3}>
-          <h6 className="fw-bold text-white mb-3 text-uppercase">{title}</h6>
-          {Array.from({ length: 8 }).map((_, i) => (
-            <p key={i} className="small text-white mb-1">
-              {`${title} Placed Here`}
-            </p>
-          ))}
-        </Col>
-      ))}
-    </Row>
-  </Container>
-</div>
+        <Container>
+          <Row className="py-5 text-white g-4">
+            {[
+              "Categories",
+              "Network Devices",
+              "Storage",
+              "Motherboards",
+            ].map((title, idx) => (
+              <Col key={idx} xs={12} md={6} lg={3}>
+                <h6 className="fw-bold text-white mb-3 text-uppercase">{title}</h6>
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <p key={i} className="small text-white mb-1">
+                    {`${title} Placed Here`}
+                  </p>
+                ))}
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </div>
 
 
 
- 
+
 
 
       {/* 4th */}
