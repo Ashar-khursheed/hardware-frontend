@@ -125,7 +125,7 @@ const HeaderSix = () => {
       <div className="bottom-part bottom-light">
         <Container>
           <Row>
-            <Col xl="3" className="position-relative">
+            <Col xl="2" className="position-relative">
               <div className="category-menu d-none d-xl-block h-100">
                 {/* <div
                   id="toggle-sidebar"
@@ -135,9 +135,9 @@ const HeaderSix = () => {
                   <RiMenuLine className="sidebar-bar" />
                   <h5 className="mb-0">{t("shop_by_category")}</h5>
                 </div> */}
-                <div className="container">
+                <div className="container p-0">
                   <div className="navbar">
-                    <div className="container">
+                    <div className="container p-0">
                       <div className="menu-item">
                         <span className="menu-label subcat">ALL CATEGORIES</span>
                         <div className="mega-menu">

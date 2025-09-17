@@ -237,7 +237,7 @@ const ElectronicsThree = () => {
 
       <section className="shipping-bar    text-white py-2">
         <div className="container text-center d-flex justify-content-center align-items-center">
-          <span className="">FREE SHIPPING WITHIN THE UNITED STATES & CANADA</span> 
+          <span className="">FREE SHIPPING WITHIN THE UNITED STATES & CANADA</span>
           <i className="ms-2 fas fa-truck"></i>
         </div>
       </section>
@@ -266,11 +266,11 @@ const ElectronicsThree = () => {
 
 
       {/* Services */}
-      {data?.services && (
+      {/* {data?.services && (
         <WrapperComponent classes={{ sectionClass: "service-w-bg pt-0 tools-service", fluidClass: "container" }} noRowCol={true}>
           <HomeServices services={data?.services?.banners} />
         </WrapperComponent>
-      )}
+      )} */}
 
 
 
@@ -279,7 +279,7 @@ const ElectronicsThree = () => {
 
       {/* Product List 1 */}
 
-
+      {/* 
       {data?.products_list_1?.status && (
         <>
           <style jsx global>{`
@@ -304,50 +304,11 @@ const ElectronicsThree = () => {
             </div>
           </WrapperComponent>
         </>
-      )}
+      )} */}
 
 
 
-      {/* About uss Section */}
 
-      <section className="about d-flex align-items-center" style={{
-        backgroundImage: 'url("/assets/images/warehouse-bg.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        position: 'relative'
-      }}>
-        <div className="container">
-          <div className="row align-items-center">
-
-            {/* Left Content */}
-            <div className="col-lg-6 text-white z-2">
-              <h2 className="display-5">
-                About Hardware Box<br />
-              </h2>
-              <p className="mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-              </p>
-              <a href="/shop" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
-                Shop Now
-              </a>
-            </div>
-
-            {/* Right Image */}
-            <div className="col-lg-6 text-end">
-              <img
-                src="/assets/images/forabout.webp"  // Replace with your image path
-                alt="Warehouse Worker with Tablet"
-                className="img-fluid"
-                style={{ maxHeight: '600px', objectFit: 'contain' }}
-              />
-            </div>
-
-          </div>
-        </div>
-
-        {/* Optional overlay for dark gradient effect */}
-        <div className="hero-overlay"></div>
-      </section>
 
 
 
@@ -508,10 +469,10 @@ const ElectronicsThree = () => {
 
       {/* airpods and gaming laptop sec */}
       <section className="py-5 bg-white">
-        <div className="container">
+        <div className="container p-3 ">
           <div className="row ">
 
-            <div className="col-md-6  p-4 border rounded bg-light gmaingcolum">
+            <div className="col-md-6   border rounded bg-light gmaingcolum">
               <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
                 <div className="row d-flex align-items-center justify-content-between p-3">
                   <div className="col-4 text-div">
@@ -535,7 +496,7 @@ const ElectronicsThree = () => {
               </div>
             </div>
 
-            <div className="col-md-6  p-4 border rounded bg-light gmaingcolum">
+            <div className="col-md-6   border rounded bg-light gmaingcolum">
               <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
                 <div className="row d-flex align-items-center justify-content-between p-3">
                   <div className="col-4 text-div">
@@ -596,24 +557,17 @@ const ElectronicsThree = () => {
 
       {/* Brands */}
       {data?.brand?.status && (
-        <section className="section-b-space blog-wo-bg">
+        <section className="section-b-space blog-wo-bg p-0">
           <HomeBrand brandIds={data?.brand?.brand_ids} />
         </section>
       )}
-      {/* Category Products 2 */}
-      {data?.category_product_2?.status && (
-        <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section", fluidClass: "container" }} noRowCol={true}>
-          <Row>
-            <Col>
-              <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
-            </Col>
-          </Row>
-        </WrapperComponent>
-      )}
-      {/* reviews section */}
+
+
+
+
 
       {/* reviews section */}
-      <section className="py-5 mt-4 bg-light">
+      <section className="py-5 pt-3 mt-4 bg-light">
         <div className="container">
           <div className="row align-items-center mb-4">
             <div className="col-md-6">
@@ -661,6 +615,82 @@ const ElectronicsThree = () => {
             ))}
           </div>
         </div>
+      </section>
+
+
+
+
+
+
+
+
+      {/* Category Products 2 */}
+      {data?.category_product_2?.status && (
+        <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section p-0", fluidClass: "container" }} noRowCol={true}>
+          <Row>
+            <Col>
+              <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
+            </Col>
+          </Row>
+        </WrapperComponent>
+      )}
+      {/* reviews section */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* About uss Section */}
+
+      <section className="about d-flex align-items-center" style={{
+        backgroundImage: 'url("/assets/images/warehouse-bg.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative'
+      }}>
+        <div className="container">
+          <div className="row align-items-center">
+
+            {/* Left Content */}
+            <div className="col-lg-6 text-white z-2">
+              <h2 className="display-5">
+                About Hardware Box<br />
+              </h2>
+              <p className="mt-3">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </p>
+              <a href="/shop" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
+                Shop Now
+              </a>
+            </div>
+
+            {/* Right Image */}
+            <div className="col-lg-6 text-end">
+              <img
+                src="/assets/images/forabout.webp"  // Replace with your image path
+                alt="Warehouse Worker with Tablet"
+                className="img-fluid"
+                style={{ maxHeight: '600px', objectFit: 'contain' }}
+              />
+            </div>
+
+          </div>
+        </div>
+
+        {/* Optional overlay for dark gradient effect */}
+        <div className="hero-overlay"></div>
       </section>
 
 
@@ -777,28 +807,29 @@ const ElectronicsThree = () => {
 
           <div className="row">
             <div className="col-md-4 mb-4">
-              <h3 className="text-black">
+
+              <h4 className="text-black">
                 How quickly can we deliver it you?<br />
                 As fast as you want with reliable delivery service.
-              </h3>
+              </h4>
               <p className="text-muted">
                 Tell us when you need your IT part, and we'll ensure it arrives on time, whether it's urgent or falls within the agreed time frame.
               </p>
             </div>
 
             <div className="col-md-4 mb-4">
-              <h3 className="text-black">
+              <h4 className="text-black">
                 Think +500,000 products is too good to be true? You're welcome at our warehouses.
-              </h3>
+              </h4>
               <p className="text-muted">
                 In our many warehouses in North America and worldwide, we keep a wide range of items in stock, from the most popular equipment to rare, hard-to-find parts. Just ask, and we'll find it quickly.
               </p>
             </div>
 
             <div className="col-md-4 mb-4">
-              <h3 className=" text-black">
+              <h4 className=" text-black">
                 Not sure whether refurbished IT equipment lasts? Let us address your concerns.
-              </h3>
+              </h4>
               <p className="text-muted">
                 You can trust us completely. We meticulously prepare and test all IT parts before selling, ensuring their durability for as long as you use them.
               </p>
@@ -839,9 +870,9 @@ const ElectronicsThree = () => {
                 />
                 <div className="card-body">
                   <h4 className="text-muted small">Buying Guides , SSDs , Storage Devices</h4>
-                  <h3 className=" text-black">
+                  <h5 className=" text-black">
                     Kioxia Unveils 245.76TB SSD That Can Store 3 Years of 4K Video on a Single Drive! A New Standard for AI & Cloud Giants
-                  </h3>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -856,9 +887,9 @@ const ElectronicsThree = () => {
                 />
                 <div className="card-body">
                   <h4 className="text-muted small">Server Hard Drives , Storage Devices</h4>
-                  <h3 className=" text-black">
+                  <h5 className=" text-black">
                     Server HDD vs SSD: Which Storage Drive is Best for Your Server?
-                  </h3>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -873,9 +904,9 @@ const ElectronicsThree = () => {
                 />
                 <div className="card-body">
                   <h4 className="text-muted small">Buying Guides , SSDs</h4>
-                  <h3 className=" text-black">
+                  <h5 className=" text-black">
                     Internal SSD vs External SSD – Which Type is Best for Gamers, Creators and Power Users?
-                  </h3>
+                  </h5>
                 </div>
               </div>
             </div>
@@ -888,8 +919,8 @@ const ElectronicsThree = () => {
       {/* contact us to get invite section */}
 
 
-      <section>
-        <div className="container py-4 px-3 my-4"
+      <section className="p-0 contactustoget">
+        <div className="container py-1 px-3 my-1"
           style={{
             height: "175px",
             display: "flex",
@@ -904,7 +935,7 @@ const ElectronicsThree = () => {
           }}
 
         >
-          <div className="container p-5">
+          <div className="container p-3">
             <div className="row align-items-center justify-content-between">
               <div className="col-md-8 mb-3 mb-md-0">
                 <h3 className="text-white fw-bold mb-0">
@@ -935,42 +966,6 @@ const ElectronicsThree = () => {
       </section >
       {/* request a quote section  */}
 
-
-      <section className="py-5 bg-light">
-        <div className="container">
-          <div className="row align-items-center">
-
-
-            {/* Text Content */}
-            <div className="col-md-6 mb-4 mb-md-0">
-              <h2 className="text-black">
-                Shop End of Life &<br />
-                Refurbished Computer<br />
-                Parts and Components
-              </h2>
-              <p className="mt-3 text-muted">
-                Since 2018, Direct Macro has been distributing end-of-life computer and
-                networking parts, currently offers an inventory of over half a million parts
-                from all leading brands. Click here to browse our extensive selection!
-              </p>
-              <a href="/quote" className="btn btn-warning fw-semibold mt-3">
-                Request a Quote
-              </a>
-            </div>
-
-
-            {/* Image */}
-            <div className="col-md-6 text-center">
-              <img
-                src="/assets/images/forlastsec.webp" // Replace with actual path
-                alt="Technician repairing a computer"
-                className="img-fluid rounded"
-              />
-            </div>
-
-          </div>
-        </div>
-      </section>
 
 
 
@@ -1035,11 +1030,11 @@ const ElectronicsThree = () => {
             </div>
 
             {/* Center: Image */}
-            <div className="col-md-4 text-center">
+            <div className="col-md-4 text-start">
               <img
                 src="/assets/images/contactsec.png" // replace with actual path
                 alt="Contact Person"
-                className="img-fluid"
+                className="img-fluid contactimg3"
               />
             </div>
 
