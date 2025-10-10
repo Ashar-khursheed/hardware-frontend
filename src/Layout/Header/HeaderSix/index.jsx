@@ -148,96 +148,129 @@ const HeaderSix = () => {
                                 onMouseEnter={() => setActiveCategory("harddrives")}
                                 className={activeCategory === "harddrives" ? "active" : ""}
                               >
-                                Hard Drives
+                                <a href="/category/storage-devices" className="category-link">Storage Devices</a>
                               </li>
+
                               <li
                                 onMouseEnter={() => setActiveCategory("cpus")}
                                 className={activeCategory === "cpus" ? "active" : ""}
                               >
-                                CPUs & Processors
+                                <a href="/category/memories" className="category-link">Memories</a>
                               </li>
+
                               <li
                                 onMouseEnter={() => setActiveCategory("memory")}
                                 className={activeCategory === "memory" ? "active" : ""}
                               >
-                                Memory
+                                <a href="/category/networking-devices" className="category-link">Networking Devices</a>
                               </li>
+
                               <li
                                 onMouseEnter={() => setActiveCategory("ssd")}
                                 className={activeCategory === "ssd" ? "active" : ""}
                               >
-                                Solid State Drive (SSD)
+                                <a href="/category/motherboard" className="category-link">Motherboard</a>
                               </li>
+
                               <li
                                 onMouseEnter={() => setActiveCategory("graphics")}
                                 className={activeCategory === "graphics" ? "active" : ""}
                               >
-                                Graphics Cards
+                                <a href="/category/printer-scanners" className="category-link">Printer & Scanners</a>
                               </li>
+
                               <li
                                 onMouseEnter={() => setActiveCategory("motherboards")}
                                 className={activeCategory === "motherboards" ? "active" : ""}
                               >
-                                Motherboards
+                                <a href="/category/pc-and-servers" className="category-link">PC & Servers</a>
+                              </li>
+
+
+                              <li
+                                onMouseEnter={() => setActiveCategory("powersupply")}
+                                className={activeCategory === "powersupply" ? "active" : ""}
+                              >
+                                <a href="/category/power-supply" className="category-link">Power Supply & Power Protection</a>
+                              </li>
+
+                              <li
+                                onMouseEnter={() => setActiveCategory("cpusprosesors")}
+                                className={activeCategory === "cpusprosesors" ? "active" : ""}
+                              >
+                                <a href="/category/cpus-processors" className="category-link">CPUs & Processors</a>
+                              </li>
+
+
+                              <li
+                                onMouseEnter={() => setActiveCategory("cables")}
+                                className={activeCategory === "cables" ? "active" : ""}
+                              >
+                                <a href="/category/cables-adapters" className="category-link">Cables & Adapters</a>
+                              </li>
+
+                              <li
+                                onMouseEnter={() => setActiveCategory("gaming")}
+                                className={activeCategory === "cables" ? "active" : ""}
+                              >
+                                <a href="/category/gaming" className="category-link">Gaming</a>
                               </li>
                             </ul>
                           </div>
 
                           {/* RIGHT PANEL */}
                           <div className="menu-right rightpannel border-right flex-1  ">
+
                             {activeCategory === "harddrives" && (
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Internal Hard Drives</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/internal-hard-drives">Internal Hard Drives</a></li>
+                                      <li><a href="/category/external-hard-drives">External Hard Drives</a></li>
+
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">External Hard Drives</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/ssds">SSDS</a></li>
+                                      <li><a href="/category/storage-tapes">Storage Tapes</a></li>
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">SSDS
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/Network-Storage-Devices">Network Storage Device</a></li>
+                                      <li><a href="/category/Hard-Drives-Enclosures">Hard Drives Enclosures</a></li>
+
                                     </ul>
                                   </div>
                                 </div>
 
                                 <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                  <div className="col-md-6">
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/Controllers">Controllers</a></li>
+                                      <li><a href="/category/Disc-Drives">Disc Drives</a></li>
+                                      {/* <li>Toshiba</li>
+                                      <li>Samsung</li> */}
                                     </ul>
                                   </div>
-                                  <div className="col-md-4">
+                                  {/* <div className="col-md-6">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
+                                      <li>Controllers</li>
+                                      <li>Disc Drives</li>
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
-                                  <div className="col-md-4">
+                                  </div> */}
+                                  {/* <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu">
                                       <li>Seagate</li>
@@ -245,7 +278,7 @@ const HeaderSix = () => {
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
+                                  </div> */}
 
                                 </div>
                               </div>
@@ -255,47 +288,38 @@ const HeaderSix = () => {
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">CPUs & Processors By Brands
-                                    </h6>
+                                    {/* <h6 className="subcategories">memories
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/Dekstop-Memory">Dekstop Memory</a></li>
+                                      <li><a href="/category/server-memory">Server Memory</a></li>
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/laptop-memory">Laptop Memory</a></li>
+                                      <li><a href="/category/gaming-memory">Gaming Memory</a></li>
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/flash-memory">Flash Memory</a></li>
+                                      <li><a href="/category/cache-memory">Cache Memory</a></li>
                                     </ul>
                                   </div>
                                 </div>
 
                                 <div className="row border-top pt-3 mt-3">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/vrm">VRM</a></li>
                                     </ul>
                                   </div>
-                                  <div className="col-md-4">
+                                  {/* <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu" >
                                       <li>Seagate</li>
@@ -303,8 +327,8 @@ const HeaderSix = () => {
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
-                                  <div className="col-md-4">
+                                  </div> */}
+                                  {/* <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu">
                                       <li>Seagate</li>
@@ -312,7 +336,7 @@ const HeaderSix = () => {
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
+                                  </div> */}
 
                                 </div>
                               </div>
@@ -321,37 +345,30 @@ const HeaderSix = () => {
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Memory
-                                    </h6>
+                                    {/* <h6 className="subcategories">Memory
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>memory</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/switches">Switches</a></li>
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/network-accessories">Network & Accessories</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/ip-phones">IP Phones</a></li>
+
                                     </ul>
                                   </div>
                                 </div>
 
-                                <div className="row border-top pt-3 mt-3">
+                                {/* <div className="row border-top pt-3 mt-3">
                                   <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu">
@@ -380,54 +397,46 @@ const HeaderSix = () => {
                                     </ul>
                                   </div>
 
-                                </div>
+                                </div> */}
                               </div>
                             )}
                             {activeCategory === "ssd" && (
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Solid State Drive
-                                    </h6>
+                                    {/* <h6 className="subcategories">motherboard
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>memory</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/server-motherboards">Server Motherboards</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/laptop motherboards">Laptop Motherboards</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/dekstop-motherboards">Dekstop Motherboards</a></li>
+
                                     </ul>
                                   </div>
                                 </div>
 
                                 <div className="row border-top pt-3 mt-3">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/gaming-motherboards">Gaming Motherboards</a></li>
+
                                     </ul>
                                   </div>
-                                  <div className="col-md-4">
+                                  {/* <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu" >
                                       <li>Seagate</li>
@@ -444,7 +453,7 @@ const HeaderSix = () => {
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
+                                  </div> */}
 
                                 </div>
                               </div>
@@ -453,62 +462,51 @@ const HeaderSix = () => {
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Graphic Cards
-                                    </h6>
+                                    {/* <h6 className="subcategories">Gaming Devices
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>memory</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/barcode-printers">Barcode Printers</a></li>
+
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/pos-printers">POS Printers</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/office-printers">Office Printers</a></li>
+
                                     </ul>
                                   </div>
                                 </div>
 
                                 <div className="row border-top pt-3 mt-3">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/Card-printers">Card Printers</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/barcode-scanners">Barcode Scanners</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/sensors">Sensors</a></li>
+
                                     </ul>
                                   </div>
 
@@ -519,56 +517,46 @@ const HeaderSix = () => {
                               <div className="container gap-4">
                                 <div className="row">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Motherboards
-                                    </h6>
+                                    {/* <h6 className="subcategories"> PC & Servers
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>memory</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/servers">Servers</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Interface</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/workstations">Workstations</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/dekstops">Dekstops</a></li>
+
                                     </ul>
                                   </div>
                                 </div>
 
                                 <div className="row border-top pt-3 mt-3">
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/tablets">Tablets</a></li>
+
                                     </ul>
                                   </div>
                                   <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
                                     <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
+                                      <li><a href="/category/laptops">laptops</a></li>
+
                                     </ul>
                                   </div>
-                                  <div className="col-md-4">
+                                  {/* <div className="col-md-4">
                                     <h6 className="subcategories">Hard Drives By Brands</h6>
                                     <ul className="hovermenu">
                                       <li>Seagate</li>
@@ -576,11 +564,236 @@ const HeaderSix = () => {
                                       <li>Toshiba</li>
                                       <li>Samsung</li>
                                     </ul>
-                                  </div>
+                                  </div> */}
 
                                 </div>
                               </div>
                             )}
+
+                            {activeCategory === "powersupply" && (
+                              <div className="container gap-4">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories"> PC & Servers
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/power-supply">Power Supply</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/ups-accessories">UPS Accessories</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/ups-batteries">UPS Batteries</a></li>
+
+                                    </ul>
+                                  </div>
+                                </div>
+
+                                <div className="row border-top pt-3 mt-3">
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
+
+                                    </ul>
+                                  </div>
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/laptops">laptops</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu">
+                                      <li>Seagate</li>
+                                      <li>WD</li>
+                                      <li>Toshiba</li>
+                                      <li>Samsung</li>
+                                    </ul>
+                                  </div> */}
+
+                                </div>
+                              </div>
+                            )}
+
+                            {activeCategory === "cpusprosesors" && (
+                              <div className="container gap-4">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories"> PC & Servers
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/internal-processors">Internal Processors</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/amd-processors">AMD Processors</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Spindle
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/processors-board">Processors Board</a></li>
+
+                                    </ul>
+                                  </div>
+                                </div>
+
+                                <div className="row border-top pt-3 mt-3">
+                                  {/* <div className="col-md-4">
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/laptops">laptops</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu">
+                                      <li>Seagate</li>
+                                      <li>WD</li>
+                                      <li>Toshiba</li>
+                                      <li>Samsung</li>
+                                    </ul>
+                                  </div> */}
+
+                                </div>
+                              </div>
+                            )}
+
+                            {activeCategory === "cables" && (
+                              <div className="container gap-4">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories"> PC & Servers
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/adapters">Adapters</a></li>
+                                      <li><a href="/category/cables">Cables</a></li>
+
+
+                                    </ul>
+                                  </div>
+                                  {/* <div className="col-md-4">
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/cables">Cables</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/processors-board">Processors Board</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                </div>
+
+                                <div className="row border-top pt-3 mt-3">
+                                  {/* <div className="col-md-4">
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/laptops">laptops</a></li>
+
+                                    </ul>
+                                  </div> */}
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu">
+                                      <li>Seagate</li>
+                                      <li>WD</li>
+                                      <li>Toshiba</li>
+                                      <li>Samsung</li>
+                                    </ul>
+                                  </div> */}
+
+                                </div>
+                              </div>
+                            )}
+
+                            {activeCategory === "gaming" && (
+                              <div className="container gap-4">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories"> PC & Servers
+                                    </h6> */}
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/gaming-console">Gaming Console</a></li>
+
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/vr-headsets">VR Headsets</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/gaming-accessories">Gaming Accessories</a></li>
+
+                                    </ul>
+                                  </div>
+
+                                  
+                                </div>
+
+                                <div className="row border-top pt-3 mt-3">
+                                  <div className="col-md-4">
+                                    <ul className="hovermenu">
+                                      <li><a href="/category/playstations">Playstations</a></li>
+
+                                    </ul>
+                                  </div>
+                                  <div className="col-md-4">
+                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
+                                    <ul className="hovermenu" >
+                                      <li><a href="/category/xbox">Xbox</a></li>
+
+                                    </ul>
+                                  </div>
+                                  {/* <div className="col-md-4">
+                                    <h6 className="subcategories">Hard Drives By Brands</h6>
+                                    <ul className="hovermenu">
+                                      <li>Seagate</li>
+                                      <li>WD</li>
+                                      <li>Toshiba</li>
+                                      <li>Samsung</li>
+                                    </ul>
+                                  </div> */}
+
+                                </div>
+                              </div>
+                            )}
+
                           </div>
                         </div>
                       </div>

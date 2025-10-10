@@ -126,7 +126,7 @@ const HeaderLanguage = () => {
       <DropdownToggle
         caret
         color="transparent"
-        className="select-dropdown"
+        className="select-dropdown "
         type="button"
         id="select-language"
       >

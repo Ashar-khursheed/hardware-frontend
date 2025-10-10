@@ -41389,7 +41389,7 @@ width: 300px !important;
 
 
 .hero-banner-section {
-    background-image: url('/assets/images/mainb.webp');
+    background-image: url('/assets/images/mainbannernew.webp');
     /* Replace with actual path */
     background-size: cover;
     height: 500px !important;
@@ -41529,9 +41529,9 @@ button.dropdown-toggle.btn.btn-secondary {
 
 
 .colorful {
-    background-color: #ff5050 !important;
-    padding: 8px !important;
-    border-radius: 50px;
+    background-color: white !important;
+    padding: 0px !important;
+    /* border-radius: 0px; */
 }
 
 
@@ -41550,7 +41550,7 @@ button.dropdown-toggle.btn.btn-secondary {
 .menu-label {
     background-color: #ff5050;
     font-weight: bold;
-    padding: 16px;
+    padding: 16px 30px;
     display: inline-block;
     cursor: pointer;
 }
@@ -41899,4 +41899,163 @@ header .navbar.navbar-expand-xl .navbar-nav .nav-item.dropdown>a {
         color: black !important;
 
     }
+}
+
+
+/* colors */
+
+.ratio_square {
+    padding: 0 !important;
+}
+
+button.dropdown-toggle.btn.btn-secondary:hover {
+    color: black !important;
+}
+
+.product-pagination .pagination li a.active {
+    color: #ffffff;
+    font-weight: 500;
+    background-color: #ff5050 !important;
+    border-color: #ff5050 !important;
+}
+
+
+.collection-product-wrapper .product-top-filter .product-filter-content .collection-grid-view ul li.active,
+.collection-product-wrapper .product-top-filter .popup-filter .collection-grid-view ul li.active {
+    background-color: #ff5050 !important;
+    border-color: transparent;
+}
+
+
+.cart_qty_cls {
+    position: absolute;
+    background-color: #ff5050 !important;
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 600;
+    top: 20%;
+    right: -8px;
+    padding: 3px;
+}
+
+
+.add_to_cart .cart-inner .cart_media li .buttons a {
+    font-size: calc(14px + 4 * (100vw - 320px) / 1600);
+    border-radius: 0;
+    color: #ffffff;
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: all 0.25s ease-in-out;
+    width: 100%;
+    padding: calc(9px + 3 * (100vw - 320px) / 1600) calc(15px + 14 * (100vw - 320px) / 1600);
+    background-color: #ff5050 !important;
+    border: 1px solid #ff5050 !important;
+}
+
+
+
+.product-page-details .buy-button {
+    padding: calc(11px + 2 * (100vw - 320px) / 1600) calc(17px + 16 * (100vw - 320px) / 1600) !important;
+    font-size: calc(15px + 2 * (100vw - 320px) / 1600);
+    font-weight: 600;
+    text-transform: unset;
+    letter-spacing: unset;
+    background-color: #ff5050 !important;
+
+    border: 1px solid #ff5050 !important;
+}
+
+
+.product-page-details .buy-button:hover {
+    padding: calc(11px + 2 * (100vw - 320px) / 1600) calc(17px + 16 * (100vw - 320px) / 1600) !important;
+    font-size: calc(15px + 2 * (100vw - 320px) / 1600);
+    font-weight: 600;
+    text-transform: unset;
+    letter-spacing: unset;
+    font-family: 'Poppins', sans-serif !important;
+    color: #ff5050 !important;
+    background-color: white !important;
+    border: 1px solid #ff5050 !important;
+}
+
+
+
+
+.btn-solid.hover-solid:hover, .btn-solid.hover-solid:focus {
+    background-color: white !important;
+    opacity: 0.92;
+    color: #ffffff !important;
+    transition: none;
+}
+
+
+.product-pagination .pagination li.disabled.active .page-link {
+    color: #ffffff;
+
+    font-weight: 500;
+    background-color: #ff5050 !important;
+    border-color: #ff5050 !important;
+}
+
+
+
+.product-related {
+    margin-top: 30px !important;
+}
+
+
+
+.btn-solid {
+    padding: 13px 29px;
+    color: #fff;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--theme-color);
+    background-color: #ff5050 !important;
+    background-size: 850px;
+    background-repeat: no-repeat;
+    background-position: 0;
+    
+}
+
+.sticky-top-custom {
+    position: relative !important;
+    top: 0;
+    z-index: 1;
+}
+
+
+
+
+.product-page-per-view {
+    display: none !important;
+}
+
+.theme-form.search-box {
+    display: none !important;
+}
+
+
+.basic-product .price {
+    font-weight: 600 !important;
+}
+
+.product-detail a {
+    font-weight: 600 !important;
+}
+
+
+.category-link {
+  color: #000 !important; /* black text */
+  text-decoration: none; /* remove underline */
+}
+
+
+.category-link:hover {
+  color: white !important; /* black text */
+  text-decoration: none; /* remove underline */
 }
