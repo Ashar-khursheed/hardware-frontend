@@ -108,79 +108,180 @@ const FooterThree = () => {
 
             {/* Column 1 - Processors */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Processors</h4>
-              <p className="small text-white mb-1">Intel Xeon E5-2670</p>
-              <p className="small text-white mb-1">AMD Ryzen 7 5800X</p>
-              <p className="small text-white mb-1">Intel Core i9-10900K</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/storage-devices" className="text-white text-decoration-none">Storage Devices</a>
+              </h4>
+
+              <p className="small text-white mb-1">
+                <a href="/category/internal-hard-drives" className="text-white text-decoration-none">Internal Hard Drives</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/external-hard-drives" className="text-white text-decoration-none">External Hard Drives</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/ssds" className="text-white text-decoration-none">SSDs</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/storage-tapes" className="text-white text-decoration-none">Storage Tapes</a>
+              </p>
+
+              <p className="small text-white mb-1">
+                <a href="/category/storage-devices" className="text-white text-decoration-none">See More</a>
+              </p>
+
 
             </Col>
 
             {/* Column 2 - Network Devices */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Network Devices</h4>
-              <p className="small text-white mb-1">Cisco Router 2901</p>
-              <p className="small text-white mb-1">Netgear Switch 24-Port</p>
-              <p className="small text-white mb-1">Ubiquiti UniFi AP</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/memories" className="text-white text-decoration-none">Memories</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/desktop-memory" className="text-white text-decoration-none">Desktop Memory</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/server-memory" className="text-white text-decoration-none">Server Memory</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/laptop-memory" className="text-white text-decoration-none">Laptop Memory</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming-memory" className="text-white text-decoration-none">Gaming Memory</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/memories" className="text-white text-decoration-none">See More</a>
+              </p>
 
             </Col>
 
             {/* Column 3 - Power Supplies */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Power Supplies</h4>
-              <p className="small text-white mb-1">Corsair RM750x</p>
-              <p className="small text-white mb-1">EVGA 600 BR</p>
-              <p className="small text-white mb-1">Seasonic Focus GX-850</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/networking-devices" className="text-white text-decoration-none">Networking Devices</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/switches" className="text-white text-decoration-none">Switches</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/network-accessories" className="text-white text-decoration-none">Network & Accessories</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/ip-phones" className="text-white text-decoration-none">IP Phones</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/networking-devices" className="text-white text-decoration-none">See More</a>
+              </p>
+
 
             </Col>
 
             {/* Column 4 - Storage Devices */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Storage Devices</h4>
-              <p className="small text-white mb-1">Samsung 970 EVO Plus</p>
-              <p className="small text-white mb-1">WD Blue HDD 1TB</p>
-              <p className="small text-white mb-1">Seagate Barracuda 2TB</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/motherboards" className="text-white text-decoration-none">Motherboards</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/server-motherboards" className="text-white text-decoration-none">Server Motherboards</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/laptop-motherboards" className="text-white text-decoration-none">Laptop Motherboards</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/dekstop-motherboards" className="text-white text-decoration-none">Desktop Motherboards</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming-motherboards" className="text-white text-decoration-none">Gaming Motherboards</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/motherboards" className="text-white text-decoration-none">See More</a>
+              </p>
+
 
             </Col>
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Processors</h4>
-              <p className="small text-white mb-1">Intel Xeon E5-2670</p>
-              <p className="small text-white mb-1">AMD Ryzen 7 5800X</p>
-              <p className="small text-white mb-1">Intel Core i9-10900K</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/printer-scanners" className="text-white text-decoration-none">Printer & Scanners</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/barcode-printers" className="text-white text-decoration-none">Barcode Printers</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/pos-printers" className="text-white text-decoration-none">POS Printers</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/office-printers" className="text-white text-decoration-none">Office Printers</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/Sensors" className="text-white text-decoration-none">Sensors</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming-devices" className="text-white text-decoration-none">See More</a>
+              </p>
 
             </Col>
 
             {/* Column 2 - Network Devices */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Network Devices</h4>
-              <p className="small text-white mb-1">Cisco Router 2901</p>
-              <p className="small text-white mb-1">Netgear Switch 24-Port</p>
-              <p className="small text-white mb-1">Ubiquiti UniFi AP</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/pc-and-servers" className="text-white text-decoration-none">PC & Servers</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/servers" className="text-white text-decoration-none">Servers</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/workstations" className="text-white text-decoration-none">Workstations</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/dekstops" className="text-white text-decoration-none">Dekstops</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/pc-and-servers" className="text-white text-decoration-none">See More</a>
+              </p>
+
 
             </Col>
 
             {/* Column 3 - Power Supplies */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Power Supplies</h4>
-              <p className="small text-white mb-1">Corsair RM750x</p>
-              <p className="small text-white mb-1">EVGA 600 BR</p>
-              <p className="small text-white mb-1">Seasonic Focus GX-850</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/power-supply" className="text-white text-decoration-none">Power Supplies</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/power-supply" className="text-white text-decoration-none">Power Supply</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/ups-accessories" className="text-white text-decoration-none">UPS Accessories</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/ups-batteries" className="text-white text-decoration-none">UPS Batteries</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/power-distributions" className="text-white text-decoration-none">Power Distributions</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/power-supply" className="text-white text-decoration-none">See More</a>
+              </p>
 
             </Col>
 
             {/* Column 4 - Storage Devices */}
             <Col xs={12} md={6} lg={3}>
-              <h4 className="fw-bold text-white mb-3 text-uppercase">Storage Devices</h4>
-              <p className="small text-white mb-1">Samsung 970 EVO Plus</p>
-              <p className="small text-white mb-1">WD Blue HDD 1TB</p>
-              <p className="small text-white mb-1">Seagate Barracuda 2TB</p>
-              <p className="small text-white mb-1">See More</p>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/cpus-processors" className="text-white text-decoration-none">CPUs & Processors</a>
+              </h4>              <p className="small text-white mb-1">
+                <a href="/category/internal-processors" className="text-white text-decoration-none">Internal Processors</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/amd-processors" className="text-white text-decoration-none">AMD Processors</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/processors-board" className="text-white text-decoration-none">Processors Board</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/processors" className="text-white text-decoration-none">See More</a>
+              </p>
+
 
             </Col>
           </Row>

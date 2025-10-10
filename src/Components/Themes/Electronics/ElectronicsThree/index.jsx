@@ -252,7 +252,7 @@ const ElectronicsThree = () => {
                 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
                 Been The Industry’s Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley Of Type And Scrambled It...
               </p>
-              <a href="#" className="btn ">
+              <a href="/category/storage-devices" className="btn ">
                 Shop Now
               </a>
             </div>
@@ -279,7 +279,7 @@ const ElectronicsThree = () => {
 
       {/* Product List 1 */}
 
-      {/* 
+
       {data?.products_list_1?.status && (
         <>
           <style jsx global>{`
@@ -304,7 +304,38 @@ const ElectronicsThree = () => {
             </div>
           </WrapperComponent>
         </>
-      )} */}
+      )}
+
+
+
+      
+
+
+
+
+        {/* Category Product 1 */}
+      {/*{data?.category_product_1?.status && (
+        <WrapperComponent classes={{ sectionClass: "container" }} customCol={true}>
+          {data?.category_product_1?.categories?.status && (
+            <Col xl="2" className="d-xl-inline-block d-none">
+              <div className="left-header left-header-relative">
+                <div className="metro">
+                  <div className="main-menu">
+                    <div className="menu-left">
+                      <HomeCategorySidebar categoryIds={data?.category_product_1?.categories?.category_ids} style="vertical" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          )}
+          {data?.category_product_1?.products?.status && (
+            <div className={data?.category_product_1?.categories?.status ? "col-xl-10" : "col-xl-12"}>
+              <HomeProduct productIds={data?.category_product_1?.products?.product_ids || []} style="vertical" />
+            </div>
+          )}
+        </WrapperComponent>
+      )}
 
 
 
@@ -378,29 +409,7 @@ const ElectronicsThree = () => {
 
 
 
-      {/* Category Product 1 */}
-      {data?.category_product_1?.status && (
-        <WrapperComponent classes={{ sectionClass: "container" }} customCol={true}>
-          {data?.category_product_1?.categories?.status && (
-            <Col xl="2" className="d-xl-inline-block d-none">
-              <div className="left-header left-header-relative">
-                <div className="metro">
-                  <div className="main-menu">
-                    <div className="menu-left">
-                      <HomeCategorySidebar categoryIds={data?.category_product_1?.categories?.category_ids} style="vertical" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          )}
-          {data?.category_product_1?.products?.status && (
-            <div className={data?.category_product_1?.categories?.status ? "col-xl-10" : "col-xl-12"}>
-              <HomeProduct productIds={data?.category_product_1?.products?.product_ids || []} style="vertical" />
-            </div>
-          )}
-        </WrapperComponent>
-      )}
+    
       {/* Offer Banner 2 */}
       {/* Offer Banner 2 Styled Section */}
       {/* {data?.offer_banner_1?.status && (
@@ -453,7 +462,7 @@ const ElectronicsThree = () => {
 
 
       {/* Category Products 2 */}
-      {data?.category_product_2?.status && (
+      {/* {data?.category_product_2?.status && (
         <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section", fluidClass: "container" }} noRowCol={true}>
           <Row>
             <Col>
@@ -461,7 +470,7 @@ const ElectronicsThree = () => {
             </Col>
           </Row>
         </WrapperComponent>
-      )}
+      )} */}
 
 
 
@@ -480,13 +489,13 @@ const ElectronicsThree = () => {
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
                     <h3 className="text-black mb-5">Airpods Sale</h3>
-                    <a href="#" className="btn btn-primary d-inline-flex align-items-center">
+                    <a href="/category/gaming-console" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
                     </a>
                   </div>
                   <div className="col-8 image-div">
                     <img
-                      src="/assets/images/airpods.webp"
+                      src="/assets/images/airpodsnew.webp"
                       alt="Airpods"
                       className="img-fluid"
                       style={{ maxHeight: '620px' }}
@@ -504,13 +513,13 @@ const ElectronicsThree = () => {
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
                     <h3 className="text-black mb-5">Gaming Laptop</h3>
-                    <a href="#" className="btn btn-primary d-inline-flex align-items-center">
+                    <a href="/category/gaming-accessories" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
                     </a>
                   </div>
                   <div className="col-8 image-div">
                     <img
-                      src="/assets/images/gaminglaptop.webp"
+                      src="/assets/images/airpodtwo.webp"
                       alt="Airpods"
                       className="img-fluid"
                       style={{ maxHeight: '620px' }}
@@ -626,7 +635,7 @@ const ElectronicsThree = () => {
 
       {/* Category Products 2 */}
       {data?.category_product_2?.status && (
-        <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section p-0", fluidClass: "container" }} noRowCol={true}>
+        <WrapperComponent classes={{ sectionClass: "ratio_square p-0 m-0 bg-title wo-bg category-tab-section ", fluidClass: "container" }} noRowCol={true}>
           <Row>
             <Col>
               <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
@@ -671,7 +680,7 @@ const ElectronicsThree = () => {
               <p className="mt-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
               </p>
-              <a href="/shop" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
+              <a href="/category/memories" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
                 Shop Now
               </a>
             </div>
@@ -679,7 +688,7 @@ const ElectronicsThree = () => {
             {/* Right Image */}
             <div className="col-lg-6 text-end">
               <img
-                src="/assets/images/forabout.webp"  // Replace with your image path
+                src="/assets/images/aboutnew.webp"  // Replace with your image path
                 alt="Warehouse Worker with Tablet"
                 className="img-fluid"
                 style={{ maxHeight: '600px', objectFit: 'contain' }}
@@ -697,68 +706,53 @@ const ElectronicsThree = () => {
       {/* benfit section  */}
 
 
-      <section className="py-5 bg-light">
+      {/* <section className="py-5 bg-light">
         <div className="container">
           <div className="row align-items-start">
 
-            {/* Left Column – Direct Macro Benefits */}
             <div className="col-lg-4 mb-4 mb-lg-0">
-              <h3 className=" mb-4 text-black">DIRECT MACRO BENEFITS</h3>
+              <h3 className=" mb-4 text-black">HARDWARE BOX BENEFITS</h3>
 
-              {/* Benefit Items */}
               <div className="d-flex mb-3">
                 <div className="me-3">
                   <div className="colorful">
-                    <img src="/assets/images/benefitsec.png" alt="Save" width="40" />
+                    <img src="/assets/images/freedelivery.png" alt="Save" width="40" />
                   </div>
                 </div>
                 <div>
-                  <h5 className="fw-bold mb-1">SAVE 5%</h5>
-                  <p className="mb-0 small text-muted">When you use our bulk quote form.</p>
+                  <h5 className="fw-bold mb-1">FREE DELIVERY
+                  </h5>
+                  <p className="mb-0 small text-muted">Up to 8lbs</p>
                 </div>
               </div>
 
               <div className="d-flex mb-3">
                 <div className="me-3">
                   <div className="colorful">
-                    <img src="/assets/images/benefitsec1.png" alt="Genuine Products" width="40" />
+                    <img src="/assets/images/Securepayment.png" alt="Genuine Products" width="40" />
                   </div>
                 </div>
                 <div>
-                  <h5 className="fw-bold mb-1">GENUINE PRODUCTS</h5>
-                  <p className="mb-0 small text-muted">Direct from manufacturers.</p>
-                </div>
-              </div>
-
-              <div className="d-flex mb-3">
-                <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/benefitsec2.png" alt="Genuine Products" width="40" />
-                  </div>
-                </div>
-                <div>
-                  <h5 className="fw-bold mb-1">100% COMPATIBILITY</h5>
-                  <p className="mb-0 small text-muted">Guarantee</p>
+                  <h5 className="fw-bold mb-1">GENUINE SECURE PAYMENT</h5>
+                  <p className="mb-0 small text-muted">100% protected checkout</p>
                 </div>
               </div>
 
               <div className="d-flex">
                 <div className="me-3">
                   <div className="colorful">
-                    <img src="/assets/images/benefitsec3.png" alt="Genuine Products" width="40" />
+                    <img src="/assets/images/Return.png" alt="Genuine Products" width="40" />
                   </div>                  </div>
                 <div>
-                  <h5 className="fw-bold mb-1">FREE SHIPPING & EASY RETURNS</h5>
-                  <p className="mb-0 small text-muted">On every product</p>
+                  <h5 className="fw-bold mb-1">90 DAYS RETURN</h5>
+                  <p className="mb-0 small text-muted">On damaged units</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Column – SAM & D&B */}
             <div className="col-lg-8">
               <div className="bg-white border p-4 h-100">
                 <div className="row d-flex">
-                  {/* SAM Info */}
                   <div className="col-md-6 border-end gap-5 p-3 mb-4 mb-md-0 text-center text-md-start">
                     <img src="/assets/images/benefitsec4.webp" alt="SAM Logo" className="mb-5" height="60" />
                     <h3 className=" text-black">Verified Vendor of SAM.gov</h3>
@@ -771,7 +765,6 @@ const ElectronicsThree = () => {
                   </div>
 
 
-                  {/* D&B Info */}
                   <div className="col-md-6 p-3  text-center text-md-start">
                     <img src="/assets/images/benefitsec5.webp" alt="D&B Logo" className="mb-5" height="60" />
                     <h3 className=" text-black">D&B Rating</h3>
@@ -788,8 +781,101 @@ const ElectronicsThree = () => {
 
           </div>
         </div>
-      </section>
+      </section> */}
 
+
+
+      <section className="py-5 bg-light">
+        <div className="container">
+          <div className="row align-items-start">
+
+            {/* Left Column – Direct Macro Benefits */}
+            <div className="col-lg-4 mb-4 mb-lg-0">
+              <h3 className=" mb-4 text-black">HARDWARE BOX BENEFITS</h3>
+
+              {/* Benefit Items */}
+              <div className="d-flex mb-3">
+                <div className="me-3">
+                  <div className="colorful">
+                    <img src="/assets/images/new2.png" alt="Save" width="60" />
+                  </div>
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-1">FREE DELIVERY
+                  </h5>
+                  <p className="mb-0 small text-muted">Up to 8lbs</p>
+                </div>
+              </div>
+
+              <div className="d-flex mb-3">
+                <div className="me-3">
+                  <div className="colorful">
+                    <img src="/assets/images/BiJKSR.png" alt="Genuine Products" width="60" />
+                  </div>
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-1">GENUINE SECURE PAYMENT</h5>
+                  <p className="mb-0 small text-muted">100% protected checkout</p>
+                </div>
+              </div>
+
+              <div className="d-flex">
+                <div className="me-3">
+                  <div className="colorful">
+                    <img src="/assets/images/voyGMG.png" alt="Genuine Products" width="60" />
+                  </div>                  </div>
+                <div>
+                  <h5 className="fw-bold mb-1">90 DAYS RETURN</h5>
+                  <p className="mb-0 small text-muted">On damaged units</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column – SAM & D&B */}
+            <div className="col-lg-8">
+              <div className="bg-white border p-4 h-100">
+                <div className="row d-flex">
+                  {/* SAM Info */}
+                  <div className="col-md-6 d-flex align-items-center border-end    ">
+                    <div className="row gap-3">
+
+                      <div className="d-flex  align-items-center gap-4">
+                        <img src="/assets/images/govermentt.png" alt="SAM Logo" className="" height="60" />
+                        <h4 className=" text-black">Government Agencies</h4>
+                      </div>
+                      <div className="d-flex  align-items-center gap-4">
+                        <img src="/assets/images/banking.png" alt="SAM Logo" className="" height="60" />
+                        <h4 className=" text-black">Banking & Financial Services</h4>
+                      </div>
+
+                      <div className="d-flex  align-items-center gap-4">
+                        <img src="/assets/images/Education.png" alt="SAM Logo" className="" height="60" />
+                        <h4 className=" text-black">Universities & Research Institutions</h4>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  {/* D&B Info */}
+                  <div className="col-md-6 p-3  text-center text-md-start">
+                    {/* <img src="/assets/images/benefitsec5.webp" alt="D&B Logo" className="mb-5" height="60" /> */}
+                    <h3 className=" text-black">D&B Rating</h3>
+                    <p className="small mb-1">
+                      D-U-N-S® Number is: <span className="text-orange fw-semibold">117396845</span>
+                    </p>
+                    <p className="small text-muted mb-0">
+                      We are committed to providing our customers with top-quality computer accessories. Our Duns & Bradstreet rating is excellent and is a testament to our financial stability and strength in the industry.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
 
       {/* we are expert section */}
@@ -927,7 +1013,7 @@ const ElectronicsThree = () => {
             justifyContent: "center",
             alignItems: "center",
             // backgroundColor: "#3a1c71", // Deep purple tone
-            backgroundImage: "url('/assets/images/contactustoget.webp')", // Replace with your background image
+            backgroundImage: "url('/assets/images/newbannerimg.webp')", // Replace with your background image
             backgroundSize: "cover",
             objectFit: "cover",
             backgroundPosition: "center",
@@ -965,6 +1051,8 @@ const ElectronicsThree = () => {
         </div>
       </section >
       {/* request a quote section  */}
+
+
 
 
 

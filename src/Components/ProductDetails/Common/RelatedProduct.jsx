@@ -21,11 +21,11 @@ const RelatedProduct = ({ productState, customContainerClass }) => {
       }}
       noRowCol={true}
     >
-      <div className="product-related">
+      <div className="product-related mt-3 mb-3">
         <h2>{t("related_products")}</h2>
       </div>
       <div>
-        <Row className="row row-cols-xxl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-sm-4 g-3">
+        <Row className="row row-cols-xxl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 mb-3">
           {productState?.product?.related_products?.length && (
             <>
               {filterProduct?.map((product, i) => (
