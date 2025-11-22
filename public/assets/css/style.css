@@ -42631,3 +42631,8 @@ color: #0f1340 !important;
     align-content: space-between;
     flex-direction: column;
     }
+
+    header .navbar{
+
+        z-index: 0 !important;
+    }
