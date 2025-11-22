@@ -125,700 +125,697 @@ const HeaderSix = () => {
       <div className="bottom-part bottom-light">
         <Container>
           <Row>
-            <Col xl="2" className="position-relative">
-              <div className="category-menu d-none d-xl-block h-100">
-                {/* <div
-                  id="toggle-sidebar"
-                  className="toggle-sidebar"
-                  onClick={() => setOpenDropdown(!openDropdown)}
-                >
-                  <RiMenuLine className="sidebar-bar" />
-                  <h5 className="mb-0">{t("shop_by_category")}</h5>
-                </div> */}
-                <div className="container p-0">
-                  <div className="navbar">
-                    <div className="container p-0">
-                      <div className="menu-item">
-                        <span className="menu-label subcat">ALL CATEGORIES</span>
-                        <div className="mega-menu">
-                          {/* LEFT MENU */}
-                          <div className="menu-left">
-                            <ul>
-                              <li
-                                onMouseEnter={() => setActiveCategory("harddrives")}
-                                className={activeCategory === "harddrives" ? "active" : ""}
-                              >
-                                <a href="/category/storage-devices" className="category-link">Storage Devices</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("cpus")}
-                                className={activeCategory === "cpus" ? "active" : ""}
-                              >
-                                <a href="/category/memories" className="category-link">Memories</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("memory")}
-                                className={activeCategory === "memory" ? "active" : ""}
-                              >
-                                <a href="/category/networking-devices" className="category-link">Networking Devices</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("ssd")}
-                                className={activeCategory === "ssd" ? "active" : ""}
-                              >
-                                <a href="/category/motherboard" className="category-link">Motherboard</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("graphics")}
-                                className={activeCategory === "graphics" ? "active" : ""}
-                              >
-                                <a href="/category/printer-scanners" className="category-link">Printer & Scanners</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("motherboards")}
-                                className={activeCategory === "motherboards" ? "active" : ""}
-                              >
-                                <a href="/category/pc-and-servers" className="category-link">PC & Servers</a>
-                              </li>
-
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("powersupply")}
-                                className={activeCategory === "powersupply" ? "active" : ""}
-                              >
-                                <a href="/category/power-supply" className="category-link">Power Supply & Power Protection</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("cpusprosesors")}
-                                className={activeCategory === "cpusprosesors" ? "active" : ""}
-                              >
-                                <a href="/category/cpus-processors" className="category-link">CPUs & Processors</a>
-                              </li>
-
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("cables")}
-                                className={activeCategory === "cables" ? "active" : ""}
-                              >
-                                <a href="/category/cables-adapters" className="category-link">Cables & Adapters</a>
-                              </li>
-
-                              <li
-                                onMouseEnter={() => setActiveCategory("gaming")}
-                                className={activeCategory === "cables" ? "active" : ""}
-                              >
-                                <a href="/category/gaming" className="category-link">Gaming</a>
-                              </li>
-                            </ul>
-                          </div>
-
-                          {/* RIGHT PANEL */}
-                          <div className="menu-right rightpannel border-right flex-1  ">
-
-                            {activeCategory === "harddrives" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Internal Hard Drives</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/internal-hard-drives">Internal Hard Drives</a></li>
-                                      <li><a href="/category/external-hard-drives">External Hard Drives</a></li>
-
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">External Hard Drives</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/ssds">SSDS</a></li>
-                                      <li><a href="/category/storage-tapes">Storage Tapes</a></li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">SSDS
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/Network-Storage-Devices">Network Storage Device</a></li>
-                                      <li><a href="/category/Hard-Drives-Enclosures">Hard Drives Enclosures</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-6">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/Controllers">Controllers</a></li>
-                                      <li><a href="/category/Disc-Drives">Disc Drives</a></li>
-                                      {/* <li>Toshiba</li>
-                                      <li>Samsung</li> */}
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-6">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li>Controllers</li>
-                                      <li>Disc Drives</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-
-                            )}
-                            {activeCategory === "cpus" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">memories
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/Dekstop-Memory">Dekstop Memory</a></li>
-                                      <li><a href="/category/server-memory">Server Memory</a></li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptop-memory">Laptop Memory</a></li>
-                                      <li><a href="/category/gaming-memory">Gaming Memory</a></li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/flash-memory">Flash Memory</a></li>
-                                      <li><a href="/category/cache-memory">Cache Memory</a></li>
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/vrm">VRM</a></li>
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-                            {activeCategory === "memory" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Memory
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/switches">Switches</a></li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/network-accessories">Network & Accessories</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/ip-phones">IP Phones</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                {/* <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div>
-
-                                </div> */}
-                              </div>
-                            )}
-                            {activeCategory === "ssd" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">motherboard
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/server-motherboards">Server Motherboards</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptop motherboards">Laptop Motherboards</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/dekstop-motherboards">Dekstop Motherboards</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/gaming-motherboards">Gaming Motherboards</a></li>
-
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-                            {activeCategory === "graphics" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Gaming Devices
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/barcode-printers">Barcode Printers</a></li>
-
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/pos-printers">POS Printers</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/office-printers">Office Printers</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/Card-printers">Card Printers</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/barcode-scanners">Barcode Scanners</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/sensors">Sensors</a></li>
-
-                                    </ul>
-                                  </div>
-
-                                </div>
-                              </div>
-                            )}
-                            {activeCategory === "motherboards" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories"> PC & Servers
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/servers">Servers</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/workstations">Workstations</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/dekstops">Dekstops</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/tablets">Tablets</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptops">laptops</a></li>
-
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-
-                            {activeCategory === "powersupply" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories"> PC & Servers
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/power-supply">Power Supply</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/ups-accessories">UPS Accessories</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/ups-batteries">UPS Batteries</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
-
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptops">laptops</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-
-                            {activeCategory === "cpusprosesors" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories"> PC & Servers
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/internal-processors">Internal Processors</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Interface</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/amd-processors">AMD Processors</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Spindle
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/processors-board">Processors Board</a></li>
-
-                                    </ul>
-                                  </div>
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  {/* <div className="col-md-4">
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptops">laptops</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-
-                            {activeCategory === "cables" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories"> PC & Servers
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/adapters">Adapters</a></li>
-                                      <li><a href="/category/cables">Cables</a></li>
-
-
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/cables">Cables</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/processors-board">Processors Board</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  {/* <div className="col-md-4">
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/power-distributions">Power Distributions</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/laptops">laptops</a></li>
-
-                                    </ul>
-                                  </div> */}
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-
-                            {activeCategory === "gaming" && (
-                              <div className="container gap-4">
-                                <div className="row">
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories"> PC & Servers
-                                    </h6> */}
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/gaming-console">Gaming Console</a></li>
-
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/vr-headsets">VR Headsets</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/gaming-accessories">Gaming Accessories</a></li>
-
-                                    </ul>
-                                  </div>
-
-                                  
-                                </div>
-
-                                <div className="row border-top pt-3 mt-3">
-                                  <div className="col-md-4">
-                                    <ul className="hovermenu">
-                                      <li><a href="/category/playstations">Playstations</a></li>
-
-                                    </ul>
-                                  </div>
-                                  <div className="col-md-4">
-                                    {/* <h6 className="subcategories">Hard Drives By Brands</h6> */}
-                                    <ul className="hovermenu" >
-                                      <li><a href="/category/xbox">Xbox</a></li>
-
-                                    </ul>
-                                  </div>
-                                  {/* <div className="col-md-4">
-                                    <h6 className="subcategories">Hard Drives By Brands</h6>
-                                    <ul className="hovermenu">
-                                      <li>Seagate</li>
-                                      <li>WD</li>
-                                      <li>Toshiba</li>
-                                      <li>Samsung</li>
-                                    </ul>
-                                  </div> */}
-
-                                </div>
-                              </div>
-                            )}
-
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="sidenav fixed-sidebar marketplace-sidebar svg-icon-menu"
-                style={{ display: openDropdown ? "block" : "none" }}
-              >
-                <nav>
-                  <ul>
-                    {categories?.map((item, i) => (
-                      <li key={i} onClick={() => setActiveCategory(item?.name)}>
-                        <Link href={`/category/${item?.slug}`} legacyBehavior>
-                          <a>{item?.name}</a>
-                        </Link>
-                      </li>
-                    ))}
+           
+            {/* 
+  ========================================
+  REPLACE THIS SECTION IN YOUR HeaderSix.jsx
+  Find: <Col xl="2" className="position-relative">
+  Replace the entire content inside with this code
+  ========================================
+*/}
+
+     <Col xxl="2" xl="3" lg="3" md="4" sm="4" className="position-relative">
+
+        <div className="category-menu d-none d-xl-block h-100">
+          <div className="category-dropdown-wrapper">
+            {/* Trigger Button */}
+            <div className="category-trigger">
+              <RiMenuLine className="trigger-icon" />
+              <span className="trigger-text">ALL CATEGORIES</span>
+              <svg className="trigger-arrow" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              </svg>
+            </div>
+
+            {/* Mega Menu Dropdown */}
+            <div className="mega-menu-dropdown">
+              <div className="mega-menu-inner">
+                {/* Left Categories Panel */}
+                <div className="categories-panel">
+                  <ul className="category-list">
+                    <li
+                      onMouseEnter={() => setActiveCategory("harddrives")}
+                      className={`category-item ${activeCategory === "harddrives" ? "active" : ""}`}
+                    >
+                      <Link href="/category/storage-devices" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="2" y="4" width="20" height="16" rx="2"/>
+                          <path d="M6 8h.01M6 12h.01M6 16h.01"/>
+                        </svg>
+                        <span>Storage Devices</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("cpus")}
+                      className={`category-item ${activeCategory === "cpus" ? "active" : ""}`}
+                    >
+                      <Link href="/category/memories" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="4" y="4" width="16" height="16" rx="1"/>
+                          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+                        </svg>
+                        <span>Memories</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("memory")}
+                      className={`category-item ${activeCategory === "memory" ? "active" : ""}`}
+                    >
+                      <Link href="/category/networking-devices" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="9" y="2" width="6" height="6" rx="1"/>
+                          <rect x="2" y="16" width="6" height="6" rx="1"/>
+                          <rect x="16" y="16" width="6" height="6" rx="1"/>
+                          <path d="M12 8v4M5 16v-2a2 2 0 012-2h10a2 2 0 012 2v2"/>
+                        </svg>
+                        <span>Networking Devices</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("ssd")}
+                      className={`category-item ${activeCategory === "ssd" ? "active" : ""}`}
+                    >
+                      <Link href="/category/motherboard" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="2" y="2" width="20" height="20" rx="2"/>
+                          <rect x="6" y="6" width="4" height="4"/>
+                          <rect x="14" y="6" width="4" height="4"/>
+                          <rect x="6" y="14" width="4" height="4"/>
+                          <path d="M14 14h4v4"/>
+                        </svg>
+                        <span>Motherboard</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("graphics")}
+                      className={`category-item ${activeCategory === "graphics" ? "active" : ""}`}
+                    >
+                      <Link href="/category/printer-scanners" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 9V2h12v7"/>
+                          <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+                          <rect x="6" y="14" width="12" height="8"/>
+                        </svg>
+                        <span>Printer & Scanners</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("motherboards")}
+                      className={`category-item ${activeCategory === "motherboards" ? "active" : ""}`}
+                    >
+                      <Link href="/category/pc-and-servers" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="2" y="2" width="20" height="8" rx="2"/>
+                          <rect x="2" y="14" width="20" height="8" rx="2"/>
+                          <path d="M6 6h.01M6 18h.01"/>
+                        </svg>
+                        <span>PC & Servers</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("powersupply")}
+                      className={`category-item ${activeCategory === "powersupply" ? "active" : ""}`}
+                    >
+                      <Link href="/category/power-supply" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        <span>Power Supply & Protection</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("cpusprosesors")}
+                      className={`category-item ${activeCategory === "cpusprosesors" ? "active" : ""}`}
+                    >
+                      <Link href="/category/cpus-processors" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="4" y="4" width="16" height="16" rx="2"/>
+                          <rect x="9" y="9" width="6" height="6"/>
+                          <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+                        </svg>
+                        <span>CPUs & Processors</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("cables")}
+                      className={`category-item ${activeCategory === "cables" ? "active" : ""}`}
+                    >
+                      <Link href="/category/cables-adapters" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M8 2v4M16 2v4M3 10h18M8 14v4M16 14v4M12 6v4"/>
+                        </svg>
+                        <span>Cables & Adapters</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
+                      onMouseEnter={() => setActiveCategory("gaming")}
+                      className={`category-item ${activeCategory === "gaming" ? "active" : ""}`}
+                    >
+                      <Link href="/category/gaming" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M6 12h4M8 10v4"/>
+                          <circle cx="17" cy="10" r="1"/>
+                          <circle cx="15" cy="14" r="1"/>
+                          <rect x="2" y="6" width="20" height="12" rx="2"/>
+                        </svg>
+                        <span>Gaming</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
                   </ul>
-                </nav>
-              </div>
-            </Col>
+                </div>
 
+                {/* Right Subcategories Panel */}
+                <div className="subcategories-panel">
+                  {activeCategory === "harddrives" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Storage Devices</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/internal-hard-drives" className="subcategory-item">
+                          <span className="dot"></span>Internal Hard Drives
+                        </Link>
+                        <Link href="/category/external-hard-drives" className="subcategory-item">
+                          <span className="dot"></span>External Hard Drives
+                        </Link>
+                        <Link href="/category/ssds" className="subcategory-item">
+                          <span className="dot"></span>SSDs
+                        </Link>
+                        <Link href="/category/storage-tapes" className="subcategory-item">
+                          <span className="dot"></span>Storage Tapes
+                        </Link>
+                        <Link href="/category/Network-Storage-Devices" className="subcategory-item">
+                          <span className="dot"></span>Network Storage Device
+                        </Link>
+                        <Link href="/category/Hard-Drives-Enclosures" className="subcategory-item">
+                          <span className="dot"></span>Hard Drive Enclosures
+                        </Link>
+                        <Link href="/category/Controllers" className="subcategory-item">
+                          <span className="dot"></span>Controllers
+                        </Link>
+                        <Link href="/category/Disc-Drives" className="subcategory-item">
+                          <span className="dot"></span>Disc Drives
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/storage-devices" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "cpus" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Memories</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/Dekstop-Memory" className="subcategory-item">
+                          <span className="dot"></span>Desktop Memory
+                        </Link>
+                        <Link href="/category/server-memory" className="subcategory-item">
+                          <span className="dot"></span>Server Memory
+                        </Link>
+                        <Link href="/category/laptop-memory" className="subcategory-item">
+                          <span className="dot"></span>Laptop Memory
+                        </Link>
+                        <Link href="/category/gaming-memory" className="subcategory-item">
+                          <span className="dot"></span>Gaming Memory
+                        </Link>
+                        <Link href="/category/flash-memory" className="subcategory-item">
+                          <span className="dot"></span>Flash Memory
+                        </Link>
+                        <Link href="/category/cache-memory" className="subcategory-item">
+                          <span className="dot"></span>Cache Memory
+                        </Link>
+                        <Link href="/category/vrm" className="subcategory-item">
+                          <span className="dot"></span>VRM
+                        </Link>
+                      </div>
+                        <div className="promo-banner-wrapper">
+                          <Link href="/category/memories" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "memory" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Networking Devices</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/switches" className="subcategory-item">
+                          <span className="dot"></span>Switches
+                        </Link>
+                        <Link href="/category/network-accessories" className="subcategory-item">
+                          <span className="dot"></span>Network & Accessories
+                        </Link>
+                        <Link href="/category/ip-phones" className="subcategory-item">
+                          <span className="dot"></span>IP Phones
+                        </Link>
+                      </div>
+                         <div className="promo-banner-wrapper">
+                          <Link href="/category/networking-devices" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "ssd" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Motherboard</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/server-motherboards" className="subcategory-item">
+                          <span className="dot"></span>Server Motherboards
+                        </Link>
+                        <Link href="/category/laptop-motherboards" className="subcategory-item">
+                          <span className="dot"></span>Laptop Motherboards
+                        </Link>
+                        <Link href="/category/dekstop-motherboards" className="subcategory-item">
+                          <span className="dot"></span>Desktop Motherboards
+                        </Link>
+                        <Link href="/category/gaming-motherboards" className="subcategory-item">
+                          <span className="dot"></span>Gaming Motherboards
+                        </Link>
+                      </div>
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/motherboard" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "graphics" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Printer & Scanners</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/barcode-printers" className="subcategory-item">
+                          <span className="dot"></span>Barcode Printers
+                        </Link>
+                        <Link href="/category/pos-printers" className="subcategory-item">
+                          <span className="dot"></span>POS Printers
+                        </Link>
+                        <Link href="/category/office-printers" className="subcategory-item">
+                          <span className="dot"></span>Office Printers
+                        </Link>
+                        <Link href="/category/Card-printers" className="subcategory-item">
+                          <span className="dot"></span>Card Printers
+                        </Link>
+                        <Link href="/category/barcode-scanners" className="subcategory-item">
+                          <span className="dot"></span>Barcode Scanners
+                        </Link>
+                        <Link href="/category/sensors" className="subcategory-item">
+                          <span className="dot"></span>Sensors
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/printer-scanners" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "motherboards" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>PC & Servers</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/servers" className="subcategory-item">
+                          <span className="dot"></span>Servers
+                        </Link>
+                        <Link href="/category/workstations" className="subcategory-item">
+                          <span className="dot"></span>Workstations
+                        </Link>
+                        <Link href="/category/dekstops" className="subcategory-item">
+                          <span className="dot"></span>Desktops
+                        </Link>
+                        <Link href="/category/tablets" className="subcategory-item">
+                          <span className="dot"></span>Tablets
+                        </Link>
+                        <Link href="/category/laptops" className="subcategory-item">
+                          <span className="dot"></span>Laptops
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/pc-and-servers" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "powersupply" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Power Supply & Protection</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/power-supply" className="subcategory-item">
+                          <span className="dot"></span>Power Supply
+                        </Link>
+                        <Link href="/category/ups-accessories" className="subcategory-item">
+                          <span className="dot"></span>UPS Accessories
+                        </Link>
+                        <Link href="/category/ups-batteries" className="subcategory-item">
+                          <span className="dot"></span>UPS Batteries
+                        </Link>
+                        <Link href="/category/power-distributions" className="subcategory-item">
+                          <span className="dot"></span>Power Distributions
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/power-supply" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "cpusprosesors" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>CPUs & Processors</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/internal-processors" className="subcategory-item">
+                          <span className="dot"></span>Internal Processors
+                        </Link>
+                        <Link href="/category/amd-processors" className="subcategory-item">
+                          <span className="dot"></span>AMD Processors
+                        </Link>
+                        <Link href="/category/processors-board" className="subcategory-item">
+                          <span className="dot"></span>Processor Boards
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/cpus-processors" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "cables" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Cables & Adapters</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/adapters" className="subcategory-item">
+                          <span className="dot"></span>Adapters
+                        </Link>
+                        <Link href="/category/cables" className="subcategory-item">
+                          <span className="dot"></span>Cables
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/cables-adapters" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "gaming" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>Gaming</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/gaming-console" className="subcategory-item">
+                          <span className="dot"></span>Gaming Console
+                        </Link>
+                        <Link href="/category/vr-headsets" className="subcategory-item">
+                          <span className="dot"></span>VR Headsets
+                        </Link>
+                        <Link href="/category/gaming-accessories" className="subcategory-item">
+                          <span className="dot"></span>Gaming Accessories
+                        </Link>
+                        <Link href="/category/playstations" className="subcategory-item">
+                          <span className="dot"></span>PlayStation
+                        </Link>
+                        <Link href="/category/xbox" className="subcategory-item">
+                          <span className="dot"></span>Xbox
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/gaming" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+
+
+                    </div>
+                  )}
+                </div>
+
+              </div>
+
+              {/* Promo Banner */}
+              <div className="mega-menu-footer">
+                🔥 Free shipping on orders over $99 — Shop our best deals today!
+              </div>
+            </div>
+          </div>
+        </div>
+      </Col>              
             <Col xxl="6" xl="9" className=" position-unset">
               <div className="main-nav-center main-navbar text-start">
                 <div id="mainnav">

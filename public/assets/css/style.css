@@ -42059,3 +42059,575 @@ button.dropdown-toggle.btn.btn-secondary:hover {
   color: white !important; /* black text */
   text-decoration: none; /* remove underline */
 }
+
+/* 
+  ========================================
+  MEGA MENU STYLES
+  Add this to your global CSS/SCSS file
+  ========================================
+*/
+
+/* Category Dropdown Wrapper */
+.category-dropdown-wrapper {
+  position: relative;
+  height: 100%;
+}
+
+/* Trigger Button */
+.category-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0f1340 0%, #0f1340 100%);
+  color: white;
+  padding: 14px 20px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px 8px 0 0;
+}
+
+.category-trigger:hover {
+  background: linear-gradient(135deg, #0f1340 0%, #0f1340  100%);
+}
+
+.category-trigger .trigger-icon {
+  font-size: 18px;
+}
+
+.category-trigger .trigger-text {
+  flex: 1;
+}
+
+.category-trigger .trigger-arrow {
+  transition: transform 0.3s ease;
+}
+
+.category-dropdown-wrapper:hover .trigger-arrow {
+  transform: rotate(180deg);
+}
+
+/* Mega Menu Dropdown */
+.mega-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 1000px;
+  background: #ffffff;
+  border-radius: 0 12px 12px 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.category-dropdown-wrapper:hover .mega-menu-dropdown {
+        padding-top: 15px;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Inner Layout */
+.mega-menu-inner {
+  display: flex;
+  min-height: 420px;
+}
+
+/* Left Categories Panel */
+.categories-panel {
+  width: 280px;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-right: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.category-list {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.category-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.category-item .category-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.category-item .category-link:hover,
+.category-item.active .category-link {
+  color: #000 !important;
+  background: white;
+}
+
+.category-item .cat-icon {
+  color: #94a3b8;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.category-item:hover .cat-icon,
+.category-item.active .cat-icon {
+  color: #0f1340;
+}
+
+.category-item .category-link span {
+  flex: 1;
+color: #0f1340 !important;
+}
+.category-item .category-link span:hover {
+  flex: 1;
+  color: #0f1340 !important;
+}
+.category-item .arrow-icon {
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.category-item:hover .arrow-icon,
+.category-item.active .arrow-icon {
+  color: #0f1340;
+  transform: translateX(3px);
+}
+
+/* Active Indicator Bar */
+.category-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, #0f1340 0%, #0f1340 100%);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Right Subcategories Panel */
+.subcategories-panel {
+  flex: 1;
+  padding: 24px 28px;
+  background: white;
+  overflow-y: auto;
+}
+
+.subcategory-content {
+  animation: fadeSlideIn 0.25s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.subcategory-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.subcategory-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Subcategory Grid */
+.subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px 24px;
+}
+
+.subcategory-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: #64748b;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.subcategory-item:hover {
+  color: #0f1340;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.subcategory-item .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.subcategory-item:hover .dot {
+  background: #0f1340;
+  transform: scale(1.3);
+}
+
+/* Promo Footer Banner */
+.mega-menu-footer {
+  background: linear-gradient(135deg, #0f1340 0%, #0f1340 100%);
+  color: white;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Large screens - adjust width */
+@media (max-width: 1400px) {
+  .mega-menu-dropdown {
+    width: 800;
+  }
+  
+  .categories-panel {
+    width: 250px;
+  }
+  
+  .subcategory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Hide on tablet and below - your existing mobile menu handles this */
+@media (max-width: 1199px) {
+  .category-dropdown-wrapper {
+    display: none;
+  }
+}
+
+/* ========================================
+   MOBILE MENU ENHANCEMENT (Optional)
+   Add these if you want to style mobile menu
+   ======================================== */
+
+@media (max-width: 1199px) {
+  .mobile-category-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85%;
+    max-width: 360px;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+  
+  .mobile-category-menu.open {
+    transform: translateX(0);
+  }
+  
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #0f1340 0%, #0f1340 100%);
+    color: white;
+  }
+  
+  .mobile-menu-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .mobile-category-item {
+    border-bottom: 1px solid #f1f5f9;
+  }
+  
+  .mobile-category-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .mobile-category-trigger svg {
+    color: #0f1340;
+  }
+  
+  .mobile-category-trigger span {
+    flex: 1;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .mobile-category-trigger .chevron {
+    color: #9ca3af;
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-category-item.expanded .chevron {
+    transform: rotate(180deg);
+  }
+  
+  .mobile-subcategories {
+    background: #f8fafc;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  
+  .mobile-category-item.expanded .mobile-subcategories {
+    max-height: 500px;
+  }
+  
+  .mobile-subcategory-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px 12px 52px;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .mobile-subcategory-link:hover {
+    color: #0f1340;
+  }
+  
+  .mobile-subcategory-link .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #0f1340;
+  }
+  
+  .mobile-menu-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ========================================
+   DARK MODE SUPPORT (Optional)
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  /* Uncomment if you want dark mode support
+  .mega-menu-dropdown {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .categories-panel {
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    border-color: #334155;
+  }
+  
+  .category-item .category-link {
+    color: #cbd5e1;
+  }
+  
+  .category-item .category-link:hover,
+  .category-item.active .category-link {
+    background: #334155;
+  }
+  
+  .subcategories-panel {
+    background: #1e293b;
+  }
+  
+  .subcategory-header h4 {
+    color: #f1f5f9;
+  }
+  
+  .subcategory-header {
+    border-color: #334155;
+  }
+  
+  .subcategory-item {
+    color: #94a3b8;
+  }
+  
+  .subcategory-item:hover {
+    background: rgba(16, 185, 129, 0.15);
+  }
+  */
+}
+
+
+  /* ========================================
+           PROMOTIONAL BANNER STYLES
+           ======================================== */
+
+    .promo-banner-wrapper {
+        margin-top: auto;
+        padding-top: 40px;
+    }
+
+    .promo-banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        border-radius: 16px;
+        padding: 24px 28px;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        min-height: 140px;
+    }
+
+    .promo-banner::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: linear-gradient(135deg, transparent 40%, rgba(16, 185, 129, 0.1) 50%, transparent 60%);
+        transform: rotate(25deg);
+        transition: all 0.5s ease;
+    }
+
+    .promo-banner:hover::before {
+        right: -30%;
+    }
+
+    .promo-banner:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.2);
+    }
+
+    .promo-banner-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .promo-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    .promo-title {
+        color: white;
+        font-size: 24px;
+        font-weight: 800;
+        margin: 0 0 4px 0;
+        line-height: 1.2;
+    }
+
+    .promo-subtitle {
+        color: #94a3b8;
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 0 12px 0;
+    }
+
+    .promo-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #10b981;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .promo-banner:hover .promo-cta {
+        gap: 10px;
+    }
+
+    .promo-cta svg {
+        transition: transform 0.2s ease;
+    }
+
+    .promo-banner:hover .promo-cta svg {
+        transform: translateX(3px);
+    }
+
+    .promo-banner-graphic {
+        position: relative;
+        z-index: 1;
+        color: #10b981;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+    }
+
+    .promo-banner:hover .promo-banner-graphic {
+        opacity: 0.8;
+        transform: rotate(10deg) scale(1.05);
+    }
+
+    /* Promo Footer Banner */
+    .mega-menu-footer {
+        background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+        color: white;
+        padding: 12px 24px;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .subcategory-content{
+            height: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    }
