@@ -22616,7 +22616,9 @@ header.stickycls {
 .stickyCart .sticky-bottom-cart {
     bottom: 0;
     -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease
+    transition: all 0.5s ease;
+        padding-left: 30px;
+    padding-right: 30px;
 }
 
 .stickyCart .recently-purchase.show {
