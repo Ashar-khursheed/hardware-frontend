@@ -5,7 +5,7 @@ const Loader = ({ classes }) => {
     <div className={`loader-wrapper ${classes ? classes : ""}`}>
       <div>
         <div className="loader" />
-        <h3>Loading</h3>
+        {/* <h3>Loading</h3> */}
       </div>
     </div>
   );
