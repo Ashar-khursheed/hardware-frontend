@@ -57,10 +57,10 @@ const WishlistCompareShare = ({ productState }) => {
           {productWishlist ? <RiHeartFill /> : <RiHeartLine />}
           <span>{t("add_to_wishlist")}</span>
         </a>
-        <a onClick={addToCompare}>
+        {/* <a onClick={addToCompare}>
           <RiRefreshLine />
           <span>{t("add_to_compare")}</span>
-        </a>
+        </a> */}
         {productState?.product?.social_share ? (
           <a onClick={() => setModal(true)}>
             <RiShareLine />

@@ -20,12 +20,26 @@ const HeaderSix = () => {
     useContext(ThemeOptionContext);
   const router = useRouter();
   const isAuthenticated = Cookies.get("uat_multikart");
-  const handleProfileClick = (path) => {
-    isAuthenticated ? router.push(path) : setOpenAuthModal(true);
-  };
-  const handleWishlistClick = () => {
-    isAuthenticated ? router.push("/wishlist") : setOpenAuthModal(true);
-  };
+   const handleProfileClick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (isAuthenticated) {
+        router.push("/account/dashboard");
+      } else {
+        setOpenAuthModal(true);
+      }
+    };
+
+   
+    const handleWishlistClick = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (isAuthenticated) {
+        router.push("/wishlist");
+      } else {
+        setOpenAuthModal(true);
+      }
+    };
   const { t } = useTranslation("common");
   const [activeCategory, setActiveCategory] = useState("harddrives");
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -86,7 +100,39 @@ const HeaderSix = () => {
             <div>
               <HeaderSearchbar fullSearch={true} />
             </div>
-            <div className="menu-right pull-right">
+              <div className="menu-right pull-right">
+            <div>
+              <div className="icon-nav">
+                <ul>
+                  {/* Wishlist Icon */}
+                  <li className="onhover-div">
+                    <div 
+                      onClick={handleWishlistClick}
+                      style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                    >
+                      <RiHeartLine />
+                    </div>
+                  </li>
+                  
+                  {/* Cart Icon */}
+                  <li className="onhover-div">
+                    <HeaderCart />
+                  </li>
+                  
+                  {/* User Icon */}
+                  <li className="onhover-div">
+                    <div 
+                      onClick={handleProfileClick}
+                      style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                    >
+                      <RiUserLine />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+  </div>
+            {/* <div className="menu-right pull-right">
               <div>
                 <div className="icon-nav">
                   <ul>
@@ -94,6 +140,7 @@ const HeaderSix = () => {
                       <Link
                         href={isAuthenticated ? "/wishlist" : Href}
                         onClick={handleWishlistClick}
+                        style={{ cursor: 'pointer' }}
                         legacyBehavior
                       >
                         <RiHeartLine />
@@ -108,6 +155,8 @@ const HeaderSix = () => {
                           isAuthenticated ? "/account/dashboard" : Href
                         }
                         onClick={handleProfileClick}
+                        style={{ cursor: 'pointer' }}
+
                         legacyBehavior
                       >
                         <RiUserLine />
@@ -116,7 +165,7 @@ const HeaderSix = () => {
                   </ul>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </Col>
       </Container>

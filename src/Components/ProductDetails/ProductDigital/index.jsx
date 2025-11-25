@@ -53,7 +53,7 @@ const ProductDigital = ({ productState, setProductState }) => {
   return (
     <WrapperComponent classes={{ sectionClass: "product-section section-b-space theme-product-section", row: "g-4" }} customCol={true}>
       <Col xl={8} lg={7}>
-        <DigitalImage productState={productState} />
+        {/* <DigitalImage productState={productState} /> */}
       </Col>
       <Col xl={4} lg={5} className="vendor-right-box">
         <div className="right-box-contain">
@@ -72,10 +72,10 @@ const ProductDigital = ({ productState, setProductState }) => {
                 <span>{t("add_to_wishlist")}</span>
               </a>
 
-              <a onClick={() => addToCompare()}>
+              {/* <a onClick={() => addToCompare()}>
                 <RiShuffleLine />
                 <span>{t("add_to_compare")}</span>
-              </a>
+              </a> */}
             </div>
 
             <div className="pickup-box">

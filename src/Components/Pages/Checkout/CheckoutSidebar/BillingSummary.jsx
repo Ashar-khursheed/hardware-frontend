@@ -20,8 +20,13 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
     <div className="checkout-details ">
       {cartProducts?.length > 0 ? (
         <div className="order-box">
-          <div className="title-box">
+          
+          <div className="checkout-section">
+             <div className="checkout-section-header">
+            <span className="step-number">5</span>
             <h4>{t("billing_summary")}</h4>
+          </div>
+           
             {access_token && <ApplyCoupon values={values} setFieldValue={setFieldValue} data={data} storeCoupon={storeCoupon} setStoreCoupon={setStoreCoupon} errorCoupon={errorCoupon} appliedCoupon={appliedCoupon} setAppliedCoupon={setAppliedCoupon} mutate={mutate} isLoading={isLoading} />}
           </div>
           <div>

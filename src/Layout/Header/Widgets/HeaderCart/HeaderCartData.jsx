@@ -152,7 +152,14 @@ const HeaderCartData = () => {
   return (
     <>
       <div id="cart_side" className={`${cartCanvas ? "open-side" : ""} ${cartStyle === "cart_mini" ? "show-div shopping-cart" : "add_to_cart right right-cart-box"}`}>
-        <a href={Href} className="overlay" onClick={() => setCartCanvas(false)} />
+       <div 
+          className="overlay" 
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setCartCanvas(false);
+          }} 
+        />
         <div className="cart-inner">
           <div className="cart_top">
             <h3>

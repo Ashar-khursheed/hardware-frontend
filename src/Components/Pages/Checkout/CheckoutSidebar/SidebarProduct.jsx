@@ -11,11 +11,16 @@ const SidebarProduct = ({ values }) => {
   const { convertCurrency } = useContext(SettingContext);
   return (
     <div className="checkout-details">
-      <div className="order-box">
-        <div className="title-box">
+      <div className="checkout-section">
+        {/* <div className="title-box">
+          <span className="step-number">4</span>
           <h4>{t("summary_order")}</h4>
           <p>{t("verify_shipping_option_desc")}</p>
-        </div>
+        </div> */}
+         <div className="checkout-section-header">
+        <span className="step-number">4</span>
+        <h4>{t("summary_order")}</h4>
+      </div>
         <ul className="qty">
           {cartProducts?.map((item, i) => (
             <li key={i}>

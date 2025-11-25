@@ -93,7 +93,7 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
 
   return (
     <>
-      <Col lg="5">
+      <Col lg="12">
         {cartProducts?.length > 0 ? (
           <div className="checkout-right-box">
             <SidebarProduct values={values} setFieldValue={setFieldValue} />
