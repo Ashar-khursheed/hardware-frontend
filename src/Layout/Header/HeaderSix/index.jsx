@@ -197,7 +197,7 @@ const HeaderSix = () => {
             </div>
 
             {/* Mega Menu Dropdown */}
-            <div className="mega-menu-dropdown">
+           <div className="mega-menu-dropdown">
               <div className="mega-menu-inner">
                 {/* Left Categories Panel */}
                 <div className="categories-panel">
@@ -338,6 +338,22 @@ const HeaderSix = () => {
                     </li>
 
                     <li
+                      onMouseEnter={() => setActiveCategory("gpus")}
+                      className={`category-item ${activeCategory === "gpus" ? "active" : ""}`}
+                    >
+                      <Link href="/category/gpus" className="category-link">
+                        <svg className="cat-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="2" y="6" width="20" height="12" rx="2"/>
+                          <path d="M6 10h4M6 14h4M14 10h4M14 14h4"/>
+                        </svg>
+                        <span>GPUs</span>
+                        <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                      </Link>
+                    </li>
+
+                    <li
                       onMouseEnter={() => setActiveCategory("cables")}
                       className={`category-item ${activeCategory === "cables" ? "active" : ""}`}
                     >
@@ -389,20 +405,17 @@ const HeaderSix = () => {
                         <Link href="/category/ssds" className="subcategory-item">
                           <span className="dot"></span>SSDs
                         </Link>
-                        <Link href="/category/storage-tapes" className="subcategory-item">
-                          <span className="dot"></span>Storage Tapes
+                        <Link href="/category/server-hard-drives" className="subcategory-item">
+                          <span className="dot"></span>Server Hard Drives
                         </Link>
-                        <Link href="/category/Network-Storage-Devices" className="subcategory-item">
-                          <span className="dot"></span>Network Storage Device
+                        <Link href="/category/desktop-hard-drives" className="subcategory-item">
+                          <span className="dot"></span>Desktop Hard Drives
+                        </Link>
+                        <Link href="/category/laptop-hard-drives" className="subcategory-item">
+                          <span className="dot"></span>Laptop Hard Drives
                         </Link>
                         <Link href="/category/Hard-Drives-Enclosures" className="subcategory-item">
                           <span className="dot"></span>Hard Drive Enclosures
-                        </Link>
-                        <Link href="/category/Controllers" className="subcategory-item">
-                          <span className="dot"></span>Controllers
-                        </Link>
-                        <Link href="/category/Disc-Drives" className="subcategory-item">
-                          <span className="dot"></span>Disc Drives
                         </Link>
                       </div>
 
@@ -438,7 +451,7 @@ const HeaderSix = () => {
                         <h4>Memories</h4>
                       </div>
                       <div className="subcategory-grid">
-                        <Link href="/category/Dekstop-Memory" className="subcategory-item">
+                        <Link href="/category/desktop-memory" className="subcategory-item">
                           <span className="dot"></span>Desktop Memory
                         </Link>
                         <Link href="/category/server-memory" className="subcategory-item">
@@ -446,18 +459,6 @@ const HeaderSix = () => {
                         </Link>
                         <Link href="/category/laptop-memory" className="subcategory-item">
                           <span className="dot"></span>Laptop Memory
-                        </Link>
-                        <Link href="/category/gaming-memory" className="subcategory-item">
-                          <span className="dot"></span>Gaming Memory
-                        </Link>
-                        <Link href="/category/flash-memory" className="subcategory-item">
-                          <span className="dot"></span>Flash Memory
-                        </Link>
-                        <Link href="/category/cache-memory" className="subcategory-item">
-                          <span className="dot"></span>Cache Memory
-                        </Link>
-                        <Link href="/category/vrm" className="subcategory-item">
-                          <span className="dot"></span>VRM
                         </Link>
                       </div>
                         <div className="promo-banner-wrapper">
@@ -494,6 +495,12 @@ const HeaderSix = () => {
                       <div className="subcategory-grid">
                         <Link href="/category/switches" className="subcategory-item">
                           <span className="dot"></span>Switches
+                        </Link>
+                        <Link href="/category/routers" className="subcategory-item">
+                          <span className="dot"></span>Routers
+                        </Link>
+                        <Link href="/category/transceivers" className="subcategory-item">
+                          <span className="dot"></span>Transceivers
                         </Link>
                         <Link href="/category/network-accessories" className="subcategory-item">
                           <span className="dot"></span>Network & Accessories
@@ -540,7 +547,7 @@ const HeaderSix = () => {
                         <Link href="/category/laptop-motherboards" className="subcategory-item">
                           <span className="dot"></span>Laptop Motherboards
                         </Link>
-                        <Link href="/category/dekstop-motherboards" className="subcategory-item">
+                        <Link href="/category/desktop-motherboards" className="subcategory-item">
                           <span className="dot"></span>Desktop Motherboards
                         </Link>
                         <Link href="/category/gaming-motherboards" className="subcategory-item">
@@ -637,7 +644,7 @@ const HeaderSix = () => {
                         <Link href="/category/workstations" className="subcategory-item">
                           <span className="dot"></span>Workstations
                         </Link>
-                        <Link href="/category/dekstops" className="subcategory-item">
+                        <Link href="/category/desktops" className="subcategory-item">
                           <span className="dot"></span>Desktops
                         </Link>
                         <Link href="/category/tablets" className="subcategory-item">
@@ -683,11 +690,8 @@ const HeaderSix = () => {
                         <Link href="/category/power-supply" className="subcategory-item">
                           <span className="dot"></span>Power Supply
                         </Link>
-                        <Link href="/category/ups-accessories" className="subcategory-item">
-                          <span className="dot"></span>UPS Accessories
-                        </Link>
-                        <Link href="/category/ups-batteries" className="subcategory-item">
-                          <span className="dot"></span>UPS Batteries
+                        <Link href="/category/power-adapters-chargers" className="subcategory-item">
+                          <span className="dot"></span>Power Adapters & Chargers
                         </Link>
                         <Link href="/category/power-distributions" className="subcategory-item">
                           <span className="dot"></span>Power Distributions
@@ -726,19 +730,56 @@ const HeaderSix = () => {
                         <h4>CPUs & Processors</h4>
                       </div>
                       <div className="subcategory-grid">
-                        <Link href="/category/internal-processors" className="subcategory-item">
-                          <span className="dot"></span>Internal Processors
+                        <Link href="/category/server-processors" className="subcategory-item">
+                          <span className="dot"></span>Server Processors
                         </Link>
-                        <Link href="/category/amd-processors" className="subcategory-item">
-                          <span className="dot"></span>AMD Processors
+                        <Link href="/category/desktop-processors" className="subcategory-item">
+                          <span className="dot"></span>Desktop Processors
                         </Link>
-                        <Link href="/category/processors-board" className="subcategory-item">
-                          <span className="dot"></span>Processor Boards
+                        <Link href="/category/laptop-processors" className="subcategory-item">
+                          <span className="dot"></span>Laptop Processors
                         </Link>
                       </div>
 
                        <div className="promo-banner-wrapper">
                           <Link href="/category/cpus-processors" className="promo-banner">
+                            <div className="promo-banner-content">
+                              <div className="promo-badge">HOT DEAL</div>
+                              <h3 className="promo-title">Up to 10% OFF</h3>
+                              <p className="promo-subtitle">On Selected Tech Products</p>
+                              <div className="promo-cta">
+                                <span>Shop Now</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                              </div>
+                            </div>
+                            <div className="promo-banner-graphic">
+                              <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="2" opacity="0.2"/>
+                                <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="2" opacity="0.3"/>
+                                <circle cx="60" cy="60" r="25" stroke="currentColor" strokeWidth="2" opacity="0.4"/>
+                                <path d="M60 35V60L75 75" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
+                              </svg>
+                            </div>
+                          </Link>
+                        </div>
+                    </div>
+                  )}
+
+                  {activeCategory === "gpus" && (
+                    <div className="subcategory-content">
+                      <div className="subcategory-header">
+                        <h4>GPUs</h4>
+                      </div>
+                      <div className="subcategory-grid">
+                        <Link href="/category/graphics-card" className="subcategory-item">
+                          <span className="dot"></span>Graphics Card
+                        </Link>
+                      </div>
+
+                       <div className="promo-banner-wrapper">
+                          <Link href="/category/gpus" className="promo-banner">
                             <div className="promo-banner-content">
                               <div className="promo-badge">HOT DEAL</div>
                               <h3 className="promo-title">Up to 10% OFF</h3>

@@ -248,6 +248,9 @@ const CheckoutContent = () => {
               country_code: "91",
               phone: "",
               password: "",
+              card_number: "",
+              expiry_date: "",
+              cvv: "",
               shipping_address: {
                 title: "",
                 street: "",

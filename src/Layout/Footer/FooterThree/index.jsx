@@ -102,11 +102,11 @@ const FooterThree = () => {
 
 
       {/* 3rd */}
-      <div className="dark-layout links-grid">
+    <div className="dark-layout links-grid">
         <Container>
           <Row className="py-5 text-white g-4">
 
-            {/* Column 1 - Processors */}
+            {/* Column 1 - Storage Devices */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/storage-devices" className="text-white text-decoration-none">Storage Devices</a>
@@ -122,7 +122,7 @@ const FooterThree = () => {
                 <a href="/category/ssds" className="text-white text-decoration-none">SSDs</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/storage-tapes" className="text-white text-decoration-none">Storage Tapes</a>
+                <a href="/category/server-hard-drives" className="text-white text-decoration-none">Server Hard Drives</a>
               </p>
 
               <p className="small text-white mb-1">
@@ -132,7 +132,7 @@ const FooterThree = () => {
 
             </Col>
 
-            {/* Column 2 - Network Devices */}
+            {/* Column 2 - Memories */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/memories" className="text-white text-decoration-none">Memories</a>
@@ -147,15 +147,12 @@ const FooterThree = () => {
                 <a href="/category/laptop-memory" className="text-white text-decoration-none">Laptop Memory</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/gaming-memory" className="text-white text-decoration-none">Gaming Memory</a>
-              </p>
-              <p className="small text-white mb-1">
                 <a href="/category/memories" className="text-white text-decoration-none">See More</a>
               </p>
 
             </Col>
 
-            {/* Column 3 - Power Supplies */}
+            {/* Column 3 - Networking Devices */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/networking-devices" className="text-white text-decoration-none">Networking Devices</a>
@@ -164,10 +161,13 @@ const FooterThree = () => {
                 <a href="/category/switches" className="text-white text-decoration-none">Switches</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/network-accessories" className="text-white text-decoration-none">Network & Accessories</a>
+                <a href="/category/routers" className="text-white text-decoration-none">Routers</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/ip-phones" className="text-white text-decoration-none">IP Phones</a>
+                <a href="/category/transceivers" className="text-white text-decoration-none">Transceivers</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/network-accessories" className="text-white text-decoration-none">Network & Accessories</a>
               </p>
               <p className="small text-white mb-1">
                 <a href="/category/networking-devices" className="text-white text-decoration-none">See More</a>
@@ -176,10 +176,10 @@ const FooterThree = () => {
 
             </Col>
 
-            {/* Column 4 - Storage Devices */}
+            {/* Column 4 - Motherboards */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
-                <a href="/category/motherboards" className="text-white text-decoration-none">Motherboards</a>
+                <a href="/category/motherboard" className="text-white text-decoration-none">Motherboards</a>
               </h4>
               <p className="small text-white mb-1">
                 <a href="/category/server-motherboards" className="text-white text-decoration-none">Server Motherboards</a>
@@ -188,17 +188,19 @@ const FooterThree = () => {
                 <a href="/category/laptop-motherboards" className="text-white text-decoration-none">Laptop Motherboards</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/dekstop-motherboards" className="text-white text-decoration-none">Desktop Motherboards</a>
+                <a href="/category/desktop-motherboards" className="text-white text-decoration-none">Desktop Motherboards</a>
               </p>
               <p className="small text-white mb-1">
                 <a href="/category/gaming-motherboards" className="text-white text-decoration-none">Gaming Motherboards</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/motherboards" className="text-white text-decoration-none">See More</a>
+                <a href="/category/motherboard" className="text-white text-decoration-none">See More</a>
               </p>
 
 
             </Col>
+
+            {/* Column 5 - Printer & Scanners */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/printer-scanners" className="text-white text-decoration-none">Printer & Scanners</a>
@@ -213,15 +215,15 @@ const FooterThree = () => {
                 <a href="/category/office-printers" className="text-white text-decoration-none">Office Printers</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/Sensors" className="text-white text-decoration-none">Sensors</a>
+                <a href="/category/sensors" className="text-white text-decoration-none">Sensors</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/gaming-devices" className="text-white text-decoration-none">See More</a>
+                <a href="/category/printer-scanners" className="text-white text-decoration-none">See More</a>
               </p>
 
             </Col>
 
-            {/* Column 2 - Network Devices */}
+            {/* Column 6 - PC & Servers */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/pc-and-servers" className="text-white text-decoration-none">PC & Servers</a>
@@ -233,7 +235,10 @@ const FooterThree = () => {
                 <a href="/category/workstations" className="text-white text-decoration-none">Workstations</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/dekstops" className="text-white text-decoration-none">Dekstops</a>
+                <a href="/category/desktops" className="text-white text-decoration-none">Desktops</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/tablets" className="text-white text-decoration-none">Tablets</a>
               </p>
               <p className="small text-white mb-1">
                 <a href="/category/pc-and-servers" className="text-white text-decoration-none">See More</a>
@@ -242,19 +247,16 @@ const FooterThree = () => {
 
             </Col>
 
-            {/* Column 3 - Power Supplies */}
+            {/* Column 7 - Power Supply & Protection */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
-                <a href="/category/power-supply" className="text-white text-decoration-none">Power Supplies</a>
+                <a href="/category/power-supply" className="text-white text-decoration-none">Power Supply & Protection</a>
               </h4>
               <p className="small text-white mb-1">
                 <a href="/category/power-supply" className="text-white text-decoration-none">Power Supply</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/ups-accessories" className="text-white text-decoration-none">UPS Accessories</a>
-              </p>
-              <p className="small text-white mb-1">
-                <a href="/category/ups-batteries" className="text-white text-decoration-none">UPS Batteries</a>
+                <a href="/category/power-adapters-chargers" className="text-white text-decoration-none">Power Adapters & Chargers</a>
               </p>
               <p className="small text-white mb-1">
                 <a href="/category/power-distributions" className="text-white text-decoration-none">Power Distributions</a>
@@ -265,25 +267,111 @@ const FooterThree = () => {
 
             </Col>
 
-            {/* Column 4 - Storage Devices */}
+            {/* Column 8 - CPUs & Processors */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
                 <a href="/category/cpus-processors" className="text-white text-decoration-none">CPUs & Processors</a>
-              </h4>              <p className="small text-white mb-1">
-                <a href="/category/internal-processors" className="text-white text-decoration-none">Internal Processors</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/server-processors" className="text-white text-decoration-none">Server Processors</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/amd-processors" className="text-white text-decoration-none">AMD Processors</a>
+                <a href="/category/desktop-processors" className="text-white text-decoration-none">Desktop Processors</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/processors-board" className="text-white text-decoration-none">Processors Board</a>
+                <a href="/category/laptop-processors" className="text-white text-decoration-none">Laptop Processors</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/category/processors" className="text-white text-decoration-none">See More</a>
+                <a href="/category/cpus-processors" className="text-white text-decoration-none">See More</a>
               </p>
 
 
             </Col>
+
+            {/* Column 9 - GPUs */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/gpus" className="text-white text-decoration-none">GPUs</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/graphics-card" className="text-white text-decoration-none">Graphics Card</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gpus" className="text-white text-decoration-none">See More</a>
+              </p>
+
+
+            </Col>
+
+            {/* Column 10 - Cables & Adapters */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/cables-adapters" className="text-white text-decoration-none">Cables & Adapters</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/adapters" className="text-white text-decoration-none">Adapters</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/cables" className="text-white text-decoration-none">Cables</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/cables-adapters" className="text-white text-decoration-none">See More</a>
+              </p>
+
+
+            </Col>
+
+            {/* Column 11 - Gaming */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                <a href="/category/gaming" className="text-white text-decoration-none">Gaming</a>
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming-console" className="text-white text-decoration-none">Gaming Console</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/vr-headsets" className="text-white text-decoration-none">VR Headsets</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming-accessories" className="text-white text-decoration-none">Gaming Accessories</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/category/gaming" className="text-white text-decoration-none">See More</a>
+              </p>
+
+
+            </Col>
+
+            {/* Column 12 - Additional Links */}
+            <Col xs={12} md={6} lg={3}>
+              <h4 className="fw-bold text-white mb-3 text-uppercase">
+                Company Info
+              </h4>
+              <p className="small text-white mb-1">
+                <a href="/about-us" className="text-white text-decoration-none">About Us</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/terms-conditions" className="text-white text-decoration-none">Terms & Conditions</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/privacy-policy" className="text-white text-decoration-none">Privacy Policy</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/warranty" className="text-white text-decoration-none">Warranty</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/contact-us" className="text-white text-decoration-none">Contact Us</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/blog" className="text-white text-decoration-none">Blog</a>
+              </p>
+              <p className="small text-white mb-1">
+                <a href="/sitemap" className="text-white text-decoration-none">Sitemap</a>
+              </p>
+
+
+            </Col>
+
           </Row>
         </Container>
       </div>
@@ -307,10 +395,10 @@ const FooterThree = () => {
                 <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
                 <div className="text-start">
                   <strong>
-                    <a className="text-white" href="tel:+191630466066">(+1) 916 304 66066</a>
+                    <a className="text-white" href="tel:+ +18328835303">(+1) 832 8835303</a>
                   </strong><br />
 
-                  <span className="small">Working 8:00 - 22:00</span>
+                  <span className="small">5900 Balcones Drive # 22288 Austin, TX 78731</span>
                 </div>
 
                 {/* <div>
