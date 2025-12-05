@@ -131,7 +131,7 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
                   <span className="count">
                     {displayShipping !== null && displayShipping >= 0
                       ? convertCurrency(displayShipping?.toFixed(2)) 
-                      : t("CostatCheckout")}
+                      : t("0")}
                   </span>
                 </li>
                 <li>
@@ -139,7 +139,7 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
                   <span className="count">
                     {displayTax !== null && displayTax >= 0
                       ? convertCurrency(displayTax?.toFixed(2)) 
-                      : t("CostatCheckout")}
+                      : t("-")}
                   </span>
                 </li>
 
