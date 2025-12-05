@@ -42966,3 +42966,7 @@ color: #0f1340 !important;
   border-radius: 8px;
   overflow: hidden;
 }
+
+.checkout-page .custom-box-loader {
+    padding: 30px !important;
+}
