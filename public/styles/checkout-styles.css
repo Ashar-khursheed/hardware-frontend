@@ -293,7 +293,10 @@
 .custom-box-loader {
   position: relative;
 }
+.order-box .custom-box-loader{
+  padding:25px;
 
+}
 .box-loader {
   position: absolute;
   top: 0;
