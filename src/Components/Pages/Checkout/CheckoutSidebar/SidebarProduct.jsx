@@ -13,12 +13,12 @@ const SidebarProduct = ({ values }) => {
     <div className="checkout-details">
       <div className="checkout-section">
         {/* <div className="title-box">
-          <span className="step-number">4</span>
+          <span className="step-number">3</span>
           <h4>{t("summary_order")}</h4>
           <p>{t("verify_shipping_option_desc")}</p>
         </div> */}
          <div className="checkout-section-header">
-        <span className="step-number">4</span>
+        <span className="step-number">3</span>
         <h4>{t("summary_order")}</h4>
       </div>
         <ul className="qty">

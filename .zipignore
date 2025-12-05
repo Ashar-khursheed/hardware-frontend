@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.cache/
+.npm/
+.npm-global/
+.config/
+.local/
+package-lock.json
+.wget-hsts
+.npmrc
