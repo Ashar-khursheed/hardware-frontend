@@ -158,7 +158,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
               Credit/Debit Card
             </button>
             
-            <button 
+            {/* <button 
               type="button" 
               className={`payment-tab ${selectedPaymentTab === 'cod' ? 'active' : ''}`}
               onClick={() => {
@@ -169,7 +169,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
             >
               <i className="ri-money-dollar-circle-line me-2"></i> 
               Cash on Delivery
-            </button>
+            </button> */}
           </div>
 
           {/* Stripe Card Payment Form */}
@@ -189,7 +189,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
           )}
 
           {/* Cash on Delivery */}
-          {selectedPaymentTab === 'cod' && (
+          {/* {selectedPaymentTab === 'cod' && (
             <div className="payment-method-content">
               <div className="alert alert-info">
                 <i className="ri-information-line me-2"></i>
@@ -201,7 +201,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
                 <li><i className="ri-check-line text-success me-2"></i>Available in selected areas</li>
               </ul>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
