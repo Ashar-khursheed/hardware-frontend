@@ -52,6 +52,7 @@ const ElectronicsThree = () => {
     <>
       <Head>
         <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></link>
 
       </Head>
       {/* Home Banners */}
@@ -306,176 +307,6 @@ const ElectronicsThree = () => {
         </>
       )}
 
-
-
-      
-
-
-
-
-        {/* Category Product 1 */}
-      {/*{data?.category_product_1?.status && (
-        <WrapperComponent classes={{ sectionClass: "container" }} customCol={true}>
-          {data?.category_product_1?.categories?.status && (
-            <Col xl="2" className="d-xl-inline-block d-none">
-              <div className="left-header left-header-relative">
-                <div className="metro">
-                  <div className="main-menu">
-                    <div className="menu-left">
-                      <HomeCategorySidebar categoryIds={data?.category_product_1?.categories?.category_ids} style="vertical" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          )}
-          {data?.category_product_1?.products?.status && (
-            <div className={data?.category_product_1?.categories?.status ? "col-xl-10" : "col-xl-12"}>
-              <HomeProduct productIds={data?.category_product_1?.products?.product_ids || []} style="vertical" />
-            </div>
-          )}
-        </WrapperComponent>
-      )}
-
-
-
-
-
-
-
-      {/*Banners*/}
-      {/* <section className="banner-style-1">
-        <div className="full-box">
-          <Container>
-            <Row className="ratio2_1">
-              {data?.banner?.main_banner?.status && (
-                <Col lg="5" md="7" className="card-margin">
-                  <div className="banner-padding pt-0">
-                    <Link href={Href} legacyBehavior>
-                      <a className="collection-banner tl-content">
-                        <ImageLink
-                          imgUrl={data?.banner.main_banner}
-                          bgImg={true}
-                          classes="img-part custom-height"
-                        />
-                      </a>
-                    </Link>
-
-                  </div>
-                </Col>
-              )}
-              <Col lg="4" md="5">
-                <div className="banner-padding pt-0 ratio2_1">
-                  <Container className="p-0">
-                    <Row>
-                      {data?.banner?.grid_banner_1?.status && (
-                        <Col xs="12" className="mb-4">
-                          <Link href={Href} legacyBehavior>
-                            <div className="collection-banner">
-                              <ImageLink imgUrl={data?.banner.grid_banner_1} bgImg={true} classes="img-part" />
-                            </div>
-                          </Link>
-                        </Col>
-                      )}
-                      {data?.banner?.grid_banner_2?.status && (
-                        <Col xs="12">
-                          <Link href={Href} legacyBehavior>
-                            <div className="collection-banner">
-                              <ImageLink imgUrl={data?.banner.grid_banner_2} bgImg={true} classes="img-part" />
-                            </div>
-                          </Link>
-                        </Col>
-                      )}
-                    </Row>
-                  </Container>
-                </div>
-              </Col>
-              {data?.banner?.grid_banner_3?.status && (
-                <Col lg="3" xs="12" className="d-lg-block d-none">
-                  <div className="banner-padding pt-0">
-                    <Link href={Href} legacyBehavior>
-                      <div className="collection-banner tl-content">
-                        <ImageLink imgUrl={data?.banner.grid_banner_3} bgImg={true} classes="img-part custom-height" />
-                      </div>
-                    </Link>
-                  </div>
-                </Col>
-              )}
-            </Row>
-          </Container>
-        </div>
-      </section> */}
-
-
-
-
-    
-      {/* Offer Banner 2 */}
-      {/* Offer Banner 2 Styled Section */}
-      {/* {data?.offer_banner_1?.status && (
-        <section
-          className="container mt-5 offer-banner-section d-flex align-items-center text-white text-center"
-          style={{
-            backgroundImage: `url(${storageURL + data?.offer_banner_1?.image_url})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'bottom',
-            height: '211px',
-            width: '100%',
-            padding: '0',
-            borderradius: '10px',
-          }}
-        >
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8">
-                <p className="mb-2 fs-6 fw-bold text-white ">
-                  Save up to <span className="text-primary fw-bold">60% off</span>
-                </p>
-                <h2 className="offerbanner2 fw-bold mb-2">Photography Workshop</h2>
-                <a href="#" className="btn  fw-semibold">
-                  SHOP NOW
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      )} */}
-
-
-
-
-      {/* 
-      <WrapperComponent classes={{ sectionClass: "ratio2_1 banner-padding", fluidClass: "container", row: "g-sm-4 g-3" }} customCol={true}>
-        {data?.offer_banner_2?.banner_1?.status && (
-          <div className={data?.offer_banner_2?.banner_2?.status ? "col-md-6" : "col-12"}>
-            <ImageLink imgUrl={data?.offer_banner_2?.banner_1} bgImg={true} />
-          </div>
-        )}
-        {data?.offer_banner_2?.banner_2?.status && (
-          <div className={data?.offer_banner_2?.banner_1?.status ? "col-md-6" : "col-12"}>
-            <ImageLink imgUrl={data?.offer_banner_2?.banner_2} bgImg={true} />
-          </div>
-        )}
-      </WrapperComponent> */}
-
-
-
-
-      {/* Category Products 2 */}
-      {/* {data?.category_product_2?.status && (
-        <WrapperComponent classes={{ sectionClass: "ratio_square bg-title wo-bg category-tab-section", fluidClass: "container" }} noRowCol={true}>
-          <Row>
-            <Col>
-              <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
-            </Col>
-          </Row>
-        </WrapperComponent>
-      )} */}
-
-
-
-
-
       {/* airpods and gaming laptop sec */}
       <section className="py-5 bg-white">
         <div className="container p-3 ">
@@ -535,45 +366,12 @@ const ElectronicsThree = () => {
 
 
 
-
-
-      {/* <section className="py-5 bg-white">
-        <div className="container">
-          <div className="row g-4">
-
-            <div className="col-md-6">
-              <img
-                src="/assets/images/banner1.png"
-                alt="Airpods Sale"
-                className="img-fluid w-100 rounded"
-              />
-            </div>
-
-            <div className="col-md-6">
-              <img
-                src="/assets/images/banner2.png"
-                alt="Gaming Laptop"
-                className="img-fluid w-100 rounded"
-              />
-            </div>
-
-          </div>
-        </div>
-      </section> */}
-
-
-
-
       {/* Brands */}
       {data?.brand?.status && (
         <section className="section-b-space blog-wo-bg p-0">
           <HomeBrand brandIds={data?.brand?.brand_ids} />
         </section>
       )}
-
-
-
-
 
       {/* reviews section */}
       <section className="py-5 pt-3 mt-4 bg-light">
@@ -701,89 +499,6 @@ const ElectronicsThree = () => {
         {/* Optional overlay for dark gradient effect */}
         <div className="hero-overlay"></div>
       </section>
-
-
-      {/* benfit section  */}
-
-
-      {/* <section className="py-5 bg-light">
-        <div className="container">
-          <div className="row align-items-start">
-
-            <div className="col-lg-4 mb-4 mb-lg-0">
-              <h3 className=" mb-4 text-black">HARDWARE BOX BENEFITS</h3>
-
-              <div className="d-flex mb-3">
-                <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/freedelivery.png" alt="Save" width="40" />
-                  </div>
-                </div>
-                <div>
-                  <h5 className="fw-bold mb-1">FREE DELIVERY
-                  </h5>
-                  <p className="mb-0 small text-muted">Up to 8lbs</p>
-                </div>
-              </div>
-
-              <div className="d-flex mb-3">
-                <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/Securepayment.png" alt="Genuine Products" width="40" />
-                  </div>
-                </div>
-                <div>
-                  <h5 className="fw-bold mb-1">GENUINE SECURE PAYMENT</h5>
-                  <p className="mb-0 small text-muted">100% protected checkout</p>
-                </div>
-              </div>
-
-              <div className="d-flex">
-                <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/Return.png" alt="Genuine Products" width="40" />
-                  </div>                  </div>
-                <div>
-                  <h5 className="fw-bold mb-1">90 DAYS RETURN</h5>
-                  <p className="mb-0 small text-muted">On damaged units</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-8">
-              <div className="bg-white border p-4 h-100">
-                <div className="row d-flex">
-                  <div className="col-md-6 border-end gap-5 p-3 mb-4 mb-md-0 text-center text-md-start">
-                    <img src="/assets/images/benefitsec4.webp" alt="SAM Logo" className="mb-5" height="60" />
-                    <h3 className=" text-black">Verified Vendor of SAM.gov</h3>
-                    <p className="small mb-1">
-                      CAGE Code : <span className="text-orange fw-semibold">9EQ82</span>
-                    </p>
-                    <p className="small text-muted mb-0">
-                      Our commitment to meeting the standards set by the US Federal Contractor Registration has earned us a verified vendor status. We take pride in being listed in the highly-regarded System for Award Management (SAM).
-                    </p>
-                  </div>
-
-
-                  <div className="col-md-6 p-3  text-center text-md-start">
-                    <img src="/assets/images/benefitsec5.webp" alt="D&B Logo" className="mb-5" height="60" />
-                    <h3 className=" text-black">D&B Rating</h3>
-                    <p className="small mb-1">
-                      D-U-N-S® Number is: <span className="text-orange fw-semibold">117396845</span>
-                    </p>
-                    <p className="small text-muted mb-0">
-                      We are committed to providing our customers with top-quality computer accessories. Our Duns & Bradstreet rating is excellent and is a testament to our financial stability and strength in the industry.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section> */}
-
-
 
       <section className="py-5 bg-light">
         <div className="container">
@@ -925,14 +640,6 @@ const ElectronicsThree = () => {
       </section>
 
 
-
-
-
-
-
-
-
-
       {/* blog section */}
 
 
@@ -1051,15 +758,6 @@ const ElectronicsThree = () => {
         </div>
       </section >
       {/* request a quote section  */}
-
-
-
-
-
-
-
-
-
 
 
       {/* contact section */}

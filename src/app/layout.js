@@ -3,7 +3,8 @@ import "../index.scss";
 import { I18nProvider } from "./i18n/i18n-context";
 import { detectLanguage } from "./i18n/server";
 import LanguageProvider from "@/Context/LanguageContext/LanguageProvider";
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 export async function generateMetadata() {
   // fetch data
   const themeOption = await fetch(`${process.env.API_PROD_URL}/themeOptions`)
