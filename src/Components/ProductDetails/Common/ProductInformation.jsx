@@ -30,9 +30,9 @@ const ProductInformation = ({ productState }) => {
         </li>
         {
           productState?.product?.external_details?.length > 0 &&
-          productState?.product?.external_details?.map(detail => (
-            <li>
-              {detail?.key}: {detail?.value}
+          productState?.product?.external_details?.map((detail, index) => (
+            <li key={index}>
+              {String(detail?.key || '')}: {String(detail?.value || '')}
             </li>
           ))
         }

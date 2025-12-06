@@ -15,7 +15,11 @@ const VariationModal = ({ productObj, variationModal, setVariationModal }) => {
     <CustomModal modal={productObj?.id == variationModal} setModal={setVariationModal} classes={{ modalClass: "quick-view-modal modal-lg theme-modal-2", modalHeaderClass: "p-0" }}>
       <Row className="g-sm-4 g-3">
         <LeftSideModal cloneVariation={cloneVariation} productObj={productObj} />
-        <Col lg="6" className="rtl-text">
+          <Col 
+              lg="6" 
+              className="rtl-text" 
+              style={{ alignSelf: 'center' }}
+            >
           <div className="right-sidebar-modal product-page-details">
             <RightVariationModal cloneVariation={cloneVariation} />
             {cloneVariation?.product && productObj?.id == variationModal && <ProductAttribute noHoverEffect={true} productState={cloneVariation} setProductState={setCloneVariation} />}

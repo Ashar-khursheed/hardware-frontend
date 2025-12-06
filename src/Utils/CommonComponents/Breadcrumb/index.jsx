@@ -4,20 +4,28 @@ import { Breadcrumb, Container } from "reactstrap";
 
 const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
   const { t } = useTranslation("common");
+  
+  // Safely convert title to string
+  const safeTitle = String(title || '');
+  
   return (
     <div className="breadcrumb-section">
       <Container>
-        <h2>{t(title?.replaceAll("-", " "))}</h2>
+        <h2>{t(safeTitle.replaceAll("-", " "))}</h2>
         <nav className="theme-breadcrumb">
           <Breadcrumb>
             <div className="breadcrumb-item active">
               <a href={Href}> {t("home")} </a>
             </div>
-            {subNavigation?.map((result, i) => (
-              <div key={i} className="breadcrumb-item active ">
-                <a href={Href}> {t(result?.name?.replaceAll("-", " "))} </a>
-              </div>
-            ))}
+            {subNavigation?.map((result, i) => {
+              // Safely convert name to string
+              const safeName = String(result?.name || '');
+              return (
+                <div key={i} className="breadcrumb-item active ">
+                  <a href={Href}> {t(safeName.replaceAll("-", " "))} </a>
+                </div>
+              );
+            })}
           </Breadcrumb>
         </nav>
       </Container>

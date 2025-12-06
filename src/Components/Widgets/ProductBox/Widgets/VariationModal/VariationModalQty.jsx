@@ -71,7 +71,20 @@ const VariationModalQty = ({ cloneVariation, setCloneVariation }) => {
               <RiArrowLeftSLine />
             </Btn>
           </span>
-          <Input className="input-number " type="text" name="quantity" value={cloneVariation?.productQty} readOnly />
+          <Input
+            className="input-number"
+            type="number"
+            name="quantity"
+            min={1}
+            value={cloneVariation?.productQty}
+            onChange={(e) => {
+              let value = parseInt(e.target.value);
+              if (value < 1 || isNaN(value)) value = 1; // prevent invalid numbers
+              setCloneVariation((prev) => ({ ...prev, productQty: value }));
+              checkStockAvailable();
+              wholesalePriceCal();
+            }}
+          />
           <span className="input-group-prepend">
             <Btn color="transparent" className=" quantity-right-plus" onClick={() => updateQuantity(1)}>
               <RiArrowRightSLine />

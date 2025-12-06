@@ -1,10 +1,12 @@
 import { RiShoppingCartLine } from "react-icons/ri";
 
-const ProductDetails = ({ productState }) => {
+const DigitalProductContain = ({ productState }) => {
+  const product = productState?.product || {};
+  
   return (
     <>
       <div className="product-title">
-        <h2 className="name">{product.name}</h2>
+        <h2 className="name">{String(product?.name || '')}</h2>
         <ul className="title-content-list">
           {product?.orders_count && (
             <h6 className="content">
@@ -13,10 +15,10 @@ const ProductDetails = ({ productState }) => {
             </h6>
           )}
         </ul>
-        <p>{product.short_description}</p>
+        <p>{String(product?.short_description || '')}</p>
       </div>
     </>
   );
 };
 
-export default ProductDetails;
+export default DigitalProductContain;

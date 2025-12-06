@@ -41,14 +41,14 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
     <>
       {!noDetails && (
         <>
-          <h2 className="main-title">{productState?.selectedVariation?.name ?? productState?.product?.name}</h2>
+          <h2 className="main-title">{String(productState?.selectedVariation?.name || productState?.product?.name || "")}</h2>
           <ul className="product-brand-box">
             {productState?.product?.authors?.length > 0 && (
               <li className="brand-box-suggestion">
                 {"Author"} :{" "}
                 {productState?.product?.authors?.map((author) => (
                   <Link href={`/author/${author?.slug}`} key={author.id} legacyBehavior>
-                    <a>{author.name}</a>
+                    <a>{String(author?.name || "")}</a>
                   </Link>
 
                 ))}

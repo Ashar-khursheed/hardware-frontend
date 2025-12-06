@@ -88,7 +88,7 @@ const AddressSelection = ({ values, setFieldValue, accountData, errors }) => {
                     <option value="">Select shipping address</option>
                     {addresses.map((address) => (
                       <option key={address.id} value={address.id}>
-                        {address.title} - {address.street}, {address.city}, {address.state?.name || ''}, {address.pincode}
+                        {address.title} - {address.street}, {address.city}, {address.pincode}
                       </option>
                     ))}
                   </Input>
@@ -133,7 +133,7 @@ const AddressSelection = ({ values, setFieldValue, accountData, errors }) => {
                     <option value="">Select billing address</option>
                     {addresses.map((address) => (
                       <option key={address.id} value={address.id}>
-                        {address.title} - {address.street}, {address.city}, {address.state?.name || ''}, {address.pincode}
+                        {address.title} - {address.street}, {address.city}, {address.pincode}
                       </option>
                     ))}
                   </Input>

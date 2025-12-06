@@ -28,27 +28,20 @@ const CheckoutForm = ({ values, setFieldValue, errors, addToCartData }) => {
 
   return (
     <div className="checkout-steps">
-      {/* Conditional rendering based on login status */}
       {access_token ? (
-        /* Logged-in user: Show address selection dropdowns */
-        <>
-          <AddressSelection 
-            values={values}
-            setFieldValue={setFieldValue}
-            accountData={accountData}
-            errors={errors}
-          />
-        </>
+        <AddressSelection 
+          values={values}
+          setFieldValue={setFieldValue}
+          accountData={accountData}
+          errors={errors}
+        />
       ) : (
-        /* Guest user: Show full shipping address form */
-        <>
-          <ShippingAddressSection 
-            setFieldValue={setFieldValue} 
-            errors={errors} 
-            data={data} 
-            values={values} 
-          />
-        </>
+        <ShippingAddressSection 
+          setFieldValue={setFieldValue} 
+          errors={errors} 
+          data={data} 
+          values={values} 
+        />
       )}
 
       {/* Step 2: Payment Method (same for both logged-in and guest) */}

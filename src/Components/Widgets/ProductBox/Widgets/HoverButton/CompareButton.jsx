@@ -36,7 +36,7 @@ const CompareButton = ({ productstate, customClass, hideAction, text }) => {
   }, [isLoading]);
   return (
     <>
-      {customClass ? (
+      {/* {customClass ? (
         <Btn className={customClass ?? ""} onClick={() => addToCompare(productstate)}>
           <RiRefreshLine />
         </Btn>
@@ -48,7 +48,7 @@ const CompareButton = ({ productstate, customClass, hideAction, text }) => {
             </a>
           </li>
         )
-      )}
+      )} */}
     </>
   );
 };
