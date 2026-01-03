@@ -315,16 +315,16 @@ const ElectronicsThree = () => {
             <div className="col-md-6   border rounded bg-light gmaingcolum">
               <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
                 <div className="row d-flex align-items-center justify-content-between p-3">
-                  <div className="col-4 text-div">
+                  <div className="col-12 col-md-4 text-div">
                     <p className="mb-1 text-muted">
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
-                    <h3 className="text-black mb-5">Airpods Sale</h3>
+                    <h3 className="text-black mb-3 mb-md-5">Airpods Sale</h3>
                     <a href="/category/gaming-console" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
                     </a>
                   </div>
-                  <div className="col-8 image-div">
+                  <div className="col-12 col-md-8 image-div">
                     <img
                       src="/assets/images/airpodsnew.webp"
                       alt="Airpods"
@@ -339,16 +339,16 @@ const ElectronicsThree = () => {
             <div className="col-md-6   border rounded bg-light gmaingcolum">
               <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
                 <div className="row d-flex align-items-center justify-content-between p-3">
-                  <div className="col-4 text-div">
+                  <div className="col-12 col-md-4 text-div">
                     <p className="mb-1 text-muted">
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
-                    <h3 className="text-black mb-5">Gaming Laptop</h3>
+                    <h3 className="text-black mb-3 mb-md-5">Gaming Laptop</h3>
                     <a href="/category/gaming-accessories" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
                     </a>
                   </div>
-                  <div className="col-8 image-div">
+                  <div className="col-12 col-md-8 image-div">
                     <img
                       src="/assets/images/airpodtwo.webp"
                       alt="Airpods"
@@ -374,13 +374,13 @@ const ElectronicsThree = () => {
       )}
 
       {/* reviews section */}
-      <section className="py-5 pt-3 mt-4 bg-light">
+      <section className="py-5 pt-3 mt-4 mb-4 bg-light">
         <div className="container">
           <div className="row align-items-center mb-4">
             <div className="col-md-6">
               <h3 className="text-black ps-2">NEW ARRIVALS</h3>
             </div>
-            <div className="col-md-6 text-md-end d-flex justify-content-end gap-3 text-center">
+            <div className="col-md-6 mobhide text-md-end d-flex justify-content-end gap-3 text-center">
               <div>
                 <span className="fw-bold me-2">Excellent</span>
                 <img src="/assets/images/reviewshead.png" alt="Google" />
@@ -484,11 +484,11 @@ const ElectronicsThree = () => {
             </div>
 
             {/* Right Image */}
-            <div className="col-lg-6 text-end">
+            <div className="col-lg-6 text-end mt-3">
               <img
                 src="/assets/images/aboutnew.webp"  // Replace with your image path
                 alt="Warehouse Worker with Tablet"
-                className="img-fluid"
+                className="img-fluid "
                 style={{ maxHeight: '600px', objectFit: 'contain' }}
               />
             </div>
@@ -505,7 +505,7 @@ const ElectronicsThree = () => {
           <div className="row align-items-start">
 
             {/* Left Column – Direct Macro Benefits */}
-            <div className="col-lg-4 mb-4 mb-lg-0">
+            <div className="col-lg-4 mb-4 mb-lg-0 p-4 p-lg-0">
               <h3 className=" mb-4 text-black">HARDWARE BOX BENEFITS</h3>
 
               {/* Benefit Items */}
@@ -713,7 +713,7 @@ const ElectronicsThree = () => {
 
 
       <section className="p-0 contactustoget">
-        <div className="container py-1 px-3 my-1"
+        <div className="container heightcus py-1 px-3 my-1"
           style={{
             height: "175px",
             display: "flex",
