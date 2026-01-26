@@ -1,25 +1,39 @@
-import ImageLink from "@/Components/Widgets/ImageLink";
-import TitleBox from "@/Components/Widgets/Title";
-import WrapperComponent from "@/Components/Widgets/WrapperComponent";
-import BlogIdsContext from "@/Context/BlogIdsContext";
-import BrandIdsContext from "@/Context/BrandIdsContext";
+import React, { useContext, useEffect } from "react";
+import Head from "next/head";
+import { Container, Row, Col } from "reactstrap";
+
 import ProductIdsContext from "@/Context/ProductIdsContext";
-import { horizontalProductSlider5 } from "@/Data/SliderSetting";
-import Loader from "@/Layout/Loader";
-import { Href, storageURL } from "@/Utils/Constants";
+import BrandIdsContext from "@/Context/BrandIdsContext";
+import BlogIdsContext from "@/Context/BlogIdsContext";
+
 import useCustomDataQuery from "@/Utils/Hooks/useCustomDataQuery";
+import { horizontalProductSlider5 } from "@/Data/SliderSetting";
+
+import WrapperComponent from "@/Components/Widgets/WrapperComponent";
+import TitleBox from "@/Components/Widgets/Title";
+import HomeProduct from "@/Components/Themes/Widgets/HomeProduct";
+import HomeProductTab from "@/Components/Themes/Widgets/HomeProductTab";
+import HomeBrand from "@/Components/Themes/Widgets/HomeBrand";
+import HomeService from "@/Components/Themes/Widgets/HomeService";
+import HomeFourColumnProduct from "@/Components/Themes/Widgets/HomeFourColumnProduct";
+import HomeParallaxBanner from "@/Components/Themes/Widgets/HomeParallaxBanner";
+import HomeBlog from "@/Components/Themes/Widgets/HomeBlog";
+
+// New Components
+import HomeBanner from "./HomeBanner";
+import ShippingBar from "./ShippingBar";
+import PromoBanner from "./PromoBanner";
+import HardwareBenefits from "./HardwareBenefits";
+import SkeletonHomepage from "./SkeletonHomepage";
+
+import ImageLink from "@/Components/Widgets/ImageLink";
+import { Href, storageURL } from "@/Utils/Constants";
 import { useSkeletonLoader2 } from "@/Utils/Hooks/useSkeleton2";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext, useEffect } from "react";
-import { Col, Container, Row } from "reactstrap";
-import HomeBrand from "../../Widgets/HomeBrand";
-import HomeCategorySidebar from "../../Widgets/HomeCategorySidebar";
-import HomeProduct from "../../Widgets/HomeProduct";
-import HomeProductTab from "../../Widgets/HomeProductTab";
-import HomeServices from "../../Widgets/HomeService";
-import HomeSlider from "../../Widgets/HomeSlider";
-import Head from "next/head";
+import HomeCategorySidebar from "@/Components/Themes/Widgets/HomeCategorySidebar";
+import HomeServices from "@/Components/Themes/Widgets/HomeService";
+import HomeSlider from "@/Components/Themes/Widgets/HomeSlider";
 
 
 const ElectronicsThree = () => {
@@ -46,48 +60,18 @@ const ElectronicsThree = () => {
   }, []);
 
   useSkeletonLoader2([productLoad, blogLoading, brandLoading]);
-  if (isLoading && document.body) return <Loader />;
+  
+  // Show skeleton if loading OR if data is not yet available
+  if ((isLoading || !data) && typeof window !== 'undefined') return <SkeletonHomepage />;
 
   return (
     <>
       <Head>
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></link>
-
       </Head>
-      {/* Home Banners */}
-      {/* { <WrapperComponent classes={{ sectionClass: "small-section ", fluidClass: "container-fluid mycon" }} noRowCol={true}>
-        <div className="home-slider">
-          <HomeSlider bannerData={data?.home_banner} height={539} width={1376} />
-        </div>
-      </WrapperComponent> } */}
+      
       <>
-
-
-
-        {/*  */}
-
-
-
-
-
-        {/* <WrapperComponent
-          classes={{
-            sectionClass: "home-slider-section",
-            fluidClass: "container-fluid p-0",
-          }}
-          noRowCol={true}
-        >
-          <div className="home-slider mb-5">
-            <HomeSlider
-              bannerData={data?.home_banner}
-              height={539}
-              width={1376}
-              className="responsive-slider"
-            />
-          </div>
-        </WrapperComponent> */}
-
         <style jsx>{`
      .home-slider-section {
        width: 100%;
@@ -253,18 +237,13 @@ const ElectronicsThree = () => {
                 Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
                 Been The Industry’s Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley Of Type And Scrambled It...
               </p>
-              <a href="/category/storage-devices" className="btn ">
+              <Link href="/category/storage-devices" className="btn ">
                 Shop Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </section>
-
-
-
-
-
 
       {/* Services */}
       {/* {data?.services && (
@@ -273,14 +252,7 @@ const ElectronicsThree = () => {
         </WrapperComponent>
       )} */}
 
-
-
-
-
-
       {/* Product List 1 */}
-
-
       {data?.products_list_1?.status && (
         <>
           <style jsx global>{`
@@ -289,9 +261,10 @@ const ElectronicsThree = () => {
               display: flex !important;
             }
           `}</style>
-
+          
+          {/* Added consistent spacing here */}
           <WrapperComponent
-            classes={{ sectionClass: "ratio_square no-arrow", fluidClass: "container" }}
+            classes={{ sectionClass: "section-b-space ratio_square no-arrow", fluidClass: "container" }}
             colProps={{ xs: "12" }}
           >
             <TitleBox type="icon" title={data?.products_list_1} />
@@ -308,7 +281,7 @@ const ElectronicsThree = () => {
       )}
 
       {/* airpods and gaming laptop sec */}
-      <section className="py-5 bg-white">
+      <section className="py-5 bg-white section-b-space">
         <div className="container p-3 ">
           <div className="row ">
 
@@ -320,9 +293,9 @@ const ElectronicsThree = () => {
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
                     <h3 className="text-black mb-3 mb-md-5">Airpods Sale</h3>
-                    <a href="/category/gaming-console" className="btn btn-primary d-inline-flex align-items-center">
+                    <Link href="/category/gaming-console" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-12 col-md-8 image-div">
                     <img
@@ -344,9 +317,9 @@ const ElectronicsThree = () => {
                       Weekend <span className="text-primary fw-semibold">Offer</span>
                     </p>
                     <h3 className="text-black mb-3 mb-md-5">Gaming Laptop</h3>
-                    <a href="/category/gaming-accessories" className="btn btn-primary d-inline-flex align-items-center">
+                    <Link href="/category/gaming-accessories" className="btn btn-primary d-inline-flex align-items-center">
                       SHOP NOW&nbsp;<span>&rarr;</span>
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-12 col-md-8 image-div">
                     <img
@@ -364,17 +337,21 @@ const ElectronicsThree = () => {
         </div>
       </section>
 
-
-
       {/* Brands */}
       {data?.brand?.status && (
         <section className="section-b-space blog-wo-bg p-0">
-          <HomeBrand brandIds={data?.brand?.brand_ids} />
+            <Container>
+                <div className="row">
+                    <div className="col-12">
+                         <HomeBrand brandIds={data?.brand?.brand_ids} />
+                    </div>
+                </div>
+            </Container>
         </section>
       )}
 
       {/* reviews section */}
-      <section className="py-5 pt-3 mt-4 mb-4 bg-light">
+      <section className="py-5 pt-3 mt-4 mb-4 bg-light section-b-space">
         <div className="container">
           <div className="row align-items-center mb-4">
             <div className="col-md-6">
@@ -424,16 +401,9 @@ const ElectronicsThree = () => {
         </div>
       </section>
 
-
-
-
-
-
-
-
       {/* Category Products 2 */}
       {data?.category_product_2?.status && (
-        <WrapperComponent classes={{ sectionClass: "ratio_square p-0 m-0 bg-title wo-bg category-tab-section ", fluidClass: "container" }} noRowCol={true}>
+        <WrapperComponent classes={{ sectionClass: "ratio_square p-0 m-0 bg-title wo-bg category-tab-section section-b-space", fluidClass: "container" }} noRowCol={true}>
           <Row>
             <Col>
               <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
@@ -441,27 +411,9 @@ const ElectronicsThree = () => {
           </Row>
         </WrapperComponent>
       )}
-      {/* reviews section */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       {/* About uss Section */}
-
-      <section className="about d-flex align-items-center" style={{
+      <section className="about d-flex align-items-center section-b-space" style={{
         backgroundImage: 'url("/assets/images/warehouse-bg.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -478,9 +430,9 @@ const ElectronicsThree = () => {
               <p className="mt-3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
               </p>
-              <a href="/category/memories" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
+              <Link href="/category/memories" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
                 Shop Now
-              </a>
+              </Link>
             </div>
 
             {/* Right Image */}
@@ -500,7 +452,7 @@ const ElectronicsThree = () => {
         <div className="hero-overlay"></div>
       </section>
 
-      <section className="py-5 bg-light">
+      <section className="py-5 bg-light section-b-space">
         <div className="container">
           <div className="row align-items-start">
 
@@ -596,7 +548,7 @@ const ElectronicsThree = () => {
       {/* we are expert section */}
 
 
-      <section className="py-5" style={{ backgroundColor: "#ffe4e4" }}>
+      <section className="py-5 section-b-space" style={{ backgroundColor: "#ffe4e4" }}>
         <div className="container">
           <div className="row mb-4">
             <div className="col-12">
@@ -643,13 +595,13 @@ const ElectronicsThree = () => {
       {/* blog section */}
 
 
-      <section className="py-5 bg-white">
+      <section className="py-5 bg-white section-b-space">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center mb-4">
             <h3 className=" mb-0 text-black">RECENT BLOG POSTS</h3>
-            <a href="/blog" className="text-decoration-none fw-semibold">
+            <Link href="/blog" className="text-decoration-none fw-semibold">
               View All
-            </a>
+            </Link>
           </div>
 
           <div className="row">
@@ -712,7 +664,7 @@ const ElectronicsThree = () => {
       {/* contact us to get invite section */}
 
 
-      <section className="p-0 contactustoget">
+      <section className="p-0 contactustoget section-b-space">
         <div className="container heightcus py-1 px-3 my-1"
           style={{
             height: "175px",
@@ -761,7 +713,7 @@ const ElectronicsThree = () => {
 
 
       {/* contact section */}
-      <section className="pt-5 bg-white">
+      <section className="pt-5 bg-white section-b-space">
         <div className="container">
           <div className="row align-items-center g-4">
             {/* Left: Contact Info */}
@@ -792,7 +744,7 @@ const ElectronicsThree = () => {
                   <div>
                     <h4 className="fw-bold text-black mb-1">Phone Number</h4>
                     <p className="text-muted mb-0">
-                      <a href="tel:+19163046606">(+1) 916 304 6606</a>
+                      <a href="tel:+18328835303">(+1) 832 8835303</a>
                     </p>
 
                   </div>
@@ -807,7 +759,7 @@ const ElectronicsThree = () => {
                   <div>
                     <h4 className="fw-bold text-black mb-1">Email Address</h4>
                     <p className="text-muted mb-0">
-                      <a href="mailto:info@convexns.com">info@convexns.com</a>
+                      <a href="mailto:hello@hardwarebox.com">hello@hardwarebox.com</a>
                     </p>
 
                   </div>

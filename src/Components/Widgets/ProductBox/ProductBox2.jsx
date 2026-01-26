@@ -13,7 +13,7 @@ import Link from "next/link";
 import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import { placeHolderImage } from "../Placeholder";
 
-const ProductBox2 = ({ productState, setProductState }) => {
+const ProductBox2 = ({ productState, setProductState, closeSearch }) => {
   const { addToWishlist, removeWishlist } = useContext(WishlistContext);
   const [productWishlist, setProductWishlist] = useState(productState?.is_wishlist);
   const [addToWishlistAudio, setAddToWishlistAudio] = useState(new Audio(audioFile));
@@ -47,7 +47,9 @@ const ProductBox2 = ({ productState, setProductState }) => {
           ) : null}
 
           <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
-            <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid bg-img" alt={productState?.product?.name} />
+            <a onClick={() => closeSearch && closeSearch()}>
+              <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid bg-img" alt={productState?.product?.name} />
+            </a>
           </Link>
           <div className="rating-label">
             <RiStarSFill />
@@ -69,9 +71,11 @@ const ProductBox2 = ({ productState, setProductState }) => {
                 <ProductBoxVariantAttribute showVariableType={["color", "image"]} productState={productState} setProductState={setProductState} />
               </div>
             </div>
-            <a href={`/product/${productState?.product?.slug}`}>
-              <h6>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h6>
-            </a>
+            <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
+              <a onClick={() => closeSearch && closeSearch()}>
+                <h6>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h6>
+              </a>
+            </Link>
             <h4 className="price">
               {productState?.selectedVariation ? convertCurrency(productState?.selectedVariation.sale_price) : convertCurrency(productState?.product?.sale_price)} {/* Adjust currencySymbol based on your implementation */}
               {(productState?.selectedVariation ? productState?.selectedVariation.discount : productState?.product?.discount) ? (

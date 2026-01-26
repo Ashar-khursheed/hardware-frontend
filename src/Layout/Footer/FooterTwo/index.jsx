@@ -141,7 +141,7 @@ const FooterTwo = () => {
                 <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
                 <div className="text-start">
                   <strong>
-                    <a className="text-white" href="tel:+191630466066">(+1) 916 304 66066</a>
+                    <a className="text-white" href="tel:+18328835303">(+1) 832 88353036</a>
                   </strong><br />
 
                   <span className="small">Working 8:00 - 22:00</span>

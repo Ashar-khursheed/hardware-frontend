@@ -1,5 +1,7 @@
-import NoSSR from "@/Utils/NoSSR";
+
 import "../index.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { I18nProvider } from "./i18n/i18n-context";
 import { detectLanguage } from "./i18n/server";
 import LanguageProvider from "@/Context/LanguageContext/LanguageProvider";
@@ -54,7 +56,7 @@ export default async function RootLayout({ children }) {
             <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
           </head>
           <body suppressHydrationWarning={true}>
-            <NoSSR>{children}</NoSSR>
+            {children}
           </body>
         </html>
       </LanguageProvider>

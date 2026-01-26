@@ -91,16 +91,17 @@ const SelectedCart = ({ modal, setSelectedVariation, setModal }) => {
                   href={`/cart`}
                   className="btn view-cart"
                   onClick={() => setCartCanvas(false)}
-                  legacyBehavior>
+                >
                   {t("view_cart")}
                 </Link>
                 <Link
                   href={"/checkout"}
                   className="btn checkout"
                   onClick={() => {
-                    setCartCanvas(false), handelCheckout;
+                    setCartCanvas(false);
+                    handelCheckout();
                   }}
-                  legacyBehavior>
+                >
                   {t("checkout")}
                 </Link>
               </div>

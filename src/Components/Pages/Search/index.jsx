@@ -31,11 +31,17 @@ const SearchModule = () => {
   useEffect(() => {
     searchState && refetch();
   }, []);
-  const onHandleSearch = (e) => {
-    router.push(`/search?search=${e.target.value}`);
-    setSearchState(e.target.value);
-  };
-  if (isLoading) return <Loader />;
+  // if (isLoading) return <Loader />;
+  
+  const onChangeHandler = (e) => {
+      setSearchState(e.target.value);
+  }
+
+  const onSearchBtnClick = () => {
+      const sanitizedSearch = searchState.replace(/\u2011/g, "-");
+      router.push(`/search?search=${sanitizedSearch}`);
+  }
+
   return (
     <>
       <Breadcrumbs title={"Search"} subNavigation={[{ name: "Search" }]} />
@@ -43,10 +49,10 @@ const SearchModule = () => {
         <Container>
           <div className="row">
             <WrapperComponent classes={{ sectionClass: "search-block", fluidClass: "container", col: "offset-lg-3" }} colProps={{ lg: "6" }}>
-              <form className="form-header form-box">
+              <form className="form-header form-box" onSubmit={(e) => { e.preventDefault(); onSearchBtnClick(); }}>
                 <InputGroup>
-                  <Input type="text" className="form-control" placeholder={t("search_product")} value={searchState} onChange={(e) => onHandleSearch(e)} />
-                  <Btn className="btn-solid" onClick={onHandleSearch}>
+                  <Input type="text" className="form-control" placeholder={t("search_product")} value={searchState} onChange={onChangeHandler} />
+                  <Btn className="btn-solid" onClick={onSearchBtnClick} type="button">
                     <RiSearchLine />
                     {"  "} {t("search")}
                   </Btn>

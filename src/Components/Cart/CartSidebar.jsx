@@ -14,10 +14,12 @@ const CartSidebar = () => {
   const { convertCurrency } = useContext(SettingContext);
   const { setOpenAuthModal } = useContext(ThemeOptionContext);
   const { t } = useTranslation("common");
+  // const isAuth = Cookies.get("uat_multikart"); // Not really needed for link since AuthModal handles check usually, or we redirect. 
+  // Actually line 55 uses it. Let's keep it but ensure format is valid.
   const isAuth = Cookies.get("uat_multikart");
   return (
     <Col xxl={3} xl={4}>
-      <div className="summery-box p-sticky">
+      <div className="summery-box p-sticky" style={{ top: '30px', zIndex: 1 }}>
         <div className="summery-header">
           <h3>{t("CartTotal")}</h3>
         </div>

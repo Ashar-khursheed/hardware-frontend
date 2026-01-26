@@ -68,7 +68,7 @@ const SingleProduct = ({ slug }) => {
   }, []);
 
   useSkeletonLoader2([productLoad, blogLoading, brandLoading]);
-  if (isLoading && document.body) return <Loader />;
+  // if (isLoading && document.body) return <Loader />;
 
   return (
     <div style={{ backgroundImage: `url(${ImagePath}/single-product/bg.jpg)` }}>

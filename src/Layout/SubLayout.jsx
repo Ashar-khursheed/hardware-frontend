@@ -237,7 +237,7 @@ const SubLayout = ({ children }) => {
       <AuthModal />
       {theme != "full_page" && <Footers />}
       {themeOption?.general?.customizer_enable &&  <ThemeCustomizer />}    
-      <NextTopLoader showSpinner={false} />
+      <NextTopLoader showSpinner={false} color="#ff5050" />
       <RecentPurchase />
       {themeOption?.popup?.news_letter?.is_enable && <NewsLetterModal setMakeExitActive={setMakeExitActive} />}
       <div className="compare-tap-top-box">

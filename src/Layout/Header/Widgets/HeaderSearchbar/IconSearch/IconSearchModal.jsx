@@ -27,8 +27,41 @@ const IconSearchModal = ({ setIsOpen, isOpen }) => {
   const [productTc, setProductTc] = useState(null);
   const { ref, isComponentVisible, setIsComponentVisible } = useOutsideDropdown();
   const router = useRouter();
-  const { data, isLoading: productLoading, refetch: productRefetch, fetchStatus } = useQuery([ProductAPI, "Search"], () => request({ url: ProductAPI, params: { status: 1, search: productCustomSearch ? productCustomSearch : null, paginate: searchValue === "" ? 4 : paginate } }), { enabled: true, refetchOnWindowFocus: false, select: (data) => data.data.data });
-  const { data: categoryData, refetch, isLoading: categoryIsLoading, fetchStatus: categoryFetchStatus } = useQuery(["CategoryAPIMinimalSearch"], () => request({ url: CategoryAPI, params: { status: 1, paginate: searchValue === "" ? 4 : paginate, search: categoryCustomSearch ? categoryCustomSearch : null } }), { enabled: isOpen, refetchOnWindowFocus: false, select: (data) => data.data.data });
+  const { data, isLoading: productLoading, fetchStatus } = useQuery(
+    [ProductAPI, "Search", productCustomSearch], 
+    () => request({ 
+        url: ProductAPI, 
+        params: { 
+            status: 1, 
+            search: productCustomSearch ? productCustomSearch : null, 
+            paginate: 12 
+        } 
+    }), 
+    { 
+        enabled: true, 
+        refetchOnWindowFocus: false, 
+        keepPreviousData: true, 
+        select: (data) => data.data.data 
+    }
+  );
+
+  const { data: categoryData, isLoading: categoryIsLoading, fetchStatus: categoryFetchStatus } = useQuery(
+    ["CategoryAPIMinimalSearch", categoryCustomSearch], 
+    () => request({ 
+        url: CategoryAPI, 
+        params: { 
+            status: 1, 
+            paginate: 12, 
+            search: categoryCustomSearch ? categoryCustomSearch : null 
+        } 
+    }), 
+    { 
+        enabled: isOpen, 
+        refetchOnWindowFocus: false, 
+        keepPreviousData: true, 
+        select: (data) => data.data.data 
+    }
+  );
 
   const [text] = useTypewriter({
     words: ["Search with brand and category..."],
@@ -37,10 +70,11 @@ const IconSearchModal = ({ setIsOpen, isOpen }) => {
   });
 
   useEffect(() => {
+    // Ensure we handle data properly, even if empty
     if (data) {
-      setSearchArray(data?.slice(0, 5));
+      setSearchArray(data);
     }
-  }, [productLoading, data]);
+  }, [data]);
 
   // Added debouncing
   useEffect(() => {
@@ -51,24 +85,13 @@ const IconSearchModal = ({ setIsOpen, isOpen }) => {
     setProductTc(setTimeout(() => setProductCustomSearch(searchValue), 500));
   }, [searchValue]);
 
-  // Getting users data on searching users
-  useEffect(() => {
-    !categoryIsLoading && categoryCustomSearch !== undefined && refetch();
-    !productLoading && productCustomSearch !== undefined && productRefetch();
-  }, [categoryCustomSearch, productCustomSearch]);
+  // Manual refetching effect removed as it's now handled by the query key key change
 
   const onChangeHandle = (text) => {
-    // setCategorySearch(text);
-    setSearchValue(text);
-    // setProductCustomSearch(text);
-    if (text !== "") {
-      const search = data?.filter((item) => item?.name?.toLowerCase().includes(text.toLowerCase()));
-      setSearchArray(search);
-      setIsComponentVisible(true);
-    } else {
-      setSearchArray(data?.slice(0, 5));
-      setIsComponentVisible(false);
-    }
+    // Sanitize input: replace non-breaking hyphen (\u2011) with standard hyphen (-)
+    const sanitizedText = text.replace(/\u2011/g, "-");
+    setSearchValue(sanitizedText);
+    setIsComponentVisible(true);
   };
 
   return (
@@ -86,13 +109,13 @@ const IconSearchModal = ({ setIsOpen, isOpen }) => {
         </div>
         <div className="search-category-box">
           <ul className="search-category-skeleton">
-            {categoryFetchStatus == "fetching" || categoryData?.length ? <li className="text-secondary">{t("top_search")}</li> : null}
-            {categoryFetchStatus == "fetching" ? new Array(4).fill(null).map((_, i) => <li className="skeleton-loader" />) : categoryData?.length ? categoryData?.slice(0, 4)?.map((item, i) => <li key={i}>{item?.name}</li>) : null}
+            {categoryData?.length > 0 || categoryFetchStatus == "fetching" ? <li className="text-secondary">{t("top_search")}</li> : null}
+            {!categoryData && categoryFetchStatus == "fetching" ? new Array(4).fill(null).map((_, i) => <li className="skeleton-loader" key={i} />) : categoryData?.slice(0, 4)?.map((item, i) => <li key={i}>{item?.name}</li>)}
           </ul>
         </div>
         <div className="mt-sm-4 mt-3">
           <h3 className="search-title">{t("most_searched")}</h3>
-          {fetchStatus == "fetching" ? (
+          {!searchArr && fetchStatus == "fetching" ? (
             <Row className="row row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 row-empty-cls">
               {new Array(3).fill(null).map((_, i) => (
                 <Col key={i}>
@@ -103,9 +126,9 @@ const IconSearchModal = ({ setIsOpen, isOpen }) => {
             </Row>
           ) : searchArr?.length > 0 ? (
             <Row className="row row-cols-xl-4 row-cols-md-3 row-cols-2 g-sm-4 g-3 row-empty-cls">
-              {searchArr?.slice(0, 4)?.map((item, i) => (
+              {searchArr?.slice(0, 12)?.map((item, i) => (
                 <Col key={i}>
-                  <ListProductBox product={item} productBox={2} isOpen={isOpen} />
+                  <ListProductBox product={item} productBox={2} isOpen={isOpen} closeSearch={() => setIsOpen(false)} />
                   {/* <ProductBox style="vertical" product={item} /> */}
                 </Col>
               ))}

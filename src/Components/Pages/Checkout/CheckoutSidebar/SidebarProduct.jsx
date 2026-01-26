@@ -21,23 +21,31 @@ const SidebarProduct = ({ values }) => {
         <span className="step-number">3</span>
         <h4>{t("summary_order")}</h4>
       </div>
-        <ul className="qty">
+        <ul className="qty list-unstyled">
           {cartProducts?.map((item, i) => (
-            <li key={i}>
+            <li key={i} className="mb-3 border-bottom pb-3">
               {item && (
-                <div className="cart-image">
-                  <Image src={item?.variation && item?.variation?.variation_image ? item?.variation?.variation_image?.original_url : item?.product?.product_thumbnail ? item?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={item?.product?.name || "product"} width={70} height={70} />
+                <div className="d-flex align-items-center">
+                  <div className="cart-image flex-shrink-0 me-3" style={{ width: 70, height: 70, position: 'relative' }}>
+                    <Image 
+                        src={item?.variation && item?.variation?.variation_image ? item?.variation?.variation_image?.original_url : item?.product?.product_thumbnail ? item?.product?.product_thumbnail?.original_url : placeHolderImage} 
+                        className="img-fluid object-fit-contain rounded" 
+                        alt={item?.product?.name || "product"} 
+                        fill
+                        sizes="70px"
+                    />
+                  </div>
+                  <div className="cart-content flex-grow-1">
+                    <h5 className="mb-1 text-truncate" style={{ maxWidth: '200px' }}>{item?.variation ? item?.variation?.name : item?.product?.name}</h5>
+                    <div className="d-flex justify-content-between align-items-center">
+                         <h6 className="text-theme mb-0">
+                            {item?.variation ? convertCurrency(item?.variation.sale_price) : convertCurrency(item?.product?.sale_price)} <span className="text-muted">x {item.quantity}</span>
+                        </h6>
+                        <span className="text-theme fw-bold">{convertCurrency((item?.variation ? item?.variation.sale_price : item?.product?.sale_price) * item.quantity)}</span>
+                    </div>
+                  </div>
                 </div>
               )}
-              <div className="cart-content">
-                <div>
-                  <h4>{item?.variation ? item?.variation?.name : item?.product?.name}</h4>
-                  <h5 className="text-theme">
-                    {item?.variation ? convertCurrency(item?.variation.sale_price) : convertCurrency(item?.product?.sale_price)} x {item.quantity}
-                  </h5>
-                </div>
-                <span className="text-theme">{convertCurrency((item?.variation ? item?.variation.sale_price : item?.product?.sale_price) * item.quantity)}</span>
-              </div>
             </li>
           ))}
         </ul>

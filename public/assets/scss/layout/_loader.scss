@@ -18,44 +18,37 @@
 }
 
 .loader-wrapper {
-  height: 100vh;
-  width: 100vw;
-  background-color: $white;
-  @include flex_common;
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
+  background-color: $white;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   .loader {
-    position: relative;
-    inset: unset;
-    transform: unset;
-    margin: 0 auto 13px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--theme-color);
-    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #0056b3;
+    /* Blue */
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+}
 
-    &:after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      border: 0 solid $white;
-      transform: translate(-50%, -50%);
-      animation: loading 1000ms ease-out forwards infinite;
-      transition: all 0.3s ease;
-    }
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
   }
 
-  h3 {
-    font-weight: 500;
-    letter-spacing: unset;
-    color: #222;
-    margin: 0;
-    font-size: 22px;
+  100% {
+    transform: rotate(360deg);
   }
 }
 
@@ -217,6 +210,7 @@
   }
 
   .title2 {
+
     h2,
     h4 {
       display: none;
@@ -242,6 +236,7 @@
 
   .title3,
   .title4 {
+
     h2,
     h4 {
       display: none;
@@ -290,7 +285,7 @@
         height: calc(14px + (19 - 14) * ((100vw - 320px) / (1920 - 320)));
         display: block;
 
-        + span {
+        +span {
           margin-top: 10px;
         }
       }
@@ -317,7 +312,7 @@
         height: calc(14px + (19 - 14) * ((100vw - 320px) / (1920 - 320)));
         display: block;
 
-        + span {
+        +span {
           margin-top: 10px;
         }
       }
@@ -499,7 +494,7 @@
   .service_slide {
     .service-home {
       .row {
-        > div {
+        >div {
           &:nth-child(even) {
             .service-block1 {
               background-color: rgba(255, 255, 255, 0.85);
@@ -648,7 +643,7 @@
   }
 
   .parallax-cls {
-    > section {
+    >section {
       &:nth-child(odd) {
         .full-banner {
           .home-skeleton {
@@ -687,8 +682,8 @@
 
   .left-sidebar_center {
     .pixelstrap {
-      > li {
-        > a {
+      >li {
+        >a {
           .skeleton-category-img {
             height: 48px;
             width: 48px;
@@ -942,6 +937,7 @@
   }
 
   .product-detail {
+
     .product-title,
     h6,
     .price {

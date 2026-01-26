@@ -19,6 +19,7 @@ import ProductSlider from "./ProductSlider";
 import ProductSticky from "./ProductSticky";
 import ProductThumbnail from "./ProductThumbnail";
 import ProductVerticalTab from "./ProductVerticalTab";
+import SkeletonProductDetails from "@/Components/Themes/Electronics/ElectronicsThree/SkeletonProductDetails";
 
 const ProductDetailContent = ({ params }) => {
   const router = useRouter();
@@ -69,7 +70,7 @@ const ProductDetailContent = ({ params }) => {
     };
   }, []);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <SkeletonProductDetails />;
 
   const showProductLayout = {
     product_thumbnail: <ProductThumbnail productState={productState} setProductState={setProductState} />,

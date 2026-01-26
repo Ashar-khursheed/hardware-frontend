@@ -12,7 +12,6 @@ const CartContent = () => {
   const { cartProducts, getCartLoading } = useContext(CartContext);
   const { isLoading } = useContext(ThemeOptionContext);
 
-  if (isLoading) return <Loader />;
   return (
     <>
       <Breadcrumbs title={"Cart"} subNavigation={[{ name: "Cart" }]} />

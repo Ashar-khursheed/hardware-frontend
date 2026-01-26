@@ -29,35 +29,31 @@ const CartData = ({ elem }) => {
           <a>{elem?.product?.name}</a>
         </Link>
 
-        <Row className="mobile-cart-content">
-          <Col>
-            <div className="qty-box">
-              <HandleQuantity productObj={elem?.product} classes={{ customClass: "quantity-price" }} elem={elem} />
-            </div>
-          </Col>
-          <Col className="table-price">
-            <h2 className="td-color">
-              {convertCurrency(elem?.product?.sale_price)}
-              {elem?.product?.discount || elem?.product?.discount ? <del className="text-content">{convertCurrency(elem?.product?.price)}</del> : null}
-            </h2>
-          </Col>
-          <Col>
-            <a href={Href} className="icon remove-btn" onClick={removeItem}>
-              <RiCloseLine />
-            </a>
-          </Col>
-        </Row>
+          <div className="cart-mobile-wrapper d-block d-md-none">
+            <h6 className="theme-color fw-bold mb-1">
+               {convertCurrency(elem?.product?.sale_price)}
+            </h6>
+             {elem?.product?.discount ? <del className="text-muted small">{convertCurrency(elem?.product?.price)}</del> : null}
+             
+             <div className="qty-box mt-2">
+                 <HandleQuantity productObj={elem?.product} classes={{ customClass: "quantity-price" }} elem={elem} />
+             </div>
+             
+             <button className="btn btn-link text-danger p-0 mt-2" onClick={removeItem}>
+                <RiCloseLine /> Remove
+             </button>
+          </div>
       </td>
-      <td className="table-price">
-        <h2>
+      <td className="table-price d-none d-md-table-cell">
+        <h5 className="theme-color fw-bold">
           {convertCurrency(elem?.product?.sale_price)}
-          {elem?.product?.discount || elem?.product?.discount ? <del className="text-content">{convertCurrency(elem?.product?.price)}</del> : null}
-        </h2>
-        {elem?.product?.price - elem?.product?.sale_price != 0 || elem?.product?.price - elem?.product?.sale_price < 0 ? (
-          <h6 className="theme-color">
+        </h5>
+         {elem?.product?.discount ? <del className="text-muted small">{convertCurrency(elem?.product?.price)}</del> : null}
+         {elem?.product?.price - elem?.product?.sale_price > 0 && (
+          <p className="text-success small mb-0">
             {t("you_save")}: {convertCurrency(Math.abs(elem?.product?.price - elem?.product?.sale_price).toFixed(2))}
-          </h6>
-        ) : null}
+          </p>
+        )}
       </td>
       <td>
         <div className="qty-box">

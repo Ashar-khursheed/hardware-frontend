@@ -25,6 +25,27 @@ const HandleQuantity = ({ classes = {}, productObj, elem, customIcon }) => {
     handleIncDec(1, productObj, productQty, setProductQty, false, elem);
   }, [handleIncDec, productObj, productQty, elem]);
 
+  const handleBlur = (e) => {
+    let newQty = parseInt(e.target.value);
+    if (isNaN(newQty) || newQty < 1) newQty = 1;
+    
+    // Find original product to retrieve current saved quantity
+    const foundProduct = cartProducts.find((el) => (elem?.variation_id ? elem?.variation_id === el?.variation_id : el.product_id === elem?.product_id));
+    const currentSavedQty = foundProduct ? foundProduct.quantity : 0;
+
+    const delta = newQty - currentSavedQty;
+    if (delta !== 0) {
+      handleIncDec(delta, productObj, currentSavedQty, setProductQty, false, elem);
+    } else {
+        // Reset to saved qty if no change valid
+        setProductQty(currentSavedQty);
+    }
+  };
+
+  const handleChange = (e) => {
+      setProductQty(e.target.value);
+  }
+
   return (
     <div className="qty-box">
       <InputGroup>
@@ -33,7 +54,15 @@ const HandleQuantity = ({ classes = {}, productObj, elem, customIcon }) => {
             {customIcon && productQty <= 1 ? customIcon : <RiSubtractLine />}
           </Btn>
         </span>
-        <Input className="input-number qty-input" type="text" name="quantity" value={productQty} readOnly />
+        <Input 
+            className="input-number qty-input" 
+            type="number" 
+            name="quantity" 
+            value={productQty} 
+            onChange={handleChange}
+            onBlur={handleBlur}
+            readOnly={false} 
+        />
         <span className="input-group-prepend" onClick={handleIncrease}>
           <Btn className="quantity-left-plus" id="quantity-left-plus" type="button">
             <RiAddLine />
