@@ -13,7 +13,13 @@ export async function middleware(request) {
     method: "GET",
     headers: myHeaders,
   };
-  let settingData = await (await fetch(process.env.API_PROD_URL + "/settings", requestOptions))?.json();
+  let settingData;
+  try {
+    settingData = await (await fetch(process.env.API_PROD_URL + "/settings", requestOptions))?.json();
+  } catch (err) {
+    console.error("Middleware fetch failed:", err);
+    settingData = null;
+  }
   const protectedRoutes = [`/account/dashboard`, `/account/notification`, `/account/wallet`, `/account/bank-details`, `/account/bank-details`, `/account/point`, `/account/refund`, `/account/order`, `/account/addresses`, `/wishlist`, `/compare`];
 
   const path = request.nextUrl.pathname;
