@@ -51,7 +51,7 @@ const nextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled: Requires 'npm install critters'
     optimizePackageImports: ['react-icons', 'react-toastify'],
   },
 
