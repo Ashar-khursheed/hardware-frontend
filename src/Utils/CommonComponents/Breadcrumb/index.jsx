@@ -11,18 +11,18 @@ const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
   return (
     <div className="breadcrumb-section">
       <Container>
-        <h2>{t(safeTitle.replaceAll("-", " "))}</h2>
+        <h2 suppressHydrationWarning>{t(safeTitle.replaceAll("-", " "))}</h2>
         <nav className="theme-breadcrumb">
           <Breadcrumb>
             <div className="breadcrumb-item active">
-              <a href={Href}> {t("home")} </a>
+              <a href={Href} suppressHydrationWarning> {t("home")} </a>
             </div>
             {subNavigation?.map((result, i) => {
               // Safely convert name to string
               const safeName = String(result?.name || '');
               return (
                 <div key={i} className="breadcrumb-item active ">
-                  <a href={Href}> {t(safeName.replaceAll("-", " "))} </a>
+                  <a href={Href} suppressHydrationWarning> {t(safeName.replaceAll("-", " "))} </a>
                 </div>
               );
             })}
