@@ -28,7 +28,11 @@ const SidebarProduct = ({ values }) => {
                 <div className="d-flex align-items-center">
                   <div className="cart-image flex-shrink-0 me-3" style={{ width: 70, height: 70, position: 'relative' }}>
                     <Image 
-                        src={item?.variation && item?.variation?.variation_image ? item?.variation?.variation_image?.original_url : item?.product?.product_thumbnail ? item?.product?.product_thumbnail?.original_url : placeHolderImage} 
+                        src={(
+                          item?.variation?.variation_image?.original_url || 
+                          item?.product?.product_thumbnail?.original_url || 
+                          placeHolderImage
+                        )?.replace(/([^:]\/)\/+/g, "$1")} 
                         className="img-fluid object-fit-contain rounded" 
                         alt={item?.product?.name || "product"} 
                         fill

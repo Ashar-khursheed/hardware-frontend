@@ -8,7 +8,7 @@ const nextConfig = {
     // API_PROD_URL: "https://hardwareapi.in-sourceit.com/api", // Local Laravel API URL
     // storageURL: "https://hardwareapi.in-sourceit.com/", // Local Laravel Storage URL
     API_PROD_URL: "https://hardwareapi.in-sourceit.com/api", // Local Laravel API URL
-    storageURL: "https://hardwareapi.in-sourceit.com/", // Local Laravel Storage URL
+    storageURL: "https://hardwareapi.in-sourceit.com", // Local Laravel Storage URL
   },
 
   // Performance optimizations

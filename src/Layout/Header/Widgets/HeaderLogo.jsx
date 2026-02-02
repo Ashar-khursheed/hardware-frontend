@@ -148,7 +148,7 @@ const HeaderLogo = ({ extraClass }) => {
           {logo?.original_url ? (
             <Image
               className="img-fluid"
-              src={logo.original_url}
+              src={logo.original_url?.replace(/([^:]\/)\/+/g, "$1")}
               height={34}
               width={173}
               alt={settingData?.general?.site_name || 'multikart-logo'}
