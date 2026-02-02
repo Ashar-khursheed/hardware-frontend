@@ -4,11 +4,12 @@ import { t } from "i18next";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { RiHeartLine, RiHome2Line, RiSearch2Line, RiShoppingBagLine, RiUserLine } from "react-icons/ri";
 
 const MobileMenu = () => {
   const { setOpenAuthModal, setCartCanvas } = useContext(ThemeOptionContext);
+  const [isMounted, setIsMounted] = useState(false);
 
   const isAuthenticated = Cookies.get("uat_multikart");
   const router = useRouter();
@@ -24,6 +25,10 @@ const MobileMenu = () => {
   const handleActive = (num) => {
     setActive(num);
   };
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <div className="mobile-menu d-md-none d-block mobile-cart">
       <ul>
@@ -31,7 +36,7 @@ const MobileMenu = () => {
           <Link href="/" className="your-class">
             <span className="flex items-center gap-1">
               <RiHome2Line />
-              <span>{t("home")}</span>
+              <span suppressHydrationWarning>{isMounted ? t("home") : "Home"}</span>
             </span>
           </Link>
         </li>
@@ -39,7 +44,7 @@ const MobileMenu = () => {
           <Link href="/search" legacyBehavior><span>
 <a onClick={() => handleActive(2)}>
               <RiSearch2Line />
-              <span>{t("search")}</span>
+              <span suppressHydrationWarning>{isMounted ? t("search") : "Search"}</span>
             </a>
 </span></Link>
 
@@ -47,19 +52,19 @@ const MobileMenu = () => {
         <li className={active == "3" ? "active" : ""}>
           <a href={Href} onClick={() => setCartCanvas(true)}>
             <RiShoppingBagLine />
-            <span>{t("cart")}</span>
+            <span suppressHydrationWarning>{isMounted ? t("cart") : "Cart"}</span>
           </a>
         </li>
         <li className={active == "4" ? "active" : ""}>
           <a href={Href} onClick={() => handleWishlist()}>
             <RiHeartLine />
-            <span>{t("wishlist")}</span>
+            <span suppressHydrationWarning>{isMounted ? t("wishlist") : "Wishlist"}</span>
           </a>
         </li>
         <li className={active == "5" ? "active" : ""} onClick={() => handleProfileClick()}>
           <a href={Href}>
             <RiUserLine />
-            <span>{t("user")}</span>
+            <span suppressHydrationWarning>{isMounted ? t("user") : "User"}</span>
           </a>
         </li>
       </ul>

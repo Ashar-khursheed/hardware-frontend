@@ -10,11 +10,20 @@ import { fallbackLng, getOptions, languages } from "./settings";
 // Helper function to load translations dynamically
 const loadResources = async (language, namespace) => {
   try {
-    const response = await request({ url: `${process.env.API_PROD_URL}/translation/front` }, false);
-    return response.data;
+    const response = await fetch(`${process.env.API_PROD_URL}/translation/front`, {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch translations');
+    }
+
+    const data = await response.json();
+    return data.data || data;
   } catch (error) {
-    console.error("Error loading translations:", error);
-    return null;
+    console.error("Error loading translations:", error.message);
+    // Return empty object as fallback to prevent hydration issues
+    return {};
   }
 };
 
@@ -25,7 +34,7 @@ const initServerI18next = async (language, ns) => {
     // .use(resourcesToBackend((language, ns) => import(`./locales/${language}/${ns}.json`)))
     // .init(getOptions(language, ns));
     .use(resourcesToBackend((language, ns) => loadResources(language, ns)))
-    .init({...getOptions(language, ns), debug:false});
+    .init({ ...getOptions(language, ns), debug: false });
   return i18nInstance;
 };
 

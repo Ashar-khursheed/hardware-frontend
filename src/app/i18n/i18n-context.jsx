@@ -10,13 +10,13 @@ import { getOptions } from "./settings";
 import request from "@/Utils/AxiosUtils";
 
 const loadResources = async (language, namespace) => {
-
   try {
     const response = await request({url:`${process.env.API_PROD_URL}/translation/front`}, false);
-    return response.data;
+    return response.data || {};
   } catch (error) {
     console.error("Error loading translations:", error);
-    return null;
+    // Return empty object as fallback to prevent hydration issues
+    return {};
   }
 };
 

@@ -3,8 +3,8 @@
 ## Your Project Configuration
 
 **Frontend:** Next.js 14 - https://hardware.in-sourceit.com/  
-**Backend:** Laravel API - https://api.in-sourceit.com/api  
-**Storage:** https://api.in-sourceit.com/
+**Backend:** Laravel API - https://hardwareapi.in-sourceit.com/api  
+**Storage:** https://hardwareapi.in-sourceit.com/
 
 ---
 
@@ -75,7 +75,7 @@ Your Laravel backend needs to handle these checkout endpoints:
 
 #### 1. Checkout Calculation API
 
-**Endpoint:** `POST https://api.in-sourceit.com/api/checkout`
+**Endpoint:** `POST https://hardwareapi.in-sourceit.com/api/checkout`
 
 **Purpose:** Calculate order totals (subtotal, shipping, tax)
 
@@ -115,7 +115,7 @@ Your Laravel backend needs to handle these checkout endpoints:
 
 #### 2. Order Creation API
 
-**Endpoint:** `POST https://api.in-sourceit.com/api/order`
+**Endpoint:** `POST https://hardwareapi.in-sourceit.com/api/order`
 
 **Purpose:** Create order and handle Stripe payment
 
@@ -370,8 +370,8 @@ Card: 4000 0027 6000 3184
 ### API Configuration
 Your APIs are already configured in `next.config.mjs`:
 - ✅ Base URL: https://hardware.in-sourceit.com/
-- ✅ API URL: https://api.in-sourceit.com/api
-- ✅ Storage URL: https://api.in-sourceit.com/
+- ✅ API URL: https://hardwareapi.in-sourceit.com/api
+- ✅ Storage URL: https://hardwareapi.in-sourceit.com/
 
 **You don't need to change these!** Just add your Stripe key to `.env.local`
 
@@ -514,7 +514,7 @@ STRIPE_PUBLISHABLE_KEY=pk_live_your_live_key_here
 - Dashboard: https://dashboard.stripe.com
 
 **Your Project:**
-- Backend API: https://api.in-sourceit.com/api
+- Backend API: https://hardwareapi.in-sourceit.com/api
 - Frontend: https://hardware.in-sourceit.com/
 
 ---

@@ -25,7 +25,26 @@ const MainLayout = ({ children }) => {
     document.body.classList.add("version=1.0.0");
   }, []);
 
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient({
+    defaultOptions: {
+      queries: {
+        // Cache data for 5 minutes before considering it stale
+        staleTime: 5 * 60 * 1000,
+        // Keep unused data in cache for 10 minutes
+        cacheTime: 10 * 60 * 1000,
+        // Don't refetch on window focus (major performance improvement)
+        refetchOnWindowFocus: false,
+        // Don't refetch on reconnect
+        refetchOnReconnect: false,
+        // Don't refetch on mount if data exists
+        refetchOnMount: false,
+        // Retry failed requests only once
+        retry: 1,
+        // Suspense mode for better loading states
+        suspense: false,
+      },
+    },
+  }));
 
   return (
     <>

@@ -55,7 +55,7 @@
 //     : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
 
 //   if (rawUrl && rawUrl.startsWith("/storage")) {
-//     rawUrl = `https://api.in-sourceit.com${rawUrl}`;
+//     rawUrl = `https://hardwareapi.in-sourceit.com${rawUrl}`;
 //   }
 
 //   const finalUrl = rawUrl.replace(/([^:]\/)\/+/g, "$1");
@@ -137,7 +137,7 @@ const getThumbnailUrl = (thumbnail) => {
       : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
 
   if (rawUrl && rawUrl.startsWith("/storage")) {
-    rawUrl = `https://api.in-sourceit.com${rawUrl}`;
+    rawUrl = `https://hardwareapi.in-sourceit.com${rawUrl}`;
   }
 
   const finalUrl = rawUrl.replace(/([^:]\/)\/+/g, "$1");
