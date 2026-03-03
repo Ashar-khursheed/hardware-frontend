@@ -7,7 +7,7 @@ const ContactDetails = () => {
   return (
     <div className="premium-contact-title">
       <h2>{t("get_in_touch")}</h2>
-      <p>{t("ContactUsDescription")}</p>
+      <p>Contact Us Description</p>
       <div className="premium-footer-social">
         <ul className="premium-social-list">
           <li>
