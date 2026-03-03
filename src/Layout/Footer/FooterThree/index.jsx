@@ -313,16 +313,16 @@ const FooterThree = () => {
                 Company Info
               </h4>
               <p className="small text-white mb-1">
-                <a href="/about-us" className="text-white text-decoration-none">About Us</a>
+                <a href="/page/about-us" className="text-white text-decoration-none">About Us</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/pages/terms-conditions" className="text-white text-decoration-none">Terms & Conditions</a>
+                <a href="/page/terms-and-conditions" className="text-white text-decoration-none">Terms & Conditions</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/pages/privacy-policy" className="text-white text-decoration-none">Privacy Policy</a>
+                <a href="/page/privacy-policy" className="text-white text-decoration-none">Privacy Policy</a>
               </p>
               <p className="small text-white mb-1">
-                <a href="/pages/warranty" className="text-white text-decoration-none">Warranty</a>
+                <a href="/page/warranty-information" className="text-white text-decoration-none">Warranty</a>
               </p>
               <p className="small text-white mb-1">
                 <a href="/contact-us" className="text-white text-decoration-none">Contact Us</a>
