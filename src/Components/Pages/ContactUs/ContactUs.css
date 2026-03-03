@@ -6,8 +6,8 @@
   --contact-card-border: rgba(255, 255, 255, 0.4);
   --contact-text-primary: #1e293b;
   --contact-text-secondary: #64748b;
-  --contact-accent: #3b82f6;
-  --contact-accent-hover: #2563eb;
+  --contact-accent: #ff5050;
+  --contact-accent-hover: #ff5050;
   --contact-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
   --contact-shadow-hover: 0 20px 40px -10px rgba(59, 130, 246, 0.15);
   --contact-border-radius: 1.5rem;
@@ -201,7 +201,7 @@
 
 /* Premium Button */
 .btn-premium-submit {
-  background: linear-gradient(135deg, var(--contact-accent), #2563eb);
+  background: linear-gradient(135deg, var(--contact-accent), #ff5050);
   color: white;
   border: none;
   border-radius: 0.75rem;
@@ -239,7 +239,7 @@
 .btn-premium-submit:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #ff5050, #1d4ed8);
   color: white;
 }
 
