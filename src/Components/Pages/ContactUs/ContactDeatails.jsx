@@ -15,21 +15,21 @@ const ContactDetails = () => {
               <RiFacebookFill />
             </a>
           </li>
-          <li>
+          {/* <li>
             <a target="_blank" href="https://twitter.com/" rel="noreferrer">
               <RiTwitterFill />
             </a>
-          </li>
+          </li> */}
           <li>
             <a target="_blank" href="https://instagram.com/" rel="noreferrer">
               <RiInstagramFill />
             </a>
           </li>
-          <li>
+          {/* <li>
             <a target="_blank" href="https://pinterest.com/" rel="noreferrer">
               <RiPinterestFill />
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
