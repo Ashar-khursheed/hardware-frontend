@@ -38,7 +38,7 @@ const ContactLeftSideBox = () => {
             <p>{themeOption?.contact_us?.detail_3?.text}</p>
           </Media>
         </li>
-        <li className="premium-info-item">
+        {/* <li className="premium-info-item">
           <div className="premium-contact-icon">
             <RiCellphoneFill />
           </div>
@@ -46,7 +46,7 @@ const ContactLeftSideBox = () => {
             <h6>{themeOption?.contact_us?.detail_4?.label}</h6>
             <p>{themeOption?.contact_us?.detail_4?.text}</p>
           </Media>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
