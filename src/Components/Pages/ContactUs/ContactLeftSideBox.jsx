@@ -9,10 +9,10 @@ const ContactLeftSideBox = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="contact-right mt-4 pt-2 border-top">
+    <div className="premium-contact-right mt-4 pt-2 border-top">
       <ul className="premium-info-list">
         <li className="premium-info-item">
-          <div className="contact-icon">
+          <div className="premium-contact-icon">
             <RiPhoneFill />
           </div>
           <Media body>
@@ -21,7 +21,7 @@ const ContactLeftSideBox = () => {
           </Media>
         </li>
         <li className="premium-info-item">
-          <div className="contact-icon">
+          <div className="premium-contact-icon">
             <RiMapPinFill />
           </div>
           <Media body>
@@ -30,7 +30,7 @@ const ContactLeftSideBox = () => {
           </Media>
         </li>
         <li className="premium-info-item">
-          <div className="contact-icon">
+          <div className="premium-contact-icon">
             <RiMailFill />
           </div>
           <Media body>
@@ -39,7 +39,7 @@ const ContactLeftSideBox = () => {
           </Media>
         </li>
         <li className="premium-info-item">
-          <div className="contact-icon">
+          <div className="premium-contact-icon">
             <RiCellphoneFill />
           </div>
           <Media body>

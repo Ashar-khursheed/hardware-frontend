@@ -5,10 +5,10 @@ import { RiFacebookFill, RiInstagramFill, RiPinterestFill, RiTwitterFill } from 
 const ContactDetails = () => {
   const { t } = useTranslation("common");
   return (
-    <div className="contact-title">
+    <div className="premium-contact-title">
       <h2>{t("get_in_touch")}</h2>
       <p>{t("ContactUsDescription")}</p>
-      <div className="footer-social">
+      <div className="premium-footer-social">
         <ul className="premium-social-list">
           <li>
             <a target="_blank" href="https://facebook.com/" rel="noreferrer">
