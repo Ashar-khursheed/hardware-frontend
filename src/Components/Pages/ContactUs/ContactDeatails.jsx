@@ -9,24 +9,24 @@ const ContactDetails = () => {
       <h2>{t("get_in_touch")}</h2>
       <p>{t("ContactUsDescription")}</p>
       <div className="footer-social">
-        <ul>
+        <ul className="premium-social-list">
           <li>
-            <a target="_blank" href="https://facebook.com/">
+            <a target="_blank" href="https://facebook.com/" rel="noreferrer">
               <RiFacebookFill />
             </a>
           </li>
           <li>
-            <a target="_blank" href="https://twitter.com/">
+            <a target="_blank" href="https://twitter.com/" rel="noreferrer">
               <RiTwitterFill />
             </a>
           </li>
           <li>
-            <a target="_blank" href="https://instagram.com/">
+            <a target="_blank" href="https://instagram.com/" rel="noreferrer">
               <RiInstagramFill />
             </a>
           </li>
           <li>
-            <a target="_blank" href="https://pinterest.com/">
+            <a target="_blank" href="https://pinterest.com/" rel="noreferrer">
               <RiPinterestFill />
             </a>
           </li>

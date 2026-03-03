@@ -9,6 +9,7 @@ import ContactDetails from "./ContactDeatails";
 import ContactLeftSideBox from "./ContactLeftSideBox";
 import ContactUsForm from "./ContactUsForm";
 import MapSection from "./MapSection";
+import "./ContactUs.css";
 
 const ContactUsContent = () => {
   const { isLoading } = useContext(ThemeOptionContext);
@@ -17,18 +18,24 @@ const ContactUsContent = () => {
   return (
     <>
       <Breadcrumbs title={"ContactUs"} subNavigation={[{ name: "ContactUs" }]} />
-      <WrapperComponent classes={{ sectionClass: "contact-page section-b-space", row: "g-sm-4 g-3", fluidClass: "container" }} customCol={true}>
-        <Col lg="5">
-          <ContactDetails />
-        </Col>
-        <Col lg="7">
-          <ContactUsForm />
-        </Col>
-        <ContactLeftSideBox />
-      </WrapperComponent>
-      <WrapperComponent classes={{ sectionClass: "contact-page pt-0 overflow-hidden", fluidClass: "container-fluid p-0" }}>
-        <MapSection />
-      </WrapperComponent>
+      <div className="contact-page-wrapper">
+        <WrapperComponent classes={{ sectionClass: "contact-page pt-0", row: "g-4", fluidClass: "container" }} customCol={true}>
+          <Col lg="5" className="mb-4 mb-lg-0">
+            <div className="premium-contact-card h-100">
+              <ContactDetails />
+              <ContactLeftSideBox />
+            </div>
+          </Col>
+          <Col lg="7">
+            <div className="premium-contact-card h-100 premium-form-container">
+              <ContactUsForm />
+            </div>
+          </Col>
+          <Col xs="12">
+            <MapSection />
+          </Col>
+        </WrapperComponent>
+      </div>
     </>
   );
 };

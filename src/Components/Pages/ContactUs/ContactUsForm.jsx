@@ -7,6 +7,7 @@ import { YupObject, emailSchema, nameSchema, phoneSchema } from "@/Utils/Validat
 import { Form, Formik } from "formik";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "reactstrap";
+import { RiSendPlaneFill } from "react-icons/ri";
 
 const ContactUsForm = () => {
   const { t } = useTranslation("common");
@@ -42,9 +43,10 @@ const ContactUsForm = () => {
               ]}
             />
             <Col xs="12">
-              <Btn className=" btn-solid" type="submit" loading={Number(isLoading)}>
+              <button className="btn-premium-submit" type="submit" disabled={isLoading}>
                 {t("send_message")}
-              </Btn>
+                <RiSendPlaneFill className="ms-2" />
+              </button>
             </Col>
           </Row>
         </Form>
