@@ -129,7 +129,6 @@
 import { ImagePath } from "@/Utils/Constants";
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ImageVariant = ({
@@ -148,7 +147,7 @@ const ImageVariant = ({
       {variant === "image_slider" ? (
         <div className="slider-wrapper">
           {product.product_galleries?.map((image, index) => (
-            <Image
+            <img
               key={index}
               src={getImageUrl(image) || `${ImagePath}/placeholder.png`}
               alt={product?.name || "Product Image"}
@@ -164,7 +163,7 @@ const ImageVariant = ({
           {gallery_images?.slice(0, 2)?.map((image, index) => (
             <div key={index} className={index === 0 ? "front" : "back"}>
               <Link href={`/product/${product?.slug}`}>
-                <Image
+                <img
                   src={getImageUrl(image) || `${ImagePath}/placeholder.png`}
                   alt={product?.name || "Product Image"}
                   className="img-fluid bg-img"
@@ -179,7 +178,7 @@ const ImageVariant = ({
       ) : variant === "image_zoom" ? (
         <div className="zoom">
           <Link href={`/product/${product?.slug}`}>
-            <Image
+            <img
               id="imageZoom"
               src={imageUrl}
               alt={product?.name || "Product Image"}
@@ -193,7 +192,7 @@ const ImageVariant = ({
         </div>
       ) : (
         <Link href={`/product/${product?.slug}`}>
-          <Image
+          <img
             src={imageUrl}
             alt={product?.name || "Product Image"}
             width={width}
