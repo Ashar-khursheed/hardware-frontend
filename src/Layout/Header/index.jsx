@@ -57,7 +57,6 @@ const Headers = () => {
 
   const {
     data: headerMenu,
-    refetch,
     isLoading,
   } = useQuery(["menu"], () => request({ url: "/menu" }), {
     select: (res) => {
@@ -69,13 +68,11 @@ const Headers = () => {
 
       return modifiedData;
     },
-    refetchOnWindowFocus: true,
-    enabled: false,
+    staleTime: 60 * 60 * 1000, // Cache for 1 hour
+    cacheTime: 24 * 60 * 60 * 1000, // Keep in memory for 24 hours
+    refetchOnWindowFocus: false,
+    enabled: true,
   });
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   useEffect(() => { }, [style]);
 

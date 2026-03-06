@@ -15,20 +15,18 @@ const ThemeOptionProvider = (props) => {
   const [themeOption, setThemeOption] = useState({});
   const [variant, setVariant] = useState("");
 
-  const { data, isLoading, refetch } = useQuery([ThemeOptionsAPI], () => request({ url: ThemeOptionsAPI }), {
-    enabled: false,
+  const { data, isLoading } = useQuery([ThemeOptionsAPI], () => request({ url: ThemeOptionsAPI }), {
+    enabled: true,
     refetchOnWindowFocus: false,
+    staleTime: 60 * 60 * 1000,
     select: (res) => res?.data,
   });
 
   useEffect(() => {
-    refetch();
-  }, []);
-  useEffect(() => {
     if (data) {
       setThemeOption(data?.options);
     }
-  }, [isLoading]);
+  }, [data]);
 
   return (
     <>

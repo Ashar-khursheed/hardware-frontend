@@ -27,6 +27,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: "hardwareapi.in-sourceit.com",
+      },
+      {
+        protocol: "https",
         hostname: "hardware.sparccpk.org",
       },
       {

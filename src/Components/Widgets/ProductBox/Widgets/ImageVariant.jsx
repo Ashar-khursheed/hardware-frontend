@@ -129,7 +129,7 @@
 import { ImagePath } from "@/Utils/Constants";
 import Link from "next/link";
 import React from "react";
-
+import Image from "next/image";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ImageVariant = ({
@@ -141,18 +141,17 @@ const ImageVariant = ({
   width = 670,
   height = 670,
 }) => {
-  const imageUrl = getImageUrl(thumbnail || gallery_images?.[0] || product?.product_galleries?.[0]);
+  const imageUrl = getImageUrl(thumbnail || gallery_images?.[0] || product?.product_galleries?.[0]) || `${ImagePath}/placeholder.png`;
 
   return (
     <>
       {variant === "image_slider" ? (
         <div className="slider-wrapper">
-          {/* Replace with your actual slider logic */}
           {product.product_galleries?.map((image, index) => (
-            <img
+            <Image
               key={index}
-              src={getImageUrl(image)}
-              alt={product?.name}
+              src={getImageUrl(image) || `${ImagePath}/placeholder.png`}
+              alt={product?.name || "Product Image"}
               className="img-fluid bg-img"
               width={width}
               height={height}
@@ -165,10 +164,9 @@ const ImageVariant = ({
           {gallery_images?.slice(0, 2)?.map((image, index) => (
             <div key={index} className={index === 0 ? "front" : "back"}>
               <Link href={`/product/${product?.slug}`}>
-                <img
-                  key={index}
-                  src={getImageUrl(image)}
-                  alt={product?.name}
+                <Image
+                  src={getImageUrl(image) || `${ImagePath}/placeholder.png`}
+                  alt={product?.name || "Product Image"}
                   className="img-fluid bg-img"
                   width={width}
                   height={height}
@@ -181,7 +179,7 @@ const ImageVariant = ({
       ) : variant === "image_zoom" ? (
         <div className="zoom">
           <Link href={`/product/${product?.slug}`}>
-            <img
+            <Image
               id="imageZoom"
               src={imageUrl}
               alt={product?.name || "Product Image"}
@@ -189,20 +187,20 @@ const ImageVariant = ({
               height={height}
               className="img-fluid bg-img"
               loading="lazy"
-              style={{ opacity: 1 }}
+              style={{ objectFit: 'contain' }}
             />
           </Link>
         </div>
       ) : (
         <Link href={`/product/${product?.slug}`}>
-          <img
+          <Image
             src={imageUrl}
             alt={product?.name || "Product Image"}
             width={width}
             height={height}
             className="img-fluid bg-img"
             loading="lazy"
-            style={{ opacity: 1 }}
+            style={{ objectFit: 'contain' }}
           />
         </Link>
       )}

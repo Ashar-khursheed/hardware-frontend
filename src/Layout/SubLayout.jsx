@@ -43,105 +43,64 @@ const SubLayout = ({ children }) => {
   }, [pathName]);
 
   useEffect(() => {
-    const setThemeColors = () => {
-      let newThemeColor = "";
-      let newThemeColor2 = "";
-
-      if (theme) {
-        if (theme === "fashion_one" || theme === "tools" || theme === "game" || theme === "left_sidebar" || theme === "video" || theme === "full_page") {
-          newThemeColor = "#ec8951";
-        } else if (theme === "bicycle" || theme === "christmas") {
-          newThemeColor = "#ff4c3b";
-        } else if (theme === "fashion_two") {
-          newThemeColor = "#fe816d";
-        } else if (theme === "fashion_three") {
-          newThemeColor = "#96796d";
-        } else if (theme === "fashion_three") {
-          newThemeColor = "#96796d";
-        } else if (theme === "fashion_four") {
-          newThemeColor = "#000000";
-        } else if (theme === "fashion_five") {
-          newThemeColor = "#C0AA73";
-        } else if (theme === "fashion_six") {
-          newThemeColor = "#90453e";
-        } else if (theme === "fashion_seven") {
-          newThemeColor = "#3fd09e";
-        } else if (theme === "furniture_one" || theme === "furniture_two" || theme === "furniture_dark" || theme === "jewellery_two" || theme === "jewellery_three") {
-          newThemeColor = "#d4b196";
-        } else if (theme === "electronics_one") {
-          newThemeColor = "#1a7ef2";
-        } else if (theme === "electronics_two") {
-          newThemeColor = "#6d7e87";
-        } else if (theme === "electronics_three") {
-          newThemeColor = "#2874f0";
-        } else if (theme === "marketplace_one") {
-          newThemeColor = "#3e5067";
-        } else if (theme === "marketplace_two" || theme === "marketplace_four") {
-          newThemeColor = "#f39910";
-          newThemeColor2 = "#394868";
-        } else if (theme === "marketplace_three") {
-          newThemeColor = "#387ef0";
-        } else if (theme === "vegetables_one") {
-          newThemeColor = "#ff5141";
-        } else if (theme === "vegetables_two" || theme === "vegetables_three" || theme === "nursery") {
-          newThemeColor = "#81ba00";
-        } else if (theme === "jewellery_one") {
-          newThemeColor = "#5fcbc4";
-        } else if (theme === "vegetables_four") {
-          newThemeColor = "#206664";
-          newThemeColor2 = "#ee7a63";
-        } else if (theme === "bag" || theme === "beauty") {
-          newThemeColor = "#f0b54d";
-        } else if (theme === "watch") {
-          newThemeColor = "#e4604a";
-        } else if (theme === "medical") {
-          newThemeColor = "#38c6bb";
-        } else if (theme === "perfume") {
-          newThemeColor = "#6d6659";
-        } else if (theme === "yoga") {
-          newThemeColor = "#f0583d";
-        } else if (theme === "marijuana") {
-          newThemeColor = "#5d7227";
-          newThemeColor2 = "#203f15";
-        } else if (theme === "shoes") {
-          newThemeColor = "#d57151";
-        } else if (theme === "kids" || theme === "flower") {
-          newThemeColor = "#fa869b";
-        } else if (theme === "books") {
-          newThemeColor = "#5ecee4";
-        } else if (theme === "goggles") {
-          newThemeColor = "#dc457e";
-        } else if (theme === "video_slider") {
-          newThemeColor = "#e38888";
-        } else if (theme === "gym") {
-          newThemeColor = "#01effc";
-          newThemeColor2 = "#485ff2";
-        } else if (theme === "digital_download") {
-          newThemeColor = "#234ca1";
-        } else if (theme === "pets") {
-          newThemeColor = "#479FB3";
-        } else if (theme === "parallax") {
-          newThemeColor = "#866e6c";
-        } else if (theme === "surfboard") {
-          newThemeColor = "#2E94D2";
-        } else if (theme === "single_product") {
-          newThemeColor = "#854D9C";
-          newThemeColor2 = "#d04ed6";
-        } else if (theme === "gradient") {
-          newThemeColor = "#dd5e89";
-          newThemeColor2 = "#f7bb97";
-        }
-      } else {
-        newThemeColor = themeOption?.general?.primary_color;
-        newThemeColor2 = themeOption?.general?.secondary_color;
-      }
-
-      setThemeColor(newThemeColor);
-      setThemeColor2(newThemeColor2);
+    const themeColorMap = {
+      fashion_one: "#ec8951", tools: "#ec8951", game: "#ec8951", left_sidebar: "#ec8951", video: "#ec8951", full_page: "#ec8951",
+      bicycle: "#ff4c3b", christmas: "#ff4c3b",
+      fashion_two: "#fe816d",
+      fashion_three: "#96796d",
+      fashion_four: "#000000",
+      fashion_five: "#C0AA73",
+      fashion_six: "#90453e",
+      fashion_seven: "#3fd09e",
+      furniture_one: "#d4b196", furniture_two: "#d4b196", furniture_dark: "#d4b196", jewellery_two: "#d4b196", jewellery_three: "#d4b196",
+      electronics_one: "#1a7ef2",
+      electronics_two: "#6d7e87",
+      electronics_three: "#2874f0",
+      marketplace_one: "#3e5067",
+      marketplace_two: "#f39910", marketplace_four: "#f39910",
+      marketplace_three: "#387ef0",
+      vegetables_one: "#ff5141",
+      vegetables_two: "#81ba00", vegetables_three: "#81ba00", nursery: "#81ba00",
+      jewellery_one: "#5fcbc4",
+      vegetables_four: "#206664",
+      bag: "#f0b54d", beauty: "#f0b54d",
+      watch: "#e4604a",
+      medical: "#38c6bb",
+      perfume: "#6d6659",
+      yoga: "#f0583d",
+      marijuana: "#5d7227",
+      shoes: "#d57151",
+      kids: "#fa869b", flower: "#fa869b",
+      books: "#5ecee4",
+      goggles: "#dc457e",
+      video_slider: "#e38888",
+      gym: "#01effc",
+      digital_download: "#234ca1",
+      pets: "#479FB3",
+      parallax: "#866e6c",
+      surfboard: "#2E94D2",
+      single_product: "#854D9C",
+      gradient: "#dd5e89"
     };
 
-    setThemeColors();
-  }, [theme, pathName,themeOption]);
+    const themeColor2Map = {
+      marketplace_two: "#394868", marketplace_four: "#394868",
+      vegetables_four: "#ee7a63",
+      marijuana: "#203f15",
+      gym: "#485ff2",
+      single_product: "#d04ed6",
+      gradient: "#f7bb97"
+    };
+
+    let newThemeColor = theme ? themeColorMap[theme] : themeOption?.general?.primary_color;
+    let newThemeColor2 = theme ? themeColor2Map[theme] : themeOption?.general?.secondary_color;
+
+    // Fallback to red-orange if no theme color is set
+    if (!newThemeColor) newThemeColor = "#ff4e50";
+
+    setThemeColor(newThemeColor);
+    setThemeColor2(newThemeColor2 || "");
+  }, [theme, pathName, themeOption]);
 
   //  Setting the current url in cookies for redirection of protected routes
   useEffect(() => {
@@ -153,32 +112,31 @@ const SubLayout = ({ children }) => {
   const {
     data: CompareData,
     refetch,
-    isLoading: getCompareLoading,
   } = useQuery(
     [CompareAPI],
     () => {
       if (Cookies.get("uat_multikart")) {
         return request({ url: CompareAPI });
       }
-      return Promise.resolve(null); // Return null to avoid unnecessary loading
+      return Promise.resolve(null);
     },
     {
-      enabled: false, // Initially disable fetching
+      enabled: !!Cookies.get("uat_multikart"),
       refetchOnWindowFocus: false,
       select: (res) => res?.data?.data,
     }
   );
 
-  useEffect(() => {
-    getCompareLoading && refetch();
-  }, [getCompareLoading]);
-
   const [themeColor, setThemeColor] = useState("");
   const [themeColor2, setThemeColor2] = useState("");
 
-  const { data } = useQuery(["newLang"], () => request({ url: AllLanguageApi }), {enabled: true,
+  const { data } = useQuery(["newLang"], () => request({ url: AllLanguageApi }), {
+    enabled: true,
     refetchOnWindowFocus: false,
-    refetchOnMount: false, select: (res) => res.data.data });
+    refetchOnMount: false,
+    staleTime: 24 * 60 * 60 * 1000,
+    select: (res) => res.data.data
+  });
 
   useEffect(() => {
     if (themeColor) {
@@ -192,7 +150,7 @@ const SubLayout = ({ children }) => {
 
     const lang = data?.find(lang => lang.locale === localLanguage)?.is_rtl
     // Set Direction
-    if(themeOption?.general?.language_direction === 'rtl' || lang === 1){
+    if (themeOption?.general?.language_direction === 'rtl' || lang === 1) {
       document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
       document.body.classList.add('rtl');
     } else {
@@ -200,11 +158,13 @@ const SubLayout = ({ children }) => {
       document.body.classList.remove('rtl');
     }
 
-  }, [themeColor, themeColor2, localLanguage]);
+  }, [themeColor, themeColor2, localLanguage, data]);
 
   useEffect(() => {
     const message = themeOption?.general?.taglines;
     let timer;
+
+    if (!message || message.length === 0) return;
 
     const updateTitle = (index) => {
       document.title = message[index];
@@ -218,7 +178,7 @@ const SubLayout = ({ children }) => {
       if (!isTabActive && themeOption?.general?.exit_tagline_enable) {
         updateTitle(0);
       } else {
-        let value = themeOption?.general?.site_title && themeOption?.general?.site_tagline ? `${themeOption?.general?.site_title} | ${themeOption?.general?.site_tagline}` : "Multikart Marketplace: Where Vendors Shine Together";
+        let value = themeOption?.general?.site_title && themeOption?.general?.site_tagline ? `${themeOption?.general?.site_title} | ${themeOption?.general?.site_tagline}` : "Hardware Store | Premium Tools";
         document.title = value;
         clearTimeout(timer);
       }
@@ -227,7 +187,7 @@ const SubLayout = ({ children }) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [isTabActive, themeOption]);
+  }, [isTabActive, themeOption, pathName]);
 
   return (
     <>
@@ -236,8 +196,8 @@ const SubLayout = ({ children }) => {
       {children}
       <AuthModal />
       {theme != "full_page" && <Footers />}
-      {themeOption?.general?.customizer_enable &&  <ThemeCustomizer />}    
-      <NextTopLoader showSpinner={false} color="#ff5050" />
+      {themeOption?.general?.customizer_enable && <ThemeCustomizer />}
+      <NextTopLoader showSpinner={false} color="#ff4e50" height={4} crawl={true} showAtBottom={false} />
       <RecentPurchase />
       {themeOption?.popup?.news_letter?.is_enable && <NewsLetterModal setMakeExitActive={setMakeExitActive} />}
       <div className="compare-tap-top-box">
