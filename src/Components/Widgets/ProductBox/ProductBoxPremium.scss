@@ -335,7 +335,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
-:root {
+.ag-premium-card {
     --ag-bg-card: #0e0e12;
     --ag-bg-card-hover: #13131a;
     --ag-glass: rgba(255, 255, 255, 0.04);
@@ -346,14 +346,12 @@
     --ag-text-primary: #f0f0ef;
     --ag-text-secondary: #8a8a9a;
     --ag-text-muted: #55556a;
-    --ag-tag-sold: #ff4d6d;
-    --ag-tag-sale: #ff8c42;
-    --ag-tag-feat: #7c6dfa;
-    --ag-tag-trend: #2dd4bf;
     --ag-radius: 20px;
     --ag-radius-sm: 10px;
     --ag-transition: cubic-bezier(0.34, 1.2, 0.64, 1);
     --ag-transition-fast: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    // ... rest of your card styles
 }
 
 /* ── Card Shell ─────────────────────────────── */
