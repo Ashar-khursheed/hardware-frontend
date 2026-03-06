@@ -70,7 +70,7 @@ const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle,
 
   const filteredCategories = isFilterCategoryDataNested ? filterCategoryDataNested(categoryData, categoryIds) : filterCategoryData(categoryData, categoryIds);
 
-  const { data: product, refetch, fetchStatus, isLoading } = useQuery([currentCategory], () => request({ url: ProductAPI, params: { category_ids: currentCategory || customSelectedId, status: 1, paginate: paginate ? paginate : 4 } }, router), { enabled: !!(currentCategory || customSelectedId), refetchOnWindowFocus: false, select: (res) => res?.data?.data });
+  const { data: product, refetch, fetchStatus, isLoading } = useQuery([currentCategory, customSelectedId, activeTab], () => request({ url: ProductAPI, params: { category_ids: currentCategory || customSelectedId, status: 1, paginate: paginate ? paginate : 4 } }, router), { enabled: !!(currentCategory || customSelectedId), refetchOnWindowFocus: false, select: (res) => res?.data?.data });
 
   const changeTab = (index, category) => {
     setActiveTab(index);
@@ -78,16 +78,26 @@ const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle,
   };
 
   useEffect(() => {
-    // isLoading && refetch();
     const length = product?.length ? product?.length : paginate ? paginate : 5;
     const skeletonArray = new Array(length).fill("skeleton");
     setSkeletonArray(skeletonArray);
-  }, [isLoading]);
+  }, [isLoading, product]);
+
+  useEffect(() => {
+    if (filteredCategories.length > 0 && !currentCategory) {
+      // Auto-select the first category that has products or just the first one
+      const bestCategory = filteredCategories.find(c => c.products_count > 0) || filteredCategories[0];
+      if (bestCategory) {
+        setCurrentCategory(bestCategory.id);
+        setActiveTab(filteredCategories.indexOf(bestCategory));
+      }
+    }
+  }, [filteredCategories]);
 
   useEffect(() => {
     const customSelectId = filteredCategories.find((elem) => elem?.products_count)?.id;
-    setCustomSelectedId(customSelectId);
-  }, [isLoading, categoryIds]);
+    if (customSelectId) setCustomSelectedId(customSelectId);
+  }, [filteredCategories]);
 
   const sliderSetting = sliderOptions && sliderOptions(skeletonArr?.length);
   const sliderOptionsMain = dynamic ? dynamicHorizontalSlider(skeletonArr.length) : sliderSetting;

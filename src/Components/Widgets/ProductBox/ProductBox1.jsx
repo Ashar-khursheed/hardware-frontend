@@ -18,7 +18,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
 
   // Robust data extraction with fallbacks
   const isOutOfStock = useMemo(() => (product?.stock_status === "out_of_stock") || (product?.quantity <= 0), [product]);
-  const displayBrand = useMemo(() => product?.brand?.name || "", [product]);
+  const displayBrand = useMemo(() => product?.brand?.name || "Hardware", [product]);
   const displayName = useMemo(() => selectedVariation?.name || product?.name || "Product", [selectedVariation, product]);
 
   const currentPrice = useMemo(() => {
@@ -39,87 +39,92 @@ const ProductBox1 = ({ productState, setProductState }) => {
   const reviewsCount = useMemo(() => Number(product?.reviews_count || 0), [product]);
 
   return (
-    <div className={`ag-product-box-premium ${isOutOfStock ? "is-sold-out" : ""}`}>
+    <div className={`ag-premium-card ${isOutOfStock ? "is-out" : ""}`}>
       {/* Media Section */}
-      <div className="ag-img-wrapper">
-        <Link href={`/product/${product?.slug}`} className="ag-image-link">
+      <div className="ag-media-wrap">
+        <Link href={`/product/${product?.slug}`} className="ag-main-link">
           <ImageVariant
             thumbnail={selectedVariation?.variation_image || product?.product_thumbnail}
             gallery_images={product?.product_galleries}
             product={product}
-            width={750}
-            height={750}
+            width={700}
+            height={700}
           />
         </Link>
 
-        {/* Indicators */}
-        <div className="ag-top-overlay">
-          <div className="ag-rating-badge">
-            <RiStarSFill />
-            <span>{reviewsCount}</span>
-          </div>
+        {/* Top Badges */}
+        <div className="ag-badge-overlay">
+          {reviewsCount > 0 && (
+            <div className="ag-star-rating">
+              <RiStarSFill />
+              <span>{reviewsCount}</span>
+            </div>
+          )}
 
-          <div className="ag-labels">
-            {isOutOfStock && <span className="label-out-of-stock">{t("sold_out") || "Sold Out"}</span>}
-            {product?.is_sale_enable && discount > 0 && <span className="label-sale">{t("sale") || "Sale"}</span>}
-            {product?.is_featured && <span className="label-featured">{t("featured") || "Featured"}</span>}
-            {product?.is_trending && <span className="label-trending">{t("trending") || "Trending"}</span>}
+          <div className="ag-status-tags">
+            {isOutOfStock && <span className="tag-sold">Sold Out</span>}
+            {product?.is_sale_enable && discount > 0 && <span className="tag-sale">Sale</span>}
+            {product?.is_featured && <span className="tag-feat">Featured</span>}
+            {product?.is_trending && <span className="tag-trend">Trending</span>}
           </div>
         </div>
 
-        {/* Actions Overlay */}
-        <div className="ag-hover-overlay">
-          <div className="ag-overlay-inner">
+        {/* Hover Action Zone */}
+        <div className="ag-card-hover-mask">
+          <div className="ag-mask-body">
             <CartButton
-              classes="ag-cart-btn-premium"
+              classes="ag-primary-cart-btn"
               productState={productState}
               selectedVariation={selectedVariation}
-              text={t("add_to_cart") || "Add to Cart"}
+              text="Add to Cart" // Hardcoded to fix ADD_TO_CART string issue
             />
-            <div className="ag-quick-btns">
+            <div className="ag-secondary-actions">
               <ProductHoverButton productstate={product} />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Info Section */}
-      <div className="ag-product-details">
-        {displayBrand && (
-          <Link href={`/brand/${product?.brand?.slug}`} className="ag-brand-link">
+      {/* Product Information */}
+      <div className="ag-card-body">
+        <div className="ag-brand-meta">
+          <Link href={`/brand/${product?.brand?.slug || "#"}`}>
             {displayBrand}
           </Link>
-        )}
+        </div>
 
-        <Link href={`/product/${product?.slug}`} className="ag-title-link" title={displayName}>
+        <Link href={`/product/${product?.slug}`} className="ag-product-title" title={displayName}>
           {displayName}
         </Link>
 
-        <div className="ag-price-container">
-          <span className="ag-price-now">
-            {convertCurrency(currentPrice)}
-          </span>
-
-          {currentPrice < oldPrice && (
-            <span className="ag-price-old">
-              {convertCurrency(oldPrice)}
+        <div className="ag-price-row">
+          <div className="ag-price-main">
+            <span className="ag-val-now">
+              {convertCurrency(currentPrice)}
             </span>
-          )}
+            {currentPrice < oldPrice && (
+              <span className="ag-val-old">
+                {convertCurrency(oldPrice)}
+              </span>
+            )}
+          </div>
 
           {discount > 0 && (
-            <span className="ag-discount-badge">{discount}% {t("off") || "OFF"}</span>
+            <div className="ag-promo-badge">-{discount}% OFF</div>
           )}
         </div>
       </div>
 
-      {/* Variants Picker */}
-      <div className="ag-variants-section">
-        <ProductBoxVariantAttribute
-          setProductState={setProductState}
-          productState={productState}
-          showVariableType={["color", "rectangle", "circle", "radio", "dropdown", "image"]}
-        />
-      </div>
+      {/* Bottom Attributes */}
+      {product?.attributes?.length > 0 && (
+        <div className="ag-card-footer">
+          <ProductBoxVariantAttribute
+            setProductState={setProductState}
+            productState={productState}
+            showVariableType={["color", "rectangle", "circle", "radio", "dropdown", "image"]}
+          />
+        </div>
+      )}
     </div>
   );
 };
