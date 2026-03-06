@@ -2,13 +2,13 @@
 const nextConfig = {
   env: {
     // If testing locally, update this to your local frontend URL
-    BASE_URL: "https://hardwareapi.in-sourceit.com/", // Update based on your Next.js development URL
+    BASE_URL: "https://hardware.sparccpk.org/", // Update based on your Next.js development URL
 
     // Keep the API URLs pointing to your local backend
     // API_PROD_URL: "https://hardwareapi.in-sourceit.com/api", // Local Laravel API URL
     // storageURL: "https://hardwareapi.in-sourceit.com/", // Local Laravel Storage URL
-    API_PROD_URL: "https://hardwareapi.in-sourceit.com/api", // Local Laravel API URL
-    storageURL: "https://hardwareapi.in-sourceit.com", // Local Laravel Storage URL
+    API_PROD_URL: "https://hardware.sparccpk.org/api", // Local Laravel API URL
+    storageURL: "https://hardware.sparccpk.org", // Local Laravel Storage URL
   },
 
   // Performance optimizations
@@ -27,11 +27,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "hardwareapi.in-sourceit.com",
+        hostname: "hardware.sparccpk.org",
       },
       {
         protocol: "https",
-        hostname: "api.in-sourceit.com",
+        hostname: "hardware.sparccpk.org",
       },
       {
         protocol: "http",
