@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
-
+//logo
 const HeaderLogo = ({ extraClass }) => {
   const { settingData } = useContext(SettingContext);
   const { themeOption, mobileSideBar, setMobileSideBar } = useContext(ThemeOptionContext);
