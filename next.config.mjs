@@ -31,7 +31,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "hardware.sparccpk.org",
+        hostname: "hardware-website-images.s3.us-east-1.amazonaws.com",
       },
       {
         protocol: "http",
