@@ -193,7 +193,9 @@ const SubLayout = ({ children }) => {
     <>
       <Headers />
       {pathName?.split("/")[1].toLowerCase() != "product" && <MobileMenu />}
-      {children}
+      <div style={{ minHeight: "60vh" }}>
+        {children}
+      </div>
       <AuthModal />
       {theme != "full_page" && <Footers />}
       {themeOption?.general?.customizer_enable && <ThemeCustomizer />}
