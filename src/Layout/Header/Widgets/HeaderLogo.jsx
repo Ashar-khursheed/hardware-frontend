@@ -1,3 +1,10 @@
+import SettingContext from "@/Context/SettingContext";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
+import { ImagePath } from "@/Utils/Constants";
+import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const HeaderLogo = ({ extraClass }) => {
