@@ -8,17 +8,17 @@ import { AccordionBody, Input, Label } from "reactstrap";
 
 const CollectionBrand = ({ filter, setFilter }) => {
   const [category, attribute, price, rating, sortBy, field, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "layout"]);
-  const { brandState,isLoading,refetch } = useContext(BrandContext);
+  const { brandState, isLoading, refetch } = useContext(BrandContext);
   const [showList, setShowList] = useState();
   const { t } = useTranslation("common");
-  
+
   useEffect(() => {
     refetch();
   }, []);
 
   useEffect(() => {
     !isLoading && setShowList(brandState);
-  }, [brandState,isLoading]);
+  }, [brandState, isLoading]);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -65,23 +65,24 @@ const CollectionBrand = ({ filter, setFilter }) => {
     }
   };
   return (
-    <div className="collapse show accordion-collapse collapsed ">
-      <AccordionBody accordionId="2" className=" collection-brand-filter ">
+    <div className="ag-filter-content open">
+      <div className="ag-filter-inner-padding">
         {brandState.length > 5 && (
-          <div className="theme-form search-box">
-            <Input type="search" placeholder={t("search")} onChange={handleChange} />
+          <div className="ag-search-wrapper">
+            <input type="search" placeholder={t("search")} onChange={handleChange} />
           </div>
         )}
         <div className="custom-sidebar-height">
           {showList?.length > 0 ? (
-            <ul className="shop-category-list ">
+            <ul className="ag-filter-list">
               {showList?.map((elem, i) => (
                 <li key={i}>
-                  <div className="form-check collection-filter-checkbox">
-                    <Input className="checkbox_animated" type="checkbox" id={elem?.name} checked={filter?.brand?.includes(elem?.slug)} onChange={(e) => redirectToCollection(e, elem?.slug)} />
-                    <Label className="form-check-label" htmlFor={elem?.name}>
-                      <span className="name">{elem?.name}</span>
-                    </Label>
+                  <div
+                    className={`ag-checkbox-wrapper ${filter?.brand?.includes(elem?.slug) ? 'active' : ''}`}
+                    onClick={(e) => redirectToCollection(e, elem?.slug)}
+                  >
+                    <div className="ag-checkbox-box"></div>
+                    <span className="ag-label-text">{elem?.name}</span>
                   </div>
                 </li>
               ))}
@@ -90,7 +91,7 @@ const CollectionBrand = ({ filter, setFilter }) => {
             <NoDataFound customClass="search-not-found-box" title="no_brand" />
           )}
         </div>
-      </AccordionBody>
+      </div>
     </div>
   );
 };

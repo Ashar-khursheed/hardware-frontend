@@ -1,9 +1,10 @@
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
-import { AccordionBody, AccordionHeader, AccordionItem, Input, Label } from "reactstrap";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { Collapse } from "reactstrap";
 
-const CollectionAttributes = ({ attributeAPIData, filter, setFilter, isOffCanvas }) => {
+const CollectionAttributes = ({ attributeAPIData, filter, setFilter, isOffCanvas, open, toggle }) => {
   const router = useRouter();
   const [category, price, rating, sortBy, field, layout] = useCustomSearchParams(["category", "price", "rating", "sortBy", "field", "layout"]);
   const pathname = usePathname();
@@ -15,13 +16,13 @@ const CollectionAttributes = ({ attributeAPIData, filter, setFilter, isOffCanvas
       return true;
     } else return false;
   };
-  const applyAttribute = (event) => {
-    const index = filter.attribute.indexOf(event?.target?.value);
+  const applyAttribute = (event, slug) => {
+    const isChecked = !filter?.attribute?.includes(slug);
     let temp = [...filter?.attribute];
-    if (event.target.checked) {
-      temp.push(event?.target?.value);
+    if (isChecked) {
+      temp.push(slug);
     } else {
-      temp.splice(index, 1);
+      temp = temp.filter(item => item !== slug);
     }
     setFilter((prev) => {
       return {
@@ -42,31 +43,56 @@ const CollectionAttributes = ({ attributeAPIData, filter, setFilter, isOffCanvas
       {attributeAPIData?.length > 0 &&
         attributeAPIData
           ?.filter((item, i) => includedData.includes(item.name.toLowerCase()))
-          .map((attribute, i) => (
-            <AccordionItem className={`open ${isOffCanvas ? "col-lg-3" : ""}`} key={i}>
-              <AccordionHeader targetId={(i + 3).toString()}>
-                <span>{t(attribute?.name)}</span>
-              </AccordionHeader>
-              <div className="collapse show accordion-collapse ">
-                <AccordionBody accordionId={(i + 3).toString()}>
-                  <div className="custom-sidebar-height">
-                    <ul className="shop-category-list">
-                      {attribute?.attribute_values?.length > 0 &&
-                        attribute?.attribute_values.map((value, index) => (
-                          <li className="form-check collection-filter-checkbox" key={index}>
-                            <Input className="checkbox_animated" type="checkbox" value={value?.slug} id={value?.value} checked={checkAttribute(value?.slug)} onChange={applyAttribute} />
-                            <Label className="form-check-label color-label-box" htmlFor={value?.value}>
-                              {attribute?.style === "color" && <div className="color-box" style={{ backgroundColor: value?.hex_color }}></div>}
-                              <span className="name">{t(value?.value)}</span>
-                            </Label>
-                          </li>
-                        ))}
-                    </ul>
+          .map((attribute, i) => {
+            const targetId = (i + 3).toString();
+            return (
+              <div className="ag-filter-container" key={i}>
+                <div
+                  className={`ag-filter-header ${open.includes(targetId) ? "open" : ""}`}
+                  onClick={() => toggle(targetId)}
+                >
+                  <h3>{t(attribute?.name)}</h3>
+                  <RiArrowDownSLine className="ag-chevron" />
+                </div>
+                <Collapse isOpen={open.includes(targetId)}>
+                  <div className="ag-filter-content open">
+                    <div className="ag-filter-inner-padding">
+                      <div className="custom-sidebar-height">
+                        <ul className="ag-filter-list">
+                          {attribute?.attribute_values?.length > 0 &&
+                            attribute?.attribute_values.map((value, index) => (
+                              <li key={index}>
+                                <div
+                                  className={`ag-checkbox-wrapper ${filter?.attribute?.includes(value?.slug) ? 'active' : ''}`}
+                                  onClick={(e) => applyAttribute(e, value?.slug)}
+                                >
+                                  <div className="ag-checkbox-box"></div>
+                                  <div className="ag-label-content" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                    {attribute?.style === "color" && (
+                                      <div
+                                        className="ag-color-indicator"
+                                        style={{
+                                          width: '14px',
+                                          height: '14px',
+                                          borderRadius: '50%',
+                                          backgroundColor: value?.hex_color,
+                                          border: '1px solid #ddd'
+                                        }}
+                                      ></div>
+                                    )}
+                                    <span className="ag-label-text">{t(value?.value)}</span>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </AccordionBody>
+                </Collapse>
               </div>
-            </AccordionItem>
-          ))}
+            );
+          })}
     </>
   );
 };

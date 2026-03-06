@@ -2,25 +2,26 @@ import { FilterPrice } from "@/Data/CustomData";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
-import { AccordionBody, AccordionHeader, AccordionItem, Input, Label } from "reactstrap";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { Collapse } from "reactstrap";
 
-const CollectionPrice = ({ filter, setFilter, attributeAPIData, isOffCanvas }) => {
+const CollectionPrice = ({ filter, setFilter, attributeAPIData, isOffCanvas, open, toggle }) => {
   const router = useRouter();
   const [category, attribute, sortBy, field, rating, layout] = useCustomSearchParams(["category", "attribute", "sortBy", "field", "rating", "layout"]);
   const { t } = useTranslation("common");
   const pathname = usePathname();
+
   const checkPrice = (value) => {
-    if (filter?.price?.indexOf(value) != -1) {
-      return true;
-    } else return false;
+    return filter?.price?.includes(value);
   };
-  const applyPrice = (event) => {
-    const index = filter?.price.indexOf(event?.target?.value);
+
+  const applyPrice = (event, value) => {
+    const isChecked = !filter?.price?.includes(value);
     let temp = [...filter?.price];
-    if (event.target.checked) {
-      temp.push(event?.target?.value);
+    if (isChecked) {
+      temp.push(value);
     } else {
-      temp.splice(index, 1);
+      temp = temp.filter(item => item !== value);
     }
     setFilter((prev) => {
       return {
@@ -37,34 +38,45 @@ const CollectionPrice = ({ filter, setFilter, attributeAPIData, isOffCanvas }) =
     }
   };
 
+  const targetId = (attributeAPIData?.length + 3).toString();
+
   return (
-    <AccordionItem className={`open ${isOffCanvas ? "col-lg-3" : ""}`}>
-      <AccordionHeader targetId={(attributeAPIData?.length + 3).toString()}>
-        <span>{t("price")}</span>
-      </AccordionHeader>
-      <AccordionBody accordionId={(attributeAPIData?.length + 3).toString()}>
-        <div className="custom-sidebar-height">
-          <ul className="shop-category-list ">
-            {FilterPrice.map((price, i) => (
-              <div key={i} className="form-check collection-filter-checkbox">
-                <Input className="checkbox_animated" type="checkbox" id={`price-${price.id}`} value={price?.value} checked={checkPrice(price?.value)} onChange={applyPrice} />
-                <Label className="form-check-label" htmlFor={`price-${price.id}`}>
-                  {price?.price ? (
-                    <span className="name">
-                      {price.text} ${price.price}
-                    </span>
-                  ) : (
-                    <span className="name">
-                      ${price.minPrice} - ${price.maxPrice}
-                    </span>
-                  )}
-                </Label>
-              </div>
-            ))}
-          </ul>
+    <div className={`ag-filter-container ${isOffCanvas ? "col-lg-3" : ""}`}>
+      <div
+        className={`ag-filter-header ${open.includes(targetId) ? "open" : ""}`}
+        onClick={() => toggle(targetId)}
+      >
+        <h3>{t("price")}</h3>
+        <RiArrowDownSLine className="ag-chevron" />
+      </div>
+      <Collapse isOpen={open.includes(targetId)}>
+        <div className="ag-filter-content open">
+          <div className="ag-filter-inner-padding">
+            <div className="custom-sidebar-height">
+              <ul className="ag-filter-list">
+                {FilterPrice.map((price, i) => (
+                  <li key={i}>
+                    <div
+                      className={`ag-checkbox-wrapper ${checkPrice(price?.value) ? 'active' : ''}`}
+                      onClick={(e) => applyPrice(e, price?.value)}
+                    >
+                      <div className="ag-checkbox-box"></div>
+                      <span className="ag-label-text">
+                        {price?.price ? (
+                          `${price.text} $${price.price}`
+                        ) : (
+                          `$${price.minPrice} - $${price.maxPrice}`
+                        )}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-      </AccordionBody>
-    </AccordionItem>
+      </Collapse>
+    </div>
   );
 };
 

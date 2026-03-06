@@ -72,16 +72,18 @@ const CollectionFilter = ({ filter, setFilter, categorySlug }) => {
 
   if (selectedFilters.length <= 0) return null;
   return (
-    <div className="shop-filter-category">
-      <div className="filter-title">
+    <div className="ag-selected-filters">
+      <div className="ag-filter-title">
         <h2>{t("filters")}</h2>
         <a onClick={clearParams}>{t("clear_all")}</a>
       </div>
-      <ul className="filter-list">
+      <ul className="ag-tag-list">
         {selectedFilters?.map((elem, i) => (
           <li key={i}>
-            <a>{ModifyWord(elem)}</a>
-            <RiCloseLine className="close-icon" onClick={() => removeParams(elem)} />
+            <span>{ModifyWord(elem)}</span>
+            <div className="ag-close-tag" onClick={() => removeParams(elem)}>
+              <RiCloseLine />
+            </div>
           </li>
         ))}
       </ul>

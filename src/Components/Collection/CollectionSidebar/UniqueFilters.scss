@@ -1,0 +1,246 @@
+.ag-unique-sidebar {
+    border-radius: 16px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    .ag-filter-container {
+        padding: 1rem;
+        border-bottom: 1px solid #f0f0f0;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    .ag-filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 0.75rem 0;
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            text-transform: capitalize;
+            color: #1c1c1c;
+            letter-spacing: -0.01em;
+        }
+
+        .ag-chevron {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #888;
+        }
+
+        &.open .ag-chevron {
+            transform: rotate(180deg);
+        }
+    }
+
+    .ag-filter-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &.open {
+            max-height: 400px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: #e0e0e0;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    .ag-search-wrapper {
+        margin-bottom: 1rem;
+        position: relative;
+
+        input {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border: 1.5px solid #eee;
+            outline: none;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+
+            &:focus {
+                border-color: var(--theme-color, #ff4e50);
+                box-shadow: 0 0 0 3px rgba(255, 78, 80, 0.1);
+            }
+        }
+    }
+
+    .ag-filter-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 0.5rem;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .ag-checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        border-radius: 6px;
+        transition: background 0.2s;
+        user-select: none;
+
+        &:hover {
+            background: #f9f9f9;
+
+            .ag-checkbox-box {
+                border-color: var(--theme-color, #ff4e50);
+            }
+        }
+
+        &.active {
+            .ag-checkbox-box {
+                background: var(--theme-color, #ff4e50);
+                border-color: var(--theme-color, #ff4e50);
+
+                &::after {
+                    opacity: 1;
+                    transform: scale(1) rotate(45deg);
+                }
+            }
+
+            .ag-label-text {
+                color: #000;
+                font-weight: 500;
+            }
+        }
+
+        .ag-checkbox-box {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-right: 12px;
+            position: relative;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            background: #fff;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 5px;
+                top: 2px;
+                width: 5px;
+                height: 9px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                transform: scale(0) rotate(45deg);
+                opacity: 0;
+                transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+        }
+
+        .ag-label-text {
+            font-size: 0.95rem;
+            color: #555;
+            transition: color 0.2s;
+        }
+    }
+}
+
+// Transparent/Dark Variation for glassmorphism if needed
+.ag-unique-sidebar.ag-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.ag-selected-filters {
+    padding: 1.5rem;
+    background: #fdfdfd;
+    border-bottom: 1px solid #f0f0f0;
+
+    .ag-filter-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 0;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--theme-color, #ff4e50);
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            border-bottom: 1px dashed var(--theme-color, #ff4e50);
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .ag-tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid #e0e0e0;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #444;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+
+            &:hover {
+                border-color: var(--theme-color, #ff4e50);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            .ag-close-tag {
+                margin-left: 6px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                color: #999;
+
+                &:hover {
+                    color: #ff4e50;
+                }
+            }
+        }
+    }
+}

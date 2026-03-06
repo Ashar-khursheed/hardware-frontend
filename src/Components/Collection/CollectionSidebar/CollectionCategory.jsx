@@ -8,7 +8,7 @@ import { AccordionBody, Input, Label } from "reactstrap";
 
 const CollectionCategory = ({ filter, setFilter }) => {
   const [brand, attribute, price, rating, sortBy, field, layout] = useCustomSearchParams(["brand", "attribute", "price", "rating", "sortBy", "field", "layout"]);
-  const {  filterCategory } = useContext(CategoryContext);
+  const { filterCategory } = useContext(CategoryContext);
   const [showList, setShowList] = useState(filterCategory("product"));
   const [state, setState] = useState(false);
   const { t } = useTranslation("common");
@@ -76,16 +76,21 @@ const CollectionCategory = ({ filter, setFilter }) => {
     }
   };
   return (
-    <div className="accordion-collapse collapse show">
-      <AccordionBody accordionId="1">
+    <div className="ag-filter-content open">
+      <div className="ag-filter-inner-padding">
         {filterCategory("product").length > 5 && (
-          <div className="theme-form search-box">
-            <Input placeholder={t("search")} onChange={handleChange} />
+          <div className="ag-search-wrapper">
+            <input placeholder={t("search")} onChange={handleChange} />
           </div>
         )}
-
-        {showList?.length > 0 ? <RecursiveCategory redirectToCollection={redirectToCollection} categories={showList} filter={filter} /> : <NoDataFound customClass="search-not-found-box" title="no_category" />}
-      </AccordionBody>
+        {showList?.length > 0 ? (
+          <div className="custom-sidebar-height">
+            <RecursiveCategory redirectToCollection={redirectToCollection} categories={showList} filter={filter} />
+          </div>
+        ) : (
+          <NoDataFound customClass="search-not-found-box" title="no_category" />
+        )}
+      </div>
     </div>
   );
 };
@@ -93,19 +98,20 @@ const CollectionCategory = ({ filter, setFilter }) => {
 export default CollectionCategory;
 
 const RecursiveCategory = ({ redirectToCollection, categories, filter }) => (
-  <ul className="shop-category-list custom-sidebar-height">
+  <ul className="ag-filter-list">
     {categories.map((elem, i) => (
       <li key={i}>
-        <div className="form-check collection-filter-checkbox">
-          <Input className="form-check-input" type="checkbox" id={elem?.name} checked={filter?.category?.includes(elem?.slug)} onChange={(e) => redirectToCollection(e, elem?.slug)} />
-          <Label className="form-check-label" htmlFor={elem?.name}>
-            <span className="name">{elem?.name}</span>
-          </Label>
+        <div
+          className={`ag-checkbox-wrapper ${filter?.category?.includes(elem?.slug) ? 'active' : ''}`}
+          onClick={(e) => redirectToCollection(e, elem?.slug)}
+        >
+          <div className="ag-checkbox-box"></div>
+          <span className="ag-label-text">{elem?.name}</span>
         </div>
         {elem.subcategories.length > 0 ? (
-          <ul className="sub-category-list">
+          <div className="ag-sub-category-wrapper" style={{ paddingLeft: '1.5rem' }}>
             <RecursiveCategory redirectToCollection={redirectToCollection} categories={elem?.subcategories} filter={filter} />
-          </ul>
+          </div>
         ) : null}
       </li>
     ))}
