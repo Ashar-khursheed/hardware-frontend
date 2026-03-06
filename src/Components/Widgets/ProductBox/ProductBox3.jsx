@@ -8,6 +8,7 @@ import QuickViewButton from "./Widgets/HoverButton/QuickViewButton";
 import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
 import ProductRatingBox from "./Widgets/ProductRatingBox";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox3 = ({ productState, setProductState }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -20,7 +21,7 @@ const ProductBox3 = ({ productState, setProductState }) => {
             className="product-title"
             href={`/product/${productState?.product?.slug}`}
             legacyBehavior>
-           <a> {productState?.selectedVariation ? productState?.selectedVariation.name : productState?.product?.name}</a>
+            <a> {productState?.selectedVariation ? productState?.selectedVariation.name : productState?.product?.name}</a>
           </Link>
           <div className="rating">
             <ProductRatingBox ratingCount={productState?.rating_count} />
@@ -36,7 +37,7 @@ const ProductBox3 = ({ productState, setProductState }) => {
         </div>
         <div className="img-wrapper">
           <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
-            <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid" alt={productState?.product?.name} />
+            <img src={getImageUrl(productState?.selectedVariation?.variation_image || productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid" alt={productState?.product?.name} />
           </Link>
           <div className="quick-view-part">
             <QuickViewButton product={productState?.product} />

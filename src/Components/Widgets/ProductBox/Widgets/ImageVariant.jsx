@@ -130,19 +130,7 @@ import { ImagePath } from "@/Utils/Constants";
 import Link from "next/link";
 import React from "react";
 
-const getThumbnailUrl = (thumbnail) => {
-  let rawUrl =
-    typeof thumbnail === "string"
-      ? thumbnail
-      : thumbnail?.original_url || `${ImagePath}/placeholder.png`;
-
-  if (rawUrl && rawUrl.startsWith("/storage")) {
-    rawUrl = `https://hardwareapi.in-sourceit.com${rawUrl}`;
-  }
-
-  const finalUrl = rawUrl.replace(/([^:]\/)\/+/g, "$1");
-  return finalUrl;
-};
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ImageVariant = ({
   item,
@@ -153,7 +141,7 @@ const ImageVariant = ({
   width = 670,
   height = 670,
 }) => {
-  const imageUrl = getThumbnailUrl(thumbnail);
+  const imageUrl = getImageUrl(thumbnail || gallery_images?.[0] || product?.product_galleries?.[0]);
 
   return (
     <>
@@ -163,7 +151,7 @@ const ImageVariant = ({
           {product.product_galleries?.map((image, index) => (
             <img
               key={index}
-              src={getThumbnailUrl(image)}
+              src={getImageUrl(image)}
               alt={product?.name}
               className="img-fluid bg-img"
               width={width}
@@ -178,7 +166,8 @@ const ImageVariant = ({
             <div key={index} className={index === 0 ? "front" : "back"}>
               <Link href={`/product/${product?.slug}`}>
                 <img
-                  src={getThumbnailUrl(image)}
+                  key={index}
+                  src={getImageUrl(image)}
                   alt={product?.name}
                   className="img-fluid bg-img"
                   width={width}

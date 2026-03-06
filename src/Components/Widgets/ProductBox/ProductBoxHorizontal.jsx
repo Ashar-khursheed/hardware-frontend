@@ -6,6 +6,7 @@ import ProductRating from "../ProductRating";
 import CartButton from "./Widgets/CartButton";
 import ImageVariant from "./Widgets/ImageVariant";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBoxHorizontal = ({ productState, style }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -37,7 +38,7 @@ const ProductBoxHorizontal = ({ productState, style }) => {
         <div className="media">
           {productState?.product?.product_thumbnail && (
             <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
-              <img className="img-fluid" src={productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : `${ImagePath}/placeholder.png`} alt="" />
+              <img className="img-fluid" src={getImageUrl(productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} alt="" />
             </Link>
           )}
           <div className="media-body align-self-center">

@@ -7,6 +7,7 @@ import ImageZoom from "react-image-zooom";
 import Slider from "react-slick";
 import { Col, Row } from "reactstrap";
 import DigitalImageOptions from "../Common/DigitalImageOptions";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ThumbnailProductImage = ({ productState, slideToShow }) => {
   const { t } = useTranslation("common");
@@ -83,23 +84,23 @@ const ThumbnailProductImage = ({ productState, slideToShow }) => {
                       {videType.includes(image.mime_type) ? (
                         <>
                           <video className="w-100 " controls>
-                            <source src={image ? image?.original_url : ""} type={image?.mime_type}></source>
+                            <source src={getImageUrl(image)} type={image?.mime_type}></source>
                           </video>
                         </>
                       ) : audioType.includes(image?.mime_type) ? (
                         <div className="slider-main-img">
                           <audio controls>
-                            <source src={image ? image.original_url : ""} type={image.mime_type}></source>
+                            <source src={getImageUrl(image)} type={image.mime_type}></source>
                           </audio>
                         </div>
                       ) : (
-                        <ImageZoom src={image?.original_url} alt={image?.name} zoom="200" className="img-fluid" height={670} width={670} />
+                        <ImageZoom src={getImageUrl(image)} alt={image?.name} zoom="200" className="img-fluid" height={670} width={670} />
                       )}
                     </div>
                   </div>
                 ))}
               </Slider>
-              {!currentVariation?.length && <img src={productState?.product?.product_thumbnail ? productState?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={productState?.product?.name} />}
+              {!currentVariation?.length && <img src={getImageUrl(productState?.product?.product_thumbnail)} className="img-fluid" alt={productState?.product?.name} />}
 
               {productState?.product?.product_type == "digital" && <DigitalImageOptions product={productState?.product} />}
             </div>
@@ -116,7 +117,7 @@ const ThumbnailProductImage = ({ productState, slideToShow }) => {
                           <RiVideoLine />
                         </div>
                         <video width="130" height="130">
-                          <source src={image ? image?.original_url : ""} type={image?.mime_type} />
+                          <source src={getImageUrl(image)} type={image?.mime_type} />
                         </video>
                       </>
                     ) : audioType.includes(image?.mime_type) ? (
@@ -124,7 +125,7 @@ const ThumbnailProductImage = ({ productState, slideToShow }) => {
                         <RiHeadphoneLine size={100} />
                       </span>
                     ) : (
-                      <Image src={image?.original_url} alt={image?.name} className="img-fluid" height={130} width={130} />
+                      <Image src={getImageUrl(image)} alt={image?.name} className="img-fluid" height={130} width={130} />
                     )}
                   </div>
                 ))}

@@ -12,6 +12,7 @@ import ProductHoverButton from "./Widgets/ProductHoverButton";
 import Link from "next/link";
 import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import { placeHolderImage } from "../Placeholder";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox2 = ({ productState, setProductState, closeSearch }) => {
   const { addToWishlist, removeWishlist } = useContext(WishlistContext);
@@ -48,7 +49,7 @@ const ProductBox2 = ({ productState, setProductState, closeSearch }) => {
 
           <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
             <a onClick={() => closeSearch && closeSearch()}>
-              <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url ? productState?.product?.product_thumbnail?.original_url : placeHolderImage} className="img-fluid bg-img" alt={productState?.product?.name} />
+              <img src={getImageUrl(productState?.selectedVariation?.variation_image || productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt={productState?.product?.name} />
             </a>
           </Link>
           <div className="rating-label">

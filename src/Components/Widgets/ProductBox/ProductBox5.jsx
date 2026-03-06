@@ -7,6 +7,7 @@ import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 import ProductRatingBox from "./Widgets/ProductRatingBox";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox5 = ({ productState, setProductState }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -16,7 +17,7 @@ const ProductBox5 = ({ productState, setProductState }) => {
       <div className={`basic-product theme-product-4 ${productState?.product?.stock_status === "out_of_stock" ? "sold-out" : ""}`}>
         <div className="img-wrapper">
           <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
-            <img src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail.original_url} className="img-fluid bg-img" alt={productState?.product?.name} />
+            <img src={getImageUrl(productState?.selectedVariation?.variation_image || productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt={productState?.product?.name} />
           </Link>
           <ul className="trending-label">
             {productState?.product?.stock_status === "out_of_stock" ? <li className="out_of_stock">{t("sold_out")}</li> : null}

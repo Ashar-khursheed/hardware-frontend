@@ -6,6 +6,7 @@ import CartButton from "./Widgets/CartButton";
 import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 import { useRouter } from "next/navigation";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox10 = ({ productState }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -21,7 +22,7 @@ const ProductBox10 = ({ productState }) => {
           {productState?.product?.is_sale_enable ? <div className={`ribbon-outer ${productState?.product?.is_featured ? "level2" : ""}`}>{"on_sale"}</div> : null}
 
           <a onClick={() => router?.push(`/product/${productState?.product?.slug}`)} className="img-fluid lazyload bg-img bg-top">
-            <img src={productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt="product-image" />
+            <img src={getImageUrl(productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt="product-image" />
           </a>
 
           <div className="cart-info">

@@ -6,6 +6,7 @@ import CartButton from "./Widgets/CartButton";
 import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 import ProductRatingBox from "./Widgets/ProductRatingBox";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox4 = ({ productState }) => {
   const router = useRouter();
@@ -16,7 +17,7 @@ const ProductBox4 = ({ productState }) => {
         <div className="img-wrapper">
           {productState?.product?.discount && <div className="ribbon-round">{productState?.product?.discount}%</div>}
           <Link href={`/product/${productState?.product?.slug}`} legacyBehavior>
-            <img src={productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt={productState?.product?.name} />
+            <img src={getImageUrl(productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt={productState?.product?.name} />
           </Link>
           <div className="cart-info">
             <WishlistButton productstate={productState?.product} classes="wishlist-icon" />

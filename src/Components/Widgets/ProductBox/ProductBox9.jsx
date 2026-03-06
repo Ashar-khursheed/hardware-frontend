@@ -8,6 +8,7 @@ import WishlistButton from "./Widgets/HoverButton/WishlistButton";
 import ProductBoxVariantAttribute from "./Widgets/ProductBoxVariantAttributes";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 import ProductRatingBox from "./Widgets/ProductRatingBox";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox9 = ({ productState, setProductState }) => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const ProductBox9 = ({ productState, setProductState }) => {
             href={`/product/${productState?.product?.slug}`}
             className="img-fluid lazyload bg-img bg-top"
             legacyBehavior>
-            <img  src={productState?.selectedVariation?.variation_image ? productState?.selectedVariation.variation_image.original_url : productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt="product-image" />
+            <img src={getImageUrl(productState?.selectedVariation?.variation_image || productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt="product-image" />
           </Link>
           <div className="cart-info">
             <WishlistButton productstate={productState?.product} />

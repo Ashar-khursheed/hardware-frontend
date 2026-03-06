@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import { RiCloseLine } from "react-icons/ri";
 import { Media } from "reactstrap";
 
@@ -51,7 +52,7 @@ const RecentPurchase = () => {
   }
   return (
     <Media className={`recently-purchase ${show ? "show" : ""}`}>
-      <Image height={64} width={85} src={product?.product_thumbnail?.original_url ? product?.product_thumbnail?.original_url : `${ImagePath}/placeholder/product.png`} alt={product?.name || "product"} />
+      <Image height={64} width={85} src={getImageUrl(product?.product_thumbnail || product?.product_galleries?.[0])} alt={product?.name || "product"} />
       <Media body>
         <div>
           <div className="title">{t("someone_recently_purchased")}</div>

@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import CartButton from "./Widgets/CartButton";
 import ProductHoverButton from "./Widgets/ProductHoverButton";
 import ProductRatingBox from "./Widgets/ProductRatingBox";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 
 const ProductBox7 = ({ productState }) => {
   const { convertCurrency } = useContext(SettingContext);
@@ -28,7 +29,7 @@ const ProductBox7 = ({ productState }) => {
             href={`/product/${productState?.product?.slug}`}
             className="img-fluid lazyload bg-img bg-top"
             legacyBehavior>
-            <img src={productState?.product?.product_thumbnail?.original_url} className="img-fluid bg-img" alt="product-image" />
+            <img src={getImageUrl(productState?.product?.product_thumbnail || productState?.product?.product_galleries?.[0])} className="img-fluid bg-img" alt="product-image" />
           </Link>
           <div className="cart-info">
             <ProductHoverButton productstate={productState.product} />
