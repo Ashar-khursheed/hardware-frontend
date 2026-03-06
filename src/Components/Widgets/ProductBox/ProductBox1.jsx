@@ -177,7 +177,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
   return (
     <div className={`agpc__card ${isOutOfStock ? "agpc__card--out" : ""}`}>
 
-      {/* Media Section */}
+      {/* Media */}
       <div className="agpc__media">
         <Link href={`/product/${product?.slug}`} className="agpc__media-link">
           <ImageVariant
@@ -205,7 +205,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
           </div>
         </div>
 
-        {/* Hover Action Zone */}
+        {/* Hover Actions */}
         <div className="agpc__hover-mask">
           <div className="agpc__hover-body">
             <CartButton
@@ -221,7 +221,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
         </div>
       </div>
 
-      {/* Product Info */}
+      {/* Info */}
       <div className="agpc__body">
         <div className="agpc__brand">
           <Link href={`/brand/${product?.brand?.slug || "#"}`}>
@@ -236,21 +236,21 @@ const ProductBox1 = ({ productState, setProductState }) => {
         <div className="agpc__price-row">
           <div className="agpc__price-wrap">
             <span className="agpc__price-now">
-              {convertCurrency(currentPrice)}
+              {isOutOfStock ? "Out of Stock" : convertCurrency(currentPrice)}
             </span>
-            {currentPrice < oldPrice && (
+            {!isOutOfStock && currentPrice < oldPrice && (
               <span className="agpc__price-old">
                 {convertCurrency(oldPrice)}
               </span>
             )}
           </div>
-          {discount > 0 && (
-            <div className="agpc__discount">-{discount}% OFF</div>
+          {!isOutOfStock && discount > 0 && (
+            <span className="agpc__discount">-{discount}%</span>
           )}
         </div>
       </div>
 
-      {/* Variant Attributes */}
+      {/* Variants */}
       {product?.attributes?.length > 0 && (
         <div className="agpc__footer">
           <ProductBoxVariantAttribute
