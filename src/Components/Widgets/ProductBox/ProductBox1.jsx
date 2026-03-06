@@ -131,7 +131,9 @@
 
 // export default ProductBox1;
 import { useState } from "react";
-import { ShoppingCart, Heart, Eye, Star } from "lucide-react";
+// import { ShoppingCart, Heart, Eye, Star } from "lucide-react";
+
+import { RiShoppingCartLine, RiHeartLine, RiEyeLine, RiStarSFill } from "react-icons/ri";
 
 const style = `
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap');
@@ -446,7 +448,7 @@ function ProductCard({ card }) {
         <div className="ag-badge-overlay">
           {card.reviews > 0 && (
             <div className="ag-star-rating">
-              <Star fill="#fbbf24" strokeWidth={0} />
+              <RiStarSFill fill="#fbbf24" strokeWidth={0} />
               <span>{card.rating}</span>
             </div>
           )}
@@ -461,12 +463,12 @@ function ProductCard({ card }) {
         <div className="ag-card-hover-mask">
           <div className="ag-mask-body">
             <button className="ag-cart-btn">
-              <ShoppingCart size={14} strokeWidth={2.5} />
+              <RiShoppingCartLine />
               Add to Cart
             </button>
             <div className="ag-secondary-actions">
-              <button className="ag-icon-btn"><Heart size={15} /></button>
-              <button className="ag-icon-btn"><Eye size={15} /></button>
+              <button className="ag-icon-btn"><RiHeartLine /></button>
+              <button className="ag-icon-btn"><RiEyeLine /></button>
             </div>
           </div>
         </div>
