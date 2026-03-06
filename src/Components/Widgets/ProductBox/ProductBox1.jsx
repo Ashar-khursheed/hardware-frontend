@@ -153,10 +153,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
     [product]
   );
   const displayBrand = useMemo(() => product?.brand?.name || "Hardware", [product]);
-  const displayName = useMemo(() =>
-    selectedVariation?.name || product?.name || "Product",
-    [selectedVariation, product]
-  );
+  const displayName = useMemo(() => selectedVariation?.name || product?.name || "Product", [selectedVariation, product]);
+
   const currentPrice = useMemo(() => {
     const p = selectedVariation ? selectedVariation.sale_price : product?.sale_price;
     return Number(p || 0);
@@ -177,7 +175,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
   return (
     <div className={`agpc__card ${isOutOfStock ? "agpc__card--out" : ""}`}>
 
-      {/* Media */}
+      {/* ── Image (self-contained, nothing overlaps it) ── */}
       <div className="agpc__media">
         <Link href={`/product/${product?.slug}`} className="agpc__media-link">
           <ImageVariant
@@ -189,7 +187,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
           />
         </Link>
 
-        {/* Badges */}
+        {/* Badges stay inside image area */}
         <div className="agpc__badges">
           {reviewsCount > 0 && (
             <div className="agpc__rating">
@@ -204,24 +202,24 @@ const ProductBox1 = ({ productState, setProductState }) => {
             {!!product?.is_trending && <span className="agpc__tag--trend">Trending</span>}
           </div>
         </div>
-
-        {/* Hover Actions */}
-        <div className="agpc__hover-mask">
-          <div className="agpc__hover-body">
-            <CartButton
-              classes="agpc__btn-cart"
-              productState={productState}
-              selectedVariation={selectedVariation}
-              text="Add to Cart"
-            />
-            <div className="agpc__actions">
-              <ProductHoverButton productstate={product} />
-            </div>
-          </div>
-        </div>
       </div>
 
-      {/* Info */}
+      {/* ── Action Bar — outside image, slides in on hover ── */}
+      {!isOutOfStock && (
+        <div className="agpc__action-bar">
+          <CartButton
+            classes="agpc__btn-cart"
+            productState={productState}
+            selectedVariation={selectedVariation}
+            text="Add to Cart"
+          />
+          <div className="agpc__actions">
+            <ProductHoverButton productstate={product} />
+          </div>
+        </div>
+      )}
+
+      {/* ── Product Info ── */}
       <div className="agpc__body">
         <div className="agpc__brand">
           <Link href={`/brand/${product?.brand?.slug || "#"}`}>
@@ -250,7 +248,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
         </div>
       </div>
 
-      {/* Variants */}
+      {/* ── Variant Attributes ── */}
       {product?.attributes?.length > 0 && (
         <div className="agpc__footer">
           <ProductBoxVariantAttribute

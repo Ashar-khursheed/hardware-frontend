@@ -343,10 +343,7 @@
     --agpc-border: #e8e8e8;
     --agpc-border-hover: #c8c8c8;
     --agpc-text: #1a1a1a;
-    --agpc-text-secondary: #555555;
     --agpc-text-muted: #999999;
-    --agpc-accent: #f5a623;
-    --agpc-accent-hover: #e09510;
     --agpc-btn-bg: #ff6b00;
     --agpc-btn-hover: #e55f00;
     --agpc-tag-sale: #cc0000;
@@ -365,6 +362,8 @@
     overflow: hidden;
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
     box-shadow: var(--agpc-shadow);
+    display: flex;
+    flex-direction: column;
 
     &:hover {
         box-shadow: var(--agpc-shadow-hover);
@@ -374,32 +373,31 @@
             transform: scale(1.04);
         }
 
-        .agpc__hover-mask {
+        /* Reveal the action bar */
+        .agpc__action-bar {
             opacity: 1;
             visibility: visible;
-        }
-
-        .agpc__hover-body {
             transform: translateY(0);
-            opacity: 1;
         }
     }
 
     &.agpc__card--out {
         .agpc__media img {
-            opacity: 0.5;
+            opacity: 0.45;
             filter: grayscale(1);
         }
     }
 }
 
 /* ── Media ──────────────────────────────────── */
+/* Image area — self-contained, nothing overlaps it */
 .agpc__media {
     position: relative;
     width: 100%;
     padding-top: 100%;
     background: #f7f7f7;
     overflow: hidden;
+    flex-shrink: 0;
 
     img {
         position: absolute;
@@ -422,7 +420,7 @@
     display: block;
 }
 
-/* ── Badges ─────────────────────────────────── */
+/* ── Badges (inside media, top corners) ─────── */
 .agpc__badges {
     position: absolute;
     top: 10px;
@@ -447,10 +445,12 @@
     font-weight: 600;
     color: #1a1a1a;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    line-height: 1;
 
     svg {
         color: #f5a623;
         font-size: 12px;
+        display: block;
     }
 }
 
@@ -489,27 +489,25 @@
     }
 }
 
-/* ── Hover Mask ─────────────────────────────── */
-.agpc__hover-mask {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px;
-    z-index: 5;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.06) 0%, transparent 100%);
-}
-
-.agpc__hover-body {
+/* ── Action Bar — sits BELOW image, outside it ─ */
+/* Hidden by default, slides up on card hover     */
+.agpc__action-bar {
+    width: 100%;
+    padding: 10px 12px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
-    transform: translateY(6px);
+
     opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+
+    /* Takes up space even when hidden so layout doesn't jump */
+    max-height: 90px;
 }
 
 /* Add to Cart Button */
@@ -518,49 +516,97 @@ button.agpc__btn-cart {
     width: 100% !important;
     padding: 10px 16px !important;
     background: var(--agpc-btn-bg) !important;
-    color: #fff !important;
+    color: #ffffff !important;
+    /* always white */
     font-size: 13px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.02em !important;
+    letter-spacing: 0.04em !important;
     text-transform: uppercase !important;
     border: none !important;
     border-radius: var(--agpc-radius-sm) !important;
     cursor: pointer !important;
-    transition: background 0.15s ease !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 7px !important;
     box-shadow: none !important;
+    line-height: 1 !important;
 
-    &:hover {
+    /* Force all child elements white too */
+    span,
+    svg,
+    i,
+    * {
+        color: #ffffff !important;
+        fill: currentColor !important;
+    }
+
+    &:hover,
+    &:focus {
         background: var(--agpc-btn-hover) !important;
+        color: #ffffff !important;
+
+        span,
+        svg,
+        i,
+        * {
+            color: #ffffff !important;
+        }
     }
 }
 
+/* Icon action buttons (wishlist, quickview) */
 .agpc__actions {
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 8px;
+    width: 100%;
 
+    /* Target the inner list that ProductHoverButton renders */
+    ul,
+    ol {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li,
     button,
     a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 34px;
-        height: 34px;
-        background: #fff;
-        border: 1px solid #e8e8e8;
-        border-radius: 50%;
-        color: #555;
-        font-size: 15px;
-        cursor: pointer;
-        transition: border-color 0.15s ease, color 0.15s ease;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 34px !important;
+        height: 34px !important;
+        background: #fff !important;
+        border: 1px solid #e8e8e8 !important;
+        border-radius: 50% !important;
+        color: #555 !important;
+        font-size: 16px !important;
+        cursor: pointer !important;
+        transition: border-color 0.15s ease, color 0.15s ease !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+        text-decoration: none !important;
+
+        svg,
+        i {
+            display: block;
+            font-size: 16px;
+            line-height: 1;
+        }
 
         &:hover {
-            border-color: var(--agpc-btn-bg);
-            color: var(--agpc-btn-bg);
+            border-color: var(--agpc-btn-bg) !important;
+            color: var(--agpc-btn-bg) !important;
         }
     }
 }
@@ -569,6 +615,9 @@ button.agpc__btn-cart {
 .agpc__body {
     padding: 12px 14px 10px;
     border-top: 1px solid #f0f0f0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .agpc__brand {
@@ -612,6 +661,7 @@ button.agpc__btn-cart {
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .agpc__price-wrap {
@@ -640,14 +690,13 @@ button.agpc__btn-cart {
     color: var(--agpc-tag-sale);
 }
 
-/* ── Out of Stock label ─────────────────────── */
 .agpc__card--out .agpc__price-now {
     color: var(--agpc-text-muted);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
 }
 
-/* ── Card Footer ────────────────────────────── */
+/* ── Card Footer (variant attributes) ──────── */
 .agpc__footer {
     padding: 8px 14px 12px;
     border-top: 1px solid #f0f0f0;

@@ -54,7 +54,7 @@ const LeftSideModal = ({ cloneVariation, productObj }) => {
         </div>
       );
     } else {
-      const imgUrl = item?.original_url || item?.asset_url || placeHolderImage;
+      const imgUrl = item?.asset_url || item?.original_url || placeHolderImage;
       return (
         <img
           src={imgUrl}
@@ -144,9 +144,9 @@ const LeftSideModal = ({ cloneVariation, productObj }) => {
                           </audio>
                         </div>
                       ) : (
-                        (item?.original_url || item?.asset_url) && (
+                        (item?.asset_url || item?.original_url) && (
                           <img
-                            src={item?.original_url || item?.asset_url}
+                            src={item?.asset_url || item?.original_url}
                             className="img-fluid"
                             alt={cloneVariation?.product?.name || "Product image"}
                             style={{ width: '100%', height: 'auto', maxHeight: '100px', objectFit: 'contain' }}
