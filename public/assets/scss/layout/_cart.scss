@@ -4,7 +4,7 @@
 .add_to_cart {
   position: fixed;
   background-color: $white;
-  z-index: 9;
+  z-index: 1045;
   transition: all 0.5s ease;
 
   .sidebar-title {
@@ -45,7 +45,7 @@
 
   .cart-inner {
     background-color: $white;
-    z-index: 9;
+    z-index: 1045;
     position: relative;
     top: 0;
 
@@ -397,7 +397,7 @@
     opacity: 0;
     background-color: #212331;
     position: fixed;
-    z-index: 1;
+    z-index: 1040;
     top: 0;
     left: 0;
     width: 100%;
