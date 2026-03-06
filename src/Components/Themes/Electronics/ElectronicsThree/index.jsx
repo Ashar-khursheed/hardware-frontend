@@ -60,7 +60,7 @@ const ElectronicsThree = () => {
   }, []);
 
   useSkeletonLoader2([productLoad, blogLoading, brandLoading]);
-  
+
   // Show skeleton if loading OR if data is not yet available
   if ((isLoading || !data) && typeof window !== 'undefined') return <SkeletonHomepage />;
 
@@ -70,7 +70,7 @@ const ElectronicsThree = () => {
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"></link>
       </Head>
-      
+
       <>
         <style jsx>{`
      .home-slider-section {
@@ -255,14 +255,6 @@ const ElectronicsThree = () => {
       {/* Product List 1 */}
       {data?.products_list_1?.status && (
         <>
-          <style jsx global>{`
-            .custom-slick-wrapper .slick-track {
-              width: auto !important;
-              display: flex !important;
-            }
-          `}</style>
-          
-          {/* Added consistent spacing here */}
           <WrapperComponent
             classes={{ sectionClass: "section-b-space ratio_square no-arrow", fluidClass: "container" }}
             colProps={{ xs: "12" }}
@@ -340,13 +332,13 @@ const ElectronicsThree = () => {
       {/* Brands */}
       {data?.brand?.status && (
         <section className="section-b-space blog-wo-bg p-0">
-            <Container>
-                <div className="row">
-                    <div className="col-12">
-                         <HomeBrand brandIds={data?.brand?.brand_ids} />
-                    </div>
-                </div>
-            </Container>
+          <Container>
+            <div className="row">
+              <div className="col-12">
+                <HomeBrand brandIds={data?.brand?.brand_ids} />
+              </div>
+            </div>
+          </Container>
         </section>
       )}
 

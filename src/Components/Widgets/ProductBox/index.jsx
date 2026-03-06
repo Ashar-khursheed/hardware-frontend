@@ -38,8 +38,10 @@ const ProductBox = ({ style = "vertical", product, boxStyle }) => {
       setVariant("product_box_four");
     } else if (theme == "perfume" || theme == "furniture_dark" || theme == "furniture_one" || theme == "shoes") {
       setVariant("product_box_five");
-    } else if (theme == "bag" || theme == "electronics_one" || theme == "electronics_two" || theme == "electronics_three" || theme == "fashion_five") {
+    } else if (theme == "bag" || theme == "electronics_one" || theme == "electronics_two" || theme == "fashion_five") {
       setVariant("product_box_six");
+    } else if (theme == "electronics_three") {
+      setVariant("product_box_one");
     } else if (theme == "marketplace_one" || theme == "marketplace_two" || theme == "marketplace_three" || theme == "marketplace_four") {
       setVariant("product_box_seven");
     } else if (theme == "gym" || theme == "vegetables_one" || theme == "vegetables_two" || theme == "vegetables_four") {
