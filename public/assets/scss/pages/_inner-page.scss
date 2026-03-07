@@ -598,7 +598,9 @@
     }
   }
 
-  .product-slick {
+  .product-slick,
+  .thumbnail-image-slider {
+    position: relative;
     z-index: 10;
   }
 

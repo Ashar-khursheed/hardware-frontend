@@ -62,6 +62,12 @@
     height: 100%;
 }
 
+/* Force Image Zoom to stay under UI overlays */
+.react-image-zooom,
+.zoomWrapper {
+    z-index: 10 !important;
+}
+
 /* Fix Cart overlay Z-Index over PDP Zoom */
 .add_to_cart {
     z-index: 99999 !important;
