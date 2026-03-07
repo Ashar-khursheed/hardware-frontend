@@ -69,10 +69,3 @@
 }
 
 /* Fix Cart overlay Z-Index over PDP Zoom */
-.add_to_cart {
-    z-index: 99999 !important;
-
-    .overlay {
-        z-index: 99998 !important;
-    }
-}
