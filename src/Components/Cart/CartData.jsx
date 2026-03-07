@@ -157,7 +157,7 @@ const CartData = ({ elem }) => {
         <span className="agct__price-now">{convertCurrency(total.toFixed(2))}</span>
       </td>
 
-      {/* Delete */}
+      {/* Deletes */}
       <td>
         <button
           className="agct__delete-btn"
