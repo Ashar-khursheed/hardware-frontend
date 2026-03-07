@@ -81,12 +81,16 @@ import { useTranslation } from "react-i18next";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import Avatar from "../Widgets/Avatar";
 import { placeHolderImage } from "../Widgets/Placeholder";
-import QuantityBox from "../Widgets/QuantityBox";
+
+// NOTE: Import your existing quantity component here
+// e.g. import QtyBox from "../Widgets/QtyBox";
+// or   import QuantityControl from "../Widgets/QuantityControl";
+// Check your src/Components/Widgets/ folder for the correct file name
 
 const CartData = ({ elem }) => {
   const { t } = useTranslation("common");
   const { convertCurrency } = useContext(SettingContext);
-  const { deleteCart } = useContext(CartContext);
+  const { deleteCart, updateCartQty } = useContext(CartContext);
 
   const price = Number(elem?.variation?.sale_price ?? elem?.product?.sale_price ?? 0);
   const oldPrice = Number(elem?.variation?.price ?? elem?.product?.price ?? 0);
@@ -126,14 +130,25 @@ const CartData = ({ elem }) => {
         )}
       </td>
 
-      {/* Quantity */}
+      {/* Quantity — paste your existing qty component here */}
       <td>
         <div className="agct__qty">
-          <QuantityBox
-            classes="agct__qty"
-            productState={{ product: elem?.product, selectedVariation: elem?.variation }}
-            cartData={elem}
+          {/* REPLACE THIS with your existing qty box component */}
+          {/* e.g. <QtyBox cartData={elem} /> */}
+          <button
+            className="agct__qty-btn"
+            onClick={() => updateCartQty && updateCartQty(elem?.id, Math.max(1, qty - 1))}
+          >−</button>
+          <input
+            className="agct__qty-input"
+            type="number"
+            value={qty}
+            readOnly
           />
+          <button
+            className="agct__qty-btn"
+            onClick={() => updateCartQty && updateCartQty(elem?.id, qty + 1)}
+          >+</button>
         </div>
       </td>
 
@@ -147,7 +162,7 @@ const CartData = ({ elem }) => {
         <button
           className="agct__delete-btn"
           onClick={() => deleteCart(elem?.id)}
-          title={t("remove_item")}
+          title={t("remove")}
         >
           <RiDeleteBin6Line />
         </button>
