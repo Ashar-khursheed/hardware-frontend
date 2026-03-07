@@ -3,7 +3,6 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiArrowLeftSLine, RiArrowRightSLine, RiHeadphoneLine, RiVideoLine } from "react-icons/ri";
-import ImageZoom from "react-image-zooom";
 import Slider from "react-slick";
 import { Col, Row } from "reactstrap";
 import DigitalImageOptions from "../Common/DigitalImageOptions";
@@ -64,6 +63,19 @@ const ThumbnailProductImage = ({ productState, slideToShow }) => {
       },
     ],
   };
+  const handleZoom = (e) => {
+    const { left, top, width, height } = e.target.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    e.target.style.transformOrigin = `${x}% ${y}%`;
+    e.target.style.transform = "scale(2)";
+  };
+
+  const resetZoom = (e) => {
+    e.target.style.transformOrigin = "center center";
+    e.target.style.transform = "scale(1)";
+  };
+
   return (
     <div className="sticky-top-custom">
       <div className="thumbnail-image-slider">
@@ -94,13 +106,33 @@ const ThumbnailProductImage = ({ productState, slideToShow }) => {
                           </audio>
                         </div>
                       ) : (
-                        <ImageZoom src={getImageUrl(image)} alt={image?.name} zoom="200" className="img-fluid" height={670} width={670} />
+                        <div className="custom-zoom-image" style={{ overflow: "hidden", cursor: "crosshair" }}>
+                          <img
+                            src={getImageUrl(image)}
+                            alt={image?.name}
+                            className="img-fluid"
+                            style={{ width: "100%", height: "auto", objectFit: "contain", transition: "transform 0.1s ease-out" }}
+                            onMouseMove={handleZoom}
+                            onMouseLeave={resetZoom}
+                          />
+                        </div>
                       )}
                     </div>
                   </div>
                 ))}
               </Slider>
-              {!currentVariation?.length && <img src={getImageUrl(productState?.product?.product_thumbnail)} className="img-fluid" alt={productState?.product?.name} />}
+              {!currentVariation?.length && (
+                <div className="custom-zoom-image" style={{ overflow: "hidden", cursor: "crosshair" }}>
+                  <img
+                    src={getImageUrl(productState?.product?.product_thumbnail)}
+                    className="img-fluid"
+                    alt={productState?.product?.name}
+                    style={{ width: "100%", height: "auto", objectFit: "contain", transition: "transform 0.1s ease-out" }}
+                    onMouseMove={handleZoom}
+                    onMouseLeave={resetZoom}
+                  />
+                </div>
+              )}
 
               {productState?.product?.product_type == "digital" && <DigitalImageOptions product={productState?.product} />}
             </div>

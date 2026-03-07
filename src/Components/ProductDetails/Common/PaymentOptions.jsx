@@ -14,14 +14,14 @@ const PaymentOptions = ({ productState }) => {
         <div className="paymnet-option">
           <div className="dashed-border-box">
             <h4 className="sub-title">{t("guaranteed_safe_checkout")}</h4>
-            {themeOption?.product?.safe_checkout_image && <img src={getImageUrl(themeOption?.product?.safe_checkout_image)} alt="Safe Checkout" className="img-fluid payment-img" style={{ height: 33, width: 301 }} />}
+            {themeOption?.product?.safe_checkout_image && <img src={getImageUrl(themeOption?.product?.safe_checkout_image)} alt="Safe Checkout" className="img-fluid payment-img" style={{ width: "100%", maxWidth: 301, height: "auto" }} />}
           </div>
         </div>
       ) : null}
       {themeOption?.product?.secure_checkout && productState?.product?.secure_checkout ? (
         <div className="dashed-border-box">
           <h4 className="sub-title">{t("secure_checkout")}</h4>
-          {themeOption?.product?.secure_checkout_image && <img src={getImageUrl(themeOption?.product?.secure_checkout_image)} alt="Secure Checkout" className="img-fluid security-img mt-1 " style={{ height: 26, width: 376 }} />}
+          {themeOption?.product?.secure_checkout_image && <img src={getImageUrl(themeOption?.product?.secure_checkout_image)} alt="Secure Checkout" className="img-fluid security-img mt-1 " style={{ width: "100%", maxWidth: 376, height: "auto" }} />}
         </div>
       ) : null}
     </>
