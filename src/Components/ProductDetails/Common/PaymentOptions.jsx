@@ -21,7 +21,7 @@ const PaymentOptions = ({ productState }) => {
       {themeOption?.product?.secure_checkout && productState?.product?.secure_checkout ? (
         <div className="dashed-border-box">
           <h4 className="sub-title">{t("secure_checkout")}</h4>
-          {themeOption?.product?.secure_checkout_image && <img src={getImageUrl(themeOption?.product?.secure_checkout_image)} alt="Secure Checkout" className="img-fluid security-img mt-1 " style={{ width: "100%", maxWidth: 376, height: "auto" }} />}
+          {themeOption?.product?.secure_checkout_image && <img src={getImageUrl(themeOption?.product?.secure_checkout_image)} alt="Secure Checkout" className="img-fluid security-img mt-1 " style={{ width: "100% !important", maxWidth: "376px !important", height: "auto" }} />}
         </div>
       ) : null}
     </>
