@@ -20,7 +20,7 @@ const PaymentOtions = ({ productState }) => {
       {themeOption?.product?.secure_checkout && productState?.product?.secure_checkout ? (
         <div className='secure-site-sec'>
           <h4>{t("secure_checkout")}</h4>
-          {themeOption?.product?.secure_checkout_image && <Image src={storageURL +themeOption?.product?.secure_checkout_image} alt='Secure Checkout' className='img-fluid payment-img' height={26} width={376} />}
+          {themeOption?.product?.secure_checkout_image && <Image src={storageURL + themeOption?.product?.secure_checkout_image} alt='Secure Checkout' className='' height={26} width={376} />}
         </div>
       ) : null}
     </>
