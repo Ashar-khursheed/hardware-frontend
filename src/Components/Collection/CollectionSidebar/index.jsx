@@ -86,7 +86,7 @@ const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rig
                       <RiArrowDownSLine className="ag-chevron" />
                     </div>
                     <Collapse isOpen={open.includes("2")}>
-                      <CollectionBrand filter={filter} setFilter={setFilter} />
+                      <CollectionBrand filter={filter} setFilter={setFilter} categorySlug={categorySlug} />
                     </Collapse>
                   </div>
 
