@@ -128,11 +128,8 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
 
   // Initialize stripe_card_complete on mount based on payment method
   useEffect(() => {
-    if (values["payment_method"] === "cod" || values["payment_method"] === "bank_transfer") {
-      setFieldValue("stripe_card_complete", true);
-    } else if (values["payment_method"] === "stripe") {
-      setFieldValue("stripe_card_complete", false);
-    }
+    // Reverted: Always set to true because we are using Hosted Checkout (redirect) now
+    setFieldValue("stripe_card_complete", true);
   }, []); // Run only on mount
 
   return (
@@ -151,7 +148,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
               onClick={() => {
                 setSelectedPaymentTab('stripe');
                 setFieldValue("payment_method", "stripe");
-                setFieldValue("stripe_card_complete", false); // Reset validation for Stripe
+                setFieldValue("stripe_card_complete", true); // No local validation needed for redirect
               }}
             >
               <i className="ri-bank-card-line me-2"></i>
@@ -178,13 +175,9 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
               <div className="payment-method-description mb-3">
                 <p className="text-muted">
                   <i className="ri-information-line me-2"></i>
-                  Pay securely using your credit or debit card. Your payment information is encrypted and secure.
+                  You will be redirected to Stripe's secure payment page to complete your purchase.
                 </p>
               </div>
-
-              <Elements stripe={stripePromise}>
-                <StripeCardForm values={values} setFieldValue={setFieldValue} />
-              </Elements>
             </div>
           )}
 
@@ -204,7 +197,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
           )} */}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

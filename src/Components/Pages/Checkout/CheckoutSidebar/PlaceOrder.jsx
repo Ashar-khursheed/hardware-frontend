@@ -29,17 +29,21 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
       console.log('Order API Response:', resDta);
 
       if (resDta?.status == 200 || resDta?.status == 201) {
-        resDta?.data?.order_number && setGetOrderNumber(resDta?.data?.order_number);
+        const orderNumber = resDta?.data?.order_number || resDta?.order_number;
+        orderNumber && setGetOrderNumber(orderNumber);
+
+        const isGuest = resDta?.data?.is_guest || resDta?.is_guest;
+        const consumerEmail = resDta?.data?.consumer?.email || resDta?.email || resDta?.data?.email;
 
         // Handle Cash on Delivery
         if (values["payment_method"] == "cod" || values["payment_method"] == "bank_transfer") {
-          if (!resDta?.data?.is_guest) {
-            router.push(`/account/order/details/${resDta?.data?.order_number}`);
+          if (!isGuest) {
+            router.push(`/account/order/details/${orderNumber}`);
             setCartProducts([]);
           } else {
             const queryParams = new URLSearchParams({
-              order_number: resDta?.data?.order_number,
-              email_or_phone: resDta?.data?.consumer?.email
+              order_number: orderNumber,
+              email_or_phone: consumerEmail
             }).toString();
             router.push(`/order/details/?${queryParams}`);
             setCartProducts([]);
@@ -47,18 +51,22 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         }
         // Handle Stripe Payment
         else if (values["payment_method"] == "stripe") {
-          // If using Stripe Elements (direct payment)
-          if (values["stripe_instance"]) {
-            await handleStripePayment(resDta?.data);
+          const redirectUrl = resDta?.data?.url || resDta?.url;
+          // If backend returns a payment URL (for Stripe Checkout)
+          if (redirectUrl) {
+            window.open(redirectUrl, "_self");
           }
-          // Fallback: If backend only returns a payment URL (for Stripe Checkout)
-          else if (resDta?.data?.url) {
-            window.open(resDta?.data?.url, "_self");
+          // If using Stripe Elements (direct payment)
+          else if (values["stripe_instance"]) {
+            await handleStripePayment(resDta?.data || resDta);
           }
         }
         // Handle other payment methods
         else {
-          window.open(resDta?.data?.url, "_self");
+          const redirectUrl = resDta?.data?.url || resDta?.url;
+          if (redirectUrl) {
+            window.open(redirectUrl, "_self");
+          }
         }
       } else {
         // Log the full error for debugging
