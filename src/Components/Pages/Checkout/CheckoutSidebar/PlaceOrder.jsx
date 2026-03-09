@@ -26,82 +26,82 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
     false, // path
     true, // message
     async (resDta) => { // extraFunction
-    console.log('Order API Response:', resDta);
-    
-    if (resDta?.status == 200 || resDta?.status == 201) {
-      resDta?.data?.order_number && setGetOrderNumber(resDta?.data?.order_number);
-      
-      // Handle Cash on Delivery
-      if (values["payment_method"] == "cod" || values["payment_method"] == "bank_transfer") {
-        if (!resDta?.data?.is_guest) {
-          router.push(`/account/order/details/${resDta?.data?.order_number}`);
-          setCartProducts([]);
-        } else {
-          const queryParams = new URLSearchParams({ 
-            order_number: resDta?.data?.order_number, 
-            email_or_phone: resDta?.data?.consumer?.email 
-          }).toString();
-          router.push(`/order/details/?${queryParams}`);
-          setCartProducts([]);
+      console.log('Order API Response:', resDta);
+
+      if (resDta?.status == 200 || resDta?.status == 201) {
+        resDta?.data?.order_number && setGetOrderNumber(resDta?.data?.order_number);
+
+        // Handle Cash on Delivery
+        if (values["payment_method"] == "cod" || values["payment_method"] == "bank_transfer") {
+          if (!resDta?.data?.is_guest) {
+            router.push(`/account/order/details/${resDta?.data?.order_number}`);
+            setCartProducts([]);
+          } else {
+            const queryParams = new URLSearchParams({
+              order_number: resDta?.data?.order_number,
+              email_or_phone: resDta?.data?.consumer?.email
+            }).toString();
+            router.push(`/order/details/?${queryParams}`);
+            setCartProducts([]);
+          }
         }
-      } 
-      // Handle Stripe Payment
-      else if (values["payment_method"] == "stripe") {
-        // If backend returns a payment URL (for Stripe Checkout)
-        if (resDta?.data?.url) {
+        // Handle Stripe Payment
+        else if (values["payment_method"] == "stripe") {
+          // If using Stripe Elements (direct payment)
+          if (values["stripe_instance"]) {
+            await handleStripePayment(resDta?.data);
+          }
+          // Fallback: If backend only returns a payment URL (for Stripe Checkout)
+          else if (resDta?.data?.url) {
+            window.open(resDta?.data?.url, "_self");
+          }
+        }
+        // Handle other payment methods
+        else {
           window.open(resDta?.data?.url, "_self");
-        } 
-        // If using Stripe Elements (direct payment)
-        else if (values["stripe_instance"]) {
-          await handleStripePayment(resDta?.data);
         }
-      } 
-      // Handle other payment methods
-      else {
-        window.open(resDta?.data?.url, "_self");
+      } else {
+        // Log the full error for debugging
+        console.error('Order API Error:', {
+          status: resDta?.status,
+          message: resDta?.data?.message || resDta?.message,
+          response: resDta?.response?.data,
+          fullResponse: resDta
+        });
+
+        const errorMessage = resDta?.response?.data?.message ||
+          resDta?.data?.message ||
+          resDta?.message ||
+          'Something went wrong, check API integration';
+
+        setErrorOrder(errorMessage);
+        setIsProcessing(false);
       }
-    } else {
-      // Log the full error for debugging
-      console.error('Order API Error:', {
-        status: resDta?.status,
-        message: resDta?.data?.message || resDta?.message,
-        response: resDta?.response?.data,
-        fullResponse: resDta
-      });
-      
-      const errorMessage = resDta?.response?.data?.message || 
-                          resDta?.data?.message || 
-                          resDta?.message ||
-                          'Something went wrong, check API integration';
-      
-      setErrorOrder(errorMessage);
+    },
+    false, // notHandler
+    null, // setCouponError
+    null, // refetch
+    setShowBoxMessage, // setShowBoxMessage (9th parameter)
+    null, // responseType
+    (err) => { // errFunction
+      console.error('Order API Error Handler:', err);
       setIsProcessing(false);
-    }
-  },
-  false, // notHandler
-  null, // setCouponError
-  null, // refetch
-  setShowBoxMessage, // setShowBoxMessage (9th parameter)
-  null, // responseType
-  (err) => { // errFunction
-    console.error('Order API Error Handler:', err);
-    setIsProcessing(false);
-  });
+    });
 
   // Handle Stripe payment with Elements
   const handleStripePayment = async (orderData) => {
     try {
       setIsProcessing(true);
-      
+
       const { stripe, elements } = values["stripe_instance"];
-      
+
       if (!stripe || !elements) {
         throw new Error("Stripe hasn't loaded yet");
       }
 
       // Get card element
       const cardNumberElement = elements.getElement("cardNumber");
-      
+
       if (!cardNumberElement) {
         throw new Error("Card element not found");
       }
@@ -149,9 +149,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           if (!orderData?.is_guest) {
             router.push(`/account/order/details/${orderData.order_number}`);
           } else {
-            const queryParams = new URLSearchParams({ 
-              order_number: orderData.order_number, 
-              email_or_phone: orderData.consumer?.email 
+            const queryParams = new URLSearchParams({
+              order_number: orderData.order_number,
+              email_or_phone: orderData.consumer?.email
             }).toString();
             router.push(`/order/details/?${queryParams}`);
           }
@@ -164,15 +164,15 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         if (!orderData?.is_guest) {
           router.push(`/account/order/details/${orderData.order_number}`);
         } else {
-          const queryParams = new URLSearchParams({ 
-            order_number: orderData.order_number, 
-            email_or_phone: orderData.consumer?.email 
+          const queryParams = new URLSearchParams({
+            order_number: orderData.order_number,
+            email_or_phone: orderData.consumer?.email
           }).toString();
           router.push(`/order/details/?${queryParams}`);
         }
         setCartProducts([]);
       }
-      
+
       setIsProcessing(false);
     } catch (err) {
       console.error('Stripe payment error:', err);
@@ -185,9 +185,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
     if (!access_token) {
       // Guest checkout validation - check if required fields are filled
       const requiredFieldsFilled = Boolean(
-        values["name"] && 
-        values["email"] && 
-        values["phone"] && 
+        values["name"] &&
+        values["email"] &&
+        values["phone"] &&
         values["shipping_address"]?.street &&
         values["shipping_address"]?.city &&
         values["shipping_address"]?.pincode &&
@@ -195,18 +195,18 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         values["shipping_address"]?.state_id && // State is required for shipping calculation
         values["payment_method"]
       );
-      
+
       // TEMPORARILY IGNORE ERRORS - just check required fields
       // const criticalErrors = Object.keys(errors).filter(key => 
       //   key !== 'password' && key !== 'create_account'
       // );
       // const hasCriticalErrors = criticalErrors.length > 0;
       const hasCriticalErrors = false; // Disable error checking temporarily
-      
+
       const isStripeNotComplete = values["payment_method"] === "stripe" && !values["stripe_card_complete"];
-      
+
       const shouldDisable = !requiredFieldsFilled || hasCriticalErrors || isStripeNotComplete;
-      
+
       console.log('Guest Checkout Button State:', {
         requiredFieldsFilled,
         hasCriticalErrors,
@@ -227,18 +227,18 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           state_id: !!values["shipping_address"]?.state_id
         }
       });
-      
+
       // Disable if: required fields not filled OR stripe not complete
       setDisable(shouldDisable);
     } else {
       // Logged in user validation
-      const hasRequiredFields = values["billing_address_id"] && 
-                                values["shipping_address_id"] && // Add shipping address check
-                                values["payment_method"];
+      const hasRequiredFields = values["billing_address_id"] &&
+        values["shipping_address_id"] && // Add shipping address check
+        values["payment_method"];
       const isStripeNotComplete = values["payment_method"] === "stripe" && !values["stripe_card_complete"];
-      
+
       const shouldDisable = !hasRequiredFields || isStripeNotComplete;
-      
+
       console.log('Logged In Button State:', {
         hasRequiredFields,
         billing_address_id: values["billing_address_id"],
@@ -248,7 +248,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         stripeCardComplete: values["stripe_card_complete"],
         shouldDisable
       });
-      
+
       setDisable(shouldDisable);
     }
   }, [access_token, values, errors]);
@@ -256,7 +256,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
   const handleClick = () => {
     console.log('Place Order clicked - values:', values);
     setIsProcessing(true);
-    
+
     if (settingData?.activation?.guest_checkout && !access_token) {
       // Guest checkout - prepare proper data structure
       const guestOrderData = {
@@ -265,8 +265,8 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         phone: values["phone"],
         country_code: values["country_code"],
         shipping_address: values["shipping_address"],
-        billing_address: values["billing_address"]?.same_shipping 
-          ? values["shipping_address"] 
+        billing_address: values["billing_address"]?.same_shipping
+          ? values["shipping_address"]
           : values["billing_address"],
         delivery_description: values["delivery_description"] || "standard",
         delivery_interval: values["delivery_interval"] || "",
@@ -280,9 +280,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         password_confirmation: values["password"] || "", // Laravel requires this to match password
         // DON'T send stripe_instance to backend - only use it in frontend
       };
-      
+
       console.log('Guest order data (sending to backend):', guestOrderData);
-      
+
       if (cartProducts?.length > 0) {
         mutate(guestOrderData);
       } else {
@@ -304,9 +304,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           wallet_balance: values["wallet_balance"] || 0,
           // DON'T send stripe_instance to backend
         };
-        
+
         console.log('Logged in order data (sending to backend):', targetObject);
-        
+
         if (cartProducts?.length > 0) {
           mutate(targetObject);
         } else {
@@ -314,7 +314,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           setIsProcessing(false);
         }
       }
-      
+
       // Digital-only products (logged in user)
       if (addToCartData?.is_digital_only && values["billing_address_id"] && values["payment_method"]) {
         const targetObject1 = {
@@ -326,9 +326,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           wallet_balance: values["wallet_balance"] || 0,
           // DON'T send stripe_instance to backend
         };
-        
+
         console.log('Digital only order data (sending to backend):', targetObject1);
-        
+
         if (cartProducts?.length > 0) {
           mutate(targetObject1);
         } else {
@@ -348,21 +348,21 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
             {errorOrder}
           </div>
         )}
-        
+
         {addToCartData?.is_digital_only ? (
-          <Btn 
-            className="btn btn-solid-default btn-block mt-3 place-order-btn" 
-            loading={Number(isLoading || isProcessing)} 
-            onClick={handleClick} 
+          <Btn
+            className="btn btn-solid-default btn-block mt-3 place-order-btn"
+            loading={Number(isLoading || isProcessing)}
+            onClick={handleClick}
             disabled={values["billing_address_id"] && values["payment_method"] ? false : true}
           >
             {isProcessing ? "Processing..." : t("place_order")}
           </Btn>
         ) : (
-          <Btn 
-            className="btn btn-solid-default btn-block mt-3 place-order-btn" 
-            loading={Number(isLoading || isProcessing)} 
-            onClick={handleClick} 
+          <Btn
+            className="btn btn-solid-default btn-block mt-3 place-order-btn"
+            loading={Number(isLoading || isProcessing)}
+            onClick={handleClick}
             disabled={disable}
           >
             {isProcessing ? "Processing..." : t("place_order")}

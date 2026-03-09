@@ -7,7 +7,7 @@ import "remixicon/fonts/remixicon.css";
 
 // Load Stripe with your publishable key
 // Replace with your actual Stripe publishable key
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_test_YOUR_KEY_HERE');
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || 'pk_live_51QMa4lD3o02zB3gRavwf4SaK15V9MLfJCfjuxJzpDQVAheO9i9xdcJm2iBD7bbEnC1YEJyOLKH6ZkFmmDGu5yMOk00a5JH8tDs');
 
 const CARD_ELEMENT_OPTIONS = {
   style: {
@@ -55,19 +55,19 @@ const StripeCardForm = ({ values, setFieldValue }) => {
     } else {
       setCardError(null);
     }
-    
+
     const newIsCardComplete = {
       ...isCardComplete,
       [elementType]: event.complete,
     };
-    
+
     setIsCardComplete(newIsCardComplete);
-    
+
     // Update formik field to track card completion
-    const allComplete = newIsCardComplete.cardNumber && 
-                        newIsCardComplete.cardExpiry && 
-                        newIsCardComplete.cardCvc;
-    
+    const allComplete = newIsCardComplete.cardNumber &&
+      newIsCardComplete.cardExpiry &&
+      newIsCardComplete.cardCvc;
+
     setFieldValue("stripe_card_complete", allComplete);
   };
 
@@ -145,8 +145,8 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
         <div className="payment-method-options">
           {/* Payment Method Tabs */}
           <div className="payment-tabs mb-4">
-            <button 
-              type="button" 
+            <button
+              type="button"
               className={`payment-tab ${selectedPaymentTab === 'stripe' ? 'active' : ''}`}
               onClick={() => {
                 setSelectedPaymentTab('stripe');
@@ -154,10 +154,10 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
                 setFieldValue("stripe_card_complete", false); // Reset validation for Stripe
               }}
             >
-              <i className="ri-bank-card-line me-2"></i> 
+              <i className="ri-bank-card-line me-2"></i>
               Credit/Debit Card
             </button>
-            
+
             {/* <button 
               type="button" 
               className={`payment-tab ${selectedPaymentTab === 'cod' ? 'active' : ''}`}
@@ -181,7 +181,7 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
                   Pay securely using your credit or debit card. Your payment information is encrypted and secure.
                 </p>
               </div>
-              
+
               <Elements stripe={stripePromise}>
                 <StripeCardForm values={values} setFieldValue={setFieldValue} />
               </Elements>
