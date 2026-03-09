@@ -369,7 +369,7 @@ const ElectronicsThree = () => {
                   </div>
                   <div className="d-flex align-items-center mt-3">
                     <img
-                      src="./assets/images/review.png"
+                      src="/assets/images/review.png"
                       alt="Maren Lipshutz"
                       width="40"
                       height="40"
@@ -492,17 +492,20 @@ const ElectronicsThree = () => {
                   <div className="col-md-6 d-flex align-items-center border-end    ">
                     <div className="row gap-3">
 
-                      <div className="d-flex  align-items-center gap-4">
-                        <img src="/assets/images/govermentt.png" alt="SAM Logo" className="" height="60" />
+                      <div className="d-flex align-items-center gap-4">
+                        <img src="/assets/images/new1.png" alt="Government" className="" height="60" />
                         <h4 className=" text-black">Government Agencies</h4>
                       </div>
-                      <div className="d-flex  align-items-center gap-4">
-                        <img src="/assets/images/banking.png" alt="SAM Logo" className="" height="60" />
+                      <div className="d-flex align-items-center gap-4">
+                        <img src="/assets/images/sam_logo_badge.png" alt="SAM Logo" className="" height="60" />
+                        <h4 className=" text-black">SAM Registered</h4>
+                      </div>
+                      <div className="d-flex align-items-center gap-4">
+                        <img src="/assets/images/Banking.png" alt="Banking" className="" height="60" />
                         <h4 className=" text-black">Banking & Financial Services</h4>
                       </div>
-
-                      <div className="d-flex  align-items-center gap-4">
-                        <img src="/assets/images/Education.png" alt="SAM Logo" className="" height="60" />
+                      <div className="d-flex align-items-center gap-4">
+                        <img src="/assets/images/Education.png" alt="Education" className="" height="60" />
                         <h4 className=" text-black">Universities & Research Institutions</h4>
                       </div>
 

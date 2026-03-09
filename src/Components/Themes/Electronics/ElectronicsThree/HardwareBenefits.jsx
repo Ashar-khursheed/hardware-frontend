@@ -64,9 +64,9 @@ const HardwareBenefits = () => {
                   </div>
                   <div className="d-flex align-items-center gap-3 mb-4">
                     <div style={{ width: 60, height: 60, position: 'relative', flexShrink: 0 }}>
-                      <Image src="/assets/images/new3.png" alt="SAM Logo" fill style={{ objectFit: 'contain' }} />
+                      <Image src="/assets/images/sam_logo_badge.png" alt="SAM Logo" fill style={{ objectFit: 'contain' }} />
                     </div>
-                    <h4 className="text-black m-0 fs-5">SAM Registrated</h4>
+                    <h4 className="text-black m-0 fs-5">SAM Registered</h4>
                   </div>
                   <div className="d-flex align-items-center gap-3 mb-4">
                     <div style={{ width: 60, height: 60, position: 'relative', flexShrink: 0 }}>
