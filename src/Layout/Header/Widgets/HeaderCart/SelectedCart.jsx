@@ -49,7 +49,7 @@ const SelectedCart = ({ modal, setSelectedVariation, setModal }) => {
             <li className="product-box-contain" key={i}>
               <div className="media">
                 <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
-                  <Avatar customeClass={""} data={elem?.variation?.variation_image ?? elem?.product?.product_thumbnail} placeHolder={placeHolderImage} name={elem?.product?.name} height={72} width={87} />
+                  <Avatar customeClass={""} data={elem?.variation?.variation_image ?? elem?.product?.product_thumbnail ?? elem?.product?.product_galleries?.[0]} placeHolder={placeHolderImage} name={elem?.product?.name} height={72} width={87} />
                 </Link>
 
                 <div className="media-body">
