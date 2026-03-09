@@ -21,7 +21,7 @@ const HomeProduct = ({ type, style, slider = false, productIds, product_box_styl
       {style === "horizontal" ? (
         slider ? (
           products?.length ? (
-            <Slider {...sliderSettingMain}>
+            <Slider key={products?.length} {...sliderSettingMain}>
               {products?.map((product, index) => (
                 <div key={index}>
                   <div className="theme-card center-align d-block">
@@ -70,7 +70,7 @@ const HomeProduct = ({ type, style, slider = false, productIds, product_box_styl
         slider ? (
           <div className={`product-4 ${classForVertical || ""}`}>
             {products?.length ? (
-              <Slider {...sliderSettingMain}>
+              <Slider key={products?.length} {...sliderSettingMain}>
                 {products?.map((product, index) => (
                   <div key={index}>
                     <div className={classForVertical}>
