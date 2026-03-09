@@ -17,14 +17,14 @@ const HomeProduct = ({ type, style, slider = false, productIds, product_box_styl
 
   // const verticalSettings = { slidesToShow: 5, ...sliderOptions };
 
-  const sliderSettingMain = sliderOptions && sliderOptions(productIds?.length);
+  const sliderSettingMain = sliderOptions && sliderOptions(products?.length);
 
   return (
     <>
       {style === "horizontal" ? (
         slider ? (
           products?.length ? (
-            <Slider key={products?.length} {...sliderSettingMain}>
+            <Slider key={products?.map(p => p.id).join('-') || 'no-products'} {...sliderSettingMain}>
               {products?.map((product, index) => (
                 <div key={index}>
                   <div className="theme-card center-align d-block">
