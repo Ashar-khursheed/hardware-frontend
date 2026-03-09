@@ -16,8 +16,8 @@ const ShowCartData = () => {
     <Row>
       {cartProducts?.length > 0 ? (
         <Col xs={12}>
-          <div className="table-responsive">
-            <Table className="cart-table table-borderless">
+          <div className="table-responsive hbx-cart-container">
+            <Table className="cart-table table-borderless hbx-cart-table">
               <thead className="d-none d-md-table-header-group">
                 <tr className="table-head">
                   <th scope="col">{t("image")}</th>

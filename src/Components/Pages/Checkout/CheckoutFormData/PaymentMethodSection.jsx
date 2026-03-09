@@ -175,9 +175,12 @@ const PaymentMethodSection = ({ values, setFieldValue }) => {
               <div className="payment-method-description mb-3">
                 <p className="text-muted">
                   <i className="ri-information-line me-2"></i>
-                  You will be redirected to Stripe's secure payment page to complete your purchase.
+                  Please enter your card details below. You will be securely processed by Stripe.
                 </p>
               </div>
+              <Elements stripe={stripePromise}>
+                <StripeCardForm values={values} setFieldValue={setFieldValue} />
+              </Elements>
             </div>
           )}
 

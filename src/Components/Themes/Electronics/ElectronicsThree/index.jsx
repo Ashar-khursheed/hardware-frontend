@@ -224,7 +224,7 @@ const ElectronicsThree = () => {
       <section className="hero-banner-section mt-0 text-white mb-5 d-flex align-items-center">
         <div className="container">
           <div className="row">
-            <div className="col-md-7">
+            <div className="col-md-7 hbx-animate-up hbx-delay-1">
               <h2 className="fw-bold text-white mb-3">
                 Hard To Find Computer Parts? <br /> We Think Otherwise.
               </h2>
@@ -254,7 +254,7 @@ const ElectronicsThree = () => {
             colProps={{ xs: "12" }}
           >
             <TitleBox type="icon" title={data?.products_list_1} />
-            <div className="custom-slick-wrapper">
+            <div className="custom-slick-wrapper hbx-animate-up hbx-delay-2">
               <HomeProduct
                 productIds={data?.products_list_1?.product_ids}
                 slider={true}

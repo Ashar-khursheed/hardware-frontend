@@ -26,7 +26,7 @@ const CartData = ({ elem }) => {
       <CartProductDetail elem={elem} />
       <td>
         <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
-          <a>{elem?.product?.name}</a>
+          <a className="hbx-line-clamp-2 fw-bold text-dark">{elem?.product?.name}</a>
         </Link>
 
         <div className="cart-mobile-wrapper d-block d-md-none">
