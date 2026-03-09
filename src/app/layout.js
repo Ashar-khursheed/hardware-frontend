@@ -1,4 +1,5 @@
-
+import { Suspense } from "react";
+import Loading from "./loading";
 import "../index.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -47,7 +48,35 @@ export async function generateMetadata() {
   }
 }
 
-export default async function RootLayout({ children }) {
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        {/* Preconnect to Google Fonts for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* Combined Google Fonts - Single request for better performance */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yellowtail&family=Cormorant:wght@400;500;600;700&family=Recursive:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fraunces:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+
+        {/* Local CSS */}
+        <link rel="stylesheet" href="/assets/css/style.css" />
+      </head>
+      <body suppressHydrationWarning={true}>
+        <Suspense fallback={<Loading />}>
+          <LayoutProviders>
+            {children}
+          </LayoutProviders>
+        </Suspense>
+      </body>
+    </html>
+  );
+}
+
+async function LayoutProviders({ children }) {
   let settings = null;
   try {
     settings = await fetch(`${process.env.API_PROD_URL}/settings`, {
@@ -58,31 +87,15 @@ export default async function RootLayout({ children }) {
     });
   } catch (err) {
     console.error("Error fetching settings:", err.message);
-    settings = null; // Use null as fallback
+    settings = null;
   }
+
   const lng = await detectLanguage();
+
   return (
     <I18nProvider language={lng}>
       <LanguageProvider initialLanguage={lng}>
-        <html lang="en">
-          <head>
-            {/* Preconnect to Google Fonts for faster loading */}
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-            {/* Combined Google Fonts - Single request for better performance */}
-            <link
-              href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yellowtail&family=Cormorant:wght@400;500;600;700&family=Recursive:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fraunces:wght@400;500;600;700;800;900&display=swap"
-              rel="stylesheet"
-            />
-
-            {/* Local CSS */}
-            <link rel="stylesheet" href="/assets/css/style.css" />
-          </head>
-          <body suppressHydrationWarning={true}>
-            {children}
-          </body>
-        </html>
+        {children}
       </LanguageProvider>
     </I18nProvider>
   );
