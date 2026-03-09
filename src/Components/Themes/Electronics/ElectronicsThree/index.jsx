@@ -220,12 +220,7 @@ const ElectronicsThree = () => {
 
 
 
-      <section className="shipping-bar    text-white py-2">
-        <div className="container text-center d-flex justify-content-center align-items-center">
-          <span className="">FREE SHIPPING WITHIN THE UNITED STATES & CANADA</span>
-          <i className="ms-2 fas fa-truck"></i>
-        </div>
-      </section>
+
       <section className="hero-banner-section mt-0 text-white mb-5 d-flex align-items-center">
         <div className="container">
           <div className="row">
@@ -234,10 +229,9 @@ const ElectronicsThree = () => {
                 Hard To Find Computer Parts? <br /> We Think Otherwise.
               </h2>
               <p className="mb-4 text-white">
-                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
-                Been The Industry’s Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley Of Type And Scrambled It...
+                Helping You Meet Sourcing Needs With Specialized Selection, Verification, And Pre-Preparation Of International Profiles.
               </p>
-              <Link href="/category/storage-devices" className="btn ">
+              <Link href="/category/switches" className="btn ">
                 Shop Now
               </Link>
             </div>
@@ -723,7 +717,7 @@ const ElectronicsThree = () => {
                   </div>
                   <div>
                     <h4 className="fw-bold text-black mb-1">Office Address</h4>
-                    <p className="text-muted mb-0">5 Benedict Court<br />Sacramento, CA 95823 USA</p>
+                    <p className="text-muted mb-0">5900 Balcones Drive # 22288<br />Austin, TX 78731</p>
                   </div>
                 </div>
 
@@ -773,7 +767,6 @@ const ElectronicsThree = () => {
               <div className="p-4 border rounded">
                 <h3 className="fw-bold text-center mb-3">Get In Touch</h3>
                 <p className="text-muted text-center small mb-4">
-                  Hymenaeos! Omnis arcu vitae? Phasellus irure cupidatat incidunt.
                 </p>
                 <form>
                   <div className="mb-3">

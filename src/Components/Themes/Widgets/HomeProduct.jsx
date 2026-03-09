@@ -9,7 +9,10 @@ const HomeProduct = ({ type, style, slider = false, productIds, product_box_styl
   const { filteredProduct } = useContext(ProductIdsContext);
 
   const products = useMemo(() => {
-    return filteredProduct?.filter((el) => productIds?.includes(el.id));
+    if (!productIds || !filteredProduct) return [];
+    return filteredProduct.filter((el) => {
+      return productIds.some(id => String(id) === String(el.id));
+    });
   }, [filteredProduct, productIds]);
 
   // const verticalSettings = { slidesToShow: 5, ...sliderOptions };

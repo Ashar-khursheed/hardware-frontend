@@ -56,10 +56,7 @@ export const FilterSortData = [
     value: "low-high",
     label: "LowHighPrice",
   },
-  {
-    value: "high-low",
-    label: "HighLowPrice",
-  },
+
   {
     value: "a-z",
     label: "AZOrder",

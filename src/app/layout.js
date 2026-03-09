@@ -23,7 +23,7 @@ export async function generateMetadata() {
       title: themeOption?.options?.seo?.meta_tags || 'Hardware Store',
       description: themeOption?.options?.seo?.meta_description || 'Your trusted hardware store',
       icons: {
-        icon: themeOption?.options?.logo?.favicon_icon?.original_url || '/favicon.ico',
+        icon: themeOption?.options?.logo?.favicon_icon?.original_url || '/favicon.svg',
         link: {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Yellowtail&display=swap",
@@ -42,7 +42,7 @@ export async function generateMetadata() {
       title: 'Hardware Store',
       description: 'Your trusted hardware store',
       icons: {
-        icon: '/favicon.ico',
+        icon: '/favicon.svg',
       },
     };
   }

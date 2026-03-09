@@ -125,9 +125,7 @@ const FooterThree = () => {
                 <a href="/category/server-hard-drives" className="text-white text-decoration-none">Server Hard Drives</a>
               </p>
 
-              <p className="small text-white mb-1">
-                <a href="/category/storage-devices" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 2 - Memories */}
@@ -144,9 +142,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/laptop-memory" className="text-white text-decoration-none">Laptop Memory</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/memories" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 3 - Networking Devices */}
@@ -166,9 +162,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/network-accessories" className="text-white text-decoration-none">Network & Accessories</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/networking-devices" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 4 - Motherboards */}
@@ -188,9 +182,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/gaming-motherboards" className="text-white text-decoration-none">Gaming Motherboards</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/motherboard" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 5 - Printer & Scanners */}
@@ -210,9 +202,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/sensors" className="text-white text-decoration-none">Sensors</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/printer-scanners" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 6 - PC & Servers */}
@@ -232,9 +222,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/tablets" className="text-white text-decoration-none">Tablets</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/pc-and-servers" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 7 - Power Supply & Protection */}
@@ -251,9 +239,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/power-distributions" className="text-white text-decoration-none">Power Distributions</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/power-supply" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 8 - CPUs & Processors */}
@@ -270,9 +256,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/laptop-processors" className="text-white text-decoration-none">Laptop Processors</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/cpus-processors" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 9 - GPUs */}
@@ -283,9 +267,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/graphics-card" className="text-white text-decoration-none">Graphics Card</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/gpus" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 10 - Gaming */}
@@ -302,9 +284,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/category/gaming-accessories" className="text-white text-decoration-none">Gaming Accessories</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/category/gaming" className="text-white text-decoration-none">See More</a>
-              </p>
+
             </Col>
 
             {/* Column 11 - Company Info */}
@@ -330,9 +310,7 @@ const FooterThree = () => {
               <p className="small text-white mb-1">
                 <a href="/blog" className="text-white text-decoration-none">Blog</a>
               </p>
-              <p className="small text-white mb-1">
-                <a href="/sitemap" className="text-white text-decoration-none">Sitemap</a>
-              </p>
+
             </Col>
 
             {/* Column 12 - Contact Information */}

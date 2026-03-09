@@ -75,7 +75,7 @@ const CollectionBrand = ({ filter, setFilter }) => {
         <div className="custom-sidebar-height">
           {showList?.length > 0 ? (
             <ul className="ag-filter-list">
-              {showList?.map((elem, i) => (
+              {showList?.sort((a, b) => a.name.localeCompare(b.name)).map((elem, i) => (
                 <li key={i}>
                   <div
                     className={`ag-checkbox-wrapper ${filter?.brand?.includes(elem?.slug) ? 'active' : ''}`}

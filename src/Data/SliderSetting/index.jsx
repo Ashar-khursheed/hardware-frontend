@@ -381,9 +381,9 @@ export const nftProductSlider3 = (length) => {
 /* horizontalProductSlider */
 export const horizontalProductSlider5 = (length) => {
   return {
-    infinite: false,
+    infinite: true,
     swipeToSlide: true,
-    slidesToShow: length > 6 ? 6 : length,
+    slidesToShow: 6,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
@@ -392,25 +392,25 @@ export const horizontalProductSlider5 = (length) => {
       {
         breakpoint: 1400,
         settings: {
-          slidesToShow: length > 5 ? 5 : length,
+          slidesToShow: 5,
         },
       },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: length > 4 ? 4 : length,
+          slidesToShow: 4,
         },
       },
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: length > 3 ? 3 : length,
+          slidesToShow: 3,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: length > 2 ? 2 : length,
+          slidesToShow: 2,
           autoplay: true,
           autoplaySpeed: 2500,
         },
