@@ -43,8 +43,19 @@ const ElectronicsThree = () => {
   const { isLoading: blogLoading } = useContext(BlogIdsContext);
 
   useEffect(() => {
-    if (data?.products_ids) {
-      setGetProductIds({ ids: Array.from(new Set(data?.products_ids))?.join(",") });
+    if (data) {
+      const allProductIds = [
+        ...(data?.products_ids || []),
+        ...(data?.products_list_1?.product_ids || []),
+        ...(data?.category_product_1?.products?.product_ids || []),
+        ...(data?.category_product_2?.products?.product_ids || []),
+        ...(data?.category_product_3?.products?.product_ids || []),
+      ];
+
+      const uniqueIds = Array.from(new Set(allProductIds.filter(id => id !== null && id !== undefined)));
+      if (uniqueIds.length > 0) {
+        setGetProductIds({ ids: uniqueIds.join(",") });
+      }
     }
   }, [data]);
 
