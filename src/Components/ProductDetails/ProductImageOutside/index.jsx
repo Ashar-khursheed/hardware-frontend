@@ -40,9 +40,9 @@ const ProductImageOutside = ({ productState, setProductState, direction }) => {
                 <PaymentOptions productState={productState} />
                 {productState?.product?.cross_sell_products?.length > 0 && <ProductBundle productState={productState} setProductState={setProductState} />}
               </div>
-              <div className="image-outside-thumbnail">
+              {/* <div className="image-outside-thumbnail">
                 <OutsideImageSlider productState={productState} sliderRef2={sliderRef2} nav1={nav1} setNav2={setNav2} />
-              </div>
+              </div> */}
             </div>
           </Col>
           <WrapperComponent classes={{ sectionClass: "tab-product product-details-contain m-0 section-b-space", fluidClass: "container" }} customCol={true}>
