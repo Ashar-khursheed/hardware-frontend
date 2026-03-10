@@ -1,28 +1,42 @@
 import { Href } from "@/Utils/Constants";
 import { useTranslation } from "react-i18next";
 import { Breadcrumb, Container } from "reactstrap";
+import { useEffect, useState } from "react";
 
 const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
   const { t } = useTranslation("common");
-  
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   // Safely convert title to string
   const safeTitle = String(title || '');
-  
+
+  if (!isMounted) {
+    return (
+      <div className="breadcrumb-section">
+        <Container><div style={{ height: '100px' }}></div></Container>
+      </div>
+    );
+  }
+
   return (
     <div className="breadcrumb-section">
       <Container>
-        <h2 suppressHydrationWarning>{t(safeTitle.replaceAll("-", " "))}</h2>
+        <h2>{t(safeTitle.replaceAll("-", " "))}</h2>
         <nav className="theme-breadcrumb">
           <Breadcrumb>
             <div className="breadcrumb-item active">
-              <a href={Href} suppressHydrationWarning> {t("home")} </a>
+              <a href={Href}> {t("home")} </a>
             </div>
             {subNavigation?.map((result, i) => {
               // Safely convert name to string
               const safeName = String(result?.name || '');
               return (
                 <div key={i} className="breadcrumb-item active ">
-                  <a href={Href} suppressHydrationWarning> {t(safeName.replaceAll("-", " "))} </a>
+                  <a href={Href}> {t(safeName.replaceAll("-", " "))} </a>
                 </div>
               );
             })}

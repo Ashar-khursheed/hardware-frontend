@@ -7,7 +7,7 @@ import { ProductAPI } from "@/Utils/AxiosUtils/API";
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiSearchLine } from "react-icons/ri";
@@ -16,31 +16,35 @@ import SearchedData from "./SearchedData";
 
 const SearchModule = () => {
   const { t } = useTranslation("common");
-  const [search] = useCustomSearchParams(["search"]);
-  const [searchState, setSearchState] = useState("");
+  const searchParams = useSearchParams();
+  const searchParam = searchParams.get("search") || "";
+  const [searchState, setSearchState] = useState(searchParam);
   const router = useRouter();
-  const { data, refetch, isLoading } = useQuery([ProductAPI, "search"], () => request({ url: ProductAPI, params: { search: search?.search ?? searchState, paginate: 12, status: 1 } }), {
-    enabled: false,
-    refetchOnWindowFocus: false,
-    select: (data) => data.data.data,
-  });
-  useEffect(() => {
-    refetch();
-    setSearchState(search?.search);
-  }, [search]);
-  useEffect(() => {
-    searchState && refetch();
-  }, []);
-  // if (isLoading) return <Loader />;
-  
-  const onChangeHandler = (e) => {
-      setSearchState(e.target.value);
-  }
 
-  const onSearchBtnClick = () => {
-      const sanitizedSearch = searchState.replace(/\u2011/g, "-");
-      router.push(`/search?search=${sanitizedSearch}`);
-  }
+  // Sync state with URL when URL changes
+  useEffect(() => {
+    setSearchState(searchParam);
+  }, [searchParam]);
+
+  const { data, isLoading, refetch } = useQuery(
+    [ProductAPI, "search", searchParam],
+    () => request({ url: ProductAPI, params: { search: searchParam, paginate: 12, status: 1 } }),
+    {
+      enabled: true, // Auto-fetch when component mounts or param changes
+      refetchOnWindowFocus: false,
+      select: (data) => data?.data?.data,
+    }
+  );
+
+  const onChangeHandler = (e) => {
+    setSearchState(e.target.value);
+  };
+
+  const onSearchBtnClick = (e) => {
+    if (e) e.preventDefault();
+    const sanitizedSearch = searchState.trim().replace(/\u2011/g, "-");
+    router.push(`/search?search=${sanitizedSearch}`);
+  };
 
   return (
     <>
@@ -49,10 +53,16 @@ const SearchModule = () => {
         <Container>
           <div className="row">
             <WrapperComponent classes={{ sectionClass: "search-block", fluidClass: "container", col: "offset-lg-3" }} colProps={{ lg: "6" }}>
-              <form className="form-header form-box" onSubmit={(e) => { e.preventDefault(); onSearchBtnClick(); }}>
+              <form className="form-header form-box" onSubmit={onSearchBtnClick}>
                 <InputGroup>
-                  <Input type="text" className="form-control" placeholder={t("search_product")} value={searchState} onChange={onChangeHandler} />
-                  <Btn className="btn-solid" onClick={onSearchBtnClick} type="button">
+                  <Input
+                    type="text"
+                    className="form-control"
+                    placeholder={t("search_product")}
+                    value={searchState}
+                    onChange={onChangeHandler}
+                  />
+                  <Btn className="btn-solid" type="submit">
                     <RiSearchLine />
                     {"  "} {t("search")}
                   </Btn>
@@ -63,7 +73,13 @@ const SearchModule = () => {
         </Container>
       </section>
 
-      <SearchedData data={data} />
+      {isLoading ? (
+        <div className="section-b-space">
+          <Loader />
+        </div>
+      ) : (
+        <SearchedData data={data} searchParam={searchParam} />
+      )}
     </>
   );
 };
