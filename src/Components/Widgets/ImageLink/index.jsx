@@ -1,5 +1,6 @@
 import ProductIdsContext from "@/Context/ProductIdsContext";
 import { Href, storageURL } from "@/Utils/Constants";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState } from "react";
@@ -15,6 +16,8 @@ const ImageLink = ({ classes = {}, imgUrl, placeholder, link, height, width, hom
 
   const productRoute = imgUrl?.redirect_link?.link_type === "product" ? redirectToProduct(imgUrl?.redirect_link?.link) : null;
 
+  const finalImgUrl = getImageUrl(imgUrl) || placeholder;
+
   return (
     <>
       {imgUrl?.redirect_link?.link_type === "external_url" ? (
@@ -23,37 +26,37 @@ const ImageLink = ({ classes = {}, imgUrl, placeholder, link, height, width, hom
           href={imgUrl?.redirect_link?.link || "/"}
           target="_blank"
           legacyBehavior><span>
-<a>
-          {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: "url(" + (imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder) + ")" }}></div> : <Image src={imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
-        </a>
-</span></Link>
+            <a>
+              {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${finalImgUrl})` }}></div> : <Image src={finalImgUrl} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
+            </a>
+          </span></Link>
       ) : imgUrl?.redirect_link?.link_type === "collection" && !homeBanner ? (
         <Link
           className="h-100"
           href={imgUrl?.redirect_link?.link || Href}
           target="_blank"
           legacyBehavior><span>
-<a>
-           {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: "url(" + (imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder) + ")" }}></div> : <Image src={imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
-       </a>
-</span></Link>
+            <a>
+              {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${finalImgUrl})` }}></div> : <Image src={finalImgUrl} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
+            </a>
+          </span></Link>
       ) : imgUrl?.redirect_link?.link_type === "collection" && homeBanner ? (
         <Link
           className="h-100"
           href={imgUrl?.redirect_link?.link ? `/category/${imgUrl?.redirect_link?.link}` : Href}
           legacyBehavior><span>
-<a> {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: "url(" + (imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder) + ")" }}></div> : <Image src={imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
-        </a>
-</span></Link>
+            <a> {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${finalImgUrl})` }}></div> : <Image src={finalImgUrl} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
+            </a>
+          </span></Link>
       ) : imgUrl?.redirect_link?.link_type === "product" && productRoute ? (
         <Link className="h-100" href={`/${productRoute}`} legacyBehavior><span>
-<a>  {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder}` }}></div> : <Image src={imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
-        </a>
-</span></Link>
+          <a>  {bgImage ? <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${finalImgUrl})` }}></div> : <Image src={finalImgUrl} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />}
+          </a>
+        </span></Link>
       ) : bgImage ? (
-        <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder}` }}></div>
+        <div className={`bg-size ${classes}`} style={{ backgroundImage: `url(${finalImgUrl})` }}></div>
       ) : (
-        <Image src={imgUrl?.image_url ? storageURL + imgUrl?.image_url : placeholder} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />
+        <Image src={finalImgUrl} className="bg-img w-100 img-fluid" alt="banner" height={height} width={width} />
       )}
     </>
   );

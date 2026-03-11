@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import React, { useEffect, useState } from "react";
 import { RiHeadphoneLine, RiVideoLine } from "react-icons/ri";
 import Slider from "react-slick";
@@ -57,7 +58,7 @@ const OutsideImageSlider = ({ productState, sliderRef2, nav1, setNav2 }) => {
                 <RiHeadphoneLine size={100} />
               </span>
             ) : (
-              <Image src={image?.original_url} alt={image?.name} className="img-fluid" height={130} width={130} />
+              <Image src={getImageUrl(image)} alt={image?.name} className="img-fluid" height={130} width={130} />
             )}
           </div>
         ))}

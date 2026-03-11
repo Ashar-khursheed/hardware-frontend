@@ -2,6 +2,7 @@ import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import Btn from "@/Elements/Buttons/Btn";
 import { SubscribeAPI } from "@/Utils/AxiosUtils/API";
 import { ImagePath, storageURL } from "@/Utils/Constants";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import useCreate from "@/Utils/Hooks/useCreate";
 import { emailSchema, YupObject } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -78,7 +79,7 @@ const NewsLetterModal = ({ setMakeExitActive }) => {
               </div>
             </div>
             <div className="left-img w-lg-50 d-lg-block d-none">
-              <Image src={themeOption?.popup?.news_letter?.image_url ? storageURL + themeOption?.popup?.news_letter?.image_url : `${ImagePath}/Offer-banner.png`} alt="" className="img-fluid" height={120} width={676} />
+              <Image src={getImageUrl(themeOption?.popup?.news_letter?.image_url) || `${ImagePath}/Offer-banner.png`} alt="" className="img-fluid" height={120} width={676} />
             </div>
           </div>
         </ModalBody>

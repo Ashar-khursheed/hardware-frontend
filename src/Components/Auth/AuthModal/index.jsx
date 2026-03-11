@@ -1,5 +1,6 @@
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import { Href, ImagePath, storageURL } from "@/Utils/Constants";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import { ToastNotification } from "@/Utils/CustomFunctions/ToastNotification";
 import Cookies from "js-cookie";
 import Image from "next/image";
@@ -94,7 +95,7 @@ const AuthModal = () => {
                   </div>
                 </div>
                 <div className="left-img w-lg-50 d-lg-block d-none">
-                   <Image height={1920} width={1920} src={themeOption?.popup?.auth?.image_url ? storageURL + themeOption?.popup?.auth?.image_url : ` ${ImagePath}/placeholder/auth.png`} alt="login" /> 
+                  <Image height={1920} width={1920} src={getImageUrl(themeOption?.popup?.auth?.image_url) || `${ImagePath}/placeholder/auth.png`} alt="login" />
                 </div>
               </div>
             </div>
