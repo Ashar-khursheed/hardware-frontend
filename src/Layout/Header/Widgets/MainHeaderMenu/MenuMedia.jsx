@@ -113,16 +113,16 @@ const MenuMedia = ({ menu }) => {
                 <Col xs={6} key={i}>
                   <div className="blog-box sticky-blog">
                     <div className="blog-box-image">
-                      <Link href={`/blogs/${blog?.slug}`} className="blog-image" legacyBehavior>
+                      <Link href={`/blog/${blog?.slug}`} className="blog-image" legacyBehavior>
                         {blog?.blog_thumbnail && <Image src={blog?.blog_thumbnail ? blog?.blog_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={blog.title} height={299} width={398} />}
                       </Link>
                     </div>
-                    <Link href={`/blogs/${blog?.slug}`} legacyBehavior><span>
-<a className="blog-detail">
+                    <Link href={`/blog/${blog?.slug}`} legacyBehavior><span>
+                      <a className="blog-detail">
                         <h6>{showMonthWiseDateAndTime(blog.created_at)}</h6>
                         <h5>{blog?.title}</h5>
                       </a>
-</span></Link>
+                    </span></Link>
 
                   </div>
                 </Col>

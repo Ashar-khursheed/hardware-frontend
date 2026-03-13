@@ -13,7 +13,7 @@ const BlogContain = ({ blog }) => {
   const router = useRouter();
   return (
     <div className="blog-contain">
-      <Link href={`/blogs/${blog.slug}`} legacyBehavior>
+      <Link href={`/blog/${blog.slug}`} legacyBehavior>
         <h3>{blog?.title}</h3>
       </Link>
       <div className="blog-label">
@@ -29,7 +29,7 @@ const BlogContain = ({ blog }) => {
       </div>
       <TextLimit value={blog?.description} maxLength={200} tag="p" />
       {themeOption?.blog?.read_more_enable && (
-        <a className="blog-button" onClick={() => router.push(`/blogs/${blog.slug}`)}>
+        <a className="blog-button" onClick={() => router.push(`/blog/${blog.slug}`)}>
           {t("read_more")} <RiArrowRightLine />
         </a>
       )}

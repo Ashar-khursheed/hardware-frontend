@@ -15,7 +15,7 @@ const BlogDetail = () => {
   const searchParams = useSearchParams();
   const querySearchCategory = searchParams?.get("category");
   const querySearchTag = searchParams?.get("tag");
-  const breadcrumbTitle = querySearchCategory ? `Blogs:${querySearchCategory}` : querySearchTag ? `Blogs:${querySearchTag}` : "Blogs";
+  const breadcrumbTitle = querySearchCategory ? `Blog:${querySearchCategory}` : querySearchTag ? `Blog:${querySearchTag}` : "Blog";
 
   const {
     data: BlogData,
@@ -28,12 +28,12 @@ const BlogDetail = () => {
   });
   useEffect(() => {
     refetch();
-  }, [page, querySearchCategory,isLoading, querySearchTag]);
+  }, [page, querySearchCategory, isLoading, querySearchTag]);
 
-  if (isLoading) <Loader />;
+  if (isLoading) return <Loader />;
   return (
     <>
-      <Breadcrumbs title={breadcrumbTitle} subNavigation={[{ name: "Blog", link: "/blogs" }]} />
+      <Breadcrumbs title={breadcrumbTitle} subNavigation={[{ name: "Blog", link: "/blog" }]} />
       <WrapperComponent classes={{ sectionClass: "blog-section blog-page ratio2_3 section-b-space", fluidClass: "container" }} customCol={true}>
         <Sidebar isLoading={isLoading} />
         <BlogCard page={page} setPage={setPage} BlogData={BlogData} isLoading={isLoading} />

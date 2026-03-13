@@ -15,6 +15,21 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true, // Use SWC for faster minification
 
+  async redirects() {
+    return [
+      {
+        source: '/blogs',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/blogs/:slug',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+    ];
+  },
+
   // Compiler optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? {

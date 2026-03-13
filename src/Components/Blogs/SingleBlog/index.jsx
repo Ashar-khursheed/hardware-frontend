@@ -16,7 +16,7 @@ const SingleBlog = ({ params }) => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs title={Blog?.title} subNavigation={[{ name: "Blogs", link: "/blogs" }, { name: Blog?.title }]} />
+          <Breadcrumbs title={Blog?.title} subNavigation={[{ name: "Blog", link: "/blog" }, { name: Blog?.title }]} />
           <WrapperComponent classes={{ sectionClass: " ratio2_3 blog-detail-page section-b-space", fluidClass: "container" }} noRowCol={true}>
             <BlogCardDetails Blog={Blog} key={params} />
           </WrapperComponent>
