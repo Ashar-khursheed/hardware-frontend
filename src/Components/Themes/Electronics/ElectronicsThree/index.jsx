@@ -278,7 +278,7 @@ const ElectronicsThree = () => {
       )}
 
       {/* airpods and gaming laptop sec */}
-      <section className="py-5 bg-white section-b-space max-height-220">
+      <section className=" bg-white section-b-space ">
         <div className="container p-3 ">
           <div className="row ">
 
