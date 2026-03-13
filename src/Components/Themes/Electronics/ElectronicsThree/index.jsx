@@ -289,15 +289,15 @@ const ElectronicsThree = () => {
                     <p className="mb-1 text-muted small text-uppercase fw-bold">
                       Weekend <span className="text-primary">Offer</span>
                     </p>
-                    <h3 className="text-black mb-3 h4 fw-bold">Airpods Sale</h3>
-                    <Link href="/category/gaming-console" className="btn btn-primary btn-sm px-3 py-2">
+                    <h3 className="text-black mb-3 h4 fw-bold">Premium CPU Processors</h3>
+                    <Link href="/category/cpu-processor" className="btn btn-primary btn-sm px-3 py-2">
                       SHOP NOW &rarr;
                     </Link>
                   </div>
                   <div className="col-5">
                     <img
                       src="/assets/images/airpodsnew.webp"
-                      alt="Airpods"
+                      alt="Premium CPU Processors"
                       className="img-fluid w-100 h-100 object-fit-contain"
                     />
                   </div>
@@ -312,15 +312,15 @@ const ElectronicsThree = () => {
                     <p className="mb-1 text-muted small text-uppercase fw-bold">
                       Limited <span className="text-primary">Deal</span>
                     </p>
-                    <h3 className="text-black mb-3 h4 fw-bold">Gaming Gear</h3>
-                    <Link href="/category/gaming-accessories" className="btn btn-primary btn-sm px-3 py-2">
+                    <h3 className="text-black mb-3 h4 fw-bold">High-Performance Network Routers</h3>
+                    <Link href="/category/network-routers" className="btn btn-primary btn-sm px-3 py-2">
                       BROWSE &rarr;
                     </Link>
                   </div>
                   <div className="col-5">
                     <img
                       src="/assets/images/airpodtwo.webp"
-                      alt="Gaming Gear"
+                      alt="High-Performance Network Routers"
                       className="img-fluid w-100 h-100 object-fit-contain"
                     />
                   </div>
