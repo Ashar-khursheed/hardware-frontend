@@ -26,22 +26,32 @@ const CategoryMainPage = ({ slug }) => {
   }, [brand, attribute, price, rating, sortBy, field, page]);
 
   const { categoryData, categoryIsLoading } = useContext(CategoryContext);
+
+  const getCategoryHierarchy = (slug, data) => {
+    let hierarchy = [];
+    let current = data?.find(cat => cat.slug === slug);
+    while (current) {
+      hierarchy.unshift({ name: current.name, link: hierarchy.length > 0 ? `/category/${current.slug}` : null });
+      current = data?.find(cat => cat.id === current.parent_id);
+    }
+    return hierarchy;
+  };
+
+  const hierarchy = getCategoryHierarchy(slug, categoryData);
   const currentCategory = categoryData?.find(cat => cat.slug === slug);
 
   if (categoryIsLoading) return <Loader />;
+
   return (
     <>
-      <Breadcrumbs
-        title={currentCategory?.name || slug?.charAt(0).toUpperCase() + slug?.slice(1)}
-        subNavigation={[{ name: currentCategory?.name || slug?.charAt(0).toUpperCase() + slug?.slice(1) }]}
-      />
+      <Breadcrumbs subNavigation={hierarchy} />
 
       {/* Category Header Section */}
-      <div className="category-header-section py-4 bg-light mb-4">
+      <div className="category-header-section py-4 bg-white border-bottom">
         <div className="container">
-          <h1 className="fw-bold mb-2">{currentCategory?.name || slug?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
+          <h1 className="fw-bold mb-2 text-dark h2">{currentCategory?.name || slug?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
           {currentCategory?.description && (
-            <p className="text-muted mb-0 lead">{currentCategory.description}</p>
+            <p className="text-muted mb-0 lead" style={{ fontSize: '1.1rem' }}>{currentCategory.description}</p>
           )}
         </div>
       </div>

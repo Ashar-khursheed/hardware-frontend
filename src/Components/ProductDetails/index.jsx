@@ -8,6 +8,7 @@ import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useMemo, useState } from "react";
+import CategoryContext from "@/Context/CategoryContext";
 import StickyCheckout from "./Common/StickyCheckout";
 import Product4Image from "./Product4Image";
 import ProductAccordion from "./ProductAccordion";
@@ -88,15 +89,29 @@ const ProductDetailContent = ({ params }) => {
     product_sidebar_right: <ProductSidebarLayout productState={productState} setProductState={setProductState} direction="right" />,
     product_column_thumbnail: <ProductColumn productState={productState} setProductState={setProductState} direction="bottom" />,
   };
+  const { categoryData } = useContext(CategoryContext);
+
+  const getProductBreadcrumbs = () => {
+    let hierarchy = [];
+    const mainCategory = ProductData?.categories?.[0];
+
+    if (mainCategory) {
+      let current = categoryData?.find(cat => cat.id === mainCategory.id);
+      while (current) {
+        hierarchy.unshift({ name: current.name, link: `/category/${current.slug}` });
+        current = categoryData?.find(cat => cat.id === current.parent_id);
+      }
+    } else {
+      hierarchy.push({ name: "Product", link: "/category/all" });
+    }
+
+    hierarchy.push({ name: ProductData?.name || params, link: null });
+    return hierarchy;
+  };
+
   return (
     <>
-      <Breadcrumbs
-        title={ProductData?.name || params}
-        subNavigation={[
-          { name: ProductData?.categories?.[0]?.name || "Product", link: `/category/${ProductData?.categories?.[0]?.slug || 'all'}` },
-          { name: ProductData?.name || params }
-        ]}
-      />
+      <Breadcrumbs subNavigation={getProductBreadcrumbs()} />
       {showProductLayout[isProductLayout]}
       {ProductData && <StickyCheckout ProductData={ProductData} isLoading={isLoading} />}
     </>

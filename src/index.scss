@@ -282,9 +282,10 @@
 
 /* Breadcrumb Section Styles */
 .breadcrumb-section {
-    background-color: #f7f7f7 !important;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
+    display: block !important;
+    background-color: #ffffff !important;
+    padding: 15px 0;
+    border-bottom: none;
     margin-bottom: 0;
 
     .breadcrumb {
@@ -295,13 +296,13 @@
         flex-wrap: wrap;
 
         .breadcrumb-item {
-            font-size: 14px;
-            color: #666;
+            font-size: 15px;
+            color: #777;
             display: flex;
             align-items: center;
 
             a {
-                color: #222;
+                color: #555;
                 text-decoration: none;
                 transition: color 0.15s ease;
 
@@ -312,15 +313,16 @@
 
             &.active {
                 span {
-                    color: var(--theme-color, #fb641b);
-                    font-weight: 600;
+                    color: #333;
+                    font-weight: 400;
                 }
             }
 
             &+.breadcrumb-item::before {
-                padding: 0 10px;
-                color: #ccc;
-                content: "/";
+                padding: 0 12px;
+                color: #999;
+                content: "»" !important;
+                font-weight: 400;
             }
         }
     }
@@ -328,13 +330,14 @@
 
 /* Category Header Styles */
 .category-header-section {
-    background-color: #fcfcfc;
+    background-color: #ffffff !important;
     border-bottom: 1px solid #f0f0f0;
 
     h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
         color: #1a1a1a;
         letter-spacing: -0.02em;
+        padding-top: 20px;
     }
 
     p {

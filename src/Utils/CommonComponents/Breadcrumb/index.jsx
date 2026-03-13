@@ -1,10 +1,9 @@
-import { Href } from "@/Utils/Constants";
 import { useTranslation } from "react-i18next";
-import { Breadcrumb, Container } from "reactstrap";
+import { Container } from "reactstrap";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const Breadcrumbs = ({ subNavigation, title }) => {
+const Breadcrumbs = ({ subNavigation }) => {
   const { t } = useTranslation("common");
   const [isMounted, setIsMounted] = useState(false);
 
@@ -15,21 +14,21 @@ const Breadcrumbs = ({ subNavigation, title }) => {
   if (!isMounted) return null;
 
   return (
-    <div className="breadcrumb-section py-3 bg-light border-bottom">
+    <div className="breadcrumb-section py-2 bg-white">
       <Container>
         <nav aria-label="breadcrumb">
-          <ol className="breadcrumb mb-0" style={{ background: 'transparent', padding: 0 }}>
+          <ol className="breadcrumb mb-0" style={{ background: 'transparent', padding: 0, border: 'none' }}>
             <li className="breadcrumb-item">
-              <Link href="/" className="text-dark text-decoration-none">{t("home")}</Link>
+              <Link href="/" className="text-secondary text-decoration-none small">{t("home")}</Link>
             </li>
             {subNavigation?.map((result, i) => {
               const safeName = String(result?.name || '');
               return (
-                <li key={i} className={`breadcrumb-item ${!result.link ? "active" : ""}`} aria-current={!result.link ? "page" : undefined}>
+                <li key={i} className={`breadcrumb-item ${result.link ? "" : "active"}`} aria-current={result.link ? undefined : "page"}>
                   {result.link ? (
-                    <Link href={result.link} className="text-dark text-decoration-none">{t(safeName)}</Link>
+                    <Link href={result.link} className="text-secondary text-decoration-none small">{t(safeName)}</Link>
                   ) : (
-                    <span className="text-primary fw-bold">{t(safeName)}</span>
+                    <span className="text-dark small fw-normal">{t(safeName)}</span>
                   )}
                 </li>
               );
