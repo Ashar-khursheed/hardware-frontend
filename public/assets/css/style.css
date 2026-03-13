@@ -43262,3 +43262,17 @@ h2.display-5.size-24 {
     border-color: transparent !important;
     cursor: default !important;
 }
+
+.ag-checkbox-wrapper {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.custom-sidebar-height {
+    max-height: 200px !important;
+}
+
+.collection-wrapper .sticky-top-section {
+    position: sticky;
+    top: 20px !important;
+}
