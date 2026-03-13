@@ -239,6 +239,43 @@
     }
 }
 
+/* Reveal the action bar */
+.agpc__media .agpc__action-bar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    background: transparent;
+    padding: 10px 8px;
+}
+
+/* Mobile specific: Always show action bar since there is no hover */
+@media (max-width: 767px) {
+    .agpc__media .agpc__action-bar {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        background: transparent;
+        padding: 10px 8px;
+    }
+}
+
+/* Hide mobile menu/bottom bar completely as requested */
+.mobile-menu {
+    display: none !important;
+}
+
+.brand-logo img {
+    max-width: 170px;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 576px) {
+    .brand-logo img {
+        max-width: 130px;
+    }
+}
+
 /* Mobile Responsiveness & Fixes */
 .mobile-menu {
     display: none;

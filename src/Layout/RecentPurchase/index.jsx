@@ -13,7 +13,7 @@ const RecentPurchase = () => {
   const { filteredProduct } = useContext(ProductIdsContext);
   const [show, setShow] = useState(false);
   const [min, setMin] = useState(10);
-  const [popupEnable, setPopupEnable] = useState(true);
+  const [popupEnable, setPopupEnable] = useState(false);
   const [product, setProduct] = useState(null);
 
   useEffect(() => {

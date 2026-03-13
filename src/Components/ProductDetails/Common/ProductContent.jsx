@@ -41,7 +41,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
     <>
       {!noDetails && (
         <>
-          <h2 className="main-title">{String(productState?.selectedVariation?.name || productState?.product?.name || "")}</h2>
+          <h1 className="main-title">{String(productState?.selectedVariation?.name || productState?.product?.name || "")}</h1>
           <ul className="product-brand-box">
             {productState?.product?.authors?.length > 0 && (
               <li className="brand-box-suggestion">

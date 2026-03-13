@@ -192,7 +192,7 @@ const SubLayout = ({ children }) => {
   return (
     <>
       <Headers />
-      {pathName?.split("/")[1].toLowerCase() != "product" && <MobileMenu />}
+      {/* {pathName?.split("/")[1].toLowerCase() != "product" && <MobileMenu />} */}
       <div style={{ minHeight: "60vh" }}>
         {children}
       </div>

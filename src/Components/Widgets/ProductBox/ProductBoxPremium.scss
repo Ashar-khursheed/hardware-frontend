@@ -379,6 +379,17 @@
             visibility: visible;
             transform: translateY(0);
         }
+
+        /* Mobile specific: Always show action bar since there is no hover */
+        @media (max-width: 991px) {
+            .agpc__media .agpc__action-bar {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+                background: rgba(255, 255, 255, 0.95);
+                padding: 10px 8px;
+            }
+        }
     }
 
     &.agpc__card--out {

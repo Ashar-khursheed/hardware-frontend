@@ -14,48 +14,50 @@ const Pagination = ({ current_page, total, per_page, setPage }) => {
       {total / per_page > 1 ? (
         <ul className="pagination">
           <li className={`page-item ${current_page === 1 ? "disabled" : ""}`}>
-            <a className="page-link" onClick={() => { setPage(current_page - 1); }}>
+            <a className="page-link" onClick={() => current_page > 1 && setPage(current_page - 1)}>
               <RiArrowLeftSLine />
             </a>
           </li>
-          {totalPages - 2 <= current_page && totalPages > 4 && (
-            <>
-              <li className="page-item">
-                <a className="page-link" onClick={() => setPage(1)}>1</a>
-              </li>
-              <li className="page-item">
-                <a className="page-link ">...</a>
-              </li>
-            </>
-          )}
-          {pages.map((i) => (
-            <li className={`page-item ${current_page === i ? "active disabled" : ""}`} key={i}>
-              <a className={`page-link `} onClick={() => setPage(i)}>
-                {i}
-              </a>
+
+          {/* First Page */}
+          {current_page > 3 && (
+            <li className="page-item">
+              <a className="page-link" onClick={() => setPage(1)}>1</a>
             </li>
-          ))}
-          {current_page + 1 < totalPages && totalPages > 4 && (
-            <>
-              {current_page + 2 < totalPages && (
-                <li className="page-item ">
-                  <a className="page-link ">...</a>
-                </li>
-              )}
-              <li className="page-item ">
-                <a className="page-link" onClick={() => setPage(totalPages)}>
-                  {totalPages}
+          )}
+
+          {/* Ellipsis if too many pages before */}
+          {current_page > 4 && (
+            <li className="page-item disabled"><span className="page-link">...</span></li>
+          )}
+
+          {/* Page numbers around current */}
+          {Array.from({ length: totalPages }, (_, i) => i + 1)
+            .filter(page => page >= current_page - 2 && page <= current_page + 2)
+            .map((i) => (
+              <li className={`page-item ${current_page === i ? "active" : ""}`} key={i}>
+                <a className="page-link" onClick={() => setPage(i)}>
+                  {i}
                 </a>
               </li>
-            </>
+            ))}
+
+          {/* Ellipsis if too many pages after */}
+          {current_page < totalPages - 3 && (
+            <li className="page-item disabled"><span className="page-link">...</span></li>
+          )}
+
+          {/* Last Page */}
+          {current_page < totalPages - 2 && (
+            <li className="page-item">
+              <a className="page-link" onClick={() => setPage(totalPages)}>{totalPages}</a>
+            </li>
           )}
 
           <li className={`page-item ${current_page === totalPages ? "disabled" : ""}`}>
             <a
               className="page-link"
-              onClick={() => {
-                setPage(current_page + 1);
-              }}
+              onClick={() => current_page < totalPages && setPage(current_page + 1)}
             >
               <RiArrowRightSLine />
             </a>

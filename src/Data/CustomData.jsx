@@ -3,7 +3,7 @@ export const FilterPrice = [
     id: 1,
     price: 100,
     text: "Below",
-    value: "100",
+    value: "0-100",
   },
   {
     id: 2,

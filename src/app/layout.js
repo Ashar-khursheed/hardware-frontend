@@ -64,6 +64,8 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
 
+        <link rel="canonical" href="https://thehardwarebox.com" />
+
         {/* Local CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
 

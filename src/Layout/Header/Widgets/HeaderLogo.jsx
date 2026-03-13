@@ -10,7 +10,7 @@ import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 const HeaderLogo = ({ extraClass }) => {
   const { settingData } = useContext(SettingContext);
   const { themeOption, mobileSideBar, setMobileSideBar } = useContext(ThemeOptionContext);
-  const [logo, setLogo] = useState("");
+  const [logo, setLogo] = useState(themeOption?.logo?.header_logo || "");
   const path = useSearchParams();
   const theme = path.get("theme");
 
