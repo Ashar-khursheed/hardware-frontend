@@ -10,7 +10,7 @@ const NotFoundPage = ({ params }) => {
   const router = useRouter();
   return (
     <>
-      <Breadcrumbs title={"404"} subNavigation={[{ name: "404 Page", link: "/blogs" }]} />
+      <Breadcrumbs title={"404"} subNavigation={[{ name: "Home", link: "/" }]} />
       <WrapperComponent classes={{ sectionClass: "p-0", fluidClass: "container", colClass: "col-sm-12" }}>
         <div className="error-section">
           <h1>404</h1>

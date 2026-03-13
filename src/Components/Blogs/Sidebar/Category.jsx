@@ -17,14 +17,14 @@ const Category = () => {
           {categoryData?.map((category, index) => (
             <li key={index}>
               <Link
-                href={{ pathname: `/blogs`, query: { category: category?.slug } }}
+                href={{ pathname: `/blog`, query: { category: category?.slug } }}
                 legacyBehavior
               ><span>
-<a className="category-name">
-                  <h5>{category.name}</h5>
-                  <span>({category?.blogs_count})</span>
-                </a>
-</span></Link>
+                  <a className="category-name">
+                    <h5>{category.name}</h5>
+                    <span>({category?.blogs_count})</span>
+                  </a>
+                </span></Link>
 
 
             </li>
