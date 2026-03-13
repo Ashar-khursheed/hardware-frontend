@@ -23,7 +23,7 @@ const VerticalProductDetails = ({ productState }) => {
       <Col xl="10">
         <TabContent className="nav-material" activeTab={activeTab}>
           <TabPane className={activeTab == 1 ? "show fade active" : ""}>
-            <div className={`product-description more-less-box ${showMore ? "more" : ""}`}>{showMore ? <TextLimit value={productState?.product?.description} /> : <TextLimit value={productState?.product?.description?.substring(0, 1600)} />}</div>
+            <div className={`product-description more-less-box ${showMore ? "more" : ""}`} style={{ cursor: "default", backgroundColor: "transparent !important" }}>{showMore ? <TextLimit value={productState?.product?.description} /> : <TextLimit value={productState?.product?.description?.substring(0, 1600)} />}</div>
           </TabPane>
           <TabPane className={activeTab == 2 ? "show active" : ""}>
             <div className="single-product-tables ">
