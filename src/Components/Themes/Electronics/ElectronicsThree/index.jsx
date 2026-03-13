@@ -278,7 +278,7 @@ const ElectronicsThree = () => {
       )}
 
       {/* airpods and gaming laptop sec */}
-      <section className="py-5 bg-white section-b-space">
+      <section className="py-5 bg-white section-b-space max-height-200">
         <div className="container p-3 ">
           <div className="row ">
 
@@ -444,9 +444,9 @@ const ElectronicsThree = () => {
               <p className="mt-3">
                 Hardware Box is a reliable online shop in selling computer parts, networking devices and enterprise IT hardware. Our vision is to make the sourcing of good technology products to businesses, system integrators, and IT professionals to be an easy task. Having access to a worldwide network of suppliers and an ever-growing inventory, we supply all storage devices and processors, as well as networking switches and server components. We are a trusted supplier of all your hardware requirements as we are quality-oriented, fast, and offer competitive prices.
               </p>
-              <Link href="/category/all" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
+              {/* <Link href="/category/all" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
                 Explore More
-              </Link>
+              </Link> */}
             </div>
 
             {/* Right Image */}
