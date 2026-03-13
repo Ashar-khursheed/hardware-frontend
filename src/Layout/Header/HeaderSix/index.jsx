@@ -367,7 +367,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/storage-devices" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -389,7 +389,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -409,7 +409,7 @@ const HeaderSix = () => {
                                 <span className="dot"></span>Laptop Memory
                               </Link>
                             </div>
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/memories" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -431,7 +431,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -457,7 +457,7 @@ const HeaderSix = () => {
                                 <span className="dot"></span>IP Phones
                               </Link>
                             </div>
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/networking-devices" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -479,7 +479,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -502,7 +502,7 @@ const HeaderSix = () => {
                                 <span className="dot"></span>Gaming Motherboards
                               </Link>
                             </div>
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/motherboard" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -524,7 +524,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -554,7 +554,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/printer-scanners" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -576,7 +576,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -603,7 +603,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/pc-and-servers" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -625,7 +625,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -646,7 +646,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/power-supply" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -668,7 +668,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -689,7 +689,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/cpus-processors" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -711,7 +711,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -726,7 +726,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/gpus" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -748,7 +748,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -766,7 +766,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/cables-adapters" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -788,7 +788,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
                           </div>
                         )}
 
@@ -815,7 +815,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
 
-                            <div className="promo-banner-wrapper">
+                            {/* <div className="promo-banner-wrapper">
                               <Link href="/category/gaming" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
@@ -837,7 +837,7 @@ const HeaderSix = () => {
                                   </svg>
                                 </div>
                               </Link>
-                            </div>
+                            </div> */}
 
 
                           </div>
