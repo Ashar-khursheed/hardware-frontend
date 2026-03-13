@@ -13,6 +13,7 @@ import HeaderCart from "../Widgets/HeaderCart";
 import HeaderLogo from "../Widgets/HeaderLogo";
 import HeaderSearchbar from "../Widgets/HeaderSearchbar";
 import MainHeaderMenu from "../Widgets/MainHeaderMenu";
+import StaticMobileMenu from "../Widgets/MainHeaderMenu/StaticMobileMenu";
 import TopBar from "../Widgets/TopBar";
 
 const HeaderSix = () => {
@@ -860,11 +861,11 @@ const HeaderSix = () => {
                   <div className="header-nav-middle">
                     <div className="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
                       <div
-                        className={`offcanvas offcanvas-collapse order-xl-2 ${mobileSideBar ? "show" : ""
+                        className={`offcanvas hbx-mobile-offcanvas offcanvas-collapse order-xl-2 ${mobileSideBar ? "show" : ""
                           } `}
                       >
                         <div className="offcanvas-header navbar-shadow">
-                          <h5>{t("menu")}</h5>
+                          <h5>ALL CATEGORIES</h5>
                           <Button
                             close
                             className="lead"
@@ -878,7 +879,7 @@ const HeaderSix = () => {
                           </Button>
                         </div>
                         <div className="offcanvas-body">
-                          <MainHeaderMenu />
+                          <StaticMobileMenu />
                         </div>
                       </div>
                     </div>
