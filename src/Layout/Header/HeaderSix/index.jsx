@@ -865,7 +865,8 @@ const HeaderSix = () => {
                           } `}
                       >
                         <div className="offcanvas-header navbar-shadow">
-                          <h5>ALL CATEGORIES</h5>
+                          <h5 className="d-xl-none">ALL CATEGORIES</h5>
+                          <h5 className="d-none d-xl-block">{t("menu")}</h5>
                           <Button
                             close
                             className="lead"
@@ -879,7 +880,15 @@ const HeaderSix = () => {
                           </Button>
                         </div>
                         <div className="offcanvas-body">
-                          <StaticMobileMenu />
+                          {/* Static Mega Menu for Mobile only */}
+                          <div className="d-xl-none">
+                            <StaticMobileMenu />
+                          </div>
+
+                          {/* Original Main Header Menu for Desktop only */}
+                          <div className="d-none d-xl-block">
+                            <MainHeaderMenu />
+                          </div>
                         </div>
                       </div>
                     </div>

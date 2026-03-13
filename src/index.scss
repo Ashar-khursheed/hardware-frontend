@@ -869,50 +869,52 @@
 }
 
 /* Attractive Static Mobile Menu Styles */
-.hbx-mobile-offcanvas {
-    background: #ffffff !important;
-    max-width: 320px !important;
-    width: 85% !important;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
-    border: none !important;
+@media (max-width: 1199px) {
+    .hbx-mobile-offcanvas {
+        background: #ffffff !important;
+        max-width: 320px !important;
+        width: 85% !important;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
+        border: none !important;
 
-    .offcanvas-header {
-        padding: 20px 24px;
-        background: #fcfcfc;
-        border-bottom: 1px solid #f0f0f0;
+        .offcanvas-header {
+            padding: 20px 24px;
+            background: #fcfcfc;
+            border-bottom: 1px solid #f0f0f0;
 
-        h5 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin: 0;
-            letter-spacing: 0.5px;
-        }
+            h5 {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #1a1a1a;
+                margin: 0;
+                letter-spacing: 0.5px;
+            }
 
-        .btn-close,
-        .close {
-            background: #f0f0f0 !important;
-            opacity: 1 !important;
-            padding: 8px !important;
-            border-radius: 50% !important;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            transition: all 0.3s ease;
+            .btn-close,
+            .close {
+                background: #f0f0f0 !important;
+                opacity: 1 !important;
+                padding: 8px !important;
+                border-radius: 50% !important;
+                width: 32px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                transition: all 0.3s ease;
 
-            &:hover {
-                background: #ff4e50 !important;
-                color: #fff !important;
+                &:hover {
+                    background: #ff4e50 !important;
+                    color: #fff !important;
+                }
             }
         }
-    }
 
-    .offcanvas-body {
-        padding: 0 !important;
-        overflow-y: auto;
+        .offcanvas-body {
+            padding: 0 !important;
+            overflow-y: auto;
+        }
     }
 }
 
