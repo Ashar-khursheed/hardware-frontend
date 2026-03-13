@@ -25,11 +25,27 @@ const CategoryMainPage = ({ slug }) => {
     });
   }, [brand, attribute, price, rating, sortBy, field, page]);
 
-  const { categoryIsLoading } = useContext(CategoryContext);
+  const { categoryData, categoryIsLoading } = useContext(CategoryContext);
+  const currentCategory = categoryData?.find(cat => cat.slug === slug);
+
   if (categoryIsLoading) return <Loader />;
   return (
     <>
-      <Breadcrumbs title={`Category: ${slug?.charAt(0).toUpperCase() + slug?.slice(1)}`} subNavigation={[{ name: slug?.charAt(0).toUpperCase() + slug?.slice(1) }]} />
+      <Breadcrumbs
+        title={currentCategory?.name || slug?.charAt(0).toUpperCase() + slug?.slice(1)}
+        subNavigation={[{ name: currentCategory?.name || slug?.charAt(0).toUpperCase() + slug?.slice(1) }]}
+      />
+
+      {/* Category Header Section */}
+      <div className="category-header-section py-4 bg-light mb-4">
+        <div className="container">
+          <h1 className="fw-bold mb-2">{currentCategory?.name || slug?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
+          {currentCategory?.description && (
+            <p className="text-muted mb-0 lead">{currentCategory.description}</p>
+          )}
+        </div>
+      </div>
+
       <CollectionLeftSidebar filter={filter} setFilter={setFilter} hideCategory categorySlug={slug} />
     </>
   );

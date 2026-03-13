@@ -4,7 +4,7 @@ import { Breadcrumb, Container } from "reactstrap";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
+const Breadcrumbs = ({ subNavigation, title }) => {
   const { t } = useTranslation("common");
   const [isMounted, setIsMounted] = useState(false);
 
@@ -12,39 +12,29 @@ const Breadcrumbs = ({ mainHeading, subNavigation, subTitle, title }) => {
     setIsMounted(true);
   }, []);
 
-  // Safely convert title to string
-  const safeTitle = String(title || '');
-
-  if (!isMounted) {
-    return (
-      <div className="breadcrumb-section">
-        <Container><div style={{ height: '100px' }}></div></Container>
-      </div>
-    );
-  }
+  if (!isMounted) return null;
 
   return (
-    <div className="breadcrumb-section">
+    <div className="breadcrumb-section py-3 bg-light border-bottom">
       <Container>
-        <h2>{t(safeTitle.replaceAll("-", " "))}</h2>
-        <nav className="theme-breadcrumb">
-          <Breadcrumb>
-            <div className="breadcrumb-item">
-              <Link href="/"> {t("home")} </Link>
-            </div>
+        <nav aria-label="breadcrumb">
+          <ol className="breadcrumb mb-0" style={{ background: 'transparent', padding: 0 }}>
+            <li className="breadcrumb-item">
+              <Link href="/" className="text-dark text-decoration-none">{t("home")}</Link>
+            </li>
             {subNavigation?.map((result, i) => {
               const safeName = String(result?.name || '');
               return (
-                <div key={i} className={`breadcrumb-item ${!result.link ? "active" : ""}`}>
+                <li key={i} className={`breadcrumb-item ${!result.link ? "active" : ""}`} aria-current={!result.link ? "page" : undefined}>
                   {result.link ? (
-                    <Link href={result.link}>{t(safeName.replaceAll("-", " "))}</Link>
+                    <Link href={result.link} className="text-dark text-decoration-none">{t(safeName)}</Link>
                   ) : (
-                    <span>{t(safeName.replaceAll("-", " "))}</span>
+                    <span className="text-primary fw-bold">{t(safeName)}</span>
                   )}
-                </div>
+                </li>
               );
             })}
-          </Breadcrumb>
+          </ol>
         </nav>
       </Container>
     </div>
