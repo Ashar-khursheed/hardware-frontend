@@ -295,7 +295,7 @@ export const productSlider3 = (length) => {
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: Math.min(2, length > 0 ? length : 2),
         },
       },
     ],
@@ -423,7 +423,7 @@ export const horizontalProductSlider5 = (length) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: Math.min(2, length > 0 ? length : 2),
           infinite: length > 1,
           autoplay: length > 1,
           autoplaySpeed: 2000,

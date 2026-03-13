@@ -9,16 +9,29 @@ const BlogCardDetails = ({ Blog }) => {
   const { t } = useTranslation("common");
 
   return (
-    <>
-      <div className="blog-detail">
-        {Blog?.blog_thumbnail?.original_url ? <Image height={642} width={1376} src={Blog?.blog_thumbnail?.original_url ? Blog?.blog_thumbnail?.original_url : placeHolderImage} loading="lazy" className="img-fluid" alt="" /> : null}
+    <div className="hbx-premium-blog-detail">
+      <div className="blog-image-wrapper mb-4 rounded-4 overflow-hidden shadow-sm">
+        {Blog?.blog_thumbnail?.original_url ? (
+          <Image
+            height={700}
+            width={1400}
+            src={Blog?.blog_thumbnail?.original_url}
+            loading="lazy"
+            className="img-fluid object-fit-cover w-100"
+            alt={Blog?.title || "Blog Image"}
+            style={{ maxHeight: '500px' }}
+          />
+        ) : null}
+      </div>
+
+      <div className="blog-header mb-5">
         <BlogImageDetails Blog={Blog} />
       </div>
 
-      <div className="blog-detail-contain ckeditor-content">
-        <p dangerouslySetInnerHTML={{ __html: Blog?.content }} />
+      <div className="blog-detail-contain hbx-premium-blog-content ckeditor-content fs-5 text-secondary">
+        <div className="content-inner" dangerouslySetInnerHTML={{ __html: Blog?.content }} />
       </div>
-    </>
+    </div>
   );
 };
 
