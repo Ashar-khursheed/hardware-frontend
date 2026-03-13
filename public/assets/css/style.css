@@ -42693,7 +42693,7 @@ button.dropdown-toggle.btn.btn-secondary:hover {
 
 header .navbar {
 
-    z-index: 0 ;
+    z-index: 0;
 }
 
 
@@ -43250,6 +43250,6 @@ a.text-white.text-decoration-none.small {
 
 
 .cart-info .addto-cart-bottom {
-    background-color: white !important; /* button background */
+    background-color: white !important;
+    /* button background */
 }
-

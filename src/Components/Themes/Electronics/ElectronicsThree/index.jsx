@@ -504,7 +504,7 @@ const ElectronicsThree = () => {
                         <h4 className=" text-black">Government Agencies</h4>
                       </div>
                       <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/sam_logo_badge.png" alt="SAM Logo" className="" height="60" />
+                        <img src="/assets/images/sam_logo_badge.png" alt="SAM Logo" className="" height="60" width="60" />
                         <h4 className=" text-black">SAM Registered</h4>
                       </div>
                       <div className="d-flex align-items-center gap-4">
