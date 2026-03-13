@@ -42684,7 +42684,7 @@ button.dropdown-toggle.btn.btn-secondary:hover {
 
 .subcategory-content {
     height: 100%;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     display: flex;
     align-content: space-between;
     flex-direction: column;

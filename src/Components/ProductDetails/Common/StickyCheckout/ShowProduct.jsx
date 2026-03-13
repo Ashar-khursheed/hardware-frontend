@@ -70,9 +70,9 @@ const ShowProduct = ({ productState, setProductState }) => {
     <div className="sticky-bottom-cart container">
       <Container className="p-0">
         <div className="cart-content">
-          <div className="product-image d-md-inline-flex d-none">
-            <Avatar data={productState?.selectedVariation?.variation_image ?? productState?.product?.product_thumbnail} placeHolder={placeHolderImage} name={productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name} />
-            <div className="content d-lg-block d-none">
+          <div className="product-image d-flex">
+            <Avatar data={productState?.selectedVariation?.variation_image ?? productState?.product?.product_thumbnail ?? productState?.product?.product_galleries?.[0]} placeHolder={placeHolderImage} name={productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name} />
+            <div className="content d-none d-md-block">
               <h5>{productState?.selectedVariation ? productState?.selectedVariation?.name : productState?.product?.name}</h5>
               <h6>
                 {productState?.selectedVariation ? convertCurrency(productState?.selectedVariation?.sale_price) : convertCurrency(productState?.product?.sale_price)}
