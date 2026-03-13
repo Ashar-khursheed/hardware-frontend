@@ -2,8 +2,9 @@ import request from "@/Utils/AxiosUtils";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import MenuList from "./MenuList";
+import PremiumMobileMenu from "./PremiumMobileMenu";
 
-const MainHeaderMenu = () => {
+const MainHeaderMenu = ({ isMobile }) => {
   const [isOpen, setIsOpen] = useState([]);
   const {
     data: headerMenu,
@@ -27,6 +28,22 @@ const MainHeaderMenu = () => {
   useEffect(() => {
     isLoading && refetch();
   }, [isLoading]);
+
+  if (isMobile) {
+    return (
+      <>
+        {isLoading ? (
+          <div className="skeleton-menu p-3">
+            <div className="skeleton-item mb-3" style={{ height: '30px', background: '#eee' }}></div>
+            <div className="skeleton-item mb-3" style={{ height: '30px', background: '#eee' }}></div>
+            <div className="skeleton-item mb-3" style={{ height: '30px', background: '#eee' }}></div>
+          </div>
+        ) : (
+          <PremiumMobileMenu menuData={headerMenu} />
+        )}
+      </>
+    );
+  }
 
   return (
     <>
