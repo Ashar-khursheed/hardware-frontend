@@ -32,7 +32,7 @@ const FooterThree = () => {
     <footer className="footer-style-1" style={{ backgroundColor: themeOption?.footer?.bg_color }}>
       <div className="top-column feature-icons-bar py-4 border-bottom">
         <Container>
-          <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
+          {/* <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
             {[
               {
                 icon: "/assets/images/Icon.png",
@@ -57,6 +57,46 @@ const FooterThree = () => {
               {
                 icon: "/assets/images/Icon4.png",
                 title: "Support 24/7",
+                subtitle: "Contact us 24 hours a day",
+              },
+            ].map((item, i) => (
+              <Col key={i}>
+                <div className="d-flex flex-column align-items-center gap-2">
+                  <img src={item.icon} alt={item.title} width={40} height={40} />
+                  <div>
+                    <h6 className="mb-0 text-white fw-semibold">{item.title}</h6>
+                    <p className="mb-0 text-light small">{item.subtitle}</p>
+                  </div>
+                </div>
+              </Col>
+            ))}
+          </Row> */}
+
+          <Row className="justify-content-between shippingrow text-white text-center row-cols-2 row-cols-sm-3 row-cols-lg-5 g-4">
+            {[
+              {
+                icon: "/assets/images/Icon.png",
+                title: "Free Shipping on Select Orders",
+                subtitle: "Orders $50 or more",
+              },
+              {
+                icon: "/assets/images/Icon1.png",
+                title: "Secure Payments",
+                subtitle: "At lowest price",
+              },
+              {
+                icon: "/assets/images/Icon2.png",
+                title: "Easy Returns",
+                subtitle: "Any Time Return Product",
+              },
+              {
+                icon: "/assets/images/Icon3.png",
+                title: "Exclusive Deals",
+                subtitle: "Grab Your Gear and Go",
+              },
+              {
+                icon: "/assets/images/Icon4.png",
+                title: "24/7 Customer Support",
                 subtitle: "Contact us 24 hours a day",
               },
             ].map((item, i) => (

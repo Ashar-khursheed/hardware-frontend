@@ -746,7 +746,7 @@ const ElectronicsThree = () => {
             {/* Left: Contact Info */}
             <div className="col-md-4">
               <h3>
-                <span className="contactjoin fw-bold text-black">Contact</span> &amp; Join<br />Together
+                <span className="contactjoin fw-bold text-black">Contact</span> &amp; Partner <br />with Us
               </h3>
               <div className="mt-4">
                 <div className="d-flex align-items-start mb-4">

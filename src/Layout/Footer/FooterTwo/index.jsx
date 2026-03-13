@@ -34,27 +34,27 @@ const FooterTwo = () => {
             {[
               {
                 icon: "/assets/images/Icon.png",
-                title: "Free Shipping",
+                title: "Free Shipping on Select Orders",
                 subtitle: "Orders $50 or more",
               },
               {
                 icon: "/assets/images/Icon1.png",
-                title: "Save Money",
+                title: "Secure Payments",
                 subtitle: "At lowest price",
               },
               {
                 icon: "/assets/images/Icon2.png",
-                title: "100% Return Policy",
+                title: "Easy Returns",
                 subtitle: "Any Time Return Product",
               },
               {
                 icon: "/assets/images/Icon3.png",
-                title: "Best Deal Offer",
+                title: "Exclusive Deals",
                 subtitle: "Grab Your Gear and Go",
               },
               {
                 icon: "/assets/images/Icon4.png",
-                title: "Support 24/7",
+                title: "24/7 Customer Support",
                 subtitle: "Contact us 24 hours a day",
               },
             ].map((item, i) => (
