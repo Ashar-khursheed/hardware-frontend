@@ -290,7 +290,7 @@ const ElectronicsThree = () => {
                       Weekend <span className="text-primary">Offer</span>
                     </p>
                     <h3 className="text-black mb-3 h4 fw-bold">Premium CPU Processors</h3>
-                    <Link href="/category/cpu-processor" className="btn btn-primary btn-sm px-3 py-2">
+                    <Link href="/category/cpus-processors" className="btn btn-primary btn-sm px-3 py-2">
                       SHOP NOW &rarr;
                     </Link>
                   </div>
@@ -313,7 +313,7 @@ const ElectronicsThree = () => {
                       Limited <span className="text-primary">Deal</span>
                     </p>
                     <h3 className="text-black mb-3 h4 fw-bold">High-Performance Network Routers</h3>
-                    <Link href="/category/network-routers" className="btn btn-primary btn-sm px-3 py-2">
+                    <Link href="/category/networking-devices" className="btn btn-primary btn-sm px-3 py-2">
                       BROWSE &rarr;
                     </Link>
                   </div>
