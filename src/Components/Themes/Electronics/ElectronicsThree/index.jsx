@@ -282,48 +282,46 @@ const ElectronicsThree = () => {
         <div className="container p-3 ">
           <div className="row ">
 
-            <div className="col-md-6   border rounded bg-light gmaingcolum">
-              <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
-                <div className="row d-flex align-items-center justify-content-between p-3">
-                  <div className="col-12 col-md-4 text-div">
-                    <p className="mb-1 text-muted">
-                      Weekend <span className="text-primary fw-semibold">Offer</span>
+            <div className="col-md-6 mb-4">
+              <div className="promo-banner-card border rounded bg-light h-100 overflow-hidden">
+                <div className="row align-items-center h-100 g-0">
+                  <div className="col-7 p-4">
+                    <p className="mb-1 text-muted small text-uppercase fw-bold">
+                      Weekend <span className="text-primary">Offer</span>
                     </p>
-                    <h3 className="text-black mb-3 mb-md-5">Airpods Sale</h3>
-                    <Link href="/category/gaming-console" className="btn btn-primary d-inline-flex align-items-center">
-                      SHOP NOW&nbsp;<span>&rarr;</span>
+                    <h3 className="text-black mb-3 h4 fw-bold">Airpods Sale</h3>
+                    <Link href="/category/gaming-console" className="btn btn-primary btn-sm px-3 py-2">
+                      SHOP NOW &rarr;
                     </Link>
                   </div>
-                  <div className="col-12 col-md-8 image-div">
+                  <div className="col-5">
                     <img
                       src="/assets/images/airpodsnew.webp"
                       alt="Airpods"
-                      className="img-fluid"
-                      style={{ maxHeight: '620px' }}
+                      className="img-fluid w-100 h-100 object-fit-contain"
                     />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="col-md-6   border rounded bg-light gmaingcolum">
-              <div className="d-flex align-items-center justify-content-between p-4 border rounded bg-light">
-                <div className="row d-flex align-items-center justify-content-between p-3">
-                  <div className="col-12 col-md-4 text-div">
-                    <p className="mb-1 text-muted">
-                      Weekend <span className="text-primary fw-semibold">Offer</span>
+            <div className="col-md-6 mb-4">
+              <div className="promo-banner-card border rounded bg-light h-100 overflow-hidden">
+                <div className="row align-items-center h-100 g-0">
+                  <div className="col-7 p-4">
+                    <p className="mb-1 text-muted small text-uppercase fw-bold">
+                      Limited <span className="text-primary">Deal</span>
                     </p>
-                    <h3 className="text-black mb-3 mb-md-5">Gaming Laptop</h3>
-                    <Link href="/category/gaming-accessories" className="btn btn-primary d-inline-flex align-items-center">
-                      SHOP NOW&nbsp;<span>&rarr;</span>
+                    <h3 className="text-black mb-3 h4 fw-bold">Gaming Gear</h3>
+                    <Link href="/category/gaming-accessories" className="btn btn-primary btn-sm px-3 py-2">
+                      BROWSE &rarr;
                     </Link>
                   </div>
-                  <div className="col-12 col-md-8 image-div">
+                  <div className="col-5">
                     <img
                       src="/assets/images/airpodtwo.webp"
-                      alt="Airpods"
-                      className="img-fluid"
-                      style={{ maxHeight: '620px' }}
+                      alt="Gaming Gear"
+                      className="img-fluid w-100 h-100 object-fit-contain"
                     />
                   </div>
                 </div>
@@ -373,9 +371,7 @@ const ElectronicsThree = () => {
                   <div>
                     <img className="mb-2" src="/assets/images/revieewstar.png" alt="Google" />
                     <p className="text-muted small mb-0 reviewtext">
-                      Lorem Ipsum Dolor Sit Amet Consectetur. Ullamcorper Enim Nulla Sem Libero Dictumst Habitasse.
-                      Senectus Non Pharetra Leo Turpis Sapien Volutpat Ut. Vitae Faucibus Consequat Potenti Etiam Aliquet.
-                      Varius Sed Nisi Urna Amet Nec Lectus Eget In.
+                      "Fast shipping and the part was exactly as described. Hard-to-find components are always in stock here. Highly recommend for any IT professional!"
                     </p>
                   </div>
                   <div className="d-flex align-items-center mt-3">
@@ -425,10 +421,10 @@ const ElectronicsThree = () => {
                 About Hardware Box<br />
               </h2>
               <p className="mt-3">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                At Hardware Box, we specialize in sourcing those impossible-to-find computer parts and industrial hardware. Our expert team rigorously verifies and prepares every component, ensuring you get the performance and reliability you need, no matter how rare the piece.
               </p>
-              <Link href="/category/memories" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
-                Shop Now
+              <Link href="/category/all" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
+                Explore More
               </Link>
             </div>
 

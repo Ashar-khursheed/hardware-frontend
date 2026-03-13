@@ -1,11 +1,12 @@
-import React from 'react';
-import SkeletonHomepage from '@/Components/Themes/Electronics/ElectronicsThree/SkeletonHomepage';
+"use client";
+import SkeletonHomepage from "@/Components/Themes/Electronics/ElectronicsThree/SkeletonHomepage";
+import Loader from "@/Layout/Loader";
 
 const Loading = () => {
     return (
-        <div className="loader-wrapper">
+        <div className="loader-wrapper-page">
             <SkeletonHomepage />
-            <div className="loader" style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 1000 }}></div>
+            <Loader />
         </div>
     );
 };

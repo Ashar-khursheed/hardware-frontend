@@ -8,14 +8,16 @@ const HomeSlider = ({ bannerData, height, width, sliderClass }) => {
   const videoType = ["mp4", "webm", "ogg"];
 
   const renderOverlayContent = () => (
-    <div className="container new-banner position-absolute top-50 start-0 translate-middle-y text-white ps-5" style={{ zIndex: 1 }}>
-      <div className="row">
-        <div className="col-lg-8 col-md-8 col-sm-10">
-          <h2 className="fw-bold display-5 mainheading">Hard To Find Computer Parts? We Think Otherwise.</h2>
-          <p className="mt-3 bannnertext">
-            Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry.Text Ever Since The 1500s, When An Unknown Printer Into Electronic Typesetting, Remaining Essentially Unchanged.
+    <div className="container hbx-hero-overlay position-absolute top-50 start-50 translate-middle text-white" style={{ zIndex: 1, width: "100%" }}>
+      <div className="row justify-content-center justify-content-md-start px-3 px-md-5">
+        <div className="col-lg-8 col-md-9 col-sm-11 text-center text-md-start">
+          <h2 className="fw-bold display-5 mainheading hbx-animate-up">Hard To Find Computer Parts? <br className="d-none d-md-block" /> We Think Otherwise.</h2>
+          <p className="mt-3 bannnertext hbx-animate-up hbx-delay-1">
+            Explore our vast inventory of rare and high-performance hardware. From legacy components to the latest tech, we bring the hard-to-find directly to you.
           </p>
-          <a href="#" className="btn btn-primary mt-3">Shop Now</a>
+          <div className="hbx-animate-up hbx-delay-2">
+            <a href="/category/all" className="btn btn-primary mt-3 px-4 py-2 fw-bold">Shop Our Collection</a>
+          </div>
         </div>
       </div>
     </div>
@@ -98,7 +100,7 @@ const HomeSlider = ({ bannerData, height, width, sliderClass }) => {
             </div>
           );
         })()}
-        
+
         {/* Skeleton Loader */}
         <div className="home-skeleton">
           <div className="skeleton-content">

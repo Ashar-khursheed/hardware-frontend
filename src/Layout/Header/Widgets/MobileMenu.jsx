@@ -1,70 +1,83 @@
+import CartContext from "@/Context/CartContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
-import { Href } from "@/Utils/Constants";
-import { t } from "i18next";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext, useState, useEffect } from "react";
-import { RiHeartLine, RiHome2Line, RiSearch2Line, RiShoppingBagLine, RiUserLine } from "react-icons/ri";
+import { useTranslation } from "react-i18next";
+import { RiHeartLine, RiHomeLine, RiSearchLine, RiShoppingCartLine, RiUserLine } from "react-icons/ri";
 
 const MobileMenu = () => {
-  const { setOpenAuthModal, setCartCanvas } = useContext(ThemeOptionContext);
-  const [isMounted, setIsMounted] = useState(false);
-
-  const isAuthenticated = Cookies.get("uat_multikart");
-  const router = useRouter();
-  const handleProfileClick = (path) => {
-    isAuthenticated ? router.push("/account/dashboard") : setOpenAuthModal(true);
-    handleActive(5);
-  };
-  const handleWishlist = () => {
-    isAuthenticated ? router.push("/wishlist") : setOpenAuthModal(true);
-    handleActive(4);
-  };
+  const { t } = useTranslation("common");
+  const { cartCanvas, setCartCanvas, setOpenAuthModal } = useContext(ThemeOptionContext);
+  const { cartProducts } = useContext(CartContext);
   const [active, setActive] = useState(1);
-  const handleActive = (num) => {
-    setActive(num);
-  };
-  
+  const router = useRouter();
+  const isAuthenticated = Cookies.get("uat_multikart");
+
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const handleWishlist = (e) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      router.push("/wishlist");
+      setActive(4);
+    } else {
+      setOpenAuthModal(true);
+    }
+  };
+
+  const handleUser = (e) => {
+    e.preventDefault();
+    if (isAuthenticated) {
+      router.push("/account/dashboard");
+      setActive(5);
+    } else {
+      setOpenAuthModal(true);
+    }
+  };
+
+  if (!isMounted) return null;
+
   return (
-    <div className="mobile-menu d-md-none d-block mobile-cart">
+    <div className="mobile-menu">
       <ul>
-        <li className={active == "1" ? "active" : ""} onClick={() => handleActive(1)}>
-          <Link href="/" className="your-class">
-            <span className="flex items-center gap-1">
-              <RiHome2Line />
-              <span suppressHydrationWarning>{isMounted ? t("home") : "Home"}</span>
-            </span>
+        <li className={active === 1 ? "active" : ""}>
+          <Link href="/">
+            <div onClick={() => setActive(1)}>
+              <RiHomeLine />
+              <span>{t("Home")}</span>
+            </div>
           </Link>
         </li>
-        <li className={active == "2" ? "active" : ""}>
-          <Link href="/search" legacyBehavior><span>
-<a onClick={() => handleActive(2)}>
-              <RiSearch2Line />
-              <span suppressHydrationWarning>{isMounted ? t("search") : "Search"}</span>
-            </a>
-</span></Link>
-
+        <li className={active === 2 ? "active" : ""}>
+          <Link href="/search">
+            <div onClick={() => setActive(2)}>
+              <RiSearchLine />
+              <span>{t("Search")}</span>
+            </div>
+          </Link>
         </li>
-        <li className={active == "3" ? "active" : ""}>
-          <a href={Href} onClick={() => setCartCanvas(true)}>
-            <RiShoppingBagLine />
-            <span suppressHydrationWarning>{isMounted ? t("cart") : "Cart"}</span>
+        <li className={active === 3 ? "active" : ""}>
+          <a href="#" onClick={(e) => { e.preventDefault(); setCartCanvas(!cartCanvas); setActive(3); }}>
+            <RiShoppingCartLine />
+            {cartProducts?.length > 0 && <span className="cart_qty_cls">{cartProducts?.length}</span>}
+            <span>{t("Cart")}</span>
           </a>
         </li>
-        <li className={active == "4" ? "active" : ""}>
-          <a href={Href} onClick={() => handleWishlist()}>
+        <li className={active === 4 ? "active" : ""}>
+          <a href="#" onClick={handleWishlist}>
             <RiHeartLine />
-            <span suppressHydrationWarning>{isMounted ? t("wishlist") : "Wishlist"}</span>
+            <span>{t("Wishlist")}</span>
           </a>
         </li>
-        <li className={active == "5" ? "active" : ""} onClick={() => handleProfileClick()}>
-          <a href={Href}>
+        <li className={active === 5 ? "active" : ""}>
+          <a href="#" onClick={handleUser}>
             <RiUserLine />
-            <span suppressHydrationWarning>{isMounted ? t("user") : "User"}</span>
+            <span>{t("Account")}</span>
           </a>
         </li>
       </ul>
