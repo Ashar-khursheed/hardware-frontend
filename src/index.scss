@@ -240,6 +240,10 @@
 }
 
 /* Mobile Responsiveness & Fixes */
+.mobile-menu {
+    display: none;
+}
+
 @media (max-width: 767px) {
     .loader-wrapper-page {
         position: relative;
@@ -310,6 +314,7 @@
     }
 
     .mobile-menu {
+        display: block !important;
         border-top: 1px solid #f1f1f1;
         background: #fff !important;
         box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05) !important;

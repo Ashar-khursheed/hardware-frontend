@@ -62,11 +62,11 @@ const MobileMenu = () => {
           </Link>
         </li>
         <li className={active === 3 ? "active" : ""}>
-          <a href="#" onClick={(e) => { e.preventDefault(); setCartCanvas(!cartCanvas); setActive(3); }}>
+          <Link href="/cart" onClick={() => setActive(3)}>
             <RiShoppingCartLine />
             {cartProducts?.length > 0 && <span className="cart_qty_cls">{cartProducts?.length}</span>}
             <span>{t("Cart")}</span>
-          </a>
+          </Link>
         </li>
         <li className={active === 4 ? "active" : ""}>
           <a href="#" onClick={handleWishlist}>

@@ -90,7 +90,7 @@ const ProductDetailContent = ({ params }) => {
   };
   return (
     <>
-      {<Breadcrumbs title={String(params)} subNavigation={[{ name: "Product" }, { name: String(params) }]} />}
+      {<Breadcrumbs title={ProductData?.name || params} subNavigation={[{ name: "Product", link: "/category/all" }, { name: ProductData?.name || params }]} />}
       {showProductLayout[isProductLayout]}
       {ProductData && <StickyCheckout ProductData={ProductData} isLoading={isLoading} />}
     </>

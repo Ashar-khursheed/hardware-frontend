@@ -29,7 +29,7 @@ const CategoryMainPage = ({ slug }) => {
   if (categoryIsLoading) return <Loader />;
   return (
     <>
-      <Breadcrumbs title={`Category: ${slug}`} subNavigation={[{ name: slug }]} />
+      <Breadcrumbs title={`Category: ${slug?.charAt(0).toUpperCase() + slug?.slice(1)}`} subNavigation={[{ name: slug?.charAt(0).toUpperCase() + slug?.slice(1) }]} />
       <CollectionLeftSidebar filter={filter} setFilter={setFilter} hideCategory categorySlug={slug} />
     </>
   );

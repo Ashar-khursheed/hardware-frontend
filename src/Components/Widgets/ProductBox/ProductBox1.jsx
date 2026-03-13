@@ -202,22 +202,22 @@ const ProductBox1 = ({ productState, setProductState }) => {
             {!!product?.is_trending && <span className="agpc__tag--trend">Trending</span>}
           </div>
         </div>
-      </div>
 
-      {/* ── Action Bar — outside image, slides in on hover ── */}
-      {!isOutOfStock && (
-        <div className="agpc__action-bar">
-          <CartButton
-            classes="agpc__btn-cart"
-            productState={productState}
-            selectedVariation={selectedVariation}
-            text="Add to Cart"
-          />
-          <div className="agpc__actions">
-            <ProductHoverButton productstate={product} />
+        {/* ── Action Bar — Overlaid on image ── */}
+        {!isOutOfStock && (
+          <div className="agpc__action-bar">
+            <CartButton
+              classes="agpc__btn-cart"
+              productState={productState}
+              selectedVariation={selectedVariation}
+              text="Add to Cart"
+            />
+            <div className="agpc__actions">
+              <ProductHoverButton productstate={product} />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* ── Product Info ── */}
       <div className="agpc__body">

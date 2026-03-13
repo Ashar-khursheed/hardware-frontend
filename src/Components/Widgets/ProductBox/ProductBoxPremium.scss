@@ -374,7 +374,7 @@
         }
 
         /* Reveal the action bar */
-        .agpc__action-bar {
+        .agpc__media .agpc__action-bar {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -408,6 +408,28 @@
         object-fit: contain;
         padding: 16px;
         transition: transform 0.3s ease;
+    }
+
+    /* ── Action Bar — Overlaid on image ── */
+    .agpc__action-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 12px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        z-index: 10;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 }
 
@@ -491,24 +513,7 @@
 
 /* ── Action Bar — sits BELOW image, outside it ─ */
 /* Hidden by default, slides up on card hover     */
-.agpc__action-bar {
-    width: 100%;
-    padding: 10px 12px;
-    background: #fff;
-    border-top: 1px solid #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
 
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-
-    /* Takes up space even when hidden so layout doesn't jump */
-    max-height: 90px;
-}
 
 /* Add to Cart Button */
 .agpc__btn-cart,
