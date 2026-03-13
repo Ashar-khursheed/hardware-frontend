@@ -239,23 +239,27 @@
     }
 }
 
-/* Reveal the action bar */
+/* Action bar styling: transparent and hidden by default */
 .agpc__media .agpc__action-bar {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    background: transparent;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    background: transparent !important;
     padding: 10px 8px;
+    transition: all 0.3s ease;
 }
 
-/* Mobile specific: Always show action bar since there is no hover */
-@media (max-width: 767px) {
+/* Show action bar on hover */
+.agpc__card:hover .agpc__media .agpc__action-bar {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+}
+
+/* Mobile specific: Also only on hover (or active touch) */
+@media (max-width: 991px) {
     .agpc__media .agpc__action-bar {
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: translateY(0) !important;
-        background: transparent;
-        padding: 10px 8px;
+        background: transparent !important;
     }
 }
 

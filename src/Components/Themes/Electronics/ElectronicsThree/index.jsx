@@ -350,7 +350,7 @@ const ElectronicsThree = () => {
         <div className="container">
           <div className="row align-items-center mb-4">
             <div className="col-md-6">
-              <h3 className="text-black ps-2">NEW ARRIVALS</h3>
+              <h3 className="text-black ps-2">CUSTOMER REVIEWS </h3>
             </div>
             <div className="col-md-6 mobhide text-md-end d-flex justify-content-end gap-3 text-center">
               <div>
@@ -358,7 +358,7 @@ const ElectronicsThree = () => {
                 <img src="/assets/images/reviewshead.png" alt="Google" />
               </div>
               <div>
-                <span className="me-2">1540 reviews on</span>
+                <span className="me-2">540 reviews on</span>
                 <img src="/assets/images/reviewsgoogle.png" alt="Google" height="20" />
               </div>
             </div>
@@ -438,7 +438,7 @@ const ElectronicsThree = () => {
 
             {/* Left Content */}
             <div className="col-lg-6 text-white z-2">
-              <h2 className="display-5">
+              <h2 className="display-5  size-28">
                 Hardware Box Overview<br />
               </h2>
               <p className="mt-3">
