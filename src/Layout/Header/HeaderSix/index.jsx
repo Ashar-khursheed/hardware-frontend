@@ -860,11 +860,11 @@ const HeaderSix = () => {
                   <div className="header-nav-middle">
                     <div className="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
                       <div
-                        className={`offcanvas hbx-mobile-offcanvas offcanvas-collapse order-xl-2 ${mobileSideBar ? "show" : ""
+                        className={`offcanvas offcanvas-collapse order-xl-2 ${mobileSideBar ? "show" : ""
                           } `}
                       >
                         <div className="offcanvas-header navbar-shadow">
-                          <h5>MENU</h5>
+                          <h5>{t("menu")}</h5>
                           <Button
                             close
                             className="lead"
@@ -878,7 +878,7 @@ const HeaderSix = () => {
                           </Button>
                         </div>
                         <div className="offcanvas-body">
-                          <MainHeaderMenu isMobile={true} />
+                          <MainHeaderMenu />
                         </div>
                       </div>
                     </div>
