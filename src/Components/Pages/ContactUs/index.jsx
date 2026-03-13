@@ -32,7 +32,7 @@ const ContactUsContent = () => {
             </div>
           </Col>
           <Col xs="12">
-            <MapSection />
+            {/* <MapSection /> */}
           </Col>
         </WrapperComponent>
       </div>
