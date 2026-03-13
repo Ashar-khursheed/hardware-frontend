@@ -48,6 +48,8 @@ export async function generateMetadata() {
   }
 }
 
+import Script from "next/script";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -64,6 +66,21 @@ export default function RootLayout({ children }) {
 
         {/* Local CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
+
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-C52RSE232C"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-C52RSE232C');
+          `}
+        </Script>
       </head>
       <body suppressHydrationWarning={true}>
         <Suspense fallback={<Loading />}>

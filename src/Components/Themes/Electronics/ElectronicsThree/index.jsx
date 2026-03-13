@@ -237,10 +237,10 @@ const ElectronicsThree = () => {
           <div className="row">
             <div className="col-md-7 hbx-animate-up hbx-delay-1">
               <h2 className="fw-bold text-white mb-3">
-                Hard To Find Computer Parts? <br /> We Think Otherwise.
+                Can’t Find Computer Parts? <br /> We’ve Got You Covered
               </h2>
               <p className="mb-4 text-white">
-                Helping You Meet Sourcing Needs With Specialized Selection, Verification, And Pre-Preparation Of International Profiles.
+                At Hardware Box, we are dealing with the sourcing of high-quality computer hardware and networking equipment to businesses, IT professionals, and system builders.
               </p>
               <Link href="/category/switches" className="btn ">
                 Shop Now
@@ -365,26 +365,47 @@ const ElectronicsThree = () => {
           </div>
 
           <div className="row g-4">
-            {[1, 2, 3, 4].map((item) => (
-              <div className="col-md-6 col-lg-3" key={item}>
+            {[
+              {
+                name: "Michael Carter",
+                role: "IT Infrastructure Manager",
+                text: "Hardware Box assisted us in procurement of enterprise SSD drives which were highly inaccessible in other directions. There was no trouble with the ordering, it was delivered in a shorter time and the goods were just as they are said to be. They also assisted us in determining that they were compatible with our servers, which saved us a lot of time."
+              },
+              {
+                name: "Daniel Brooks",
+                role: "System Integrator",
+                text: "I have been buying networking elements and processors in regular basis to our projects on system integration and Hardware Box has emerged as one of our most trusted suppliers. Their stocks are admirable and their prices are very competitive with other hardware sellers on internet."
+              },
+              {
+                name: "Sarah Mitchell",
+                role: "Data Center Administrator",
+                text: "We have had to upgrade our data center by refurbishing the storage drives without overshooting budget. Hardware Box was supplying good quality refurbished hardware that could work like new. They had very good quality and packaging."
+              },
+              {
+                name: "Robert Chen",
+                role: "Network Engineer",
+                text: "It is sometimes tedious to come up with compatible server components, but Hardware Box has simplified the process. Their team informed us on the process of choosing the appropriate hardware and made it arrive safely and in time."
+              }
+            ].map((review, index) => (
+              <div className="col-md-6 col-lg-3" key={index}>
                 <div className="p-3 border rounded bg-white h-100 d-flex flex-column justify-content-between reviewscol">
                   <div>
-                    <img className="mb-2" src="/assets/images/revieewstar.png" alt="Google" />
+                    <img className="mb-2" src="/assets/images/revieewstar.png" alt="Rating" />
                     <p className="text-muted small mb-0 reviewtext">
-                      "Fast shipping and the part was exactly as described. Hard-to-find components are always in stock here. Highly recommend for any IT professional!"
+                      "{review.text}"
                     </p>
                   </div>
                   <div className="d-flex align-items-center mt-3">
                     <img
                       src="/assets/images/review.png"
-                      alt="Maren Lipshutz"
+                      alt={review.name}
                       width="40"
                       height="40"
                       className="rounded-circle me-2"
                     />
                     <div>
-                      <div className="fw-bold">Maren Lipshutz</div>
-                      <div className="text-muted small">Designation</div>
+                      <div className="fw-bold">{review.name}</div>
+                      <div className="text-muted small">{review.role}</div>
                     </div>
                   </div>
                 </div>
@@ -418,10 +439,10 @@ const ElectronicsThree = () => {
             {/* Left Content */}
             <div className="col-lg-6 text-white z-2">
               <h2 className="display-5">
-                About Hardware Box<br />
+                Hardware Box Overview<br />
               </h2>
               <p className="mt-3">
-                At Hardware Box, we specialize in sourcing those impossible-to-find computer parts and industrial hardware. Our expert team rigorously verifies and prepares every component, ensuring you get the performance and reliability you need, no matter how rare the piece.
+                Hardware Box is a reliable online shop in selling computer parts, networking devices and enterprise IT hardware. Our vision is to make the sourcing of good technology products to businesses, system integrators, and IT professionals to be an easy task. Having access to a worldwide network of suppliers and an ever-growing inventory, we supply all storage devices and processors, as well as networking switches and server components. We are a trusted supplier of all your hardware requirements as we are quality-oriented, fast, and offer competitive prices.
               </p>
               <Link href="/category/all" className="btn btn-warning fw-semibold px-4 py-2 mt-4">
                 Explore More
@@ -461,9 +482,8 @@ const ElectronicsThree = () => {
                   </div>
                 </div>
                 <div>
-                  <h5 className="fw-bold mb-1">FREE DELIVERY
-                  </h5>
-                  <p className="mb-0 small text-muted">Up to 8lbs</p>
+                  <h5 className="fw-bold mb-1">FREE SHIPPING ON SELECT ORDERS</h5>
+                  <p className="mb-0 small text-muted">Rapid delivery available</p>
                 </div>
               </div>
 
@@ -474,19 +494,31 @@ const ElectronicsThree = () => {
                   </div>
                 </div>
                 <div>
-                  <h5 className="fw-bold mb-1">GENUINE SECURE PAYMENT</h5>
+                  <h5 className="fw-bold mb-1">SECURE PAYMENTS</h5>
                   <p className="mb-0 small text-muted">100% protected checkout</p>
                 </div>
               </div>
 
-              <div className="d-flex">
+              <div className="d-flex mb-3">
                 <div className="me-3">
                   <div className="colorful">
                     <img src="/assets/images/voyGMG.png" alt="Genuine Products" width="60" />
                   </div>                  </div>
                 <div>
-                  <h5 className="fw-bold mb-1">90 DAYS RETURN</h5>
-                  <p className="mb-0 small text-muted">On damaged units</p>
+                  <h5 className="fw-bold mb-1">EASY RETURNS</h5>
+                  <p className="mb-0 small text-muted">Hassle-free process</p>
+                </div>
+              </div>
+
+              <div className="d-flex mb-3">
+                <div className="me-3">
+                  <div className="colorful">
+                    <i className="ri-customer-service-2-line fs-1 text-primary"></i>
+                  </div>
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-1">24/7 CUSTOMER SUPPORT</h5>
+                  <p className="mb-0 small text-muted">We are here to help</p>
                 </div>
               </div>
             </div>
@@ -529,7 +561,7 @@ const ElectronicsThree = () => {
                       D-U-N-S® Number is: <span className="text-orange fw-semibold">117396845</span>
                     </p>
                     <p className="small text-muted mb-0">
-                      We are committed to providing our customers with top-quality computer accessories. Our Duns & Bradstreet rating is excellent and is a testament to our financial stability and strength in the industry.
+                      Hardware Box is committed to delivering high-quality computer accessories and dependable service. Our Dun & Bradstreet profile reflects our credibility, financial stability, and trusted presence in the technology supply industry.
                     </p>
                   </div>
                 </div>
@@ -549,7 +581,7 @@ const ElectronicsThree = () => {
           <div className="row mb-4">
             <div className="col-12">
               <h2 className="" style={{ color: "#ff5050" }}>
-                We're expert in new & refurbished IT <br /> equipment and solutions.
+                Experts in New & Refurbished IT <br /> Hardware Solutions
               </h2>
             </div>
           </div>
@@ -558,29 +590,28 @@ const ElectronicsThree = () => {
             <div className="col-md-4 mb-4">
 
               <h4 className="text-black">
-                How quickly can we deliver it you?<br />
-                As fast as you want with reliable delivery service.
+                How Quickly Can We Deliver Your IT Hardware?
               </h4>
               <p className="text-muted">
-                Tell us when you need your IT part, and we'll ensure it arrives on time, whether it's urgent or falls within the agreed time frame.
+                As quickly as your business needs it. Hardware Box is a company that offers quality and prompt delivery services to get your IT equipment delivered at the right time. You can either require an urgent replacement or hardware to upgrade an existing one, our logistical network provides safe and timely deliveries.
               </p>
             </div>
 
             <div className="col-md-4 mb-4">
               <h4 className="text-black">
-                Think +500,000 products is too good to be true? You're welcome at our warehouses.
+                Looking for Hard-to-Find Computer Hardware?
               </h4>
               <p className="text-muted">
-                In our many warehouses in North America and worldwide, we keep a wide range of items in stock, from the most popular equipment to rare, hard-to-find parts. Just ask, and we'll find it quickly.
+                Hardware Box gives you access to a wide inventory of computer components, server parts, storage drives, and networking equipment. Our sourcing network will find you what you need when you need it, whether that is the most popular hardware, or something that is no longer being made.
               </p>
             </div>
 
             <div className="col-md-4 mb-4">
               <h4 className=" text-black">
-                Not sure whether refurbished IT equipment lasts? Let us address your concerns.
+                Are Refurbished IT Components Reliable?
               </h4>
               <p className="text-muted">
-                You can trust us completely. We meticulously prepare and test all IT parts before selling, ensuring their durability for as long as you use them.
+                Absolutely. All the refurbished products at Hardware Box are inspected and tested to the maximum to guarantee high performance and reliability. Our quality control system is such that every part of the infrastructure is of professional quality, so you can upgrade your infrastructure without fear of incurring costs.
               </p>
             </div>
           </div>
@@ -680,7 +711,7 @@ const ElectronicsThree = () => {
             <div className="row align-items-center justify-content-between">
               <div className="col-md-8 mb-3 mb-md-0">
                 <h3 className="text-white fw-bold mb-0">
-                  Contact us to get expert advice and dedicated account management today.
+                  Get Expert Advice for Your IT Hardware Needs
                 </h3>
               </div>
               <div className="col-md-4 text-md-end">
