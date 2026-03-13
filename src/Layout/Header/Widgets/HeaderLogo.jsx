@@ -162,7 +162,7 @@ const HeaderLogo = ({ extraClass }) => {
                 {settingData.general.site_name.split(" ")[0]}
               </h2>
             ) : (
-              <h2 className="f-w-600 m-0">Logo Here</h2>
+              <h2 className="f-w-600 m-0"></h2>
             )}
           </a>
         </span>
