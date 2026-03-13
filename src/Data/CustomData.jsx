@@ -45,8 +45,8 @@
 export const FilterPrice = [
   {
     id: 1,
-    minPrice: 0,
-    maxPrice: 500,
+    price: 500,
+    text: "Below",
     value: "0-500",
   },
   {
