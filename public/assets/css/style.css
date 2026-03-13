@@ -43256,3 +43256,9 @@ a.text-white.text-decoration-none.small {
 h2.display-5.size-24 {
     font-size: 32px;
 }
+
+.tab-product.product-details-contain .nav-tabs .nav-item .nav-link.active {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    cursor: default !important;
+}
