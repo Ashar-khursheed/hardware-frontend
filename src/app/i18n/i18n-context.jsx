@@ -11,7 +11,7 @@ import request from "@/Utils/AxiosUtils";
 
 const loadResources = async (language, namespace) => {
   try {
-    const response = await request({url:`${process.env.API_PROD_URL}/translation/front`}, false);
+    const response = await request({ url: `${process.env.API_PROD_URL}/translation/front` }, false);
     return response.data || {};
   } catch (error) {
     console.error("Error loading translations:", error);
@@ -22,7 +22,7 @@ const loadResources = async (language, namespace) => {
 
 i18next
   .use(initReactI18next)
-  .use(LanguageDetector)
+  // .use(LanguageDetector)
   // .use(resourcesToBackend((language, namespace) => import(`./locales/${language}/${namespace}.json`)))
   .use(resourcesToBackend((language, namespace) => loadResources(language, namespace)))
   .init({

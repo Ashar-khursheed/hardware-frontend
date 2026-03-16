@@ -416,6 +416,10 @@
     justify-content: center !important;
     align-items: center !important;
     z-index: 10000 !important;
+
+    .loader {
+        margin: 0 auto !important;
+    }
 }
 
 .loader {
@@ -472,11 +476,22 @@
     max-width: 170px;
     height: auto;
     object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 @media (max-width: 576px) {
-    .brand-logo img {
-        max-width: 130px;
+    .brand-logo {
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+
+        img {
+            max-width: 120px !important;
+        }
+    }
+
+    .menu-left {
+        gap: 8px !important;
     }
 }
 
@@ -1220,6 +1235,73 @@
 
 h2.display-5.size-28 {
     font-size: 30px !important;
+}
+
+/* Bullet Points Fix */
+.description-text ul,
+.product-contain ul,
+.hbx-premium-blog-content ul {
+    list-style: disc !important;
+    padding-left: 25px !important;
+    margin-bottom: 20px !important;
+
+    li {
+        display: list-item !important;
+        list-style-type: disc !important;
+        margin-bottom: 8px !important;
+        color: inherit;
+    }
+}
+
+/* Spacing fix for progress section */
+.progress-sec {
+    margin: 15px 0 !important;
+
+    @media (max-width: 576px) {
+        margin: 10px 0 !important;
+    }
+}
+
+/* Center Loader Global */
+.loader-wrapper {
+    .loader {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 0 auto;
+    }
+}
+
+/* Checkout Mobile Responsiveness */
+@media (max-width: 767px) {
+    .checkout-page {
+        padding: 10px !important;
+
+        .checkout-main-title {
+            font-size: 20px !important;
+        }
+
+        .checkout-form {
+            .row {
+                --bs-gutter-x: 10px;
+            }
+        }
+    }
+
+    .summery-box {
+        margin-top: 20px;
+    }
+}
+
+/* Remove Question Marks from Mobile (Generic Fix for icons causing issues) */
+@media (max-width: 767px) {
+    .size-delivery-info {
+
+        svg.ri-question-fill,
+        svg.ri-questionnaires-line {
+            display: none !important;
+        }
+    }
 }
 
 /* Cart Buttons Mobile Fix */

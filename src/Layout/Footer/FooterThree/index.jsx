@@ -360,19 +360,19 @@ const FooterThree = () => {
               </h4>
 
               <div className="d-flex align-items-start mb-3">
-                <i className="bi bi-telephone-fill text-white me-3 fs-5"></i>
-                <a href="tel:+18328835303" className="text-white text-decoration-none small">
+                <i className="bi bi-telephone-fill text-secondary me-3 fs-5"></i>
+                <a href="tel:+18328835303" className="text-secondary text-decoration-none small">
                   (+1) 832 8835303
                 </a>
               </div>
 
               <div className="d-flex align-items-start mb-3">
-                <i className="bi bi-geo-alt-fill text-white me-3 fs-5"></i>
+                <i className="bi bi-geo-alt-fill text-secondary me-3 fs-5"></i>
                 <a
                   href="https://maps.google.com/?q=5900+Balcones+Drive+22288+Austin+TX+78731"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white text-decoration-none small"
+                  className="text-secondary text-decoration-none small"
                 >
                   5900 Balcones Drive # 22288<br />
                   Austin, TX 78731
@@ -380,8 +380,8 @@ const FooterThree = () => {
               </div>
 
               <div className="d-flex align-items-start">
-                <i className="bi bi-envelope-fill text-white me-3 fs-5"></i>
-                <a href="mailto:hello@hardwarebox.com" className="text-white text-decoration-none small">
+                <i className="bi bi-envelope-fill text-secondary me-3 fs-5"></i>
+                <a href="mailto:hello@hardwarebox.com" className="text-secondary text-decoration-none small">
                   hello@hardwarebox.com
                 </a>
               </div>
@@ -410,10 +410,10 @@ const FooterThree = () => {
                 <img src="/assets/images/phonefooter.png" className="img-fluid phoneimg" alt="Phone-no" />
                 <div className="text-start">
                   <strong>
-                    <a className="text-white" href="tel:+ +18328835303">(+1) 832 8835303</a>
+                    <a className="text-secondary" href="tel:+ +18328835303">(+1) 832 8835303</a>
                   </strong><br />
 
-                  <span className="small">5900 Balcones Drive # 22288 Austin, TX 78731</span>
+                  <span className="small text-secondary">5900 Balcones Drive # 22288 Austin, TX 78731</span>
                 </div>
 
                 {/* <div>

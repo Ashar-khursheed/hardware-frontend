@@ -28,11 +28,31 @@ const CategoryMainPage = ({ slug }) => {
   const { categoryData, categoryIsLoading } = useContext(CategoryContext);
 
   const getCategoryHierarchy = (slug, data) => {
+    if (!data) return [];
+
+    // Recursive function to flatten the category tree
+    const flattenCategories = (items) => {
+      let flat = [];
+      items.forEach(item => {
+        flat.push(item);
+        if (item.subcategories && item.subcategories.length > 0) {
+          flat = flat.concat(flattenCategories(item.subcategories));
+        }
+      });
+      return flat;
+    };
+
+    const flatData = flattenCategories(data);
     let hierarchy = [];
-    let current = data?.find(cat => cat.slug === slug);
+    let current = flatData?.find(cat => cat.slug === slug);
+
     while (current) {
-      hierarchy.unshift({ name: current.name, link: hierarchy.length > 0 ? `/category/${current.slug}` : null });
-      current = data?.find(cat => cat.id === current.parent_id);
+      // First item (deepest) doesn't get a link, others (parents) do
+      hierarchy.unshift({
+        name: current.name,
+        link: hierarchy.length > 0 ? `/category/${current.slug}` : null
+      });
+      current = flatData?.find(cat => cat.id === current.parent_id);
     }
     return hierarchy;
   };

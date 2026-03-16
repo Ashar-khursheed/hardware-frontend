@@ -50,13 +50,15 @@ export async function generateMetadata() {
 
 import Script from "next/script";
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const lng = await detectLanguage();
   return (
-    <html lang="en">
+    <html lang={lng}>
       <head>
         {/* Preconnect to Google Fonts for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="google" content="notranslate" />
 
         {/* Combined Google Fonts - Single request for better performance */}
         <link
