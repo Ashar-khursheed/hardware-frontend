@@ -13,6 +13,12 @@ export const getImageUrl = (thumbnail) => {
         rawUrl = `${baseUrl}${path}`;
     }
 
-    const finalUrl = rawUrl?.replace(/([^:]\/)\/+/g, "$1");
+    let finalUrl = rawUrl?.replace(/([^:]\/)\/+/g, "$1");
+
+    // Rewrite S3 URLs to CloudFront URLs if they exist
+    if (finalUrl && finalUrl.includes("hardware-website-images.s3.us-east-1.amazonaws.com")) {
+        finalUrl = finalUrl.replace("hardware-website-images.s3.us-east-1.amazonaws.com", "d3243ix3g2hwoc.cloudfront.net");
+    }
+
     return finalUrl;
 };
