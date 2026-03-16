@@ -45,7 +45,7 @@ const LoginForm = ({ setState }) => {
           <div className="auth-box mb-3">
             <Label htmlFor="review">{t("password")}</Label>
             <Field name="password" type="password" className="form-control" id="review" placeholder={t("enter_password")} required />
-            <a href={Href} className="forgot" onClick={() => setState("forgot")}>
+            <a href={Href} className="forgot" onClick={(e) => { e.preventDefault(); setState("forgot"); }}>
               {t("forgot_password")}?
             </a>
           </div>

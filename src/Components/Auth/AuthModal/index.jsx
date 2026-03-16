@@ -26,7 +26,8 @@ const AuthModal = () => {
   const { openAuthModal, setOpenAuthModal, themeOption } = useContext(ThemeOptionContext);
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     setState(state == "login" ? "register" : "login");
     setLogOrNew(!logOrNew);
   };

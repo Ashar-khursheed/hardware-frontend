@@ -33,7 +33,7 @@ const OTPVerificationForm = ({ setState }) => {
             <div className="log-in-title">
               <h5>
                 {t("otp_code") + " "}
-                <span>{mobileNumber||obscureEmail(email)}</span>
+                <span>{mobileNumber || obscureEmail(email)}</span>
               </h5>
             </div>
             <div className="auth-box mb-3 outer-otp">
@@ -42,7 +42,7 @@ const OTPVerificationForm = ({ setState }) => {
               </div>
             </div>
             <Btn type="submit" title={"Verify"} />
-            <a onClick={() => setState("forgot")} href={Href} className="modal-back">
+            <a onClick={(e) => { e.preventDefault(); setState("forgot"); }} href={Href} className="modal-back">
               <i className="ri-arrow-left-line"></i>
             </a>
           </Form>

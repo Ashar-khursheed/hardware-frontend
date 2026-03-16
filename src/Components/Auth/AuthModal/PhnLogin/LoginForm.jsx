@@ -12,7 +12,7 @@ import { Button, Col } from "reactstrap";
 const NumberLoginForm = ({ setState }) => {
   const { t } = useTranslation("common");
   const [showBoxMessage, setShowBoxMessage] = useState();
-  const { mutate, isLoading } = useHandlePhnLogin(setShowBoxMessage,setState);
+  const { mutate, isLoading } = useHandlePhnLogin(setShowBoxMessage, setState);
 
   return (
     <Formik
@@ -52,10 +52,10 @@ const NumberLoginForm = ({ setState }) => {
                 {errors.phone && touched?.phone && <ErrorMessage render={() => <div className="invalid-feedback">{errors.phone}</div>} />}
               </div>
             </Col>
-            <Btn  type="submit" loading={isLoading}>
+            <Btn type="submit" loading={isLoading}>
               {t("send_otp")}
             </Btn>
-            <a onClick={() => setState("login")} href={Href} className="modal-back">
+            <a onClick={(e) => { e.preventDefault(); setState("login"); }} href={Href} className="modal-back">
               <i className="ri-arrow-left-line"></i>
             </a>
           </Form>

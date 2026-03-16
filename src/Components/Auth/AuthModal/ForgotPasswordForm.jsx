@@ -31,7 +31,7 @@ const ForgotPasswordForm = ({ setState, setPrevState }) => {
               {errors.email && touched.email && <ErrorMessage name="email" render={(msg) => <div className="invalid-feedback d-block">{errors.email}</div>} />}
             </div>
             <Btn type="submit" title={"Send"} loading={isLoading} />
-            <a onClick={() => setState("login")} href={Href} className="modal-back">
+            <a onClick={(e) => { e.preventDefault(); setState("login"); }} href={Href} className="modal-back">
               <i className="ri-arrow-left-line"></i>
             </a>
           </Form>
