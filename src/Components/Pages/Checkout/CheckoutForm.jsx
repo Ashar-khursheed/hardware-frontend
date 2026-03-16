@@ -16,7 +16,7 @@ const CheckoutForm = ({ values, setFieldValue, errors, addToCartData }) => {
   const [address, setAddress] = useState([]);
   const router = useRouter();
   const access_token = Cookies.get("uat_multikart");
-  
+
   useEffect(() => {
     accountData?.address.length > 0 && setAddress((prev) => [...accountData?.address]);
   }, [accountData]);
@@ -27,31 +27,30 @@ const CheckoutForm = ({ values, setFieldValue, errors, addToCartData }) => {
   });
 
   return (
-    <div className="checkout-steps">
-      {access_token ? (
-        <AddressSelection 
+    <div className="hbx-checkout-steps-wrapper">
+      <div className="hbx-checkout-step-item">
+        {access_token ? (
+          <AddressSelection
+            values={values}
+            setFieldValue={setFieldValue}
+            accountData={accountData}
+            errors={errors}
+          />
+        ) : (
+          <ShippingAddressSection
+            setFieldValue={setFieldValue}
+            errors={errors}
+            data={data}
+            values={values}
+          />
+        )}
+      </div>
+
+      <div className="hbx-checkout-step-item">
+        <PaymentMethodSection
           values={values}
           setFieldValue={setFieldValue}
-          accountData={accountData}
-          errors={errors}
         />
-      ) : (
-        <ShippingAddressSection 
-          setFieldValue={setFieldValue} 
-          errors={errors} 
-          data={data} 
-          values={values} 
-        />
-      )}
-
-      {/* Step 2: Payment Method (same for both logged-in and guest) */}
-      <div className="checkout-steps-row">
-        <div className="checkout-step-col">
-          <PaymentMethodSection 
-            values={values} 
-            setFieldValue={setFieldValue} 
-          />
-        </div>
       </div>
     </div>
   );
