@@ -653,17 +653,30 @@
 
     /* Product Details Page Fixes */
     .product-page-details {
-        .buy-button-group {
+
+        .buy-button-group,
+        .product-buy-btn-group {
             display: flex !important;
+            flex-wrap: nowrap !important;
             gap: 10px !important;
             margin-top: 15px !important;
 
-            .btn {
+            .btn,
+            .buy-button {
                 flex: 1 !important;
                 margin: 0 !important;
                 padding: 12px 5px !important;
                 font-size: 14px !important;
-                white-space: nowrap;
+                white-space: nowrap !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+
+                @media (max-width: 576px) {
+                    font-size: 12px !important;
+                    padding: 8px 4px !important;
+                    height: 40px !important;
+                }
             }
         }
 
@@ -1207,4 +1220,25 @@
 
 h2.display-5.size-28 {
     font-size: 30px !important;
+}
+
+/* Cart Buttons Mobile Fix */
+@media (max-width: 576px) {
+    .cart-buttons {
+        --bs-gutter-x: 10px !important;
+        margin-top: 20px !important;
+
+        .btn {
+            font-size: 12px !important;
+            padding: 8px 2px !important;
+            white-space: nowrap !important;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            height: 40px !important;
+            letter-spacing: -0.3px;
+        }
+    }
 }
