@@ -50,7 +50,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "hardware-website-images.s3.us-east-1.amazonaws.com",
+        hostname: "d3243ix3g2hwoc.cloudfront.net",
       },
       {
         protocol: "http",
