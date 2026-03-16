@@ -1407,3 +1407,34 @@ h2.display-5.size-28 {
         }
     }
 }
+
+/* Product Card Add To Cart Button Mobile Fix */
+@media (max-width: 576px) {
+
+    .add-cart-btn,
+    .add_cart,
+    .add-button,
+    .addto-cart-bottom,
+    .addtocart_btn {
+        font-size: 10px !important;
+        padding: 6px 8px !important;
+        white-space: nowrap !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        letter-spacing: 0 !important;
+        text-transform: uppercase !important;
+
+        span {
+            font-size: 9px !important;
+            margin-left: 3px !important;
+            white-space: nowrap !important;
+            display: inline-block !important;
+        }
+
+        i,
+        svg {
+            font-size: 11px !important;
+        }
+    }
+}
