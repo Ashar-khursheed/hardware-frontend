@@ -263,9 +263,11 @@
     }
 }
 
-/* Hide mobile menu/bottom bar completely as requested */
-.mobile-menu {
-    display: none !important;
+/* Hide mobile menu on desktop as it should only appear on mobile */
+@media (min-width: 992px) {
+    .mobile-menu {
+        display: none !important;
+    }
 }
 
 .brand-logo img {
@@ -668,9 +670,10 @@
     }
 }
 
-/* Sticky Bottom Cart Responsiveness Fixes */
+/* Sticky Bottom Cart Responsiveness Fixes - Hidden on Mobile as requested */
 .sticky-bottom-cart {
     @media (max-width: 768px) {
+        display: none !important;
         border-radius: 12px 12px 0 0 !important;
         padding: 10px 15px !important;
         background: #fff !important;
