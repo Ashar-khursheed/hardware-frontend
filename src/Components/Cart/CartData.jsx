@@ -11,7 +11,7 @@ import { Col, Row } from "reactstrap";
 import CartProductDetail from "./CartProductDetail";
 import HandleQuantity from "./HandleQuantity";
 
-const CartData = ({ elem }) => {
+const CartData = ({ elem, mobileView }) => {
   const { t } = useTranslation("common");
   const { removeCart } = useContext(CartContext);
   const { convertCurrency } = useContext(SettingContext);
@@ -21,6 +21,41 @@ const CartData = ({ elem }) => {
     removeCart(elem?.variation_id ? elem?.variation_id : elem.product_id, elem?.id);
   };
 
+  if (mobileView) {
+    return (
+      <div className="cart-card-inner">
+        <div className="cart-card-image">
+          <CartProductDetail elem={elem} />
+        </div>
+        <div className="cart-card-details">
+          <div className="name-remove">
+            <Link href={`/product/${elem?.product?.slug}`}>
+              <span className="product-name">{elem?.product?.name}</span>
+            </Link>
+            <button className="remove-btn-small" onClick={removeItem}>
+              <RiCloseLine />
+            </button>
+          </div>
+
+          <div className="price-qty-row">
+            <div className="price-info">
+              <span className="current-price">{convertCurrency(elem?.product?.sale_price)}</span>
+              {elem?.product?.discount ? <del className="old-price">{convertCurrency(elem?.product?.price)}</del> : null}
+            </div>
+            <div className="quantity-selector">
+              <HandleQuantity productObj={elem?.product} elem={elem} />
+            </div>
+          </div>
+
+          <div className="subtotal-row">
+            <span className="label">Subtotal:</span>
+            <span className="value">{convertCurrency(elem?.sub_total)}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <tr>
       <CartProductDetail elem={elem} />
@@ -28,23 +63,8 @@ const CartData = ({ elem }) => {
         <Link href={`/product/${elem?.product?.slug}`} legacyBehavior>
           <a className="hbx-line-clamp-2 fw-bold text-dark">{elem?.product?.name}</a>
         </Link>
-
-        <div className="cart-mobile-wrapper d-block d-md-none">
-          <h6 className="theme-color fw-bold mb-1">
-            {convertCurrency(elem?.product?.sale_price)}
-          </h6>
-          {elem?.product?.discount ? <del className="text-muted small">{convertCurrency(elem?.product?.price)}</del> : null}
-
-          <div className="qty-box mt-2">
-            <HandleQuantity productObj={elem?.product} classes={{ customClass: "quantity-price" }} elem={elem} />
-          </div>
-
-          <button className="btn btn-link text-danger p-0 mt-2" onClick={removeItem}>
-            <RiCloseLine /> Remove
-          </button>
-        </div>
       </td>
-      <td className="table-price d-none d-md-table-cell">
+      <td className="table-price">
         <h5 className="theme-color fw-bold">
           {convertCurrency(elem?.product?.sale_price)}
         </h5>

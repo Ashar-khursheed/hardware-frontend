@@ -16,15 +16,16 @@ const ShowCartData = () => {
     <Row>
       {cartProducts?.length > 0 ? (
         <Col xs={12}>
-          <div className="table-responsive hbx-cart-container">
+          {/* Desktop Table - Hidden on Mobile */}
+          <div className="table-responsive hbx-cart-container d-none d-md-block">
             <Table className="cart-table table-borderless hbx-cart-table">
-              <thead className="d-none d-md-table-header-group">
+              <thead>
                 <tr className="table-head">
                   <th scope="col">{t("image")}</th>
                   <th scope="col">{t("product_name")}</th>
-                  <th className="d-none d-md-table-cell" scope="col">{t("price")}</th>
+                  <th scope="col">{t("price")}</th>
                   <th scope="col">{t("quantity")}</th>
-                  <th className="d-none d-md-table-cell" scope="col">{t("total")}</th>
+                  <th scope="col">{t("total")}</th>
                   <th scope="col">{t("action")}</th>
                 </tr>
               </thead>
@@ -35,8 +36,7 @@ const ShowCartData = () => {
               </tbody>
               <tfoot>
                 <tr>
-                  <td colSpan="4" className="d-md-table-cell d-none text-end fw-bold">{t("total_price")} :</td>
-                  <td className="d-md-none fw-bold">{t("total_price")} :</td>
+                  <td colSpan="4" className="text-end fw-bold">{t("total_price")} :</td>
                   <td>
                     <h2 className="fw-bold">{convertCurrency(getTotal(cartProducts)?.toFixed(2))}</h2>
                   </td>
@@ -44,6 +44,21 @@ const ShowCartData = () => {
                 </tr>
               </tfoot>
             </Table>
+          </div>
+
+          {/* Mobile Cart View - Shown only on Mobile */}
+          <div className="mobile-cart-view d-md-none">
+            {cartProducts.map((elem, i) => (
+              <div key={i} className="mobile-cart-card hbx-animate-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                <CartData elem={elem} mobileView={true} />
+              </div>
+            ))}
+            <div className="mobile-cart-footer">
+              <div className="total-box">
+                <span>{t("total_price")}</span>
+                <h3>{convertCurrency(getTotal(cartProducts)?.toFixed(2))}</h3>
+              </div>
+            </div>
           </div>
         </Col>
       ) : (
