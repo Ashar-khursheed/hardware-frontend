@@ -53,6 +53,10 @@ const nextConfig = {
         hostname: "d3243ix3g2hwoc.cloudfront.net",
       },
       {
+        protocol: "https",
+        hostname: "hardware-website-images.s3.us-east-1.amazonaws.com",
+      },
+      {
         protocol: "http",
         hostname: "127.0.0.1",
       },
