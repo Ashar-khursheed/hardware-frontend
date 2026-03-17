@@ -561,7 +561,7 @@ const ElectronicsThree = () => {
                     {/* <img src="/assets/images/benefitsec5.webp" alt="D&B Logo" className="mb-5" height="60" /> */}
                     <h3 className=" text-black">D&B Rating</h3>
                     <p className="small mb-1">
-                      D-U-N-S® Number is: <span className="text-orange fw-semibold">117396845</span>
+                      D-U-N-S® Number is: <span className="text-orange fw-semibold"> 131690413</span>
                     </p>
                     <p className="small text-muted mb-0">
                       Hardware Box is committed to delivering high-quality computer accessories and dependable service. Our Dun & Bradstreet profile reflects our credibility, financial stability, and trusted presence in the technology supply industry.
