@@ -369,21 +369,25 @@ const ElectronicsThree = () => {
               {
                 name: "Michael Carter",
                 role: "IT Infrastructure Manager",
+                image: "/assets/images/review.png",
                 text: "Hardware Box assisted us in procurement of enterprise SSD drives which were highly inaccessible in other directions. There was no trouble with the ordering, it was delivered in a shorter time and the goods were just as they are said to be. They also assisted us in determining that they were compatible with our servers, which saved us a lot of time."
               },
               {
                 name: "Daniel Brooks",
                 role: "System Integrator",
+                image: "/assets/images/danielbrooks.png",
                 text: "I have been buying networking elements and processors in regular basis to our projects on system integration and Hardware Box has emerged as one of our most trusted suppliers. Their stocks are admirable and their prices are very competitive with other hardware sellers on internet."
               },
               {
                 name: "Sarah Mitchell",
                 role: "Data Center Administrator",
+                image: "/assets/images/sarahmitchell.png",
                 text: "We have had to upgrade our data center by refurbishing the storage drives without overshooting budget. Hardware Box was supplying good quality refurbished hardware that could work like new. They had very good quality and packaging."
               },
               {
                 name: "Robert Chen",
                 role: "Network Engineer",
+                image: "/assets/images/robertchen.png",
                 text: "It is sometimes tedious to come up with compatible server components, but Hardware Box has simplified the process. Their team informed us on the process of choosing the appropriate hardware and made it arrive safely and in time."
               }
             ].map((review, index) => (
@@ -397,7 +401,7 @@ const ElectronicsThree = () => {
                   </div>
                   <div className="d-flex align-items-center mt-3">
                     <img
-                      src="/assets/images/review.png"
+                      src={review.image}
                       alt={review.name}
                       width="40"
                       height="40"
@@ -513,9 +517,8 @@ const ElectronicsThree = () => {
               <div className="d-flex mb-3">
                 <div className="me-3">
                   <div className="colorful">
-                    <i className="ri-customer-service-2-line fs-1 text-primary"></i>
-                  </div>
-                </div>
+                    <img src="/assets/images/callicon.png" alt="Genuine Products" width="60" />
+                  </div>                  </div>
                 <div>
                   <h5 className="fw-bold mb-1">24/7 CUSTOMER SUPPORT</h5>
                   <p className="mb-0 small text-muted">We are here to help</p>
@@ -536,7 +539,7 @@ const ElectronicsThree = () => {
                         <h4 className=" text-black">Government Agencies</h4>
                       </div>
                       <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/sam_logo_badge.png" alt="SAM Logo" className="" height="60" width="60" />
+                        <img src="/assets/images/logoiconn.png" alt="SAM Logo" className="" height="60" width="60" />
                         <h4 className=" text-black">SAM Registered</h4>
                       </div>
                       <div className="d-flex align-items-center gap-4">

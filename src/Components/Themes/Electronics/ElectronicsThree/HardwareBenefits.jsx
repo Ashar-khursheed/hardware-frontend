@@ -64,7 +64,7 @@ const HardwareBenefits = () => {
                   </div>
                   <div className="d-flex align-items-center gap-3 mb-4">
                     <div style={{ width: 60, height: 60, position: 'relative', flexShrink: 0 }}>
-                      <Image src="/assets/images/sam_logo_badge.png" alt="SAM Logo" fill style={{ objectFit: 'contain' }} />
+                      <Image src="/assets/images/logoiconn.png" alt="SAM Logo" fill style={{ objectFit: 'contain' }} />
                     </div>
                     <h4 className="text-black m-0 fs-5">SAM Registered</h4>
                   </div>
@@ -86,7 +86,7 @@ const HardwareBenefits = () => {
                 <div className="col-md-6 p-3 d-flex flex-column justify-content-center text-center text-md-start">
                   <h3 className="text-black fw-bold mb-3">D&B Rating</h3>
                   <p className="mb-2 fs-5">
-                    D-U-N-S® Number: <span className="text-primary fw-bold">117396845</span>
+                    D-U-N-S® Number: <span className="text-primary fw-bold">131690413</span>
                   </p>
                   <p className="text-muted mb-0">
                     We are committed to providing our customers with top-quality computer accessories. Our Dun & Bradstreet rating is excellent, a testament to our financial stability and reliability.
