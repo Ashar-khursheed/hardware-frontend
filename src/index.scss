@@ -1122,6 +1122,16 @@
         width: 85% !important;
         box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1) !important;
         border: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: -100% !important;
+        height: 100vh !important;
+        z-index: 1045 !important;
+        transition: left 0.3s ease-in-out !important;
+
+        &.show {
+            left: 0 !important;
+        }
 
         .offcanvas-header {
             padding: 20px 24px;
