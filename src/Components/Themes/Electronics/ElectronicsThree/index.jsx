@@ -490,9 +490,15 @@ const ElectronicsThree = () => {
         </div>
       </section>
 
-      {/* Category Button Strip */}
+      {/* Category Products 2 */}
       {data?.category_product_2?.status && (
-        <CategoryButtonStrip title={data?.category_product_2?.title} categoryIds={data?.category_product_2?.category_ids} />
+        <WrapperComponent classes={{ sectionClass: "ratio_square p-0 m-0 bg-title wo-bg category-tab-section section-b-space", fluidClass: "container" }} noRowCol={true}>
+          <Row>
+            <Col>
+              <HomeProductTab style="vertical" tabStyle="simple" tabAsLink={true} title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
+            </Col>
+          </Row>
+        </WrapperComponent>
       )}
 
       {/* About uss Section */}

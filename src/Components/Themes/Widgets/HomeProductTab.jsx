@@ -8,11 +8,12 @@ import { ProductAPI } from "@/Utils/AxiosUtils/API";
 import { Href } from "@/Utils/Constants";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Col, Row } from "reactstrap";
 
-const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle, classes, type, title, product_box_style, sliderOptions, paginate, isFilterCategoryDataNested, dynamic, customSelect }) => {
+const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle, tabAsLink, classes, type, title, product_box_style, sliderOptions, paginate, isFilterCategoryDataNested, dynamic, customSelect }) => {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState(0);
   const [currentCategory, setCurrentCategory] = useState("");
@@ -111,13 +112,38 @@ const HomeProductTab = ({ categoryIds, slider, style, tab_title_class, tabStyle,
               <h2 className='title'>{title?.title}</h2>
             </div>
             <ul className='tabs tab-title w-bg'>
-              {filteredCategories?.map((category, index) => (
-                <li key={category.id} className={activeTab === index ? "current" : ""}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); changeTab(index, category); }}>
-                    {category.name}
-                  </a>
-                </li>
-              ))}
+              {filteredCategories?.map((category, index) =>
+                tabAsLink ? (
+                  <li key={category.id}>
+                    <Link
+                      href={`/category/${category.slug}`}
+                      style={{
+                        display: 'inline-block',
+                        padding: '6px 16px',
+                        borderRadius: '4px',
+                        background: 'var(--theme-color, #e74c3c)',
+                        color: '#fff',
+                        fontWeight: 700,
+                        fontSize: '13px',
+                        textDecoration: 'none',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase',
+                        transition: 'opacity 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
+                      onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ) : (
+                  <li key={category.id} className={activeTab === index ? "current" : ""}>
+                    <a href="#" onClick={(e) => { e.preventDefault(); changeTab(index, category); }}>
+                      {category.name}
+                    </a>
+                  </li>
+                )
+              )}
             </ul>
           </div>
         ) : tabStyle === "classic" ? (
