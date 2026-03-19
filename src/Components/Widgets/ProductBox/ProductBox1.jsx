@@ -203,21 +203,8 @@ const ProductBox1 = ({ productState, setProductState }) => {
           </div>
         </div>
 
-        {/* ── Action Bar — Overlaid on image ── */}
-        {!isOutOfStock && (
-          <div className="agpc__action-bar">
-            <CartButton
-              classes="agpc__btn-cart"
-              productState={productState}
-              selectedVariation={selectedVariation}
-              text="Add to Cart"
-            />
-            <div className="agpc__actions">
-              <ProductHoverButton productstate={product} />
-            </div>
-          </div>
-        )}
       </div>
+
 
       {/* ── Product Info ── */}
       <div className="agpc__body">
@@ -246,6 +233,21 @@ const ProductBox1 = ({ productState, setProductState }) => {
             <span className="agpc__discount">-{discount}%</span>
           )}
         </div>
+
+        {/* ── Action Bar — Now in body to avoid covering image ── */}
+        {!isOutOfStock && (
+          <div className="agpc__action-bar">
+            <CartButton
+              classes="agpc__btn-cart"
+              productState={productState}
+              selectedVariation={selectedVariation}
+              text="Add to Cart"
+            />
+            <div className="agpc__actions">
+              <ProductHoverButton productstate={product} />
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── Variant Attributes ── */}

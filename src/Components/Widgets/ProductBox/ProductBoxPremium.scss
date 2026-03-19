@@ -411,24 +411,25 @@
         transition: transform 0.3s ease;
     }
 
-    /* ── Action Bar — Overlaid on image ── */
     .agpc__action-bar {
         position: absolute;
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 15px 12px;
-        background: transparent !important;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.96) !important;
+        backdrop-filter: blur(8px);
         display: flex;
-        flex-direction: column;
+        flex-direction: row; /* Horizontal layout for compactness */
         align-items: center;
         gap: 8px;
         z-index: 10;
+        border-top: 1px solid #f0f0f0;
 
         opacity: 0;
         visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        transform: translateY(100%); /* Slide up from the absolute bottom */
+        transition: all 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
     }
 }
 
@@ -517,25 +518,25 @@
 /* Add to Cart Button */
 .agpc__btn-cart,
 button.agpc__btn-cart {
-    width: 100% !important;
-    padding: 10px 16px !important;
+    flex: 1 !important; /* Take remaining space */
+    padding: 8px 12px !important;
     background: var(--agpc-btn-bg) !important;
     color: #ffffff !important;
-    /* always white */
-    font-size: 13px !important;
+    font-size: 11px !important; /* Smaller font for compactness */
     font-weight: 700 !important;
-    letter-spacing: 0.04em !important;
+    letter-spacing: 0.03em !important;
     text-transform: uppercase !important;
     border: none !important;
     border-radius: var(--agpc-radius-sm) !important;
     cursor: pointer !important;
-    transition: background 0.15s ease, color 0.15s ease !important;
+    transition: background 0.15s ease, transform 0.1s ease !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 7px !important;
+    gap: 6px !important;
     box-shadow: none !important;
     line-height: 1 !important;
+    white-space: nowrap !important;
 
     /* Force all child elements white too */
     span,
@@ -564,10 +565,10 @@ button.agpc__btn-cart {
 .agpc__actions {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 8px;
-    width: 100%;
+    gap: 6px;
+    width: auto;
 
     /* Target the inner list that ProductHoverButton renders */
     ul,
@@ -576,7 +577,7 @@ button.agpc__btn-cart {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: 6px;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -588,10 +589,10 @@ button.agpc__btn-cart {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        width: 34px !important;
-        height: 34px !important;
-        background: #fff !important;
-        border: 1px solid #e8e8e8 !important;
+        width: 30px !important;
+        height: 30px !important;
+        background: #f8f8f8 !important;
+        border: 1px solid #eee !important;
         border-radius: 50% !important;
         color: #555 !important;
         font-size: 16px !important;
