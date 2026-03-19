@@ -44,7 +44,7 @@ const staticCategories = [
     {
         id: "motherboard",
         title: "Motherboard",
-        path: "/category/motherboard",
+        path: " /category/motherboards",
         child: [
             { title: "Server Motherboards", path: "/category/server-motherboards" },
             { title: "Laptop Motherboards", path: "/category/laptop-motherboards" },

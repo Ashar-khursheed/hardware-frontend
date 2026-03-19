@@ -208,7 +208,7 @@ const FooterThree = () => {
             {/* Column 4 - Motherboards */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
-                <a href="/category/motherboard" className="text-white text-decoration-none">Motherboards</a>
+                <a href=" /category/motherboards" className="text-white text-decoration-none">Motherboards</a>
               </h4>
               <p className="small text-white mb-1">
                 <a href="/category/server-motherboards" className="text-white text-decoration-none">Server Motherboards</a>

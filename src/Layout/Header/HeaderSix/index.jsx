@@ -243,7 +243,7 @@ const HeaderSix = () => {
                             onMouseEnter={() => setActiveCategory("ssd")}
                             className={`category-item ${activeCategory === "ssd" ? "active" : ""}`}
                           >
-                            <Link href="/category/motherboard" className="category-link">
+                            <Link href=" /category/motherboards" className="category-link">
                               <span>Motherboard</span>
                               <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M9 18l6-6-6-6" />
@@ -504,7 +504,7 @@ const HeaderSix = () => {
                               </Link>
                             </div>
                             {/* <div className="promo-banner-wrapper">
-                              <Link href="/category/motherboard" className="promo-banner">
+                              <Link href=" /category/motherboards" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
                                   <h3 className="promo-title">Up to 10% OFF</h3>
