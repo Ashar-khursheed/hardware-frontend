@@ -144,10 +144,12 @@ const css = `
 .bqm-success p  { font-size:14px; color:#777; max-width:320px; line-height:1.65; }
 
 @media(max-width:640px) {
-  .bqm-dialog  { flex-direction:column; max-width:98vw; border-radius:12px; }
-  .bqm-left    { width:100%; min-width:unset; padding:26px 22px; }
-  .bqm-right   { padding:22px; }
-  .bqm-grid    { grid-template-columns:1fr; }
+  .bqm-dialog  { flex-direction:column; max-width:95vw; border-radius:12px; margin: 10px; }
+  .bqm-left    { display: none !important; }
+  .bqm-right   { padding: 24px 20px; }
+  .bqm-grid    { grid-template-columns:1fr; gap: 8px; }
+  .bqm-right h3 { font-size: 19px; }
+  .bqm-sub { font-size: 12px; margin-bottom: 16px; }
 }
 `;
 
