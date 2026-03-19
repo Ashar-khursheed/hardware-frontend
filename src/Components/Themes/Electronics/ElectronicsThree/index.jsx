@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import { Container, Row, Col } from "reactstrap";
 
@@ -34,7 +34,78 @@ import Link from "next/link";
 import HomeCategorySidebar from "@/Components/Themes/Widgets/HomeCategorySidebar";
 import HomeServices from "@/Components/Themes/Widgets/HomeService";
 import HomeSlider from "@/Components/Themes/Widgets/HomeSlider";
+import CategoryContext from "@/Context/CategoryContext";
 
+
+/* ─── Category Button Strip ─── */
+const CategoryButtonStrip = ({ title, categoryIds }) => {
+  const { filterCategory } = useContext(CategoryContext);
+  const categoryData = filterCategory("product");
+
+  const filterCategoryData = (categoryData, categoryIds) => {
+    if (!categoryData || !categoryIds) return [];
+    const filteredCategories = [];
+    const ids = new Set(categoryIds);
+    const walk = (cat) => {
+      if (ids.has(cat.id)) { filteredCategories.push(cat); return; }
+      if (cat.subcategories) cat.subcategories.forEach(walk);
+    };
+    categoryData.forEach(walk);
+    return filteredCategories;
+  };
+
+  const categories = filterCategoryData(categoryData, categoryIds);
+
+  if (!categories.length) return null;
+
+  return (
+    <section className="py-4 bg-white section-b-space">
+      <div className="container">
+        {title && (
+          <h3 className="text-black mb-4" style={{ fontSize: '1.3rem', fontWeight: 700 }}>
+            {title}
+          </h3>
+        )}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '12px',
+        }}>
+          {categories.map((cat) => (
+            <Link
+              key={cat.id}
+              href={`/category/${cat.slug}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '8px 20px',
+                borderRadius: '4px',
+                border: '1.5px solid var(--theme-color, #2874f0)',
+                color: 'var(--theme-color, #2874f0)',
+                fontWeight: 600,
+                fontSize: '14px',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease',
+                background: '#fff',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'var(--theme-color, #2874f0)';
+                e.currentTarget.style.color = '#fff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#fff';
+                e.currentTarget.style.color = 'var(--theme-color, #2874f0)';
+              }}
+            >
+              {cat.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const ElectronicsThree = () => {
   const { data, refetch, isLoading } = useCustomDataQuery({ params: "electronics_three" });
@@ -419,15 +490,9 @@ const ElectronicsThree = () => {
         </div>
       </section>
 
-      {/* Category Products 2 */}
+      {/* Category Button Strip */}
       {data?.category_product_2?.status && (
-        <WrapperComponent classes={{ sectionClass: "ratio_square p-0 m-0 bg-title wo-bg category-tab-section section-b-space", fluidClass: "container" }} noRowCol={true}>
-          <Row>
-            <Col>
-              <HomeProductTab style="vertical" tabStyle="simple" title={data?.category_product_2} classes="row row-cols-xxl-5 row-cols-xl-5 row-cols-md-3 row-cols-2 g-sm-4 g-3" paginate={5} categoryIds={data?.category_product_2?.category_ids} />
-            </Col>
-          </Row>
-        </WrapperComponent>
+        <CategoryButtonStrip title={data?.category_product_2?.title} categoryIds={data?.category_product_2?.category_ids} />
       )}
 
       {/* About uss Section */}
@@ -807,27 +872,7 @@ const ElectronicsThree = () => {
             </div>
 
             {/* Right: Contact Form */}
-            <div className="col-md-4">
-              <div className="p-4 border rounded">
-                <h3 className="fw-bold text-center mb-3">Get In Touch</h3>
-                <p className="text-muted text-center small mb-4">
-                </p>
-                <form>
-                  <div className="mb-3">
-                    <input type="text" className="form-control" placeholder="Enter Your Name*" />
-                  </div>
-                  <div className="mb-3">
-                    <input type="email" className="form-control" placeholder="Enter Your Email Id*" />
-                  </div>
-                  <div className="mb-3">
-                    <textarea className="form-control" rows="3" placeholder="Enter Your Message*" />
-                  </div>
-                  <button type="submit" className="btn btn-primary w-100 fw-semibold">
-                    SUBMIT A MESSAGE
-                  </button>
-                </form>
-              </div>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
@@ -836,3 +881,117 @@ const ElectronicsThree = () => {
 };
 
 export default ElectronicsThree;
+
+
+/* ─── Contact Form ─── */
+const ContactForm = () => {
+  const [fields, setFields] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const validate = () => {
+    const errs = {};
+    if (!fields.name.trim()) errs.name = 'Name is required.';
+    if (!fields.email.trim()) errs.email = 'Email is required.';
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fields.email)) errs.email = 'Enter a valid email.';
+    if (!fields.message.trim()) errs.message = 'Message is required.';
+    return errs;
+  };
+
+  const handleChange = (e) => {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    setLoading(true);
+    try {
+      // post to your contact API or email service here
+      await new Promise((res) => setTimeout(res, 800)); // simulated API call
+      setSubmitted(true);
+      setFields({ name: '', email: '', message: '' });
+    } catch (err) {
+      console.error('Contact form error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="col-md-4">
+        <div className="p-4 border rounded text-center">
+          <div style={{
+            width: 64, height: 64, borderRadius: '50%',
+            background: 'linear-gradient(135deg,#2874f0,#1a56c2)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            margin: '0 auto 16px'
+          }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <h4 className="fw-bold text-black mb-2">Message Sent!</h4>
+          <p className="text-muted small mb-4">Thank you for reaching out. We'll get back to you shortly.</p>
+          <Link href="/contact-us" className="btn btn-primary fw-semibold px-4">
+            Go to Contact Us
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="col-md-4">
+      <div className="p-4 border rounded">
+        <h3 className="fw-bold text-center mb-3">Get In Touch</h3>
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="mb-3">
+            <input
+              type="text"
+              name="name"
+              value={fields.name}
+              onChange={handleChange}
+              className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+              placeholder="Enter Your Name*"
+            />
+            {errors.name && <div className="invalid-feedback">{errors.name}</div>}
+          </div>
+          <div className="mb-3">
+            <input
+              type="email"
+              name="email"
+              value={fields.email}
+              onChange={handleChange}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+              placeholder="Enter Your Email Id*"
+            />
+            {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+          </div>
+          <div className="mb-3">
+            <textarea
+              name="message"
+              value={fields.message}
+              onChange={handleChange}
+              className={`form-control ${errors.message ? 'is-invalid' : ''}`}
+              rows="4"
+              placeholder="Enter Your Message*"
+            />
+            {errors.message && <div className="invalid-feedback">{errors.message}</div>}
+          </div>
+          <button
+            type="submit"
+            className="btn btn-primary w-100 fw-semibold"
+            disabled={loading}
+          >
+            {loading ? 'Sending…' : 'SUBMIT A MESSAGE'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};

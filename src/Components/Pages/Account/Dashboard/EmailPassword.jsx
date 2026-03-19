@@ -2,7 +2,6 @@ import AccountContext from "@/Context/AccountContext";
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import EmailPasswordModal from "./EmailPasswordModal";
-import { Href } from "@/Utils/Constants";
 
 const EmailPassword = () => {
   const { accountData } = useContext(AccountContext);
@@ -15,17 +14,25 @@ const EmailPassword = () => {
           <h6>
             {t("email")} : {accountData?.email}
           </h6>
-          <a href={Href} onClick={() => setModal("email")}>
+          <button
+            type="button"
+            className="btn btn-link p-0 text-decoration-none"
+            onClick={(e) => { e.preventDefault(); setModal("email"); }}
+          >
             {t("edit")}
-          </a>
+          </button>
         </div>
         <div className="col-sm-6">
           <h6>
             {t("password")} : {"●".repeat(6)}
           </h6>
-          <a href={Href} onClick={() => setModal("password")}>
+          <button
+            type="button"
+            className="btn btn-link p-0 text-decoration-none"
+            onClick={(e) => { e.preventDefault(); setModal("password"); }}
+          >
             {t("edit")}
-          </a>
+          </button>
         </div>
       </div>
       <EmailPasswordModal modal={modal} setModal={setModal} />
