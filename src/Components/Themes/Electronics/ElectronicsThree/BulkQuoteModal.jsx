@@ -44,6 +44,7 @@ const css = `
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  text-align: left !important;
 }
 .bqm-left::before {
   content:''; position:absolute; top:-60px; right:-60px;
@@ -62,7 +63,7 @@ const css = `
   padding:5px 12px; border-radius:20px; text-transform:uppercase;
   width:fit-content; margin-bottom:20px;
 }
-.bqm-left h2 { font-size:21px; font-weight:800; line-height:1.35; margin-bottom:12px; }
+.bqm-left h2 { font-size:21px; font-weight:800; line-height:1.35; margin-bottom:12px; color: #fff !important;}
 .bqm-left p  { font-size:13px; color:rgba(255,255,255,0.7); line-height:1.65; }
 .bqm-perks   { list-style:none; padding:0; margin:20px 0 0; }
 .bqm-perks li {
@@ -82,7 +83,7 @@ const css = `
 .bqm-phone span { font-size:11px; color:rgba(255,255,255,0.55); display:block; }
 .bqm-phone strong { font-size:14px; color:#fff; }
 
-.bqm-right { flex:1; padding:32px 32px 28px; position:relative; overflow-y:auto; }
+.bqm-right { flex:1; padding:32px 32px 28px; position:relative; overflow-y:auto; text-align: left !important; }
 .bqm-right h3 { font-size:21px; font-weight:800; color:#1a1a2e; margin-bottom:4px; }
 .bqm-sub { font-size:13px; color:#999; margin-bottom:22px; }
 
@@ -167,9 +168,9 @@ const Spinner = () => (
 );
 
 const URGENCY_LABELS = {
-  asap:     "ASAP (1–3 days)",
-  week:     "Within a week",
-  month:    "Within a month",
+  asap: "ASAP (1–3 days)",
+  week: "Within a week",
+  month: "Within a month",
   flexible: "Flexible",
 };
 
@@ -178,9 +179,9 @@ const URGENCY_LABELS = {
 ════════════════════════════════════════ */
 const BulkQuoteModal = ({ open, onClose }) => {
   const EMPTY = { full_name: "", org_name: "", email: "", phone: "", part_number: "", quantity: "", urgency: "", description: "" };
-  const [fields, setFields]     = useState(EMPTY);
-  const [errors, setErrors]     = useState({});
-  const [loading, setLoading]   = useState(false);
+  const [fields, setFields] = useState(EMPTY);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [globalErr, setGlobalErr] = useState("");
 
@@ -201,12 +202,12 @@ const BulkQuoteModal = ({ open, onClose }) => {
   /* Validation */
   const validate = () => {
     const e = {};
-    if (!fields.full_name.trim())    e.full_name    = "Full name is required.";
-    if (!fields.email.trim())        e.email        = "Email is required.";
+    if (!fields.full_name.trim()) e.full_name = "Full name is required.";
+    if (!fields.email.trim()) e.email = "Email is required.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = "Enter a valid email.";
-    if (!fields.phone.trim())        e.phone        = "Phone is required.";
-    if (!fields.part_number.trim())  e.part_number  = "Part # / Product is required.";
-    if (!fields.quantity.trim())     e.quantity     = "Quantity is required.";
+    if (!fields.phone.trim()) e.phone = "Phone is required.";
+    if (!fields.part_number.trim()) e.part_number = "Part # / Product is required.";
+    if (!fields.quantity.trim()) e.quantity = "Quantity is required.";
     return e;
   };
 
@@ -224,9 +225,9 @@ const BulkQuoteModal = ({ open, onClose }) => {
     setGlobalErr("");
     try {
       const res = await request({
-        url:    BulkQuoteAPI,   // "/bulk-quote"  →  your Laravel route
+        url: BulkQuoteAPI,   // "/bulk-quote"  →  your Laravel route
         method: "POST",
-        data:   fields,
+        data: fields,
       });
       // Laravel returns 200/201 on success
       if (res?.status === 200 || res?.status === 201) {
@@ -266,7 +267,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
         <div className="bqm-left">
           <div>
             <div className="bqm-badge">
-              <svg width="8" height="8" viewBox="0 0 8 8" fill="#ff6600"><circle cx="4" cy="4" r="4"/></svg>
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="#ff6600"><circle cx="4" cy="4" r="4" /></svg>
               Bulk Pricing Available
             </div>
             <h2>Get the Best Price on Bulk IT Hardware</h2>
@@ -287,7 +288,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
           </div>
           <div className="bqm-phone">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff6600" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.44 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z" />
             </svg>
             <div>
               <span>Speak to a specialist</span>
@@ -328,12 +329,12 @@ const BulkQuoteModal = ({ open, onClose }) => {
 
               <form onSubmit={handleSubmit} noValidate>
                 <div className="bqm-grid">
-                  <F name="full_name"   label="Full Name *"           placeholder="John Smith" />
-                  <F name="org_name"    label="Organization Name"     placeholder="Acme Corp" />
-                  <F name="email"       label="Email *"  type="email" placeholder="john@company.com" />
-                  <F name="phone"       label="Phone *"  type="tel"   placeholder="+1 (555) 000-0000" />
-                  <F name="part_number" label="Part # / Product *"    placeholder="e.g. 881457-B21" />
-                  <F name="quantity"    label="Quantity *" type="number" placeholder="e.g. 50" />
+                  <F name="full_name" label="Full Name *" placeholder="John Smith" />
+                  <F name="org_name" label="Organization Name" placeholder="Acme Corp" />
+                  <F name="email" label="Email *" type="email" placeholder="john@company.com" />
+                  <F name="phone" label="Phone *" type="tel" placeholder="+1 (555) 000-0000" />
+                  <F name="part_number" label="Part # / Product *" placeholder="e.g. 881457-B21" />
+                  <F name="quantity" label="Quantity *" type="number" placeholder="e.g. 50" />
 
                   {/* Urgency — full width */}
                   <div className="bqm-field bqm-span">
