@@ -154,3 +154,6 @@ export const ZonePointsApi = "/zone-by-point";
 
 // Translations
 export const TranslationAPI = "/translation";
+
+// Bulk Quote API
+export const BulkQuoteAPI = "/bulk-quote";

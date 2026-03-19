@@ -25,6 +25,7 @@ import ShippingBar from "./ShippingBar";
 import PromoBanner from "./PromoBanner";
 import HardwareBenefits from "./HardwareBenefits";
 import SkeletonHomepage from "./SkeletonHomepage";
+import { BulkQuoteButton } from "./BulkQuoteModal";
 
 import ImageLink from "@/Components/Widgets/ImageLink";
 import { Href, storageURL } from "@/Utils/Constants";
@@ -789,22 +790,7 @@ const ElectronicsThree = () => {
                 </h3>
               </div>
               <div className="col-md-4 text-md-end">
-                <a
-                  href="#contact" // Change to your actual link
-                  className="btn fw-bold"
-                  style={{
-                    backgroundColor: "#ff6600",
-                    color: "#fff",
-                    padding: "12px 20px",
-                    borderRadius: "4px",
-                    border: "none !important",
-
-                    textTransform: "uppercase",
-                    fontSize: "14px",
-                  }}
-                >
-                  Request Bulk Quote
-                </a>
+                <BulkQuoteButton />
               </div>
             </div>
           </div>
