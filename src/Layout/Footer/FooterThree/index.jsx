@@ -359,14 +359,14 @@ const FooterThree = () => {
                 Contact Us
               </h4>
 
-              <div className="d-flex align-items-start mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <i className="bi bi-telephone-fill text-white me-3 fs-5"></i>
                 <a href="tel:+18328835303" className="text-white text-decoration-none small">
                   (+1) 832 8835303
                 </a>
               </div>
 
-              <div className="d-flex align-items-start mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <i className="bi bi-geo-alt-fill text-white me-3 fs-5"></i>
                 <a
                   href="https://maps.google.com/?q=5900+Balcones+Drive+22288+Austin+TX+78731"
@@ -379,7 +379,7 @@ const FooterThree = () => {
                 </a>
               </div>
 
-              <div className="d-flex align-items-start">
+              <div className="d-flex align-items-center">
                 <i className="bi bi-envelope-fill text-white me-3 fs-5"></i>
                 <a href="mailto:hello@hardwarebox.com" className="text-white text-decoration-none small">
                   hello@hardwarebox.com

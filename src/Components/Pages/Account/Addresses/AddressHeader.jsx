@@ -26,7 +26,7 @@ const AddressHeader = () => {
     refetch();
     setModal("");
   });
-  const { mutate: editMutate, isLoading: editLoader } = useCreate(`${AddressAPI}/${editAddress?.id}`, false, false, "Address Updated successfully", (resDta) => {
+  const { mutate: editMutate, isLoading: editLoader } = useCreate(AddressAPI, editAddress?.id, false, "Address Updated successfully", (resDta) => {
     setAddressState((prev) =>
       prev.map((elem) => {
         if (elem?.id == resDta?.data?.id) {

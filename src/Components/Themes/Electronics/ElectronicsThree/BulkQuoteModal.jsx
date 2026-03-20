@@ -294,7 +294,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
             </svg>
             <div>
               <span>Speak to a specialist</span>
-              <strong>+1 (855) 483-7810</strong>
+              <strong>+1 (833) 883-5303</strong>
             </div>
           </div>
         </div>

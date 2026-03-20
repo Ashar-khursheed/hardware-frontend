@@ -243,7 +243,7 @@ const ProductBox1 = ({ productState, setProductState }) => {
               selectedVariation={selectedVariation}
               text="Add to Cart"
             />
-            <div className="agpc__actions">
+            <div className="agpc__actions d-none d-lg-flex">
               <ProductHoverButton productstate={product} />
             </div>
           </div>

@@ -428,8 +428,27 @@
 
         opacity: 0;
         visibility: hidden;
-        transform: translateY(100%); /* Slide up from the absolute bottom */
-        transition: all 0.25s cubic-bezier(0.1, 0.7, 0.1, 1);
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+
+        @media (max-width: 991px) {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            position: relative !important;
+            background: transparent !important;
+            padding: 0 !important;
+            border-top: none !important;
+            margin-top: 12px;
+        }
+    }
+}
+
+.agpc__card:hover {
+    .agpc__action-bar {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 }
 

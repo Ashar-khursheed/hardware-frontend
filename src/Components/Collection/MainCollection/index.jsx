@@ -173,11 +173,12 @@
 
 // export default MainCollection;
 
+import CategoryContext from "@/Context/CategoryContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import Btn from "@/Elements/Buttons/Btn";
 import { storageURL } from "@/Utils/Constants";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiFilterFill } from "react-icons/ri";
 import { Col, Row } from "reactstrap";
@@ -195,9 +196,29 @@ const MainCollection = ({authorSlug, publicationSlug, filter, setFilter, isBanne
   const [grid, setGrid] = useState(initialGrid);
   const [totalProducts, setTotalProducts] = useState(0);
   const { themeOption, setCollectionMobile } = useContext(ThemeOptionContext);
+  const { categoryData } = useContext(CategoryContext);
   const { t } = useTranslation("common");
   const [layout] = useCustomSearchParams(["layout"]);
   const searchParams = useSearchParams();
+
+  // Find current category for description
+  const currentCategory = useMemo(() => {
+    if (!categorySlug) return null;
+    
+    // Recursive search in category tree
+    const findCat = (cats, slug) => {
+      for (const cat of cats) {
+        if (cat.slug === slug) return cat;
+        if (cat.subcategories?.length) {
+          const found = findCat(cat.subcategories, slug);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+    
+    return findCat(categoryData || [], categorySlug);
+  }, [categoryData, categorySlug]);
 
   // Sync URL params with filter state
   useEffect(() => {
@@ -238,6 +259,13 @@ const MainCollection = ({authorSlug, publicationSlug, filter, setFilter, isBanne
               </div>
             )}
             <div className="collection-product-wrapper">
+              {currentCategory?.description && (
+                <div className="category-description mb-4 p-3 bg-light rounded">
+                  <p className="mb-0 text-muted" style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                    {currentCategory.description}
+                  </p>
+                </div>
+              )}
               <div className="product-top-filter">
                 {!isOffcanvas && !sidebarPopUp && (
                   <Btn color="transparent" className="filter-main-btn " onClick={() => setCollectionMobile(true)}>

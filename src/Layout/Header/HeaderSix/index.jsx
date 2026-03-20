@@ -848,9 +848,7 @@ const HeaderSix = () => {
                     </div>
 
                     {/* Promo Banner */}
-                    <div className="mega-menu-footer">
-                      🔥 Free shipping on orders over $99 — Shop our best deals today!
-                    </div>
+
                   </div>
                 </div>
               </div>
