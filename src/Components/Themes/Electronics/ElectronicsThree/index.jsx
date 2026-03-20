@@ -769,10 +769,15 @@ const ElectronicsThree = () => {
       <section className="p-0 contactustoget section-b-space">
         <div className="container heightcus py-1 px-3 my-1"
           style={{
+            backgroundImage: "url('/assets/images/newbannerimg.webp')",
+            backgroundSize: "cover",
             backgroundPosition: "center",
+            display: "flex",
+            alignItems: "center",
             borderRadius: "10px",
             minHeight: "175px",
-            height: "auto"
+            height: "auto",
+            padding: "20px 0"
           }}
 
         >

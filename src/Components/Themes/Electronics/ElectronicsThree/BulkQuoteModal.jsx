@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { RiCloseLine, RiCheckLine, RiSendPlaneLine, RiPhoneLine } from "react-icons/ri";
+import { RiCloseLine, RiCheckLine, RiSendPlaneLine, RiPhoneLine, RiBuilding4Line, RiUser3Line, RiArchiveLine } from "react-icons/ri";
 import { BulkQuoteAPI } from "@/Utils/AxiosUtils/API";
 import request from "@/Utils/AxiosUtils";
 
@@ -26,7 +26,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
     phone: "",
     part_number: "",
     quantity: "",
-    urgency: "",
+    urgency: "immediate",
     description: "",
   });
   const [errors, setErrors] = useState({});
@@ -38,7 +38,6 @@ const BulkQuoteModal = ({ open, onClose }) => {
     if (open) {
       document.body.style.overflow = "hidden";
       setSubmitted(false);
-      setFields({ ...fields, urgency: "immediate" });
     } else {
       document.body.style.overflow = "auto";
     }
@@ -49,17 +48,17 @@ const BulkQuoteModal = ({ open, onClose }) => {
 
   const validate = () => {
     const e = {};
-    if (!fields.full_name.trim()) e.full_name = "Required";
-    if (!fields.email.trim()) e.email = "Required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = "Invalid";
-    if (!fields.phone.trim()) e.phone = "Required";
-    if (!fields.part_number.trim()) e.part_number = "Required";
-    if (!fields.quantity.trim()) e.quantity = "Required";
+    if (!fields.full_name?.trim()) e.full_name = "Full Name is required";
+    if (!fields.email?.trim()) e.email = "Business email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = "Invalid email address";
+    if (!fields.phone?.trim()) e.phone = "Phone number is required";
+    if (!fields.part_number?.trim()) e.part_number = "Part Number/Product is required";
+    if (!fields.quantity?.trim() || isNaN(fields.quantity)) e.quantity = "Valid quantity is required";
     return e;
   };
 
-  const set = (k) => (e) => {
-    setFields((p) => ({ ...p, [k]: e.target.value }));
+  const handleSetField = (k) => (val) => {
+    setFields((p) => ({ ...p, [k]: val }));
     setErrors((p) => ({ ...p, [k]: "" }));
   };
 
@@ -76,184 +75,217 @@ const BulkQuoteModal = ({ open, onClose }) => {
         data: fields,
       });
       if (res?.status === 200 || res?.status === 201) setSubmitted(true);
-      else setGlobalErr(res?.data?.message || "Integration error. Please try again.");
+      else setGlobalErr(res?.data?.message || "Something went wrong. Please check your data.");
     } catch (err) {
-      setGlobalErr("Network error. Please try again.");
+      setGlobalErr("Could not connect to the server. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const F = ({ name, label, type = "text", placeholder = "", span = false }) => (
-    <div className={`bqm-field ${span ? 'bqm-span' : ''}`}>
-      <label className="bqm-label">{label}</label>
-      <input
-        type={type} value={fields[name]} onChange={set(name)}
-        placeholder={placeholder}
-        className={`bqm-input${errors[name] ? " err" : ""}`}
-      />
-      {errors[name] && <span className="bqm-err-msg">{errors[name]}</span>}
-    </div>
-  );
-
   return (
-    <div className="bqm-backdrop" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="bqm-dialog" role="dialog" aria-modal="true">
-        
-        {/* LEFT: Branding/Trust */}
-        <div className="bqm-side-brand">
-          <div className="bqm-brand-inner">
-            <span className="bqm-top-tag">Hardware Box Advantage</span>
-            <h2 className="bqm-heading">Enterprise IT Sourcing Simplified</h2>
-            <p className="bqm-subline">Get specialized pricing for bulk orders of servers, networking gear, and workstations.</p>
-            
-            <ul className="bqm-features">
-              <li><RiCheckLine /> Wholesale Pricing across all SKUs</li>
-              <li><RiCheckLine /> Global Shipping within 48 Hours</li>
-              <li><RiCheckLine /> Assigned Procurement Account Manager</li>
-              <li><RiCheckLine /> Net 30 Terms available for Corporate</li>
-            </ul>
+    <div className="hwb-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="hwb-modal-container">
+        {/* Banner across the top if needed, but side-by-side with bg is better */}
+        <div className="hwb-modal-top-bar d-lg-none">
+             <h3>Bulk Order Inquiry</h3>
+             <button className="hwb-close-mobile" onClick={onClose}><RiCloseLine /></button>
+        </div>
 
-            <div className="bqm-contact-box mt-auto">
-              <div className="bqm-phone-link">
-                <RiPhoneLine className="text-orange" />
-                <div>
-                  <small>Human Support</small>
-                  <span>+1 (833) 883-5303</span>
+        <div className="hwb-modal-wrap">
+          {/* LEFT PANEL with BACKGROUND BANNER */}
+          <div className="hwb-modal-aside">
+            <div className="hwb-aside-bg-overlay"></div>
+            <div className="hwb-aside-content">
+              <div className="hwb-aside-header">
+                <span className="hwb-badge">Bulk Advantage</span>
+                <h2 className="hwb-aside-title">Enterprise Hardware Solutions</h2>
+              </div>
+              <ul className="hwb-aside-list">
+                <li><RiCheckLine /> High Volume Price Matching</li>
+                <li><RiCheckLine /> Global Freight & Logistics</li>
+                <li><RiCheckLine /> Pre-Sales Technical Audit</li>
+                <li><RiCheckLine /> Extended Product Warranties</li>
+              </ul>
+              <div className="hwb-aside-footer">
+                <div className="hwb-help-pill">
+                  <RiPhoneLine />
+                  <div>
+                    <label>Assistance</label>
+                    <strong>+1 (833) 883-5303</strong>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* RIGHT: Form */}
-        <div className="bqm-side-form">
-          <button className="bqm-btn-close" onClick={onClose}><RiCloseLine /></button>
-          
-          {submitted ? (
-            <div className="bqm-success-state">
-              <div className="bqm-check-circle"><RiCheckLine /></div>
-              <h3>Quote Request Sent!</h3>
-              <p>Our specialists are reviewing your request. Expect a custom quote via email within 2 business hours.</p>
-              <button onClick={onClose} className="bqm-btn-done">Proceed to Store</button>
-            </div>
-          ) : (
-            <div className="bqm-form-container">
-              <div className="bqm-form-header">
-                <h3>Request a Bulk Quote</h3>
-                <p>Fill out the details below for volume discounts.</p>
+          {/* RIGHT PANEL - FORM */}
+          <div className="hwb-modal-main">
+            <button className="hwb-header-close d-none d-lg-flex" onClick={onClose}><RiCloseLine /></button>
+            
+            {submitted ? (
+              <div className="hwb-success-view">
+                <div className="hwb-success-icon"><RiCheckLine /></div>
+                <h3>Request Successful</h3>
+                <p>We have received your bulk quote request. One of our procurement specialists will contact you within 2 business hours.</p>
+                <button onClick={onClose} className="hwb-btn-primary">Return to Store</button>
               </div>
-
-              <form onSubmit={handleSubmit} className="bqm-actual-form">
-                <div className="bqm-form-grid">
-                  <F name="full_name" label="Full Name *" placeholder="Your name" />
-                  <F name="email" label="Business Email *" type="email" placeholder="name@company.com" />
-                  <F name="org_name" label="Organization" placeholder="Acme Inc." />
-                  <F name="phone" label="Phone Number *" type="tel" placeholder="+1 (..." />
-                  <F name="part_number" label="Part Number / Product *" placeholder="e.g. SSD-001" />
-                  <F name="quantity" label="Total Quantity *" type="number" placeholder="e.g. 100" />
-                  
-                  <div className="bqm-field bqm-span">
-                    <label className="bqm-label">Timeline Required</label>
-                    <select value={fields.urgency} onChange={set("urgency")} className="bqm-select">
-                      {Object.entries(URGENCY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
-                    </select>
-                  </div>
-
-                  <div className="bqm-field bqm-span">
-                    <label className="bqm-label">Project Details / Custom Requests</label>
-                    <textarea 
-                      value={fields.description} onChange={set("description")} 
-                      className="bqm-textarea" 
-                      placeholder="List any alternatives you'd consider or extra specs..."
-                    />
-                  </div>
+            ) : (
+              <div className="hwb-form-view">
+                <div className="hwb-form-intro">
+                  <h3>Get a Custom Quote</h3>
+                  <p>Submit your requirements below for bulk pricing.</p>
                 </div>
 
-                {globalErr && <div className="bqm-error-strip">{globalErr}</div>}
+                <form className="hwb-form" onSubmit={handleSubmit}>
+                  <div className="hwb-grid">
+                    <div className="hwb-input-group">
+                      <label><RiUser3Line /> Full Name</label>
+                      <input type="text" placeholder="John Doe" value={fields.full_name} onChange={e => handleSetField("full_name")(e.target.value)} className={errors.full_name ? 'err' : ''} />
+                      {errors.full_name && <span>{errors.full_name}</span>}
+                    </div>
+                    <div className="hwb-input-group">
+                      <label>Business Email</label>
+                      <input type="email" placeholder="john@company.com" value={fields.email} onChange={e => handleSetField("email")(e.target.value)} className={errors.email ? 'err' : ''} />
+                      {errors.email && <span>{errors.email}</span>}
+                    </div>
+                    <div className="hwb-input-group">
+                      <label><RiBuilding4Line /> Organization</label>
+                      <input type="text" placeholder="Company Name" value={fields.org_name} onChange={e => handleSetField("org_name")(e.target.value)} />
+                    </div>
+                    <div className="hwb-input-group">
+                      <label><RiPhoneLine /> Phone Number</label>
+                      <input type="tel" placeholder="+1..." value={fields.phone} onChange={e => handleSetField("phone")(e.target.value)} className={errors.phone ? 'err' : ''} />
+                      {errors.phone && <span>{errors.phone}</span>}
+                    </div>
+                    <div className="hwb-input-group">
+                      <label><RiArchiveLine /> Part Number / Model</label>
+                      <input type="text" placeholder="e.g. ST1000LM048" value={fields.part_number} onChange={e => handleSetField("part_number")(e.target.value)} className={errors.part_number ? 'err' : ''} />
+                      {errors.part_number && <span>{errors.part_number}</span>}
+                    </div>
+                    <div className="hwb-input-group">
+                      <label>Total Quantity</label>
+                      <input type="number" placeholder="50" value={fields.quantity} onChange={e => handleSetField("quantity")(e.target.value)} className={errors.quantity ? 'err' : ''} />
+                      {errors.quantity && <span>{errors.quantity}</span>}
+                    </div>
+                    <div className="hwb-input-group hwb-full">
+                      <label>Required Timeline</label>
+                      <select value={fields.urgency} onChange={e => handleSetField("urgency")(e.target.value)}>
+                        {Object.entries(URGENCY_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+                      </select>
+                    </div>
+                    <div className="hwb-input-group hwb-full">
+                      <label>Message / Specifications</label>
+                      <textarea placeholder="Tell us more about your project needs..." value={fields.description} onChange={e => handleSetField("description")(e.target.value)} />
+                    </div>
+                  </div>
 
-                <div className="bqm-form-footer">
-                  <button type="submit" className="bqm-btn-submit" disabled={loading}>
-                    {loading ? <><Spinner /> Sending...</> : <>Send Quote Request <RiSendPlaneLine style={{ marginLeft: 8 }} /></>}
-                  </button>
-                  <p className="bqm-privacy-note">By submitting, you agree to our <Link href="/privacy-policy">Terms & Conditions</Link>.</p>
-                </div>
-              </form>
-            </div>
-          )}
+                  {globalErr && <div className="hwb-alert-err">{globalErr}</div>}
+
+                  <div className="hwb-form-actions">
+                    <button type="submit" className="hwb-btn-submit" disabled={loading}>
+                      {loading ? <Spinner /> : <>Send Quote Request <RiSendPlaneLine /></>}
+                    </button>
+                    <p className="hwb-legal">By clicking send, you agree to our <Link href="/privacy-policy">Privacy Policy</Link>.</p>
+                  </div>
+                </form>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
-        .bqm-backdrop {
-          position: fixed; top:0; left:0; width:100%; height:100%;
-          background: rgba(15, 19, 64, 0.45); backdrop-filter: blur(4px);
+        .hwb-modal-overlay {
+          position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+          background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px);
           z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px;
         }
-        .bqm-dialog {
-          width: 100%; max-width: 900px; height: 600px; display: flex;
-          background: #fff; border-radius: 20px; overflow: hidden;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-          animation: bqmFadeIn 0.3s cubic-bezier(0, 0.5, 0.5, 1);
+        .hwb-modal-container {
+          width: 100%; max-width: 1000px; background: #fff; border-radius: 20px;
+          overflow: hidden; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.4);
+          animation: modal_pop 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
-        @keyframes bqmFadeIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes modal_pop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        .bqm-side-brand {
-          width: 38%; background: #0f1340; color: #fff; padding: 50px 40px;
-          display: flex; flex-direction: column; position: relative;
+        .hwb-modal-wrap { display: flex; min-height: 650px; }
+
+        /* ASIDE WITH BANNER */
+        .hwb-modal-aside {
+          width: 38%; background: #0f1340 url('/assets/images/newbannerimg.webp') no-repeat center center;
+          background-size: cover; position: relative; color: #fff; display: flex; flex-direction: column;
         }
-        .bqm-top-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.2px; color: #fb641b; font-weight: 800; margin-bottom: 20px; display: block; }
-        .bqm-heading { font-size: 28px; font-weight: 800; line-height: 1.25; margin-bottom: 15px; }
-        .bqm-subline { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 30px; line-height: 1.6; }
-        .bqm-features { list-style: none; padding:0; margin:0; }
-        .bqm-features li { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; font-size: 14px; font-weight: 500; }
-        .bqm-features li :global(svg) { color: #fb641b; font-size: 18px; }
-        .bqm-phone-link { display: flex; align-items: center; gap: 14px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; }
-        .bqm-phone-link span { display: block; font-size: 16px; font-weight: 700; }
-        .bqm-phone-link small { display: block; font-size: 11px; opacity: 0.6; text-transform: uppercase; }
-        .text-orange { color: #fb641b; font-size: 24px; }
-
-        .bqm-side-form { width: 62%; position: relative; background: #fff; padding: 40px 50px; }
-        .bqm-btn-close { position: absolute; top: 20px; right: 20px; border:none; background:none; font-size: 26px; cursor:pointer; color: #999; }
-        .bqm-form-header { margin-bottom: 25px; }
-        .bqm-form-header h3 { font-size: 22px; font-weight: 800; color: #0f1340; margin-bottom: 4px; }
-        .bqm-form-header p { font-size: 14px; color: #666; }
-        
-        .bqm-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 22px; }
-        .bqm-span { grid-column: span 2; }
-        .bqm-field { display: flex; flex-direction: column; gap: 6px; }
-        .bqm-label { font-size: 12px; font-weight: 700; color: #444; text-transform: uppercase; letter-spacing: 0.4px; }
-        .bqm-input, .bqm-select, .bqm-textarea {
-          padding: 10px 14px; border: 1.5px solid #eee; border-radius: 8px; font-size: 14px;
-          transition: border-color 0.2s, box-shadow 0.2s; background: #fdfdfd;
+        .hwb-aside-bg-overlay {
+          position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+          background: linear-gradient(to bottom, rgba(15, 19, 64, 0.95), rgba(15, 19, 64, 0.85));
         }
-        .bqm-input:focus, .bqm-select:focus, .bqm-textarea:focus { outline: none; border-color: #0f1340; box-shadow: 0 0 0 3px rgba(15,19,64,0.05); }
-        .bqm-input.err { border-color: #ff4d4f; background: #fff2f0; }
-        .bqm-err-msg { font-size: 11px; color: #ff4d4f; font-weight: 600; }
-        .bqm-textarea { height: 74px; resize: none; }
-        .bqm-btn-submit {
-          width: 100%; border:none; background: #fb641b; color: #fff; font-weight: 800; font-size: 15px;
-          padding: 14px; border-radius: 10px; cursor:pointer; transition: transform 0.15s, opacity 0.2s;
-          display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(251, 100, 27, 0.3);
+        .hwb-aside-content { position: relative; z-index: 2; padding: 60px 45px; display: flex; flex-direction: column; height: 100%; }
+        .hwb-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #fb641b; font-weight: 800; margin-bottom: 25px; display: block; }
+        .hwb-aside-title { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 40px; }
+        .hwb-aside-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+        .hwb-aside-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-size: 15px; font-weight: 600; opacity: 0.9; }
+        .hwb-aside-list li :global(svg) { color: #fb641b; font-size: 20px; }
+        .hwb-help-pill { display: flex; align-items: center; gap: 18px; padding: 20px; background: rgba(255, 255, 255, 0.08); border-radius: 16px; margin-top: auto; }
+        .hwb-help-pill :global(svg) { font-size: 30px; color: #fb641b; }
+        .hwb-help-pill label { display: block; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 0; }
+        .hwb-help-pill strong { font-size: 17px; font-weight: 800; letter-spacing: 0.5px; }
+
+        /* MAIN CONTENT - FORM */
+        .hwb-modal-main { width: 62%; background: #fff; position: relative; padding: 60px 55px; }
+        .hwb-header-close { position: absolute; top: 30px; right: 30px; background: #f8fafc; border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #0f1340; cursor: pointer; transition: 0.2s; }
+        .hwb-header-close:hover { background: #0f1340; color: #fff; transform: rotate(90deg); }
+
+        .hwb-form-intro { margin-bottom: 40px; }
+        .hwb-form-intro h3 { font-size: 28px; font-weight: 800; color: #0f1340; margin-bottom: 8px; }
+        .hwb-form-intro p { font-size: 16px; color: #64748b; }
+
+        .hwb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; }
+        .hwb-full { grid-column: span 2; }
+        .hwb-input-group { display: flex; flex-direction: column; gap: 8px; position: relative; }
+        .hwb-input-group label { font-size: 12px; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 8px; margin: 0; }
+        .hwb-input-group input, .hwb-input-group select, .hwb-input-group textarea {
+          border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 15px; color: #0f1340;
+          background: #fcfdfe; transition: all 0.2s;
         }
-        .bqm-btn-submit:hover:not(:disabled) { transform: translateY(-2px); opacity: 0.95; }
-        .bqm-btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
-        .bqm-error-strip { background: #fff2f0; border: 1px solid #ffccc7; color: #ff4d4f; padding: 10px; border-radius: 8px; font-size: 13px; margin-bottom: 12px; text-align: center; }
-        .bqm-privacy-note { font-size: 11px; color: #999; text-align: center; margin-top: 14px; }
-        .bqm-privacy-note a { color: #0f1340; font-weight: 600; text-decoration: none; }
+        .hwb-input-group input:focus, .hwb-input-group select:focus, .hwb-input-group textarea:focus {
+          outline: none; border-color: #fb641b; background: #fff; box-shadow: 0 0 0 4px rgba(251, 100, 27, 0.1);
+        }
+        .hwb-input-group input.err { border-color: #ef4444; background: #fef2f2; }
+        .hwb-input-group span { font-size: 11px; color: #ef4444; font-weight: 700; position: absolute; bottom: -18px; left: 4px; }
+        .hwb-input-group textarea { height: 90px; resize: none; }
 
-        .bqm-success-state { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .bqm-check-circle { width: 70px; height: 70px; background: #fb641b; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 24px; box-shadow: 0 10px 25px rgba(251, 100, 27, 0.3); }
-        .bqm-success-state h3 { font-size: 24px; font-weight: 800; color: #0f1340; margin-bottom: 10px; }
-        .bqm-success-state p { font-size: 15px; color: #555; line-height: 1.6; max-width: 320px; margin-bottom: 30px; }
-        .bqm-btn-done { background: #0f1340; color: #fff; border:none; padding: 12px 40px; border-radius: 10px; font-weight: 700; cursor:pointer; }
+        .hwb-alert-err { padding: 15px; background: #fef2f2; border: 1px solid #fee2e2; border-radius: 12px; color: #ef4444; font-size: 14px; text-align: center; margin-top: 25px; }
 
-        @media (max-width: 850px) {
-          .bqm-dialog { height: auto; max-height: 90vh; flex-direction: column; overflow-y: auto; }
-          .bqm-side-brand { width: 100%; padding: 40px 30px 20px; }
-          .bqm-side-form { width: 100%; padding: 30px; }
-          .bqm-form-grid { grid-template-columns: 1fr; gap: 14px; }
-          .bqm-span { grid-column: span 1; }
+        .hwb-form-actions { margin-top: 40px; text-align: center; }
+        .hwb-btn-submit {
+          width: 100%; background: #fb641b; color: #fff; border: none; border-radius: 14px; padding: 18px;
+          font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 12px;
+          cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(251, 100, 27, 0.35);
+        }
+        .hwb-btn-submit:hover:not(:disabled) { background: #e55a18; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(251, 100, 27, 0.45); }
+        .hwb-btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+        .hwb-legal { margin-top: 15px; font-size: 12px; color: #94a3b8; }
+        .hwb-legal a { color: #fb641b; text-decoration: none; font-weight: 700; }
+
+        .hwb-success-view { text-align: center; padding-top: 40px; }
+        .hwb-success-icon { width: 100px; height: 100px; background: #fb641b; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 60px; margin: 0 auto 30px; box-shadow: 0 20px 40px rgba(251, 100, 27, 0.3); }
+        .hwb-success-view h3 { font-size: 32px; font-weight: 900; color: #0f1340; margin-bottom: 20px; }
+        .hwb-success-view p { font-size: 18px; color: #64748b; line-height: 1.6; max-width: 400px; margin: 0 auto 40px; }
+        .hwb-btn-primary { background: #0f1340; color: #fff; padding: 15px 45px; border-radius: 14px; border: none; font-size: 16px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .hwb-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(15, 19, 64, 0.2); }
+
+        /* MOBILE HEADER */
+        .hwb-modal-top-bar { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid #f1f5f9; }
+        .hwb-modal-top-bar h3 { font-size: 18px; font-weight: 800; color: #0f1340; margin: 0; }
+        .hwb-close-mobile { background: none; border: none; font-size: 28px; color: #0f1340; }
+
+        @media (max-width: 900px) {
+          .hwb-modal-container { border-radius: 0; max-height: 100vh; overflow-y: auto; }
+          .hwb-modal-wrap { flex-direction: column; min-height: auto; }
+          .hwb-modal-aside { width: 100%; }
+          .hwb-aside-content { padding: 40px 30px; }
+          .hwb-modal-main { width: 100%; padding: 40px 30px; }
+          .hwb-grid { grid-template-columns: 1fr; gap: 20px; }
         }
       `}</style>
     </div>
@@ -266,18 +298,24 @@ export const BulkQuoteButton = () => {
     <>
       <button
         type="button" onClick={() => setOpen(true)}
-        className="btn fw-extrabold"
-        style={{
-          backgroundColor: "#fb641b", color: "#fff", padding: "12px 28px",
-          borderRadius: "8px", border: "none", textTransform: "uppercase",
-          fontSize: "14px", cursor: "pointer", letterSpacing: "0.8px",
-          transition: "all 0.2s", boxShadow: "0 4px 15px rgba(251, 100, 27, 0.3)"
-        }}
-        onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "0 6px 20px rgba(251, 100, 27, 0.5)"; }}
-        onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "0 4px 15px rgba(251, 100, 27, 0.3)"; }}
+        className="hwb-trigger-btn"
       >
         Request Bulk Quote
       </button>
+
+      <style jsx>{`
+        .hwb-trigger-btn {
+          background: #fb641b; color: #fff; padding: 14px 32px; border: none;
+          border-radius: 10px; font-size: 15px; font-weight: 900; text-transform: uppercase;
+          cursor: pointer; letter-spacing: 1px; transition: 0.3s; 
+          box-shadow: 0 8px 25px rgba(251, 100, 27, 0.35);
+        }
+        .hwb-trigger-btn:hover {
+          transform: translateY(-3px) scale(1.02);
+          box-shadow: 0 12px 35px rgba(251, 100, 27, 0.5);
+          background: #e55a18;
+        }
+      `}</style>
       <BulkQuoteModal open={open} onClose={() => setOpen(false)} />
     </>
   );
