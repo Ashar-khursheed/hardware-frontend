@@ -18,7 +18,7 @@ const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
   // Dynamic Brand Fetch based on Category
   const { data: dynamicBrandData, isLoading: brandLoading } = useQuery(
     ["brands", categorySlug || category?.category],
-    () => request({ url: BrandLogo, params: { category: categorySlug || category?.category, status: 1 } }),
+    () => request({ url: BrandLogo, params: { category_slug: categorySlug || category?.category, status: 1 } }),
     {
       enabled: !!(categorySlug || category?.category),
       refetchOnWindowFocus: false,

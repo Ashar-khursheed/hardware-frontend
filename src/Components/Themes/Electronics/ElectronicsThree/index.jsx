@@ -769,16 +769,10 @@ const ElectronicsThree = () => {
       <section className="p-0 contactustoget section-b-space">
         <div className="container heightcus py-1 px-3 my-1"
           style={{
-            height: "175px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            // backgroundColor: "#3a1c71", // Deep purple tone
-            backgroundImage: "url('/assets/images/newbannerimg.webp')", // Replace with your background image
-            backgroundSize: "cover",
-            objectFit: "cover",
             backgroundPosition: "center",
             borderRadius: "10px",
+            minHeight: "175px",
+            height: "auto"
           }}
 
         >
