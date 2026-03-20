@@ -203,8 +203,21 @@ const ProductBox1 = ({ productState, setProductState }) => {
           </div>
         </div>
 
+        {/* ── Action Bar — Reverted to Media Overlay for Hover Logic ── */}
+        {!isOutOfStock && (
+          <div className="agpc__action-bar d-none d-lg-flex">
+            <CartButton
+              classes="agpc__btn-cart"
+              productState={productState}
+              selectedVariation={selectedVariation}
+              text="Add to Cart"
+            />
+            <div className="agpc__actions">
+              <ProductHoverButton productstate={product} />
+            </div>
+          </div>
+        )}
       </div>
-
 
       {/* ── Product Info ── */}
       <div className="agpc__body">
@@ -234,18 +247,15 @@ const ProductBox1 = ({ productState, setProductState }) => {
           )}
         </div>
 
-        {/* ── Action Bar — Now in body to avoid covering image ── */}
+        {/* ── Mobile Action Bar — Below price, always visible ── */}
         {!isOutOfStock && (
-          <div className="agpc__action-bar">
+          <div className="agpc__action-bar--mobile d-flex d-lg-none">
             <CartButton
               classes="agpc__btn-cart"
               productState={productState}
               selectedVariation={selectedVariation}
               text="Add to Cart"
             />
-            <div className="agpc__actions d-none d-lg-flex">
-              <ProductHoverButton productstate={product} />
-            </div>
           </div>
         )}
       </div>
