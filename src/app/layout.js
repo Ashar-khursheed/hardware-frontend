@@ -18,10 +18,25 @@ export async function generateMetadata() {
       return res.json();
     });
 
+    const frontendUrl = 'https://thehardwarebox.com';
     return {
-      metadataBase: new URL(process.env.API_PROD_URL),
-      title: themeOption?.options?.seo?.meta_tags || 'Hardware Store',
+      metadataBase: new URL(frontendUrl),
+      title: themeOption?.options?.seo?.meta_title || themeOption?.options?.seo?.meta_tags || 'Hardware Store',
       description: themeOption?.options?.seo?.meta_description || 'Your trusted hardware store',
+      robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          'max-video-preview': -1,
+          'max-image-preview': 'large',
+          'max-snippet': -1,
+        },
+      },
+      alternates: {
+        canonical: './',
+      },
       icons: {
         icon: themeOption?.options?.logo?.favicon_icon?.original_url || '/favicon.svg',
         link: {
@@ -33,6 +48,10 @@ export async function generateMetadata() {
         title: themeOption?.options?.seo?.og_title || 'Hardware Store',
         description: themeOption?.options?.seo?.og_description || 'Your trusted hardware store',
         images: [themeOption?.options?.seo?.og_image?.original_url || '/default-og-image.jpg'],
+        url: frontendUrl,
+        siteName: 'Hardware Box',
+        locale: 'en_US',
+        type: 'website',
       },
     };
   } catch (err) {
@@ -41,6 +60,8 @@ export async function generateMetadata() {
     return {
       title: 'Hardware Store',
       description: 'Your trusted hardware store',
+      metadataBase: new URL('https://thehardwarebox.com'),
+      robots: { index: true, follow: true },
       icons: {
         icon: '/favicon.svg',
       },
@@ -66,7 +87,6 @@ export default async function RootLayout({ children }) {
           rel="stylesheet"
         />
 
-        <link rel="canonical" href="https://thehardwarebox.com" />
 
         {/* Local CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
