@@ -285,7 +285,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
           .hwb-modal-wrap { flex-direction: column; min-height: auto; }
           .hwb-modal-aside { display: none; }
           .hwb-modal-main { width: 100% !important; padding: 25px 15px; }
-          .hwb-grid { grid-template-columns: 1fr !important; gap: 15px; }
+          .hwb-grid { grid-template-columns: 1fr !important; gap: 15px; display: block !important; }
           .hwb-input-group label { font-size: 11px; }
           .hwb-form-intro h3 { font-size: 22px; margin-bottom: 5px; }
           .hwb-form-intro p { font-size: 14px; }
