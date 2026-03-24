@@ -1743,8 +1743,9 @@ h2.display-5.size-28 {
     color: #ff5050;
 }
 
-.hwb-aside-list.jsx-f75998493f0cf2d0 li.jsx-f75998493f0cf2d0 svg {
-    color: #ff5050;
+.hwb-aside-list.jsx-f75998493f0cf2d0 li.jsx-f75998493f0cf2d0 svg,
+.jsx-f75998493f0cf2d0 hwb-badge {
+    color: #ff5050 !important;
 }
 
 .hwb-form-intro.jsx-f75998493f0cf2d0 {
@@ -1753,4 +1754,8 @@ h2.display-5.size-28 {
 
 .top-header ul {
     display: inline-flex !important;
+}
+
+ul.jsx-f75998493f0cf2d0.hwb-aside-list {
+    display: block;
 }
