@@ -16,7 +16,7 @@ import CollectionPrice from "./CollectionPrice";
 import CollectionRating from "./CollectionRating";
 import "./UniqueFilters.scss";
 
-const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rightSideClass, sellerClass, isAttributes = true, hideCategory, categorySlug }) => {
+const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rightSideClass, sellerClass, isAttributes = true, hideCategory, categorySlug, categoryId }) => {
   const { collectionMobile, setCollectionMobile, openOffCanvas, setOpenOffCanvas } = useContext(ThemeOptionContext);
   const { t } = useTranslation("common");
   const [open, setOpen] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]);
@@ -86,7 +86,7 @@ const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rig
                       <RiArrowDownSLine className="ag-chevron" />
                     </div>
                     <Collapse isOpen={open.includes("2")}>
-                      <CollectionBrand filter={filter} setFilter={setFilter} categorySlug={categorySlug} />
+                      <CollectionBrand filter={filter} setFilter={setFilter} categorySlug={categorySlug} categoryId={categoryId} />
                     </Collapse>
                   </div>
 

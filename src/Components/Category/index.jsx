@@ -27,22 +27,23 @@ const CategoryMainPage = ({ slug }) => {
 
   const { categoryData, categoryIsLoading } = useContext(CategoryContext);
 
-  const getCategoryHierarchy = (slug, data) => {
-    if (!data) return [];
+  // Recursive function to flatten the category tree
+  const flattenCategories = (items) => {
+    let flat = [];
+    items.forEach(item => {
+      flat.push(item);
+      if (item.subcategories && item.subcategories.length > 0) {
+        flat = flat.concat(flattenCategories(item.subcategories));
+      }
+    });
+    return flat;
+  };
 
-    // Recursive function to flatten the category tree
-    const flattenCategories = (items) => {
-      let flat = [];
-      items.forEach(item => {
-        flat.push(item);
-        if (item.subcategories && item.subcategories.length > 0) {
-          flat = flat.concat(flattenCategories(item.subcategories));
-        }
-      });
-      return flat;
-    };
+  const flatCategoryData = categoryData ? flattenCategories(categoryData) : [];
 
-    const flatData = flattenCategories(data);
+  const getCategoryHierarchy = (slug, flatData) => {
+    if (!flatData || flatData.length === 0) return [];
+
     let hierarchy = [];
     let current = flatData?.find(cat => cat.slug === slug);
 
@@ -57,8 +58,8 @@ const CategoryMainPage = ({ slug }) => {
     return hierarchy;
   };
 
-  const hierarchy = getCategoryHierarchy(slug, categoryData);
-  const currentCategory = categoryData?.find(cat => cat.slug === slug);
+  const hierarchy = getCategoryHierarchy(slug, flatCategoryData);
+  const currentCategory = flatCategoryData?.find(cat => cat.slug === slug);
 
   if (categoryIsLoading) return <Loader />;
 
@@ -71,12 +72,12 @@ const CategoryMainPage = ({ slug }) => {
         <div className="container">
           <h1 className="fw-bold mb-2 text-dark h2">{currentCategory?.name || slug?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
           {currentCategory?.description && (
-            <p className="text-muted mb-0 lead" style={{ fontSize: '1.1rem' }}>{currentCategory.description}</p>
+            <p className="text-muted mb-0 lead" style={{ fontSize: '1.1rem' }} dangerouslySetInnerHTML={{ __html: currentCategory.description }} />
           )}
         </div>
       </div>
 
-      <CollectionLeftSidebar filter={filter} setFilter={setFilter} hideCategory categorySlug={slug} />
+      <CollectionLeftSidebar filter={filter} setFilter={setFilter} hideCategory categorySlug={slug} categoryId={currentCategory?.id} />
     </>
   );
 };

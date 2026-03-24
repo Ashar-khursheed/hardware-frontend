@@ -1498,38 +1498,120 @@ h2.display-5.size-28 {
     }
 }
 
-/* Point 1: Call icon in footer alignment */
-.footer-contact li svg {
+/* Point 1: Call icon in footer & header alignment */
+.footer-contact li svg,
+.header-contact li svg {
     margin-right: 12px !important;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+}
+
+.header-contact ul li {
+    display: flex !important;
+    align-items: center;
 }
 
 /* Point 2: Terms & Condition Heading size/alignment */
 .policy-section h2,
 .terms-section h2,
-.page-content-wrapper h2 {
-    font-size: 1.8rem !important;
-    text-transform: none !important;
-    margin-bottom: 24px !important;
-    line-height: 1.3 !important;
+.page-content-wrapper h2,
+.blog-section h2 {
+    font-size: 28px !important;
     font-weight: 700 !important;
-    color: #0f1340 !important;
+    margin-bottom: 25px !important;
+    line-height: 1.3 !important;
+    text-transform: none !important;
+    color: #333 !important;
 }
 
 /* Point 3: Contact Us Page spacing */
-.contact-page {
-    padding-top: 30px !important;
+.contact-page-wrapper .premium-contact-title h2 {
+    margin-bottom: 20px !important;
+    letter-spacing: -0.5px;
+}
 
-    .title-box {
-        margin-bottom: 40px !important;
+.premium-info-item {
+    margin-bottom: 15px !important;
+    padding: 20px !important;
+}
 
-        h4 {
-            margin-bottom: 12px !important;
-            font-size: 1.5rem !important;
-            font-weight: 800 !important;
-            color: #1a1a1a !important;
-        }
+.premium-info-item .media-body h6 {
+    margin-bottom: 8px !important;
+    font-weight: 700 !important;
+}
+
+/* Point 4: Customer Dashboard Layout Spacing */
+.user-dashboard-section .dashboard-right .dashboard-content {
+    padding: 30px !important;
+}
+
+@media (max-width: 767px) {
+    .user-dashboard-section .dashboard-right .dashboard-content {
+        padding: 15px !important;
     }
+}
 
+/* Point 5: Checkout Summary Text Alignment */
+.checkout-section .qty li {
+    padding: 15px 0 !important;
+}
+
+.checkout-section .qty li h5 {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.4 !important;
+    display: block !important;
+}
+
+/* Point 7: Direct Macro Quantity Selector on Checkout */
+.qty-controls {
+    border: 1px solid #ddd !important;
+    padding: 5px 10px !important;
+    background: #fcfcfc !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.qty-controls button {
+    font-weight: 800 !important;
+    color: var(--theme-color, #ff5050) !important;
+    font-size: 16px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.qty-controls span {
+    font-size: 14px !important;
+    min-width: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Point 12: Mobile Menu Alignment */
+.hbx-static-mobile-menu .hbx-category-item {
+    border-bottom: 1px solid #f1f1f1 !important;
+    margin-bottom: 0 !important;
+}
+
+.hbx-static-mobile-menu .hbx-category-header {
+    padding: 15px 20px !important;
+    font-weight: 600 !important;
+}
+
+.hbx-static-mobile-menu .hbx-subcategory-list {
+    background: #fbfbfb !important;
+}
+
+.hbx-static-mobile-menu .hbx-subcategory-item a {
+    padding: 12px 35px !important;
+    font-size: 14px !important;
+}
     .contact-details {
         li {
             margin-bottom: 30px !important;
@@ -1545,7 +1627,6 @@ h2.display-5.size-28 {
             }
         }
     }
-}
 
 /* Point 4: Customer Dashboard Spacing and Alignment */
 .dashboard-right {

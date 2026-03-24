@@ -4,6 +4,7 @@ import AccountContext from "@/Context/AccountContext";
 import Btn from "@/Elements/Buttons/Btn";
 import { AddressAPI } from "@/Utils/AxiosUtils/API";
 import useCreate from "@/Utils/Hooks/useCreate";
+import useUpdate from "@/Utils/Hooks/useUpdate";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiAddLine } from "react-icons/ri";
@@ -26,7 +27,7 @@ const AddressHeader = () => {
     refetch();
     setModal("");
   });
-  const { mutate: editMutate, isLoading: editLoader } = useCreate(AddressAPI, editAddress?.id, false, "Address Updated successfully", (resDta) => {
+  const { mutate: editMutate, isLoading: editLoader } = useUpdate(AddressAPI, editAddress?.id, false, "Address Updated successfully", (resDta) => {
     setAddressState((prev) =>
       prev.map((elem) => {
         if (elem?.id == resDta?.data?.id) {

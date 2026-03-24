@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import CollectionSidebar from "../CollectionSidebar";
 import MainCollection from "../MainCollection";
 
-const CollectionLeftSidebar = ({ filter, setFilter, hideCategory, categorySlug }) => {
+const CollectionLeftSidebar = ({ filter, setFilter, hideCategory, categorySlug, categoryId }) => {
   const { setCollectionMobile } = useContext(ThemeOptionContext);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const CollectionLeftSidebar = ({ filter, setFilter, hideCategory, categorySlug }
   }, []);
   return (
     <WrapperComponent classes={{ sectionClass: "section-b-space collection-wrapper", fluidClass: "container" }} customCol={true}>
-      <CollectionSidebar filter={filter} setFilter={setFilter} hideCategory={hideCategory} categorySlug={categorySlug}/>
+      <CollectionSidebar filter={filter} setFilter={setFilter} hideCategory={hideCategory} categorySlug={categorySlug} categoryId={categoryId}/>
       {!categorySlug && <MainCollection isBanner={true} filter={filter} setFilter={setFilter} />}
       {categorySlug && <MainCollection filter={filter} setFilter={setFilter} categorySlug={categorySlug} />}
     </WrapperComponent>

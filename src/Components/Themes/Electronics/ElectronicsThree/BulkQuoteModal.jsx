@@ -88,8 +88,8 @@ const BulkQuoteModal = ({ open, onClose }) => {
       <div className="hwb-modal-container">
         {/* Banner across the top if needed, but side-by-side with bg is better */}
         <div className="hwb-modal-top-bar d-lg-none">
-             <h3>Bulk Order Inquiry</h3>
-             <button className="hwb-close-mobile" onClick={onClose}><RiCloseLine /></button>
+          <h3>Bulk Order Inquiry</h3>
+          <button className="hwb-close-mobile" onClick={onClose}><RiCloseLine /></button>
         </div>
 
         <div className="hwb-modal-wrap">
@@ -112,7 +112,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
                   <RiPhoneLine />
                   <div>
                     <label>Assistance</label>
-                    <strong>+1 (833) 883-5303</strong>
+                    <strong>+1 (832) 883-5303</strong>
                   </div>
                 </div>
               </div>
@@ -122,7 +122,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
           {/* RIGHT PANEL - FORM */}
           <div className="hwb-modal-main">
             <button className="hwb-header-close d-none d-lg-flex" onClick={onClose}><RiCloseLine /></button>
-            
+
             {submitted ? (
               <div className="hwb-success-view">
                 <div className="hwb-success-icon"><RiCheckLine /></div>
@@ -220,13 +220,13 @@ const BulkQuoteModal = ({ open, onClose }) => {
           background: linear-gradient(to bottom, rgba(15, 19, 64, 0.95), rgba(15, 19, 64, 0.85));
         }
         .hwb-aside-content { position: relative; z-index: 2; padding: 60px 45px; display: flex; flex-direction: column; height: 100%; }
-        .hwb-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #fb641b; font-weight: 800; margin-bottom: 25px; display: block; }
+        .hwb-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--theme-color, #ff5050); font-weight: 800; margin-bottom: 25px; display: block; }
         .hwb-aside-title { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 40px; }
         .hwb-aside-list { list-style: none; padding: 0; margin: 0; flex: 1; }
         .hwb-aside-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; font-size: 15px; font-weight: 600; opacity: 0.9; }
-        .hwb-aside-list li :global(svg) { color: #fb641b; font-size: 20px; }
+        .hwb-aside-list li :global(svg) { color: var(--theme-color, #ff5050); font-size: 20px; }
         .hwb-help-pill { display: flex; align-items: center; gap: 18px; padding: 20px; background: rgba(255, 255, 255, 0.08); border-radius: 16px; margin-top: auto; }
-        .hwb-help-pill :global(svg) { font-size: 30px; color: #fb641b; }
+        .hwb-help-pill :global(svg) { font-size: 30px; color: var(--theme-color, #ff5050); }
         .hwb-help-pill label { display: block; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 0; }
         .hwb-help-pill strong { font-size: 17px; font-weight: 800; letter-spacing: 0.5px; }
 
@@ -248,7 +248,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
           background: #fcfdfe; transition: all 0.2s;
         }
         .hwb-input-group input:focus, .hwb-input-group select:focus, .hwb-input-group textarea:focus {
-          outline: none; border-color: #fb641b; background: #fff; box-shadow: 0 0 0 4px rgba(251, 100, 27, 0.1);
+          outline: none; border-color: var(--theme-color, #ff5050); background: #fff; box-shadow: 0 0 0 4px rgba(251, 100, 27, 0.1);
         }
         .hwb-input-group input.err { border-color: #ef4444; background: #fef2f2; }
         .hwb-input-group span { font-size: 11px; color: #ef4444; font-weight: 700; position: absolute; bottom: -18px; left: 4px; }
@@ -258,17 +258,17 @@ const BulkQuoteModal = ({ open, onClose }) => {
 
         .hwb-form-actions { margin-top: 40px; text-align: center; }
         .hwb-btn-submit {
-          width: 100%; background: #fb641b; color: #fff; border: none; border-radius: 14px; padding: 18px;
+          width: 100%; background: var(--theme-color, #ff5050); color: #fff; border: none; border-radius: 14px; padding: 18px;
           font-size: 18px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 12px;
           cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(251, 100, 27, 0.35);
         }
         .hwb-btn-submit:hover:not(:disabled) { background: #e55a18; transform: translateY(-3px); box-shadow: 0 15px 40px rgba(251, 100, 27, 0.45); }
         .hwb-btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
         .hwb-legal { margin-top: 15px; font-size: 12px; color: #94a3b8; }
-        .hwb-legal a { color: #fb641b; text-decoration: none; font-weight: 700; }
+        .hwb-legal a { color: var(--theme-color, #ff5050); text-decoration: none; font-weight: 700; }
 
         .hwb-success-view { text-align: center; padding-top: 40px; }
-        .hwb-success-icon { width: 100px; height: 100px; background: #fb641b; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 60px; margin: 0 auto 30px; box-shadow: 0 20px 40px rgba(251, 100, 27, 0.3); }
+        .hwb-success-icon { width: 100px; height: 100px; background: var(--theme-color, #ff5050); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 60px; margin: 0 auto 30px; box-shadow: 0 20px 40px rgba(251, 100, 27, 0.3); }
         .hwb-success-view h3 { font-size: 32px; font-weight: 900; color: #0f1340; margin-bottom: 20px; }
         .hwb-success-view p { font-size: 18px; color: #64748b; line-height: 1.6; max-width: 400px; margin: 0 auto 40px; }
         .hwb-btn-primary { background: #0f1340; color: #fff; padding: 15px 45px; border-radius: 14px; border: none; font-size: 16px; font-weight: 800; cursor: pointer; transition: 0.3s; }
@@ -305,10 +305,10 @@ export const BulkQuoteButton = () => {
 
       <style jsx>{`
         .hwb-trigger-btn {
-          background: #fb641b; color: #fff; padding: 14px 32px; border: none;
+          background: var(--theme-color, #ff5050); color: #fff; padding: 14px 32px; border: none;
           border-radius: 10px; font-size: 15px; font-weight: 900; text-transform: uppercase;
           cursor: pointer; letter-spacing: 1px; transition: 0.3s; 
-          box-shadow: 0 8px 25px rgba(251, 100, 27, 0.35);
+          box-shadow: 0 8px 25px rgba(255, 80, 80, 0.35);
         }
         .hwb-trigger-btn:hover {
           transform: translateY(-3px) scale(1.02);

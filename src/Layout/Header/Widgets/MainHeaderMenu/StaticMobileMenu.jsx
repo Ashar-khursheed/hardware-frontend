@@ -153,12 +153,6 @@ const StaticMobileMenu = () => {
                             <RiArrowDownSLine className="hbx-icon-arrow" />
                         </div>
                         <ul className={`hbx-subcategory-list ${activeId === cat.id ? "open" : ""}`}>
-                            {/* Main Category Link for better UX */}
-                            <li className="hbx-subcategory-item main-link">
-                                <Link href={cat.path} onClick={handleLinkClick}>
-                                    View All {cat.title}
-                                </Link>
-                            </li>
                             {cat.child.map((sub, idx) => (
                                 <li key={idx} className="hbx-subcategory-item">
                                     <Link href={sub.path} onClick={handleLinkClick}>

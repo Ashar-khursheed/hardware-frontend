@@ -774,27 +774,27 @@ const ElectronicsThree = () => {
             backgroundPosition: "center",
             display: "flex",
             alignItems: "center",
-            borderRadius: "10px",
-            minHeight: "175px",
+            borderRadius: "12px",
+            minHeight: "200px",
             height: "auto",
-            padding: "20px 0"
+            padding: "30px 0"
           }}
-
         >
           <div className="container p-3">
-            <div className="row align-items-center justify-content-between">
-              <div className="col-md-8 mb-3 mb-md-0">
-                <h3 className="text-white fw-bold mb-0">
+            <div className="row align-items-center justify-content-between g-4">
+              <div className="col-lg-8 col-md-7 text-center text-md-start">
+                <h2 className="text-white fw-bold mb-0" style={{ fontSize: '1.8rem', lineHeight: '1.2' }}>
                   Get Expert Advice for Your IT Hardware Needs
-                </h3>
+                </h2>
+                <p className="text-white-50 mt-2 mb-0 d-none d-md-block">Request a custom quote for bulk orders and save more.</p>
               </div>
-              <div className="col-md-4 text-md-end">
+              <div className="col-lg-4 col-md-5 text-center text-md-end">
                 <BulkQuoteButton />
               </div>
             </div>
           </div>
         </div>
-      </section >
+      </section>
       {/* request a quote section  */}
 
 

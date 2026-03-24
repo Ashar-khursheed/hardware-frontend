@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AccordionBody, Input, Label } from "reactstrap";
 
-const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
+const CollectionBrand = ({ filter, setFilter, categorySlug, categoryId }) => {
   const [category, attribute, price, rating, sortBy, field, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "layout"]);
   const { brandState, isLoading, refetch } = useContext(BrandContext);
   const [showList, setShowList] = useState();
@@ -17,10 +17,10 @@ const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
 
   // Dynamic Brand Fetch based on Category
   const { data: dynamicBrandData, isLoading: brandLoading } = useQuery(
-    ["brands", categorySlug || category?.category],
-    () => request({ url: BrandLogo, params: { category_slug: categorySlug || category?.category, status: 1 } }),
+    ["brands", categoryId || categorySlug || category?.category],
+    () => request({ url: BrandLogo, params: { category_id: categoryId, category_slug: categorySlug || category?.category, status: 1 } }),
     {
-      enabled: !!(categorySlug || category?.category),
+      enabled: !!(categoryId || categorySlug || category?.category),
       refetchOnWindowFocus: false,
       select: (res) => res?.data?.data,
     }
@@ -34,7 +34,7 @@ const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
   }, [categorySlug, category, refetch]);
 
   useEffect(() => {
-    const isCategoryMode = !!(categorySlug || category?.category);
+    const isCategoryMode = !!(categoryId || categorySlug || category?.category);
     
     if (isCategoryMode) {
       // While loading dynamic brands, keep the list empty or wait for data
@@ -62,7 +62,7 @@ const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
   };
   const handleChange = (event) => {
     const keyword = event.target.value;
-    const baseList = (categorySlug || category?.category) ? dynamicBrandData : brandState;
+    const baseList = (categoryId || categorySlug || category?.category) ? dynamicBrandData : brandState;
     if (keyword !== "") {
       const updatedData = [];
       baseList?.forEach((item) => {
