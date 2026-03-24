@@ -1612,21 +1612,22 @@ h2.display-5.size-28 {
     padding: 12px 35px !important;
     font-size: 14px !important;
 }
-    .contact-details {
-        li {
-            margin-bottom: 30px !important;
-            padding: 20px !important;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #edf2f7;
-            transition: all 0.2s ease;
 
-            &:hover {
-                border-color: #fb641b;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            }
+.contact-details {
+    li {
+        margin-bottom: 30px !important;
+        padding: 20px !important;
+        background: #f8fafc;
+        border-radius: 12px;
+        border: 1px solid #edf2f7;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: #fb641b;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
     }
+}
 
 /* Point 4: Customer Dashboard Spacing and Alignment */
 .dashboard-right {
