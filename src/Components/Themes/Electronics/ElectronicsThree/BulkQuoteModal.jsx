@@ -235,17 +235,17 @@ const BulkQuoteModal = ({ open, onClose }) => {
         .hwb-header-close { position: absolute; top: 30px; right: 30px; background: #f8fafc; border: none; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #0f1340; cursor: pointer; transition: 0.2s; }
         .hwb-header-close:hover { background: #0f1340; color: #fff; transform: rotate(90deg); }
 
-        .hwb-form-intro { margin-bottom: 40px; }
-        .hwb-form-intro h3 { font-size: 28px; font-weight: 800; color: #0f1340; margin-bottom: 8px; }
-        .hwb-form-intro p { font-size: 16px; color: #64748b; }
+        .hwb-form-intro { margin-bottom: 40px; text-align: left; }
+        .hwb-form-intro h3 { font-size: 28px; font-weight: 800; color: #0f1340; margin-bottom: 8px; text-align: left; }
+        .hwb-form-intro p { font-size: 16px; color: #64748b; text-align: left; }
 
         .hwb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; }
         .hwb-full { grid-column: span 2; }
-        .hwb-input-group { display: flex; flex-direction: column; gap: 8px; position: relative; }
-        .hwb-input-group label { font-size: 12px; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 8px; margin: 0; }
+        .hwb-input-group { display: flex; flex-direction: column; gap: 8px; position: relative; text-align: left; }
+        .hwb-input-group label { font-size: 12px; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 8px; margin: 0; text-align: left; }
         .hwb-input-group input, .hwb-input-group select, .hwb-input-group textarea {
           border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; font-size: 15px; color: #0f1340;
-          background: #fcfdfe; transition: all 0.2s;
+          background: #fcfdfe; transition: all 0.2s; width: 100%; text-align: left;
         }
         .hwb-input-group input:focus, .hwb-input-group select:focus, .hwb-input-group textarea:focus {
           outline: none; border-color: var(--theme-color, #ff5050); background: #fff; box-shadow: 0 0 0 4px rgba(251, 100, 27, 0.1);
@@ -280,12 +280,16 @@ const BulkQuoteModal = ({ open, onClose }) => {
         .hwb-close-mobile { background: none; border: none; font-size: 28px; color: #0f1340; }
 
         @media (max-width: 900px) {
-          .hwb-modal-container { border-radius: 0; max-height: 100vh; overflow-y: auto; }
+          .hwb-modal-overlay { padding: 10px; align-items: flex-start; overflow-y: auto; }
+          .hwb-modal-container { border-radius: 12px; margin: 0 auto; width: 100% !important; max-width: 100%; }
           .hwb-modal-wrap { flex-direction: column; min-height: auto; }
           .hwb-modal-aside { display: none; }
-          .hwb-modal-main { width: 100%; padding: 30px 20px; }
-          .hwb-grid { grid-template-columns: 1fr; gap: 20px; }
-          .hwb-form-intro h3 { font-size: 24px; }
+          .hwb-modal-main { width: 100% !important; padding: 25px 15px; }
+          .hwb-grid { grid-template-columns: 1fr !important; gap: 15px; }
+          .hwb-input-group label { font-size: 11px; }
+          .hwb-form-intro h3 { font-size: 22px; margin-bottom: 5px; }
+          .hwb-form-intro p { font-size: 14px; }
+          .hwb-btn-submit { font-size: 16px; padding: 15px; }
         }
       `}</style>
     </div>
