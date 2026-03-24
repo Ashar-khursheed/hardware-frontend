@@ -1725,8 +1725,10 @@ h2.display-5.size-28 {
     text-align: left !important;
 }
 
-.hwb-aside-content.jsx-1ec6ac1e94e326a6 h2 {
+.hwb-aside-content.jsx-1ec6ac1e94e326a6 h2,
+.jsx-5afd6abac82262b2.hwb-aside-content h2 {
     color: #fff !important;
+    text-align: left !important;
 }
 
 .hwb-aside-title.jsx-f75998493f0cf2d0 {
@@ -1734,11 +1736,13 @@ h2.display-5.size-28 {
     text-align: left !important;
 }
 
-.jsx-f75998493f0cf2d0 {
+.jsx-f75998493f0cf2d0,
+.hwb-modal-container.jsx-5afd6abac82262b2 {
     text-align: left !important;
 }
 
-.hwb-badge.jsx-f75998493f0cf2d0 span {
+.hwb-badge.jsx-f75998493f0cf2d0 span,
+.hwb-modal-container.jsx-5afd6abac82262b2 span {
     text-align: left !important;
     color: #ff5050;
 }
