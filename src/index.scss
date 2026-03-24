@@ -1560,21 +1560,7 @@ h2.display-5.size-28 {
     }
 }
 
-/* Point 5: Checkout Summary Text Alignment */
-.checkout-section .qty li {
-    padding: 15px 0 !important;
-}
-
-.checkout-section .qty li h5 {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    max-width: 100% !important;
-    white-space: normal !important;
-    line-height: 1.4 !important;
-    display: block !important;
-}
-
-/* Point 7: Direct Macro Quantity Selector on Checkout */
+/* Global Quantity Controls Style */
 .qty-controls {
     border: 1px solid #ddd !important;
     padding: 5px 10px !important;
@@ -1584,27 +1570,97 @@ h2.display-5.size-28 {
     gap: 10px;
     border-radius: 6px;
     margin-top: 5px;
-}
 
-.qty-controls button {
-    font-weight: 800 !important;
-    color: var(--theme-color, #ff5050) !important;
-    font-size: 16px !important;
-    background: transparent !important;
-    border: none !important;
-}
+    button {
+        font-weight: 800 !important;
+        color: var(--theme-color, #ff5050) !important;
+        font-size: 16px !important;
+        background: transparent !important;
+        border: none !important;
+    }
 
-.qty-controls span {
-    font-size: 14px !important;
-    min-width: 20px;
-    text-align: center;
-    color: #333;
+    span {
+        font-size: 14px !important;
+        min-width: 20px;
+        text-align: center;
+        color: #333;
+    }
 }
 
 /* Point 12: Mobile Menu Alignment */
 .hbx-static-mobile-menu .hbx-category-item {
     border-bottom: 1px solid #f1f1f1 !important;
     margin-bottom: 0 !important;
+}
+
+/* Point 5: Checkout Summary Mobile Redesign */
+@media (max-width: 576px) {
+    .checkout-section .qty li {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 15px !important;
+        padding: 20px 0 !important;
+        position: relative;
+    }
+
+    .checkout-section .qty li .cart-image {
+        width: 100px !important;
+        height: 100px !important;
+        border: 1px solid #f0f0f0;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .checkout-section .qty li .cart-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .checkout-section .qty li .cart-content .d-flex:first-child {
+        display: block !important;
+        margin-bottom: 5px !important;
+        padding-right: 25px;
+    }
+
+    .checkout-section .qty li h5 {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 1.4 !important;
+        color: #333 !important;
+        margin: 0 !important;
+    }
+
+    .checkout-section .qty li .btn-close-custom {
+        position: absolute;
+        top: 15px;
+        right: 0;
+        padding: 8px !important;
+        opacity: 0.6;
+    }
+
+    .checkout-section .qty li .d-flex.mt-2 {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100%;
+        margin-top: 5px !important;
+    }
+
+    .checkout-section .qty li .qty-controls {
+        padding: 4px 10px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        margin-top: 0 !important;
+    }
+
+    .checkout-section .qty li span.text-theme {
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        color: var(--theme-color, #ff5050) !important;
+    }
 }
 
 .hbx-static-mobile-menu .hbx-category-header {
