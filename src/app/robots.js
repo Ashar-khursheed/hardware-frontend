@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://thehardwarebox.com/sitemap.xml',
+    sitemap: 'https://www.thehardwarebox.com/sitemap.xml',
   }
 }

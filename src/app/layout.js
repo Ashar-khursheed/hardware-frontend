@@ -18,7 +18,7 @@ export async function generateMetadata() {
       return res.json();
     });
 
-    const frontendUrl = 'https://thehardwarebox.com';
+    const frontendUrl = 'https://www.thehardwarebox.com';
     return {
       metadataBase: new URL(frontendUrl),
       title: themeOption?.options?.seo?.meta_title || themeOption?.options?.seo?.meta_tags || 'Hardware Store',
@@ -60,7 +60,7 @@ export async function generateMetadata() {
     return {
       title: 'Hardware Store',
       description: 'Your trusted hardware store',
-      metadataBase: new URL('https://thehardwarebox.com'),
+      metadataBase: new URL('https://www.thehardwarebox.com'),
       robots: { index: true, follow: true },
       icons: {
         icon: '/favicon.svg',

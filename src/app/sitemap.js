@@ -1,5 +1,5 @@
 export default async function sitemap() {
-  const baseUrl = 'https://thehardwarebox.com';
+  const baseUrl = 'https://www.thehardwarebox.com';
 
   // Basic pages
   const staticPages = [
