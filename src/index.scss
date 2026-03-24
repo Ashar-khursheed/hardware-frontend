@@ -1796,39 +1796,102 @@ h2.display-5.size-28 {
     }
 }
 
-/* Point 5: Checkout Page alignment & Point 8 (spacing fix) */
-.checkout-page {
+/* Unique Class Checkout Experience Fix */
+.hbx-checkout-main-wrapper {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    position: relative;
+    z-index: 1;
+    user-select: auto !important;
+    -webkit-user-select: auto !important;
+
+    /* Solve non-interactive fields on mobile */
+    .stripe-element-wrapper {
+        background: #fff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 10px !important;
+        padding: 16px !important;
+        min-height: 56px !important;
+        margin-bottom: 20px !important;
+        position: relative !important;
+        z-index: 50 !important; /* Ensure it is above any background layers */
+        cursor: text !important;
+        touch-action: manipulation !important;
+        pointer-events: auto !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    /* Overall Section styling with unique classes */
     .checkout-section {
+        background: #fff !important;
+        border: 1px solid #f1f5f9 !important;
+        border-radius: 16px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
         margin-bottom: 30px !important;
-        border: 1px solid #f0f0f0 !important;
-        border-radius: 12px !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02) !important;
+        overflow: hidden;
     }
 
     .checkout-section-header {
-        padding: 18px 25px !important;
-        background: #fdfdfd !important;
+        padding: 20px 25px !important;
+        background: #f8fafc !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+        
+        .step-number {
+            background: #0f1340 !important;
+            color: #fff !important;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+        
+        h4 {
+            display: inline-block;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f1340;
+        }
     }
 
     .checkout-section-body {
-        padding: 30px 25px !important;
+        padding: 25px !important;
     }
-}
 
-/* Ensure Payment field (Stripe) has no overlapping text/elements */
-.stripe-element-wrapper {
-    margin-top: 5px !important;
-    margin-bottom: 20px !important;
-    padding: 14px 18px !important;
-    min-height: 52px !important;
-    z-index: 100 !important;
-    background: #fff !important;
-    position: relative !important;
-    pointer-events: auto !important;
-    cursor: text !important;
-    display: block !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 8px !important;
+    @media (max-width: 900px) {
+        padding: 5px !important;
+        
+        .checkout-section-body {
+            padding: 20px 15px !important;
+        }
+
+        /* Prevent any horizontal overflow */
+        .row {
+            margin-right: -10px !important;
+            margin-left: -10px !important;
+        }
+        
+        .col-lg-8, .col-lg-4 {
+            padding-right: 10px !important;
+            padding-left: 10px !important;
+        }
+
+        .checkout-main-title {
+            font-size: 1.8rem !important;
+            text-align: center;
+        }
+        
+        .checkout-subtitle {
+            text-align: center;
+            font-size: 14px;
+        }
+    }
 }
 
 
@@ -1849,59 +1912,6 @@ h2.display-5.size-28 {
     }
 }
 
-.hwb-modal-aside.jsx-1ec6ac1e94e326a6 {
-    color: #fff !important;
-}
-
-.hwb-aside-content.jsx-1ec6ac1e94e326a6,
-.hwb-form-intro.jsx-1ec6ac1e94e326a6,
-.hwb-form-intro.jsx-1ec6ac1e94e326a6,
-.jsx-5754b6b1efee2a36 .hwb-aside-content {
-    text-align: left !important;
-}
-
-.hwb-aside-content.jsx-1ec6ac1e94e326a6 h2,
-.jsx-5afd6abac82262b2.hwb-aside-content h2,
-.jsx-5754b6b1efee2a36 .hwb-aside-content h2 {
-    color: #fff !important;
-    text-align: left !important;
-}
-
-.hwb-aside-title.jsx-f75998493f0cf2d0 {
-    color: #fff !important;
-    text-align: left !important;
-}
-
-.jsx-f75998493f0cf2d0,
-.hwb-modal-container.jsx-5afd6abac82262b2 {
-    text-align: left !important;
-}
-
-.hwb-badge.jsx-f75998493f0cf2d0 span,
-.hwb-modal-container.jsx-5afd6abac82262b2 span,
-.jsx-5754b6b1efee2a36 .hwb-badge span {
-    text-align: left !important;
-    color: #ff5050;
-}
-
-.hwb-aside-list.jsx-f75998493f0cf2d0 li.jsx-f75998493f0cf2d0 svg,
-.jsx-f75998493f0cf2d0 .hwb-badge,
-.hwb-badge.jsx-5754b6b1efee2a36 svg,
-.hwb-badge.jsx-5754b6b1efee2a36,
-span.jsx-5754b6b1efee2a36.hwb-badge {
-    color: #ff5050 !important;
-}
-
-
-.hwb-form-intro.jsx-f75998493f0cf2d0,
-.jsx-5754b6b1efee2a36 {
-    text-align: left;
-}
-
 .top-header ul {
     display: inline-flex !important;
-}
-
-ul.jsx-f75998493f0cf2d0.hwb-aside-list {
-    display: block;
 }

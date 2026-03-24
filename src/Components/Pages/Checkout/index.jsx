@@ -68,7 +68,7 @@ const CheckoutContent = () => {
     <Fragment>
       <Breadcrumbs title={"Checkout"} subNavigation={[{ name: "Checkout" }]} />
       <WrapperComponent classes={{ sectionClass: "section-b-space checkout-section-2", fluidClass: "container" }} noRowCol={true}>
-        <div className="checkout-page">
+        <div className="checkout-page hbx-checkout-main-wrapper">
           <div className="checkout-title-section mb-4">
             <h2 className="checkout-main-title">Checkout</h2>
             <p className="checkout-subtitle">Please complete your purchase information below</p>
