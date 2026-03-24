@@ -1917,3 +1917,42 @@ h2.display-5.size-28 {
 .top-header ul {
     display: inline-flex !important;
 }
+
+.hwb-badge {
+    color: #ff5050 !important;
+    text-align: left !important;
+}
+
+.hwb-modal-aside {
+    color: #fff !important;
+    text-align: left !important;
+}
+
+.hwb-aside-content,
+.hwb-form-intro {
+    text-align: left !important;
+}
+
+.hwb-aside-content h2,
+.hwb-aside-title {
+    color: #fff !important;
+    text-align: left !important;
+}
+
+.hwb-badge span {
+    color: #ff5050 !important;
+    text-align: left !important;
+}
+
+.hwb-aside-list li svg,
+.hwb-badge svg {
+    color: #ff5050 !important;
+}
+
+.hwb-form-intro {
+    text-align: left;
+}
+
+ul.hwb-aside-list {
+    display: block;
+}
