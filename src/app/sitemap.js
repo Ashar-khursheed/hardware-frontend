@@ -1,48 +1,65 @@
 const baseUrl = 'https://www.thehardwarebox.com';
 const apiUrl = 'https://hardware.sparccpk.org/api';
 
-/**
- * Helper function to fetch all data from a paginated API endpoint
- */
-async function fetchAllData(endpoint) {
-  let allData = [];
-  let currentPage = 1;
-  let lastPage = 1;
-
-  try {
-    do {
-      // status=1 means active items
-      const url = `${apiUrl}/${endpoint}?status=1&paginate=100&page=${currentPage}`;
-      const response = await fetch(url, { next: { revalidate: 3600 } }); // Cache for 1 hour
-      
-      if (!response.ok) break;
-      
-      const json = await response.json();
-      
-      // Standard Laravel pagination structure: json.data.data is the array, json.data.last_page is total pages
-      const items = json?.data?.data || [];
-      allData = [...allData, ...items];
-      
-      lastPage = json?.data?.last_page || 1;
-      currentPage++;
-      
-    } while (currentPage <= lastPage);
-  } catch (error) {
-    console.error(`Error fetching dynamic sitemap data for ${endpoint}:`, error);
-  }
-  
-  return allData;
-}
+// This ensures Next.js/Amplify re-generates the sitemap periodically
+export const revalidate = 3600; 
 
 export default async function sitemap() {
-  // Fetch everything in parallel
-  const [products, categories, blogs] = await Promise.all([
-    fetchAllData('product'),
-    fetchAllData('category'),
-    fetchAllData('blog'),
-  ]);
+  let dynamicPages = [];
 
-  // 1. Static Pages
+  try {
+    // 1. Fetch from the new dedicated sitemap API
+    const response = await fetch(`${apiUrl}/sitemap`, { 
+      next: { revalidate: 3600 },
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      
+      /**
+       * Hum assume kar rahe hain ke API ka structure kuch is tarah hoga:
+       * { data: { products: [...], categories: [...], blogs: [...] } }
+       * Ya phir direct array of URLs.
+       */
+      
+      const products = data?.data?.products || [];
+      const categories = data?.data?.categories || [];
+      const blogs = data?.data?.blogs || [];
+
+      // Map Categories
+      const categoryLinks = categories.map((cat) => ({
+        url: `${baseUrl}/category/${cat.slug}`,
+        lastModified: new Date(cat.updated_at || new Date()).toISOString(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
+      }));
+
+      // Map Products
+      const productLinks = products.map((prod) => ({
+        url: `${baseUrl}/product/${prod.slug}`,
+        lastModified: new Date(prod.updated_at || new Date()).toISOString(),
+        changeFrequency: 'daily',
+        priority: 0.9,
+      }));
+
+      // Map Blogs
+      const blogLinks = blogs.map((blog) => ({
+        url: `${baseUrl}/blog/${blog.slug}`,
+        lastModified: new Date(blog.updated_at || new Date()).toISOString(),
+        changeFrequency: 'weekly',
+        priority: 0.6,
+      }));
+
+      dynamicPages = [...categoryLinks, ...productLinks, ...blogLinks];
+    }
+  } catch (error) {
+    console.error("Error fetching dynamic sitemap from /api/sitemap:", error);
+  }
+
+  // 2. Static Pages
   const staticPages = [
     '',
     '/about-us',
@@ -59,29 +76,5 @@ export default async function sitemap() {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // 2. Dynamic Categories
-  const categoryPages = categories.map((cat) => ({
-    url: `${baseUrl}/category/${cat.slug}`,
-    lastModified: new Date(cat.updated_at || new Date()).toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
-
-  // 3. Dynamic Products
-  const productPages = products.map((prod) => ({
-    url: `${baseUrl}/product/${prod.slug}`,
-    lastModified: new Date(prod.updated_at || new Date()).toISOString(),
-    changeFrequency: 'daily',
-    priority: 0.9,
-  }));
-
-  // 4. Dynamic Blogs
-  const blogPages = blogs.map((blog) => ({
-    url: `${baseUrl}/blog/${blog.slug}`,
-    lastModified: new Date(blog.updated_at || new Date()).toISOString(),
-    changeFrequency: 'weekly',
-    priority: 0.7,
-  }));
-
-  return [...staticPages, ...categoryPages, ...productPages, ...blogPages];
+  return [...staticPages, ...dynamicPages];
 }
