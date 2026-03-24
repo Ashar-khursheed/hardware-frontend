@@ -12,23 +12,37 @@ export default async function sitemap() {
     });
 
     if (response.ok) {
-      const data = await response.json();
+      const xmlText = await response.text(); // ✅ JSON nahi, text lo
 
-      // ✅ FIX: direct mapping
-      dynamicPages = data.map((item) => ({
-        url: item.url,
-        lastModified: item.lastmod
-          ? new Date(item.lastmod).toISOString()
-          : new Date().toISOString(),
-        changeFrequency: item.changefreq || 'weekly',
-        priority: item.priority || 0.5,
-      }));
+      const urlMatches = [...xmlText.matchAll(/<url>([\s\S]*?)<\/url>/g)];
+
+      dynamicPages = urlMatches
+        .map((match) => {
+          const block = match[1];
+          const loc = block.match(/<loc>(.*?)<\/loc>/)?.[1]?.trim();
+          const lastmod = block.match(/<lastmod>(.*?)<\/lastmod>/)?.[1]?.trim();
+          const changefreq = block.match(/<changefreq>(.*?)<\/changefreq>/)?.[1]?.trim();
+          const priority = block.match(/<priority>(.*?)<\/priority>/)?.[1]?.trim();
+
+          if (!loc) return null;
+
+          return {
+            url: loc,
+            lastModified: lastmod
+              ? new Date(lastmod).toISOString()
+              : new Date().toISOString(),
+            changeFrequency: changefreq || 'weekly',
+            priority: priority ? parseFloat(priority) : 0.5,
+          };
+        })
+        .filter(Boolean); // null entries hata do
+
+      console.log(`✅ Sitemap: ${dynamicPages.length} dynamic URLs loaded`);
     }
   } catch (error) {
-    console.error("Sitemap fetch error:", error);
+    console.error('❌ Sitemap fetch error:', error);
   }
 
-  // Static pages
   const staticPages = [
     '',
     '/about-us',
