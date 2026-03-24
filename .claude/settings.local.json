@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -r stripe d:hardwarehardware-frontend/src --include=*.jsx --include=*.js --include=*.tsx --include=*.ts)",
+      "Bash(grep -r \"payment\\\\|stripe\\\\|checkout\" d:hardwarehardware-frontend/src/Context --include=*.jsx --include=*.js)"
+    ]
+  }
+}

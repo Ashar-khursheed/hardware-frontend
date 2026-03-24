@@ -55,16 +55,26 @@
 }
 
 .stripe-element-wrapper {
-    padding: 12px;
-    border: 1px solid #ddd;
+    display: block;
+    padding: 13px 14px;
+    border: 1.5px solid #d1d5db;
     border-radius: 8px;
     background: #fff;
+    min-height: 48px;
+    position: relative;
+    touch-action: manipulation;
+    pointer-events: auto;
+    cursor: text;
     transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
 
     &:focus-within {
-        border-color: var(--theme-color, #2874f0);
+        border-color: var(--theme-color, #fb641b);
+        box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.1);
     }
 }
+
 
 /* Product Card Animations & Modern Styling */
 .transition-all {
@@ -1303,8 +1313,9 @@ h2.display-5.size-28 {
 .hbx-checkout-steps-wrapper {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -15px;
-    width: auto;
+    margin: 0;
+    width: 100%;
+    gap: 0;
 }
 
 .hbx-checkout-step-item {
@@ -1364,37 +1375,55 @@ h2.display-5.size-28 {
         }
 
         .checkout-section-body {
-            padding: 15px !important;
+            padding: 16px !important;
 
             .form-group {
-                margin-bottom: 15px !important;
+                margin-bottom: 14px !important;
 
                 label {
-                    font-size: 14px !important;
-                    margin-bottom: 5px !important;
+                    display: block !important;
+                    font-size: 13px !important;
+                    font-weight: 600 !important;
+                    margin-bottom: 6px !important;
+                    line-height: 1.3 !important;
                 }
 
                 input,
                 select,
-                textarea,
-                .stripe-element-wrapper {
-                    min-height: 45px !important;
+                textarea {
+                    display: block !important;
+                    min-height: 44px !important;
                     font-size: 14px !important;
                     width: 100% !important;
-                    display: flex !important;
-                    align-items: center !important;
                     background: #fff !important;
-                    border: 1px solid #ced4da !important;
-                    border-radius: 4px !important;
-                    padding: 0 12px !important;
+                    border: 1.5px solid #d1d5db !important;
+                    border-radius: 8px !important;
+                    padding: 10px 12px !important;
+                    box-sizing: border-box !important;
+                    -webkit-appearance: none !important;
+                    appearance: none !important;
                 }
 
+                /* Stripe wrapper MUST be display:block and have real padding */
                 .stripe-element-wrapper {
-                    padding: 10px 12px !important;
+                    display: block !important;
+                    min-height: 48px !important;
+                    height: auto !important;
+                    padding: 13px 14px !important;
+                    border: 1.5px solid #d1d5db !important;
+                    border-radius: 8px !important;
+                    background: #fff !important;
+                    width: 100% !important;
+                    box-sizing: border-box !important;
+                    touch-action: manipulation !important;
+                    pointer-events: auto !important;
+                    cursor: text !important;
+                    position: relative !important;
+                    z-index: 10 !important;
                 }
             }
 
-            /* Stripe specific row fix */
+            /* Stripe expiry + CVC row: stack on mobile */
             .row {
                 display: flex !important;
                 flex-direction: column !important;
@@ -1866,22 +1895,22 @@ h2.display-5.size-28 {
     }
 
     @media (max-width: 900px) {
-        padding: 5px !important;
+        padding: 0 !important;
 
         .checkout-section-body {
-            padding: 20px 15px !important;
+            padding: 16px !important;
         }
 
         /* Prevent any horizontal overflow */
         .row {
-            margin-right: -10px !important;
-            margin-left: -10px !important;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
         }
 
         .col-lg-8,
         .col-lg-4 {
-            padding-right: 10px !important;
-            padding-left: 10px !important;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
         }
 
         .checkout-main-title {
@@ -1955,4 +1984,475 @@ h2.display-5.size-28 {
 
 ul.hwb-aside-list {
     display: block;
+}
+
+/* ============================================================
+   HBX MOBILE CHECKOUT — Unique Mobile-Only Styles
+   Prefix: hbx-mob-chk-* | Scoped: max-width: 767px ONLY
+   DO NOT add non-mobile styles here. Desktop is untouched.
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+    /* ── 1. Root wrapper: kill horizontal scroll ── */
+    .hbx-checkout-main-wrapper {
+        padding: 0 !important;
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+
+    /* ── 2. Title section ── */
+    .hbx-mob-chk-title-section {
+        text-align: center;
+        margin-bottom: 20px !important;
+    }
+
+    .checkout-page .checkout-title-section {
+        text-align: center;
+        padding: 0 10px;
+        margin-bottom: 16px !important;
+    }
+
+    .checkout-page .checkout-main-title {
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        color: #0f1340 !important;
+        margin-bottom: 4px !important;
+        line-height: 1.2 !important;
+    }
+
+    .checkout-page .checkout-subtitle {
+        font-size: 13px !important;
+        color: #64748b !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ── 3. Checkout form outer row: stack columns ── */
+    .checkout-page .checkout-form > .row {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        gap: 0 !important;
+        --bs-gutter-x: 0 !important;
+    }
+
+    .checkout-page .checkout-form > .row > [class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* ── 4. Checkout steps wrapper: force single column ── */
+    .hbx-checkout-steps-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        margin: 0 !important;
+        width: 100% !important;
+        gap: 16px !important;
+        overflow: hidden !important;
+    }
+
+    .hbx-checkout-step-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* ── 5. Checkout section cards ── */
+    .hbx-checkout-main-wrapper .checkout-section {
+        border-radius: 12px !important;
+        margin-bottom: 16px !important;
+        overflow: hidden !important;
+        border: 1px solid #e8edf2 !important;
+        box-shadow: 0 2px 12px rgba(15, 19, 64, 0.06) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .hbx-checkout-main-wrapper .checkout-section-header {
+        padding: 14px 16px !important;
+        display: flex !important;
+        align-items: center !important;
+
+        .step-number {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 12px !important;
+            margin-right: 10px !important;
+            flex-shrink: 0 !important;
+        }
+
+        h4 {
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            margin: 0 !important;
+        }
+    }
+
+    .hbx-checkout-main-wrapper .checkout-section-body {
+        padding: 16px !important;
+        overflow: hidden !important;
+    }
+
+    /* ── 6. Form groups & labels ── */
+    .checkout-section-body .form-group {
+        margin-bottom: 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+
+        label,
+        .form-label {
+            display: block !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #374151 !important;
+            margin-bottom: 6px !important;
+            line-height: 1.3 !important;
+        }
+
+        input,
+        select,
+        textarea {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: 44px !important;
+            font-size: 14px !important;
+            padding: 10px 12px !important;
+            border: 1.5px solid #d1d5db !important;
+            border-radius: 8px !important;
+            background: #fff !important;
+            color: #1f2937 !important;
+            line-height: 1.4 !important;
+            box-sizing: border-box !important;
+            -webkit-appearance: none !important;
+            appearance: none !important;
+            touch-action: manipulation !important;
+
+            &:focus {
+                border-color: var(--theme-color, #fb641b) !important;
+                outline: none !important;
+                box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.12) !important;
+            }
+
+            &.is-invalid {
+                border-color: #ef4444 !important;
+            }
+        }
+
+        .form-text {
+            font-size: 11px !important;
+            margin-top: 4px !important;
+            color: #9ca3af !important;
+        }
+
+        .invalid-feedback,
+        .d-block.invalid-feedback {
+            font-size: 11px !important;
+            margin-top: 4px !important;
+            color: #ef4444 !important;
+        }
+    }
+
+    /* ── 7. Stripe card fields — the big fix ── */
+
+    /* Payment tabs */
+    .payment-tabs {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-bottom: 16px !important;
+
+        .payment-tab {
+            flex: 1 1 auto !important;
+            min-width: 120px !important;
+            font-size: 13px !important;
+            padding: 10px 12px !important;
+            border-radius: 8px !important;
+            text-align: center !important;
+            white-space: nowrap !important;
+        }
+    }
+
+    /* Stripe form container */
+    .stripe-card-form {
+        margin-top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+
+        .form-group {
+            margin-bottom: 14px !important;
+            width: 100% !important;
+
+            .form-label {
+                display: block !important;
+                font-size: 13px !important;
+                font-weight: 600 !important;
+                color: #374151 !important;
+                margin-bottom: 6px !important;
+                line-height: 1.3 !important;
+                position: static !important;
+                transform: none !important;
+                padding: 0 !important;
+            }
+        }
+    }
+
+    /* The stripe iframe wrapper — most critical fix */
+    .stripe-element-wrapper {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 48px !important;
+        height: auto !important;
+        background: #ffffff !important;
+        border: 1.5px solid #d1d5db !important;
+        border-radius: 8px !important;
+        padding: 13px 14px !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        z-index: 10 !important;
+        touch-action: manipulation !important;
+        pointer-events: auto !important;
+        cursor: text !important;
+        overflow: visible !important;
+        margin-bottom: 0 !important;
+
+        &:focus-within {
+            border-color: var(--theme-color, #fb641b) !important;
+            box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.12) !important;
+        }
+
+        /* The actual Stripe iframe inside */
+        iframe,
+        .__PrivateStripeElement,
+        .__PrivateStripeElement iframe {
+            min-height: 22px !important;
+            height: 22px !important;
+            display: block !important;
+            width: 100% !important;
+        }
+    }
+
+    /* Stripe expiry + CVC row: stack on mobile */
+    .stripe-card-form .row {
+        display: flex !important;
+        flex-direction: column !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        gap: 0 !important;
+
+        .col-md-6 {
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: 0 0 100% !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+
+    .secure-payment-badge {
+        font-size: 12px !important;
+        padding: 10px 12px !important;
+        border-radius: 8px !important;
+        background: #f0fdf4 !important;
+        color: #166534 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        margin-top: 12px !important;
+    }
+
+    /* ── 8. Sidebar / right column ── */
+    .checkout-right-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+    }
+
+    /* ── 9. Cart product cards in sidebar ── */
+    .checkout-details {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .qty.list-unstyled {
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        overflow: hidden !important;
+        width: 100% !important;
+    }
+
+    .hbx-cart-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        padding: 12px !important;
+        margin-bottom: 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .hbx-cart-item-wrap {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .hbx-cart-image {
+        width: 65px !important;
+        height: 65px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hbx-cart-info {
+        padding-left: 12px !important;
+        padding-right: 28px !important;
+        flex: 1 !important;
+        min-width: 0 !important; /* important for text truncation in flex */
+        overflow: hidden !important;
+    }
+
+    .hbx-product-title {
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
+        word-break: break-word !important;
+        white-space: normal !important;
+    }
+
+    .hbx-price-qty-row {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .hbx-qty-selector {
+        padding: 3px 5px !important;
+
+        button {
+            padding: 0 6px !important;
+            font-size: 14px !important;
+        }
+
+        span {
+            font-size: 13px !important;
+            min-width: 18px !important;
+        }
+    }
+
+    .hbx-cart-remove {
+        top: 3px !important;
+        right: 3px !important;
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 14px !important;
+    }
+
+    .hbx-cart-subtotal-row {
+        .hbx-total {
+            font-size: 14px !important;
+        }
+    }
+
+    /* ── 10. Billing summary ── */
+    .order-box {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .sub-total,
+    .total {
+        width: 100% !important;
+        overflow: hidden !important;
+
+        li {
+            font-size: 14px !important;
+            padding: 10px 0 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+            flex-wrap: nowrap !important;
+
+            .count {
+                font-weight: 700 !important;
+                font-size: 14px !important;
+                text-align: right !important;
+                flex-shrink: 0 !important;
+            }
+        }
+    }
+
+    /* ── 11. Apply coupon section ── */
+    .apply-coupon-section,
+    .coupon-section {
+        width: 100% !important;
+        overflow: hidden !important;
+
+        .input-group {
+            width: 100% !important;
+            flex-wrap: nowrap !important;
+
+            input {
+                flex: 1 1 auto !important;
+                min-width: 0 !important;
+                font-size: 13px !important;
+            }
+
+            button {
+                flex-shrink: 0 !important;
+                font-size: 13px !important;
+                padding: 8px 14px !important;
+            }
+        }
+    }
+
+    /* ── 12. Place order button ── */
+    .place-order-btn,
+    .btn-animation,
+    button[type="submit"].btn {
+        width: 100% !important;
+        padding: 14px !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        border-radius: 10px !important;
+        letter-spacing: 0.5px !important;
+        margin-top: 6px !important;
+    }
+
+    /* ── 13. Payment method description ── */
+    .payment-method-description p {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* ── 14. Address selection (logged-in user) ── */
+    .address-selection-section,
+    .address-box {
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* ── 15. Prevent any child from causing horizontal scroll ── */
+    .checkout-page *,
+    .hbx-checkout-main-wrapper * {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Except iframes (Stripe) — they need special treatment */
+    .checkout-page iframe,
+    .hbx-checkout-main-wrapper iframe,
+    .__PrivateStripeElement,
+    .__PrivateStripeElement iframe {
+        max-width: none !important;
+    }
 }
