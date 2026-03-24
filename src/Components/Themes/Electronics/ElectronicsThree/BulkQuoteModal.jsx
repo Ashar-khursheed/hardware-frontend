@@ -282,10 +282,10 @@ const BulkQuoteModal = ({ open, onClose }) => {
         @media (max-width: 900px) {
           .hwb-modal-container { border-radius: 0; max-height: 100vh; overflow-y: auto; }
           .hwb-modal-wrap { flex-direction: column; min-height: auto; }
-          .hwb-modal-aside { width: 100%; }
-          .hwb-aside-content { padding: 40px 30px; }
-          .hwb-modal-main { width: 100%; padding: 40px 30px; }
+          .hwb-modal-aside { display: none; }
+          .hwb-modal-main { width: 100%; padding: 30px 20px; }
           .hwb-grid { grid-template-columns: 1fr; gap: 20px; }
+          .hwb-form-intro h3 { font-size: 24px; }
         }
       `}</style>
     </div>

@@ -490,6 +490,14 @@
 }
 
 @media (max-width: 576px) {
+    .phoneimg {
+        display: none !important;
+    }
+
+    .copyright-bar .text-start {
+        text-align: center;
+    }
+
     .brand-logo {
         padding: 0 !important;
         margin-bottom: 0 !important;
