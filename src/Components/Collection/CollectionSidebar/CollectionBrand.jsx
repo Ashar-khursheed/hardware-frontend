@@ -27,16 +27,27 @@ const CollectionBrand = ({ filter, setFilter, categorySlug }) => {
   );
 
   useEffect(() => {
-    refetch();
-  }, []);
+    // Only refetch global brands if we ARE NOT on a category page
+    if (!categorySlug && !category?.category) {
+      refetch();
+    }
+  }, [categorySlug, category, refetch]);
 
   useEffect(() => {
-    if (categorySlug || category?.category) {
+    const isCategoryMode = !!(categorySlug || category?.category);
+    
+    if (isCategoryMode) {
+      // While loading dynamic brands, keep the list empty or wait for data
       if (!brandLoading && dynamicBrandData) {
         setShowList(dynamicBrandData);
+      } else if (brandLoading) {
+        setShowList([]); // Clear list while loading to avoid showing all brands
       }
     } else {
-      !isLoading && setShowList(brandState);
+      // General collection page (all brands)
+      if (!isLoading && brandState) {
+        setShowList(brandState);
+      }
     }
   }, [brandState, isLoading, categorySlug, category, dynamicBrandData, brandLoading]);
 
