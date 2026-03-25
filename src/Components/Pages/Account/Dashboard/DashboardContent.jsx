@@ -1,7 +1,7 @@
 import AccountContext from "@/Context/AccountContext";
 import SettingContext from "@/Context/SettingContext";
 import { ImagePath } from "@/Utils/Constants";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { RiCalendarLine, RiFileList3Line, RiMailLine, RiMapPinLine, RiOrderPlayLine, RiPhoneLine, RiShieldUserLine, RiShoppingCartLine, RiStarLine, RiUserLine } from "react-icons/ri";
 import { Col, Row } from "reactstrap";
@@ -10,8 +10,15 @@ import Image from "next/image";
 
 const DashboardContent = () => {
     const { t } = useTranslation("common");
-    const { accountData } = useContext(AccountContext);
+    const { accountData, setMobileSideBar } = useContext(AccountContext);
     const { convertCurrency } = useContext(SettingContext);
+
+    // Force close sidebar on mount for mobile
+    useEffect(() => {
+        if (setMobileSideBar) {
+            setMobileSideBar(false);
+        }
+    }, [setMobileSideBar]);
 
     // Helper to get initial
     const initial = accountData?.name?.charAt(0)?.toUpperCase() || "U";
