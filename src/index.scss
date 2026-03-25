@@ -2473,209 +2473,253 @@ ul.hwb-aside-list {
 }
 
 /* ============================================================
-   HBX MOBILE DASHBOARD V2 — Premium Green Design
-   Scoped: max-width: 767px
+   HBX MOBILE DASHBOARD V3 — Premium App-Like Design
+   Target: Mobile-Only (max-width: 767px)
    ============================================================ */
 
 @media (max-width: 767px) {
-    .hbx-dash-v2 {
-        padding: 10px 0 !important;
-        background: #f8fafc !important;
+    .hbx-premium-app-wrapper {
+        background: #fdfdfd !important;
+        min-height: 100vh;
+        padding-bottom: 20px !important;
     }
 
-    /* 1. GREEN WELCOME CARD */
-    .hbx-dash-mob-welcome-card {
-        background: #1e5128 !important; /* Forest Green */
-        border-radius: 20px !important;
-        padding: 24px 20px !important;
-        margin: 0 15px 25px !important;
-        box-shadow: 0 10px 30px rgba(30, 81, 40, 0.15) !important;
+    /* 1. HERO SECTION */
+    .hbx-app-hero {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+        padding: 40px 20px 80px !important;
+        border-bottom-left-radius: 40px !important;
+        border-bottom-right-radius: 40px !important;
         color: #fff !important;
+        position: relative;
+        margin-bottom: -40px !important;
+        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2) !important;
     }
 
-    .hbx-dash-mob-profile-header {
+    .hbx-app-profile-row {
         display: flex !important;
         align-items: center !important;
-        gap: 16px !important;
-        margin-bottom: 24px !important;
-
-        .hbx-dash-mob-avatar {
-            width: 60px !important;
-            height: 60px !important;
-            background: rgba(255, 255, 255, 0.2) !important;
-            border: 2px solid rgba(255, 255, 255, 0.4) !important;
-            border-radius: 50% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 24px !important;
-            font-weight: 800 !important;
-            color: #fff !important;
-        }
-
-        .hbx-dash-mob-name-box {
-            h2 {
-                font-size: 20px !important;
-                font-weight: 700 !important;
-                color: #fff !important;
-                margin: 0 0 4px !important;
-                letter-spacing: -0.5px !important;
-            }
-            p {
-                font-size: 13px !important;
-                color: rgba(255, 255, 255, 0.8) !important;
-                margin: 0 !important;
-            }
-        }
-    }
-
-    .hbx-dash-mob-info-boxes {
-        display: flex !important;
-        gap: 12px !important;
-        margin-bottom: 20px !important;
-        flex-wrap: wrap !important;
-    }
-
-    .hbx-dash-mob-info-pill {
-        background: rgba(255, 255, 255, 0.08) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 12px !important;
-        padding: 10px 14px !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 10px !important;
-        flex: 1 !important;
-        min-width: 140px !important;
-
-        svg {
-            font-size: 18px !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-        }
-
-        .inner {
-            span {
-                display: block !important;
-                font-size: 10px !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.5px !important;
-                color: rgba(255, 255, 255, 0.6) !important;
-                margin-bottom: 1px !important;
-            }
-            h6 {
-                font-size: 13px !important;
-                font-weight: 600 !important;
-                color: #fff !important;
-                margin: 0 !important;
-                white-space: nowrap !important;
-                overflow: hidden !important;
-                text-overflow: ellipsis !important;
-                max-width: 120px !important;
-            }
-        }
-    }
-
-    .hbx-dash-mob-divider {
-        height: 1px !important;
-        background: rgba(255, 255, 255, 0.1) !important;
-        margin: 20px 0 !important;
-    }
-
-    .hbx-dash-mob-details-list {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-    .hbx-dash-mob-detail-item {
-        display: flex !important;
-        align-items: center !important;
-        gap: 12px !important;
-        
-        svg {
-            font-size: 16px !important;
-            color: rgba(255, 255, 255, 0.7) !important;
-        }
-
-        span {
-            font-size: 13px !important;
-            color: rgba(255, 255, 255, 0.9) !important;
-
-            strong {
-                font-weight: 700 !important;
-                margin-left: 4px !important;
-            }
-        }
-    }
-
-    /* 2. NAVIGATION CARDS GRID */
-    .hbx-dash-mob-nav-grid {
-        padding: 0 15px !important;
-        display: flex !important;
-        flex-direction: column !important;
         gap: 15px !important;
         margin-bottom: 30px !important;
-    }
 
-    .hbx-dash-mob-nav-card {
-        background: #fff !important;
-        border-radius: 16px !important;
-        padding: 20px !important;
-        display: flex !important;
-        align-items: flex-start !important;
-        gap: 16px !important;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
-        border: 1px solid #f1f5f9 !important;
-        position: relative !important;
-
-        .hbx-dash-mob-nav-icon {
-            width: 48px !important;
-            height: 48px !important;
-            border-radius: 12px !important;
+        .hbx-app-avatar {
+            width: 55px !important;
+            height: 55px !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+            border-radius: 18px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             font-size: 22px !important;
-            flex-shrink: 0 !important;
-
-            &.orders { background: #eff6ff !important; color: #2563eb !important; }
-            &.wallet { background: #fef2f2 !important; color: #dc2626 !important; }
+            font-weight: 800 !important;
+            color: #fff !important;
         }
 
-        .hbx-dash-mob-nav-content {
+        .hbx-app-greeting {
             flex: 1 !important;
-            h3 {
-                font-size: 16px !important;
-                font-weight: 700 !important;
-                color: #0f172a !important;
-                margin: 0 0 6px !important;
-            }
-            p {
-                font-size: 12px !important;
-                color: #64748b !important;
-                line-height: 1.5 !important;
-                margin: 0 0 12px !important;
-            }
-            a {
+            .hbx-app-welcome {
                 font-size: 13px !important;
-                font-weight: 600 !important;
-                color: #1e5128 !important;
-                text-decoration: none !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 4px !important;
+                color: rgba(255, 255, 255, 0.8) !important;
+                display: block !important;
+                margin-bottom: 2px !important;
+            }
+            h2 {
+                font-size: 20px !important;
+                font-weight: 700 !important;
+                margin: 0 !important;
+                letter-spacing: -0.5px !important;
             }
         }
 
-        .hbx-dash-mob-nav-arrow {
+        .hbx-app-notify-btn {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            color: #fff !important;
+            position: relative !important;
             font-size: 20px !important;
-            color: #cbd5e1 !important;
-            align-self: flex-start !important;
+
+            .dot {
+                position: absolute !important;
+                top: 8px !important;
+                right: 8px !important;
+                width: 8px !important;
+                height: 8px !important;
+                background: #f87171 !important;
+                border: 2px solid rgba(255,255,255,1) !important;
+                border-radius: 50% !important;
+            }
         }
     }
 
-    /* Hide the old sidebar toggle button since we have nav cards now */
-    .show-btn {
-        display: none !important;
+    /* STATS WIDGETS */
+    .hbx-app-stats-row {
+        display: flex !important;
+        gap: 15px !important;
+    }
+
+    .hbx-stat-card {
+        flex: 1 !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 20px !important;
+        padding: 15px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+
+        .icon {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 18px !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        .info {
+            span {
+                font-size: 11px !important;
+                color: rgba(255, 255, 255, 0.7) !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                display: block !important;
+            }
+            h6 {
+                font-size: 14px !important;
+                font-weight: 700 !important;
+                margin: 0 !important;
+                color: #fff !important;
+            }
+        }
+    }
+
+    /* 2. QUICK ACTIONS GRID */
+    .hbx-app-menu-section {
+        padding: 0 20px !important;
+        margin-top: 10px !important;
+    }
+
+    .hbx-section-title {
+        font-size: 17px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
+        margin-bottom: 20px !important;
+        margin-top: 0 !important;
+    }
+
+    .hbx-app-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 12px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .hbx-grid-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 8px !important;
+
+        .grid-icon {
+            width: 55px !important;
+            height: 55px !important;
+            border-radius: 18px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 24px !important;
+            transition: all 0.2s ease !important;
+            background: #fff !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+            border: 1px solid #f1f5f9 !important;
+
+            &.orders { color: #4f46e5 !important; background: #eef2ff !important; }
+            &.address { color: #0891b2 !important; background: #ecfeff !important; }
+            &.profile { color: #7c3aed !important; background: #f5f3ff !important; }
+            &.notifications { color: #f59e0b !important; background: #fffbeb !important; }
+        }
+
+        span {
+            font-size: 11px !important;
+            font-weight: 600 !important;
+            color: #64748b !important;
+        }
+
+        &:active .grid-icon {
+            transform: scale(0.92) !important;
+            background: #f8fafc !important;
+        }
+    }
+
+    /* 3. INFO SECTION */
+    .hbx-app-info-section {
+        padding: 0 20px !important;
+    }
+
+    .hbx-info-stack {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .hbx-info-card {
+        background: #fff !important;
+        border-radius: 18px !important;
+        padding: 16px 20px !important;
+        border: 1px solid #f1f5f9 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
+
+        .inner {
+            position: relative !important;
+            z-index: 2 !important;
+            label {
+                font-size: 11px !important;
+                color: #94a3b8 !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                margin-bottom: 2px !important;
+                display: block !important;
+            }
+            p {
+                font-size: 15px !important;
+                font-weight: 700 !important;
+                color: #1e293b !important;
+                margin: 0 !important;
+            }
+        }
+
+        .bg-icon {
+            font-size: 40px !important;
+            color: #f1f5f9 !important;
+            position: absolute !important;
+            right: -5px !important;
+            bottom: -5px !important;
+            z-index: 1 !important;
+        }
+
+        &.phone .bg-icon { color: #f0fdf4 !important; }
+        &.type .bg-icon { color: #fdf2f2 !important; }
+    }
+
+    .hbx-app-footer-spacer {
+        height: 100px !important;
     }
 }
 

@@ -24,78 +24,95 @@ const DashboardContent = () => {
     const initial = accountData?.name?.charAt(0)?.toUpperCase() || "U";
 
     return (
-        <div className="counter-section hbx-dash-v2">
-            {/* ── MOBILE PREMIUM UI (d-md-none) ── */}
-            <div className="d-block d-md-none">
-                {/* 1. GREEN WELCOME CARD */}
-                <div className="hbx-dash-mob-welcome-card">
-                    <div className="hbx-dash-mob-profile-header">
-                        <div className="hbx-dash-mob-avatar">{initial}</div>
-                        <div className="hbx-dash-mob-name-box">
-                            <h2>Welcome back, {accountData?.name?.split(' ')[0]}! 👋</h2>
-                            {accountData?.business_name && <p>Business Name: {accountData?.business_name}</p>}
+        <div className="counter-section hbx-premium-dash-v3">
+            {/* ── MOBILE PREMIUM UI V3 (d-md-none) ── */}
+            <div className="d-md-none hbx-premium-app-wrapper">
+                {/* 1. GLASSMORPHIC HERO SECTION */}
+                <div className="hbx-app-hero">
+                    <div className="hbx-app-profile-row">
+                        <div className="hbx-app-avatar">{initial}</div>
+                        <div className="hbx-app-greeting">
+                            <span className="hbx-app-welcome">Welcome back,</span>
+                            <h2>{accountData?.name}</h2>
                         </div>
-                    </div>
-
-                    <div className="hbx-dash-mob-info-boxes">
-                        <div className="hbx-dash-mob-info-pill">
+                        <button className="hbx-app-notify-btn" onClick={() => window.location.href = '/account/notification'}>
                             <RiMailLine />
+                            <span className="dot"></span>
+                        </button>
+                    </div>
+
+                    {/* QUICK STATS WIDGETS */}
+                    <div className="hbx-app-stats-row">
+                        <div className="hbx-stat-card wallet">
+                            <div className="icon"><RiStarLine /></div>
+                            <div className="info">
+                                <span>Wallet</span>
+                                <h6>{accountData?.wallet ? convertCurrency(accountData?.wallet?.balance) : convertCurrency(0)}</h6>
+                            </div>
+                        </div>
+                        <div className="hbx-stat-card points">
+                            <div className="icon"><RiOrderPlayLine /></div>
+                            <div className="info">
+                                <span>Points</span>
+                                <h6>{Number(accountData?.point?.balance || 0)}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 2. QUICK ACTIONS SECTION */}
+                <div className="hbx-app-menu-section">
+                    <h4 className="hbx-section-title">Quick Actions</h4>
+                    <div className="hbx-app-grid">
+                        <div className="hbx-grid-item" onClick={() => window.location.href = '/account/order'}>
+                            <div className="grid-icon orders"><RiShoppingCartLine /></div>
+                            <span>My Orders</span>
+                        </div>
+                        <div className="hbx-grid-item" onClick={() => window.location.href = '/account/addresses'}>
+                            <div className="grid-icon address"><RiMapPinLine /></div>
+                            <span>Addresses</span>
+                        </div>
+                        <div className="hbx-grid-item" onClick={() => window.location.href = '/account/profile'}>
+                            <div className="grid-icon profile"><RiUserLine /></div>
+                            <span>Profile</span>
+                        </div>
+                        <div className="hbx-grid-item" onClick={() => window.location.href = '/account/wallet'}>
+                            <div className="grid-icon notifications"><RiStarLine /></div>
+                            <span>Wallet</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 3. INFORMATION CARDS */}
+                <div className="hbx-app-info-section">
+                    <h4 className="hbx-section-title">Account Details</h4>
+                    <div className="hbx-info-stack">
+                        <div className="hbx-info-card">
                             <div className="inner">
-                                <span>Email</span>
-                                <h6>{accountData?.email}</h6>
+                                <label>Email Address</label>
+                                <p>{accountData?.email}</p>
                             </div>
+                            <RiMailLine className="bg-icon" />
                         </div>
-                        {accountData?.trn && (
-                            <div className="hbx-dash-mob-info-pill trn-pill">
-                                <RiFileList3Line />
-                                <div className="inner">
-                                    <span>TRN</span>
-                                    <h6>{accountData?.trn || 'N/A'}</h6>
-                                </div>
+                        <div className="hbx-info-card phone">
+                            <div className="inner">
+                                <label>Phone Number</label>
+                                <p>+{accountData?.country_code} {accountData?.phone}</p>
                             </div>
-                        )}
-                    </div>
-
-                    <div className="hbx-dash-mob-divider" />
-
-                    <div className="hbx-dash-mob-details-list">
-                        <div className="hbx-dash-mob-detail-item">
-                            <RiShieldUserLine />
-                            <span>Account Type: <strong>{accountData?.role?.name || "Customer"}</strong></span>
+                            <RiPhoneLine className="bg-icon" />
                         </div>
-                        <div className="hbx-dash-mob-detail-item">
-                            <RiCalendarLine />
-                            <span>Member Since: <strong>{accountData?.created_at ? new Date(accountData?.created_at).toLocaleDateString() : 'N/A'}</strong></span>
-                        </div>
-                        <div className="hbx-dash-mob-detail-item">
-                            <RiPhoneLine />
-                            <span>Phone No.: <strong>+{accountData?.country_code} {accountData?.phone}</strong></span>
+                        <div className="hbx-info-card type">
+                            <div className="inner">
+                                <label>Account Category</label>
+                                <p>{accountData?.role?.name || "Premium Consumer"}</p>
+                            </div>
+                            <RiShieldUserLine className="bg-icon" />
                         </div>
                     </div>
                 </div>
 
-                {/* 2. NAVIGATION CARDS GRID */}
-                <div className="hbx-dash-mob-nav-grid">
-                    <div className="hbx-dash-mob-nav-card">
-                        <div className="hbx-dash-mob-nav-icon orders"><RiShoppingCartLine /></div>
-                        <div className="hbx-dash-mob-nav-content">
-                            <h3>My Orders</h3>
-                            <p>Track, manage, or reorder past purchases. View delivery status and history.</p>
-                            <a href="/account/order">View Orders &rsaquo;</a>
-                        </div>
-                        <div className="hbx-dash-mob-nav-arrow">&rsaquo;</div>
-                    </div>
-
-                    <div className="hbx-dash-mob-nav-card">
-                        <div className="hbx-dash-mob-nav-icon wallet"><RiStarLine /></div>
-                        <div className="hbx-dash-mob-nav-content">
-                            <h3>My Wallet & Points</h3>
-                            <p>Check your balance, rewards, and transaction history.</p>
-                            <a href="/account/wallet">View Wallet &rsaquo;</a>
-                        </div>
-                        <div className="hbx-dash-mob-nav-arrow">&rsaquo;</div>
-                    </div>
-                </div>
+                {/* FOOTER PUSH (For Mobile Menu Spacing) */}
+                <div className="hbx-app-footer-spacer"></div>
             </div>
 
             {/* ── DESKTOP DEFAULT UI (d-none d-md-block) ── */}
