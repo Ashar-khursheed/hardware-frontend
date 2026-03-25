@@ -145,7 +145,7 @@ const ElectronicsThree = () => {
   useSkeletonLoader2([productLoad, blogLoading, brandLoading]);
 
   // Show skeleton if loading OR if data is not yet available
-  if ((isLoading || !data) && typeof window !== 'undefined') return <SkeletonHomepage />;
+  // if ((isLoading || !data) && typeof window !== 'undefined') return <SkeletonHomepage />;
 
   return (
     <>
@@ -330,24 +330,40 @@ const ElectronicsThree = () => {
       )} */}
 
       {/* Product List 1 */}
-      {data?.products_list_1?.status && (
-        <>
-          <WrapperComponent
-            classes={{ sectionClass: "section-b-space ratio_square no-arrow", fluidClass: "container" }}
-            colProps={{ xs: "12" }}
-          >
-            <TitleBox type="icon" title={data?.products_list_1} />
-            <div className="custom-slick-wrapper hbx-animate-up hbx-delay-2">
-              <HomeProduct
-                productIds={data?.products_list_1?.product_ids}
-                slider={true}
-                sliderOptions={horizontalProductSlider5}
-                style="vertical"
-              />
-            </div>
-          </WrapperComponent>
-        </>
-      )}
+    {isLoading ? (
+  <div className="container my-4">
+    <div className="row g-3">
+      {[...Array(5)].map((_, i) => (
+        <div key={i} className="col-6 col-md-2">
+          <div style={{
+            height: '220px',
+            borderRadius: '8px',
+            background: 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmer 1.5s infinite'
+          }} />
+        </div>
+      ))}
+    </div>
+  </div>
+) : data?.products_list_1?.status && (
+  <>
+    <WrapperComponent
+      classes={{ sectionClass: "section-b-space ratio_square no-arrow", fluidClass: "container" }}
+      colProps={{ xs: "12" }}
+    >
+      <TitleBox type="icon" title={data?.products_list_1} />
+      <div className="custom-slick-wrapper hbx-animate-up hbx-delay-2">
+        <HomeProduct
+          productIds={data?.products_list_1?.product_ids}
+          slider={true}
+          sliderOptions={horizontalProductSlider5}
+          style="vertical"
+        />
+      </div>
+    </WrapperComponent>
+  </>
+)}
 
       {/* airpods and gaming laptop sec */}
       <section className=" bg-white section-b-space ">
