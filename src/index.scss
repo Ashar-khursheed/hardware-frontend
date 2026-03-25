@@ -2473,186 +2473,209 @@ ul.hwb-aside-list {
 }
 
 /* ============================================================
-   HBX MOBILE DASHBOARD — Unique Mobile-Only Styles
-   Prefix: hbx-dash-mob-* | Scoped: max-width: 767px ONLY
-   Desktop untouched. All overrides use !important.
+   HBX MOBILE DASHBOARD V2 — Premium Green Design
+   Scoped: max-width: 767px
    ============================================================ */
 
 @media (max-width: 767px) {
-
-    /* ── 1. Sidebar Panel Overrides ── */
-    .dashboard-section .dashboard-sidebar {
-        display: none !important;
-    }
-
-    .dashboard-section .dashboard-sidebar.open {
-        display: flex !important;
-        flex-direction: column !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background: #fff !important;
-        z-index: 9999 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* NUKE THE RED BUTTON */
-    .dashboard-sidebar .back-btn,
-    .dashboard-section .dashboard-sidebar .back-btn {
+    .hbx-dash-v2 {
+        padding: 10px 0 !important;
         background: #f8fafc !important;
-        color: #ef4444 !important;
-        width: 100% !important;
-        border: none !important;
-        border-bottom: 1px solid #e2e8f0 !important;
-        padding: 15px 20px !important;
-        text-align: left !important;
-        justify-content: flex-start !important;
-        font-weight: 700 !important;
-        border-radius: 0 !important;
-        font-size: 14px !important;
-
-        svg {
-            color: #ef4444 !important;
-            margin-right: 10px !important;
-            font-size: 20px !important;
-        }
-        
-        span {
-            color: #ef4444 !important;
-        }
     }
 
-    /* ── 2. Profile Section Fix (Overlap) ── */
-    .dashboard-sidebar .profile-top {
-        padding: 30px 20px !important;
-        background: #fcfcfc !important;
+    /* 1. GREEN WELCOME CARD */
+    .hbx-dash-mob-welcome-card {
+        background: #1e5128 !important; /* Forest Green */
+        border-radius: 20px !important;
+        padding: 24px 20px !important;
+        margin: 0 15px 25px !important;
+        box-shadow: 0 10px 30px rgba(30, 81, 40, 0.15) !important;
+        color: #fff !important;
+    }
+
+    .hbx-dash-mob-profile-header {
         display: flex !important;
         align-items: center !important;
-        gap: 15px !important;
+        gap: 16px !important;
+        margin-bottom: 24px !important;
 
-        .profile-top-box {
-            margin: 0 !important;
-            padding: 0 !important;
-            
-            .profile-image {
-                width: 70px !important;
-                height: 70px !important;
-                margin: 0 !important;
-                border: 2px solid #e2e8f0 !important;
-            }
+        .hbx-dash-mob-avatar {
+            width: 60px !important;
+            height: 60px !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: 2px solid rgba(255, 255, 255, 0.4) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 24px !important;
+            font-weight: 800 !important;
+            color: #fff !important;
         }
 
-        .profile-detail {
-            text-align: left !important;
-            margin: 0 !important;
-            
-            h5 {
-                font-size: 17px !important;
+        .hbx-dash-mob-name-box {
+            h2 {
+                font-size: 20px !important;
                 font-weight: 700 !important;
-                color: #0f1340 !important;
-                margin-bottom: 4px !important;
+                color: #fff !important;
+                margin: 0 0 4px !important;
+                letter-spacing: -0.5px !important;
+            }
+            p {
+                font-size: 13px !important;
+                color: rgba(255, 255, 255, 0.8) !important;
+                margin: 0 !important;
+            }
+        }
+    }
+
+    .hbx-dash-mob-info-boxes {
+        display: flex !important;
+        gap: 12px !important;
+        margin-bottom: 20px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .hbx-dash-mob-info-pill {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 12px !important;
+        padding: 10px 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        flex: 1 !important;
+        min-width: 140px !important;
+
+        svg {
+            font-size: 18px !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .inner {
+            span {
+                display: block !important;
+                font-size: 10px !important;
+                text-transform: uppercase !important;
+                letter-spacing: 0.5px !important;
+                color: rgba(255, 255, 255, 0.6) !important;
+                margin-bottom: 1px !important;
             }
             h6 {
-                font-size: 12px !important;
-                color: #64748b !important;
+                font-size: 13px !important;
+                font-weight: 600 !important;
+                color: #fff !important;
                 margin: 0 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+                max-width: 120px !important;
             }
         }
     }
 
-    /* ── 3. Navigation Tabs (Force Vertical) ── */
-    .dashboard-sidebar .faq-tab .nav-tabs {
-        flex-direction: column !important;
-        border: none !important;
-        padding: 10px 0 !important;
-
-        .nav-item {
-            width: 100% !important;
-
-            .nav-link {
-                padding: 15px 20px !important;
-                text-align: left !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 12px !important;
-                font-size: 14px !important;
-                color: #334155 !important;
-                background: transparent !important;
-                border: none !important;
-                border-left: 4px solid transparent !important;
-
-                &.active {
-                    color: var(--theme-color, #fb641b) !important;
-                    background: #fff8f5 !important;
-                    border-left-color: var(--theme-color, #fb641b) !important;
-                    font-weight: 700 !important;
-                }
-            }
-        }
+    .hbx-dash-mob-divider {
+        height: 1px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        margin: 20px 0 !important;
     }
 
-    /* ── 4. Dashboard Stats (Cards) ── */
-    .counter-section .total-box .row {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr 1fr !important;
-        gap: 10px !important;
-        padding: 0 15px !important;
-        margin: 0 !important;
-
-        [class*="col-"] {
-            width: 100% !important;
-            padding: 0 !important;
-        }
-    }
-
-    .counter-box {
-        background: #fff !important;
-        border-radius: 12px !important;
-        padding: 15px 5px !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-        border: 1px solid #f1f5f9 !important;
-        min-height: 110px !important;
+    .hbx-dash-mob-details-list {
         display: flex !important;
         flex-direction: column !important;
-        
-        img {
-            width: 32px !important;
-            margin-bottom: 8px !important;
-        }
+        gap: 12px !important;
+    }
 
-        h3 {
+    .hbx-dash-mob-detail-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        
+        svg {
             font-size: 16px !important;
-            margin: 0 !important;
-            font-weight: 800 !important;
+            color: rgba(255, 255, 255, 0.7) !important;
         }
-        h5 {
-            font-size: 10px !important;
-            color: #64748b !important;
-            margin: 0 !important;
-            text-transform: uppercase !important;
+
+        span {
+            font-size: 13px !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+
+            strong {
+                font-weight: 700 !important;
+                margin-left: 4px !important;
+            }
         }
     }
 
-    /* ── 5. Layout Fixes ── */
-    .user-dashboard-section,
-    .dashboard-section,
-    .counter-section {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        width: 100% !important;
-        overflow-x: hidden !important;
+    /* 2. NAVIGATION CARDS GRID */
+    .hbx-dash-mob-nav-grid {
+        padding: 0 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        margin-bottom: 30px !important;
     }
 
-    .welcome-msg {
-        margin: 0 15px 20px !important;
-        background: #0f1340 !important;
-        border-radius: 12px !important;
+    .hbx-dash-mob-nav-card {
+        background: #fff !important;
+        border-radius: 16px !important;
         padding: 20px !important;
-        
-        h4 { color: #fff !important; }
-        p { color: rgba(255,255,255,0.7) !important; }
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+        border: 1px solid #f1f5f9 !important;
+        position: relative !important;
+
+        .hbx-dash-mob-nav-icon {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 12px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 22px !important;
+            flex-shrink: 0 !important;
+
+            &.orders { background: #eff6ff !important; color: #2563eb !important; }
+            &.wallet { background: #fef2f2 !important; color: #dc2626 !important; }
+        }
+
+        .hbx-dash-mob-nav-content {
+            flex: 1 !important;
+            h3 {
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                color: #0f172a !important;
+                margin: 0 0 6px !important;
+            }
+            p {
+                font-size: 12px !important;
+                color: #64748b !important;
+                line-height: 1.5 !important;
+                margin: 0 0 12px !important;
+            }
+            a {
+                font-size: 13px !important;
+                font-weight: 600 !important;
+                color: #1e5128 !important;
+                text-decoration: none !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 4px !important;
+            }
+        }
+
+        .hbx-dash-mob-nav-arrow {
+            font-size: 20px !important;
+            color: #cbd5e1 !important;
+            align-self: flex-start !important;
+        }
     }
-}
+
+    /* Hide the old sidebar toggle button since we have nav cards now */
+    .show-btn {
+        display: none !important;
+    }
+}
+
