@@ -9,10 +9,14 @@ import WrapperComponent from '@/Components/Widgets/WrapperComponent';
 const AccountDashboard = () => {
   return (
     <>
-      <Breadcrumbs title={'Dashboard'} subNavigation={[{ name: 'Dashboard' }]} />
+      <div className='d-none d-lg-block'>
+        <Breadcrumbs title={'Dashboard'} subNavigation={[{ name: 'Dashboard' }]} />
+      </div>
       <WrapperComponent classes={{ sectionClass: 'dashboard-section section-b-space user-dashboard-section', fluidClass: 'container' }} customCol={true}>
-        <AccountSidebar tabActive={'dashboard'} />
-        <Col xxl={9} lg={8}>
+        <div className='d-none d-lg-block col-lg-3'>
+          <AccountSidebar tabActive={'dashboard'} />
+        </div>
+        <Col xxl={9} lg={8} className='col-12'>
           <ResponsiveMenuOpen />
           <div className='dashboard-right-sidebar'>
             <TabContent>

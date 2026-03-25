@@ -2473,26 +2473,50 @@ ul.hwb-aside-list {
 }
 
 /* ============================================================
-   HBX MOBILE DASHBOARD V4 — Industrial Pro Design
+   HBX MOBILE DASHBOARD V4.1 — Industrial Pro (Aggressive)
    Target: Mobile-Only (max-width: 767px)
-   Brand: Dark Slate & Precision Orange
    ============================================================ */
 
 @media (max-width: 767px) {
-    /* NUCLEAR OVERRIDES: Kill legacy red buttons and white gaps on this page */
-    .hbx-premium-dash-v3 {
+    /* NUCLEAR OVERRIDES: Wipe out legacy sidebar and breadcrumbs entirely */
+    body .user-dashboard-section,
+    body .dashboard-section {
         padding-top: 0 !important;
-        margin-top: -15px !important; /* Pull up to hide white gap under logo */
+        margin-top: 0 !important;
+        
+        .dashboard-sidebar,
+        .faq-tab,
+        .nav-tabs,
+        .nav,
+        .profile-top,
+        .profile-detail,
+        .back-btn,
+        .show-btn {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .dashboard-right-sidebar {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Pull the main content up to sit immediately under the site logo */
+        .col-12, .col-lg-8, .col-xxl-9 {
+            padding: 0 !important;
+            margin-top: -10px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: 0 0 100% !important;
+        }
     }
 
-    /* Hide the 'Show Menu' Red Button on Dashboard */
-    .user-dashboard-section .back-btn,
-    .user-dashboard-section .show-btn,
-    .dashboard-sidebar .back-btn {
-        display: none !important;
-    }
-
-    /* Hide Breadcrumbs on Mobile Dashboard for App feel */
+    /* Hide Breadcrumbs globally on this page */
     .breadcrumb-section {
         display: none !important;
     }
@@ -2505,12 +2529,13 @@ ul.hwb-aside-list {
 
     /* 1. INDUSTRIAL HERO (Full Bleed) */
     .hbx-ind-hero {
-        background: #0f172a !important; /* Deep Slate Navy */
+        background: #0f172a !important; 
         padding: 30px 20px 60px !important;
         color: #fff !important;
         position: relative !important;
         margin-bottom: 25px !important;
-        border-bottom: 4px solid #fb641b !important; /* Brand Orange Border */
+        border-bottom: 4px solid #fb641b !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
     }
 
     .hbx-ind-profile {
@@ -2535,6 +2560,8 @@ ul.hwb-aside-list {
         }
 
         .hbx-ind-welcome {
+            flex: 1 !important;
+            min-width: 0 !important;
             .hbx-ind-label {
                 font-size: 11px !important;
                 background: rgba(251, 100, 27, 0.15) !important;
@@ -2552,16 +2579,22 @@ ul.hwb-aside-list {
                 margin: 0 !important;
                 letter-spacing: -0.5px !important;
                 color: #fff !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
             .hbx-ind-sub {
                 font-size: 13px !important;
                 color: #94a3b8 !important;
                 margin: 0 !important;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
     }
 
-    /* COMPACT STATS (Integrated) */
+    /* COMPACT STATS */
     .hbx-ind-stats-bar {
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -2594,7 +2627,7 @@ ul.hwb-aside-list {
         }
     }
 
-    /* 2. INDUSTRIAL MENU LIST (High Contrast) */
+    /* 2. INDUSTRIAL MENU LIST */
     .hbx-ind-menu-grid {
         padding: 0 15px !important;
         display: flex !important;
@@ -2647,9 +2680,15 @@ ul.hwb-aside-list {
             font-size: 24px !important;
             color: #cbd5e1 !important;
         }
+
+        &.hbx-logout-btn {
+            border: 1px solid #fee2e2 !important;
+            .icon { background: #fef2f2 !important; color: #ef4444 !important; }
+            h3 { color: #ef4444 !important; }
+        }
     }
 
-    /* 3. INFO STRIP (Bottom) */
+    /* 3. INFO STRIP */
     .hbx-ind-info-strip {
         margin: 25px 15px 0 !important;
         padding: 15px !important;

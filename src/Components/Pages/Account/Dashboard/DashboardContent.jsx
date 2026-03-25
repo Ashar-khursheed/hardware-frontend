@@ -3,7 +3,7 @@ import SettingContext from "@/Context/SettingContext";
 import { ImagePath } from "@/Utils/Constants";
 import { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { RiCalendarLine, RiFileList3Line, RiMailLine, RiMapPinLine, RiOrderPlayLine, RiPhoneLine, RiShieldUserLine, RiShoppingCartLine, RiStarLine, RiUserLine } from "react-icons/ri";
+import { RiCalendarLine, RiFileList3Line, RiLogoutBoxLine, RiMailLine, RiMapPinLine, RiOrderPlayLine, RiPhoneLine, RiShieldUserLine, RiShoppingCartLine, RiStarLine, RiUserLine } from "react-icons/ri";
 import { Col, Row } from "reactstrap";
 import ProfileInformation from "./ProfileInformation";
 import Image from "next/image";
@@ -86,6 +86,15 @@ const DashboardContent = () => {
                         <div className="text">
                             <h3>Notifications</h3>
                             <span>Updates & Alerts</span>
+                        </div>
+                        <div className="arrow">&rsaquo;</div>
+                    </div>
+
+                    <div className="hbx-ind-action-card hbx-logout-btn" onClick={() => window.location.href = '/account/logout'}>
+                        <div className="icon"><RiLogoutBoxLine /></div>
+                        <div className="text">
+                            <h3>Logout</h3>
+                            <span>Sign out of account</span>
                         </div>
                         <div className="arrow">&rsaquo;</div>
                     </div>
