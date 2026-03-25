@@ -1765,8 +1765,23 @@ h2.display-5.size-28 {
 }
 
 .hbx-static-mobile-menu .hbx-category-header {
-    padding: 15px 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 15px 23px !important;
     font-weight: 600 !important;
+    box-sizing: border-box !important;
+
+    span {
+        flex: 1 !important;
+        text-align: left !important;
+    }
+
+    .hbx-icon-arrow {
+        flex-shrink: 0 !important;
+        margin-left: 10px !important;
+    }
 }
 
 .hbx-static-mobile-menu .hbx-subcategory-list {
