@@ -2678,4 +2678,159 @@ ul.hwb-aside-list {
         display: none !important;
     }
 }
+
+/* ============================================================
+   GLOBAL ACCOUNT SIDEBAR FIX (Dashboard, Orders, Profile etc)
+   Targets the 'stubborn' theme sidebar on mobile.
+   ============================================================ */
+@media (max-width: 767px) {
+    /* ── 1. The Sidebar Container ── */
+    .dashboard-section .dashboard-sidebar {
+        background: #fff !important;
+        z-index: 99999 !important;
+    }
+
+    .dashboard-section .dashboard-sidebar.open {
+        display: flex !important;
+        flex-direction: column !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow-y: auto !important;
+        box-shadow: none !important;
+    }
+
+    /* ── 2. NUKE THE RED CLOSE BANNER ── */
+    .dashboard-sidebar .back-btn,
+    .dashboard-section .dashboard-sidebar .back-btn,
+    .dashboard-section .dashboard-sidebar .btn-close,
+    .dashboard-section .dashboard-sidebar .btn.back-btn {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: auto !important;
+        background: #f8fafc !important; /* Clean light grey */
+        border: none !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        padding: 20px !important;
+        color: #ef4444 !important; /* Red only for the text/icon */
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        border-radius: 0 !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        box-shadow: none !important;
+
+        svg {
+            font-size: 24px !important;
+            color: #ef4444 !important;
+        }
+
+        &::after, &::before { display: none !important; }
+    }
+
+    /* ── 3. PROFILE HEADER FIX (Overlap) ── */
+    .dashboard-sidebar .profile-top {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 15px !important;
+        padding: 30px 20px !important;
+        background: #fff !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+        margin: 0 !important;
+        text-align: left !important;
+
+        .profile-top-box {
+            display: flex !important;
+            align-items: center !important;
+            gap: 15px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+
+            .profile-image {
+                width: 60px !important;
+                height: 60px !important;
+                border-radius: 50% !important;
+                border: 2px solid #e2e8f0 !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
+                overflow: hidden !important;
+            }
+        }
+
+        .profile-detail {
+            margin: 0 !important;
+            padding: 0 !important;
+            text-align: left !important;
+            flex: 1 !important;
+
+            h5 {
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                color: #0f172a !important;
+                margin: 0 0 2px !important;
+            }
+            h6 {
+                font-size: 12px !important;
+                color: #64748b !important;
+                margin: 0 !important;
+                word-break: break-all !important;
+            }
+        }
+    }
+
+    /* ── 4. TABS FIX (Force Vertical & Clean) ── */
+    .dashboard-sidebar .faq-tab {
+        padding: 10px 0 !important;
+        
+        .nav-tabs {
+            display: flex !important;
+            flex-direction: column !important;
+            border: none !important;
+            gap: 2px !important;
+            background: #fff !important;
+
+            .nav-item {
+                width: 100% !important;
+                background: #fff !important;
+
+                .nav-link {
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 14px !important;
+                    padding: 16px 20px !important;
+                    border: none !important;
+                    border-left: 4px solid transparent !important;
+                    background: transparent !important;
+                    color: #475569 !important;
+                    font-size: 14px !important;
+                    font-weight: 500 !important;
+                    text-align: left !important;
+                    border-radius: 0 !important;
+                    white-space: nowrap !important;
+
+                    svg { font-size: 18px !important; }
+
+                    &.active {
+                        background: #fdf2f2 !important;
+                        color: #dc2626 !important;
+                        border-left-color: #dc2626 !important;
+                        font-weight: 700 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    /* ── 5. CONTENT PADDING FIXED ── */
+    .dashboard-right-sidebar {
+        padding: 0 15px !important;
+    }
+}
 
