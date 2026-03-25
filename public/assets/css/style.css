@@ -12772,7 +12772,8 @@ header.stickycls {
     transform: translate(-50%, -50%);
     width: 50px;
     height: 50px;
-    background-color: var(--theme-color);
+    background-color: #2874f0;
+    /* ✅ var(--theme-color) ki jagah hardcode */
     border-radius: 50%
 }
 
@@ -43290,6 +43291,11 @@ h2.display-5.size-24 {
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
