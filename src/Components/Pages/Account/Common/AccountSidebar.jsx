@@ -19,7 +19,7 @@ const AccountSidebar = ({ tabActive }) => {
   const { t } = useTranslation("common");
   const { isLoading } = useContext(ThemeOptionContext);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <Col lg={3} className="d-none d-lg-block">
       <div className={`dashboard-sidebar ${mobileSideBar ? "open" : ""}`}>

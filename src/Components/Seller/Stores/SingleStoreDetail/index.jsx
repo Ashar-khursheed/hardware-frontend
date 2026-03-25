@@ -37,7 +37,7 @@ const SingleStoreDetail = ({ params }) => {
     });
   }, [category, brand, attribute, price, rating, sortBy, field]);
   const storeName = ModifyString(params, false, "-");
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumb title={storeName} subNavigation={[{ name: "SellerStores" }, { name: storeName }]} />

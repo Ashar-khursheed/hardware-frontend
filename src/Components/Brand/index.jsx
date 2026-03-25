@@ -16,7 +16,7 @@ const BrandContainer = ({ params }) => {
   const router = useRouter();
   const { t } = useTranslation("common");
   const [filter, setFilter] = useState({ category: [], price: [], attribute: [], rating: [], sortBy: "", field: "" });
-  const [category, attribute, price, rating, sortBy, field, paginate, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field","paginate", "layout"]);
+  const [category, attribute, price, rating, sortBy, field, paginate, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "paginate", "layout"]);
   const { data: Brand, isLoading, refetch } = useQuery([BrandLogo], () => request({ url: `${BrandLogo}/slug/${params}` }, router), { enabled: !!params, refetchOnWindowFocus: false, select: (res) => res?.data });
 
   // useEffect(() => {
@@ -33,12 +33,12 @@ const BrandContainer = ({ params }) => {
         rating: rating ? rating?.rating?.split(",") : [],
         sortBy: sortBy ? sortBy?.sortBy : "",
         field: field ? field?.field : "",
-        paginate: paginate?.paginate? paginate?.paginate : 12,
+        paginate: paginate?.paginate ? paginate?.paginate : 12,
       };
     });
   }, [category, attribute, price, rating, sortBy, field]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={`Brand : ${params}`} subNavigation={[{ name: params }]} />

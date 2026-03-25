@@ -26,7 +26,7 @@ const BrowserFaq = () => {
     select: (data) => data?.data?.data,
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={`FAQ's`} subNavigation={[{ name: `FAQ's` }]} />

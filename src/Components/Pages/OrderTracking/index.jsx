@@ -12,7 +12,7 @@ const TrackingData = ({ params }) => {
   const { t } = useTranslation("common");
   const { isLoading } = useContext(ThemeOptionContext);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={"order_tracking"} subNavigation={[{ name: "Order Tracking" }]} />

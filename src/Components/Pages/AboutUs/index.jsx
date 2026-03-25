@@ -12,7 +12,7 @@ import Loader from "@/Layout/Loader";
 
 const AboutUsContent = () => {
   const { themeOption, isLoading } = useContext(ThemeOptionContext);
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={"AboutUs"} subNavigation={[{ name: "AboutUs" }]} />

@@ -11,7 +11,7 @@ const PageCard = ({ params }) => {
   useEffect(() => {
     params && refetch();
   }, [params]);
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return <div dangerouslySetInnerHTML={{ __html: Page?.content }} />;
 };
 

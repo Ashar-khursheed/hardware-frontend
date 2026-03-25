@@ -15,15 +15,15 @@ const SellerStoreContent = () => {
   const querySellerLayout = searchParams.get("layout");
   const { themeOption } = useContext(ThemeOptionContext);
   const [page, setPage] = useState(1);
-  const { data, isLoading,fetchStatus} = useQuery([page], () => request({ url: StoreAPI, params: { status: 1, page: page, paginate: 9 } }), { enabled: true, refetchOnWindowFocus: false, select: (res) => res?.data });
+  const { data, isLoading, fetchStatus } = useQuery([page], () => request({ url: StoreAPI, params: { status: 1, page: page, paginate: 9 } }), { enabled: true, refetchOnWindowFocus: false, select: (res) => res?.data });
   const isSellerLayout = querySellerLayout ? querySellerLayout : themeOption?.seller?.store_layout;
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
 
   return (
     <>
       <Breadcrumbs title={"SellerStores"} subNavigation={[{ name: "SellerStores" }]} />
       <WrapperComponent classes={{ sectionClass: "seller-grid-section section-b-space", row: "g-4", fluidClass: "container" }} customCol={true}>
-        <StoreCard data={data} fetchStatus={fetchStatus} setPage={setPage} /> 
+        <StoreCard data={data} fetchStatus={fetchStatus} setPage={setPage} />
       </WrapperComponent>
     </>
   );

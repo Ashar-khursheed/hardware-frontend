@@ -14,7 +14,7 @@ import "./ContactUs.css";
 const ContactUsContent = () => {
   const { isLoading } = useContext(ThemeOptionContext);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={"ContactUs"} subNavigation={[{ name: "ContactUs" }]} />

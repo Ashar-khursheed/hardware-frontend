@@ -30,7 +30,7 @@ const Offer = () => {
       ToastNotification("error", err);
     }
   };
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={"Offer"} subNavigation={[{ name: "Offer" }]} />

@@ -23,7 +23,7 @@ const OrderDetailsTracking = () => {
     select: (res) => res?.data,
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumb title={"OrderDetails"} subNavigation={[{ name: "OrderDetails" }]} />

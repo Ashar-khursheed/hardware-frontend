@@ -30,7 +30,7 @@ const BlogDetail = () => {
     refetch();
   }, [page, querySearchCategory, isLoading, querySearchTag]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return (
     <>
       <Breadcrumbs title={breadcrumbTitle} subNavigation={[{ name: "Blog", link: "/blog" }]} />

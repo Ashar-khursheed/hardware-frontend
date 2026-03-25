@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 
 const NotFound = ({ params }) => {
   const { isLoading } = useContext(ThemeOptionContext);
-  if (isLoading) return <Loader />;
+  if (isLoading && !themeOption?.general) return <Loader />;
   return <NotFoundPage params={params} />;
 };
 
