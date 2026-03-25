@@ -21,7 +21,7 @@ const AccountSidebar = ({ tabActive }) => {
 
   if (isLoading) return <Loader />;
   return (
-    <Col lg={3}>
+    <Col lg={3} className="d-none d-lg-block">
       <div className={`dashboard-sidebar ${mobileSideBar ? "open" : ""}`}>
         <Btn color="transparent" className="back-btn" onClick={handelCallback}>
           <RiCloseLine />
