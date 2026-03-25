@@ -2473,253 +2473,205 @@ ul.hwb-aside-list {
 }
 
 /* ============================================================
-   HBX MOBILE DASHBOARD V3 — Premium App-Like Design
+   HBX MOBILE DASHBOARD V4 — Industrial Pro Design
    Target: Mobile-Only (max-width: 767px)
+   Brand: Dark Slate & Precision Orange
    ============================================================ */
 
 @media (max-width: 767px) {
-    .hbx-premium-app-wrapper {
-        background: #fdfdfd !important;
+    /* NUCLEAR OVERRIDES: Kill legacy red buttons and white gaps on this page */
+    .hbx-premium-dash-v3 {
+        padding-top: 0 !important;
+        margin-top: -15px !important; /* Pull up to hide white gap under logo */
+    }
+
+    /* Hide the 'Show Menu' Red Button on Dashboard */
+    .user-dashboard-section .back-btn,
+    .user-dashboard-section .show-btn,
+    .dashboard-sidebar .back-btn {
+        display: none !important;
+    }
+
+    /* Hide Breadcrumbs on Mobile Dashboard for App feel */
+    .breadcrumb-section {
+        display: none !important;
+    }
+
+    .hbx-industrial-mob-wrapper {
+        background: #f8fafc !important;
         min-height: 100vh;
-        padding-bottom: 20px !important;
+        overflow-x: hidden !important;
     }
 
-    /* 1. HERO SECTION */
-    .hbx-app-hero {
-        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
-        padding: 40px 20px 80px !important;
-        border-bottom-left-radius: 40px !important;
-        border-bottom-right-radius: 40px !important;
+    /* 1. INDUSTRIAL HERO (Full Bleed) */
+    .hbx-ind-hero {
+        background: #0f172a !important; /* Deep Slate Navy */
+        padding: 30px 20px 60px !important;
         color: #fff !important;
-        position: relative;
-        margin-bottom: -40px !important;
-        box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2) !important;
+        position: relative !important;
+        margin-bottom: 25px !important;
+        border-bottom: 4px solid #fb641b !important; /* Brand Orange Border */
     }
 
-    .hbx-app-profile-row {
+    .hbx-ind-profile {
         display: flex !important;
         align-items: center !important;
-        gap: 15px !important;
+        gap: 20px !important;
         margin-bottom: 30px !important;
 
-        .hbx-app-avatar {
-            width: 55px !important;
-            height: 55px !important;
-            background: rgba(255, 255, 255, 0.2) !important;
-            backdrop-filter: blur(10px) !important;
-            border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
-            border-radius: 18px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 22px !important;
-            font-weight: 800 !important;
-            color: #fff !important;
-        }
-
-        .hbx-app-greeting {
-            flex: 1 !important;
-            .hbx-app-welcome {
-                font-size: 13px !important;
-                color: rgba(255, 255, 255, 0.8) !important;
-                display: block !important;
-                margin-bottom: 2px !important;
-            }
-            h2 {
-                font-size: 20px !important;
-                font-weight: 700 !important;
-                margin: 0 !important;
-                letter-spacing: -0.5px !important;
-            }
-        }
-
-        .hbx-app-notify-btn {
-            background: rgba(255, 255, 255, 0.15) !important;
-            border: none !important;
-            width: 40px !important;
-            height: 40px !important;
+        .hbx-ind-avatar {
+            width: 70px !important;
+            height: 70px !important;
+            background: #1e293b !important;
+            border: 2px solid #fb641b !important;
             border-radius: 12px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            color: #fff !important;
-            position: relative !important;
-            font-size: 20px !important;
+            font-size: 28px !important;
+            font-weight: 800 !important;
+            color: #fb641b !important;
+            box-shadow: 0 4px 15px rgba(251, 100, 27, 0.2) !important;
+        }
 
-            .dot {
-                position: absolute !important;
-                top: 8px !important;
-                right: 8px !important;
-                width: 8px !important;
-                height: 8px !important;
-                background: #f87171 !important;
-                border: 2px solid rgba(255,255,255,1) !important;
-                border-radius: 50% !important;
+        .hbx-ind-welcome {
+            .hbx-ind-label {
+                font-size: 11px !important;
+                background: rgba(251, 100, 27, 0.15) !important;
+                color: #fb641b !important;
+                padding: 2px 8px !important;
+                border-radius: 4px !important;
+                text-transform: uppercase !important;
+                font-weight: 700 !important;
+                display: inline-block !important;
+                margin-bottom: 5px !important;
+            }
+            h2 {
+                font-size: 22px !important;
+                font-weight: 800 !important;
+                margin: 0 !important;
+                letter-spacing: -0.5px !important;
+                color: #fff !important;
+            }
+            .hbx-ind-sub {
+                font-size: 13px !important;
+                color: #94a3b8 !important;
+                margin: 0 !important;
             }
         }
     }
 
-    /* STATS WIDGETS */
-    .hbx-app-stats-row {
+    /* COMPACT STATS (Integrated) */
+    .hbx-ind-stats-bar {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 12px !important;
         display: flex !important;
-        gap: 15px !important;
+        padding: 12px 15px !important;
+        align-items: center !important;
+
+        .hbx-ind-stat {
+            flex: 1 !important;
+            text-align: center !important;
+            label {
+                display: block !important;
+                font-size: 10px !important;
+                text-transform: uppercase !important;
+                color: #64748b !important;
+                margin-bottom: 2px !important;
+            }
+            .val {
+                font-size: 16px !important;
+                font-weight: 700 !important;
+                color: #fff !important;
+            }
+        }
+
+        .hbx-ind-divider {
+            width: 1px !important;
+            height: 25px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
     }
 
-    .hbx-stat-card {
-        flex: 1 !important;
-        background: rgba(255, 255, 255, 0.1) !important;
-        backdrop-filter: blur(15px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
-        border-radius: 20px !important;
-        padding: 15px !important;
+    /* 2. INDUSTRIAL MENU LIST (High Contrast) */
+    .hbx-ind-menu-grid {
+        padding: 0 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .hbx-ind-action-card {
+        background: #fff !important;
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
         display: flex !important;
         align-items: center !important;
-        gap: 12px !important;
+        gap: 15px !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+        position: relative !important;
+        transition: transform 0.1s ease !important;
+
+        &:active { transform: scale(0.98) !important; background: #f8fafc !important; }
 
         .icon {
-            width: 36px !important;
-            height: 36px !important;
+            width: 44px !important;
+            height: 44px !important;
+            background: #f1f5f9 !important;
+            color: #0f172a !important;
             border-radius: 10px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            font-size: 18px !important;
-            background: rgba(255, 255, 255, 0.2) !important;
+            font-size: 20px !important;
+            flex-shrink: 0 !important;
         }
 
-        .info {
-            span {
-                font-size: 11px !important;
-                color: rgba(255, 255, 255, 0.7) !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.5px !important;
-                display: block !important;
-            }
-            h6 {
-                font-size: 14px !important;
-                font-weight: 700 !important;
-                margin: 0 !important;
-                color: #fff !important;
-            }
-        }
-    }
-
-    /* 2. QUICK ACTIONS GRID */
-    .hbx-app-menu-section {
-        padding: 0 20px !important;
-        margin-top: 10px !important;
-    }
-
-    .hbx-section-title {
-        font-size: 17px !important;
-        font-weight: 800 !important;
-        color: #0f172a !important;
-        margin-bottom: 20px !important;
-        margin-top: 0 !important;
-    }
-
-    .hbx-app-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 12px !important;
-        margin-bottom: 30px !important;
-    }
-
-    .hbx-grid-item {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 8px !important;
-
-        .grid-icon {
-            width: 55px !important;
-            height: 55px !important;
-            border-radius: 18px !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-size: 24px !important;
-            transition: all 0.2s ease !important;
-            background: #fff !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
-            border: 1px solid #f1f5f9 !important;
-
-            &.orders { color: #4f46e5 !important; background: #eef2ff !important; }
-            &.address { color: #0891b2 !important; background: #ecfeff !important; }
-            &.profile { color: #7c3aed !important; background: #f5f3ff !important; }
-            &.notifications { color: #f59e0b !important; background: #fffbeb !important; }
-        }
-
-        span {
-            font-size: 11px !important;
-            font-weight: 600 !important;
-            color: #64748b !important;
-        }
-
-        &:active .grid-icon {
-            transform: scale(0.92) !important;
-            background: #f8fafc !important;
-        }
-    }
-
-    /* 3. INFO SECTION */
-    .hbx-app-info-section {
-        padding: 0 20px !important;
-    }
-
-    .hbx-info-stack {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-    .hbx-info-card {
-        background: #fff !important;
-        border-radius: 18px !important;
-        padding: 16px 20px !important;
-        border: 1px solid #f1f5f9 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        position: relative !important;
-        overflow: hidden !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02) !important;
-
-        .inner {
-            position: relative !important;
-            z-index: 2 !important;
-            label {
-                font-size: 11px !important;
-                color: #94a3b8 !important;
-                text-transform: uppercase !important;
-                letter-spacing: 0.5px !important;
-                margin-bottom: 2px !important;
-                display: block !important;
-            }
-            p {
+        .text {
+            flex: 1 !important;
+            h3 {
                 font-size: 15px !important;
                 font-weight: 700 !important;
                 color: #1e293b !important;
                 margin: 0 !important;
             }
+            span {
+                font-size: 12px !important;
+                color: #64748b !important;
+            }
         }
 
-        .bg-icon {
-            font-size: 40px !important;
-            color: #f1f5f9 !important;
-            position: absolute !important;
-            right: -5px !important;
-            bottom: -5px !important;
-            z-index: 1 !important;
+        .arrow {
+            font-size: 24px !important;
+            color: #cbd5e1 !important;
         }
+    }
 
-        &.phone .bg-icon { color: #f0fdf4 !important; }
-        &.type .bg-icon { color: #fdf2f2 !important; }
+    /* 3. INFO STRIP (Bottom) */
+    .hbx-ind-info-strip {
+        margin: 25px 15px 0 !important;
+        padding: 15px !important;
+        background: #f1f5f9 !important;
+        border-radius: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+
+        .item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            font-size: 13px !important;
+            color: #475569 !important;
+            svg { color: #fb641b !important; }
+            strong { color: #0f172a !important; }
+        }
     }
 
     .hbx-app-footer-spacer {
-        height: 100px !important;
+        height: 120px !important;
     }
 }
 
