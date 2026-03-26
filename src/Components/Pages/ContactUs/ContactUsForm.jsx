@@ -32,13 +32,13 @@ const ContactUsForm = () => {
     >
       {({ values, errors, touched, setFieldValue }) => (
         <Form className="theme-form contact-form">
-          <Row className="g-4">
+          <Row className="g-3">
             <SimpleInputField
               nameList={[
-                { name: "name", placeholder: t("EnterFullName"), toplabel: "FullName", colprops: { xs: 12 } },
-                { name: "email", placeholder: t("enter_email_address"), toplabel: "EmailAddress", colprops: { md: 6 } },
+                { name: "name", placeholder: t("Enter Full Name"), toplabel: "Full Name", colprops: { xs: 12 } },
+                { name: "email", placeholder: t("enter_email_address"), toplabel: "Email Address", colprops: { md: 6 } },
                 { name: "phone", placeholder: t("enter_phone"), toplabel: "Phone Number", type: "number", colprops: { md: 6 } },
-                { name: "subject", placeholder: t("EnterSubject"), toplabel: "Subject", colprops: { xs: 12 } },
+                { name: "subject", placeholder: t("Enter Subject"), toplabel: "Subject", colprops: { xs: 12 } },
                 { name: "message", placeholder: t("write_message"), toplabel: "Message", colprops: { xs: 12 }, type: "textarea", rows: 5 },
               ]}
             />
