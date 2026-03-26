@@ -1,11 +1,15 @@
+"use client";
 import Loader from "@/Layout/Loader";
 import ConsumerDetails from "./Common/ConsumerDetails";
 import StatusDetail from "./Common/StatusDetails";
 import SubTable from "./Common/SubTable";
 import TableDetails from "./Common/TableDetails";
 import TitleDetails from "./Common/TitleDetails";
+import { useContext } from "react";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 
 const TrackOrderDetails = ({ data, isLoading, orderNumber }) => {
+  const { themeOption } = useContext(ThemeOptionContext);
 
   if (isLoading && !themeOption?.general) return <Loader />;
   return (

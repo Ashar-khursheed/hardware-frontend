@@ -5,7 +5,8 @@ import { BlogAPI } from "@/Utils/AxiosUtils/API";
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import WrapperComponent from "../Widgets/WrapperComponent";
 import BlogCard from "./BlogCard";
 import Sidebar from "./Sidebar/Sidebar";
@@ -16,6 +17,7 @@ const BlogDetail = () => {
   const querySearchCategory = searchParams?.get("category");
   const querySearchTag = searchParams?.get("tag");
   const breadcrumbTitle = querySearchCategory ? `Blog:${querySearchCategory}` : querySearchTag ? `Blog:${querySearchTag}` : "Blog";
+  const { themeOption } = useContext(ThemeOptionContext);
 
   const {
     data: BlogData,

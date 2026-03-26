@@ -5,7 +5,7 @@ import Loader from "@/Layout/Loader";
 import React, { useContext } from "react";
 
 const NotFound = ({ params }) => {
-  const { isLoading } = useContext(ThemeOptionContext);
+  const { isLoading, themeOption } = useContext(ThemeOptionContext);
   if (isLoading && !themeOption?.general) return <Loader />;
   return <NotFoundPage params={params} />;
 };

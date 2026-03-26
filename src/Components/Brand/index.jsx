@@ -7,14 +7,16 @@ import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import WrapperComponent from "../Widgets/WrapperComponent";
 import BrandCollection from "./BrandCollection";
 
 const BrandContainer = ({ params }) => {
   const router = useRouter();
   const { t } = useTranslation("common");
+  const { themeOption } = useContext(ThemeOptionContext);
   const [filter, setFilter] = useState({ category: [], price: [], attribute: [], rating: [], sortBy: "", field: "" });
   const [category, attribute, price, rating, sortBy, field, paginate, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "paginate", "layout"]);
   const { data: Brand, isLoading, refetch } = useQuery([BrandLogo], () => request({ url: `${BrandLogo}/slug/${params}` }, router), { enabled: !!params, refetchOnWindowFocus: false, select: (res) => res?.data });

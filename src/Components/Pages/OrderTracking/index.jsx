@@ -10,7 +10,7 @@ import TrackingForm from "./TrackingForm";
 
 const TrackingData = ({ params }) => {
   const { t } = useTranslation("common");
-  const { isLoading } = useContext(ThemeOptionContext);
+  const { isLoading, themeOption } = useContext(ThemeOptionContext);
 
   if (isLoading && !themeOption?.general) return <Loader />;
   return (

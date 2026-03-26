@@ -1,3 +1,4 @@
+"use client";
 import NavTabTitles from "@/Components/Widgets/NavTabs";
 import AccountContext from "@/Context/AccountContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
@@ -17,7 +18,7 @@ const AccountSidebar = ({ tabActive }) => {
     setMobileSideBar(!mobileSideBar);
   };
   const { t } = useTranslation("common");
-  const { isLoading } = useContext(ThemeOptionContext);
+  const { isLoading, themeOption } = useContext(ThemeOptionContext);
 
   if (isLoading && !themeOption?.general) return <Loader />;
   return (

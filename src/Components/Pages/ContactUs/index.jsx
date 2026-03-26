@@ -12,7 +12,7 @@ import MapSection from "./MapSection";
 import "./ContactUs.css";
 
 const ContactUsContent = () => {
-  const { isLoading } = useContext(ThemeOptionContext);
+  const { isLoading, themeOption } = useContext(ThemeOptionContext);
 
   if (isLoading && !themeOption?.general) return <Loader />;
   return (

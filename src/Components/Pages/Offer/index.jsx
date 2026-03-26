@@ -10,12 +10,15 @@ import { ToastNotification } from "@/Utils/CustomFunctions/ToastNotification";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
+import { useContext } from "react";
 import { Col, Container } from "reactstrap";
 import OfferSkeleton from "./OfferSkeleton";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 
 const Offer = () => {
   const router = useRouter();
   const { t } = useTranslation("common");
+  const { themeOption } = useContext(ThemeOptionContext);
   const { data, isLoading } = useQuery([CouponAPI], () => request({ url: CouponAPI, params: { status: 1 } }, router), {
     enabled: true,
     refetchOnWindowFocus: false,

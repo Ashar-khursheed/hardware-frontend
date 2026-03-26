@@ -6,12 +6,14 @@ import request from "@/Utils/AxiosUtils";
 import { FaqAPI } from "@/Utils/AxiosUtils/API";
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem, Container } from "reactstrap";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 
 const BrowserFaq = () => {
   const { t } = useTranslation("common");
+  const { themeOption } = useContext(ThemeOptionContext);
   const [open, setOpen] = useState(1);
   const toggle = (id) => {
     if (open === id) {

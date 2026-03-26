@@ -8,13 +8,16 @@ import Breadcrumb from "@/Utils/CommonComponents/Breadcrumb";
 import { ImagePath } from "@/Utils/Constants";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useContext } from "react";
 import { Col, TabContent, TabPane } from "reactstrap";
 import TrackOrderDetails from "./TrackOrderDetails";
+import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 
 const OrderDetailsTracking = () => {
   const search = useSearchParams();
   let orderNumber = search.get("order_number");
   let emailPhone = search.get("email_or_phone");
+  const { themeOption } = useContext(ThemeOptionContext);
 
   const router = useRouter();
   const { data, isLoading, refetch } = useQuery([TrackingAPI], () => request({ url: TrackingAPI, params: { order_number: orderNumber, email_or_phone: emailPhone } }, router), {
