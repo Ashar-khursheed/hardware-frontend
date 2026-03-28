@@ -96,7 +96,7 @@ export default async function RootLayout({ children }) {
         {/* Local CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
 
-        {/* Google Analytics */}
+        {/* Google Analyticss */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-C52RSE232C"
