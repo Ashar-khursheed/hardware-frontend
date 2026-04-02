@@ -74,7 +74,15 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
             <Form>
               <div className="product-review-form">
                 <div className="product-wrapper">
-                  <div className="product-image">{productState?.product.product_thumbnail && <Image src={productState?.product.product_thumbnail ? productState?.product.product_thumbnail.original_url : placeHolderImage} className="img-fluid" height={80} width={80} alt={productState?.product?.name} />}</div>
+                  <div className="product-image">
+                    <Image 
+                      src={productState?.product?.product_thumbnail?.original_url || placeHolderImage} 
+                      className="img-fluid" 
+                      height={80} 
+                      width={80} 
+                      alt={productState?.product?.name || "Product"} 
+                    />
+                  </div>
                   <div className="product-content">
                     <h5 className="name">{productState?.product?.name}</h5>
                     <div className="product-review-rating">

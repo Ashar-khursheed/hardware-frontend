@@ -44,7 +44,7 @@ const staticCategories = [
     {
         id: "motherboard",
         title: "Motherboard",
-        path: " /category/motherboards",
+        path: "/category/motherboards",
         child: [
             { title: "Server Motherboards", path: "/category/server-motherboards" },
             { title: "Laptop Motherboards", path: "/category/laptop-motherboards" },
@@ -100,7 +100,7 @@ const staticCategories = [
     {
         id: "gpus",
         title: "GPUs",
-        path: "/category/gpus",
+        path: "/category/graphics-card",
         child: [
             { title: "Graphics Card", path: "/category/graphics-card" },
         ],
@@ -145,17 +145,26 @@ const StaticMobileMenu = () => {
             <ul className="hbx-category-list">
                 {staticCategories.map((cat) => (
                     <li key={cat.id} className="hbx-category-item">
-                        <div
-                            className={`hbx-category-header ${activeId === cat.id ? "active" : ""}`}
-                            onClick={() => toggleAccordion(cat.id)}
-                        >
-                            <span>{cat.title}</span>
-                            <RiArrowDownSLine className="hbx-icon-arrow" />
+                        <div className={`hbx-category-header ${activeId === cat.id ? "active" : ""}`}>
+                            <Link 
+                                href={cat.path.trim()} 
+                                className="hbx-category-title"
+                                onClick={handleLinkClick}
+                            >
+                                {cat.title}
+                            </Link>
+                            <div 
+                                className="hbx-toggle-icon"
+                                onClick={() => toggleAccordion(cat.id)}
+                                style={{ padding: '0 15px', cursor: 'pointer' }}
+                            >
+                                <RiArrowDownSLine className="hbx-icon-arrow" />
+                            </div>
                         </div>
                         <ul className={`hbx-subcategory-list ${activeId === cat.id ? "open" : ""}`}>
                             {cat.child.map((sub, idx) => (
                                 <li key={idx} className="hbx-subcategory-item">
-                                    <Link href={sub.path} onClick={handleLinkClick}>
+                                    <Link href={sub.path.trim()} onClick={handleLinkClick}>
                                         {sub.title}
                                     </Link>
                                 </li>

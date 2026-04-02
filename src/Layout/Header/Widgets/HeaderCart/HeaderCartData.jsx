@@ -165,10 +165,8 @@ const HeaderCartData = () => {
             <h3>
               {t("my_cart")} <span>{`(${cartProducts?.length})`}</span>
             </h3>
-            <div className="close-cart" onClick={() => setCartCanvas(false)}>
-              <a href={Href}>
-                <RiCloseFill />
-              </a>
+            <div className="close-cart" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCartCanvas(false); }}>
+              <RiCloseFill />
             </div>
           </div>
           <HeaderCartBottom modal={modal} setModal={setModal} shippingCal={shippingCal} shippingFreeAmt={shippingFreeAmt} />
