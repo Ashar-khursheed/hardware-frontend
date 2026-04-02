@@ -344,7 +344,7 @@
     --agpc-border-hover: #c8c8c8;
     --agpc-text: #1a1a1a;
     --agpc-text-muted: #999999;
-    --agpc-btn-bg: var(--theme-color, #fb641b);
+    --agpc-btn-bg: var(--theme-color, #ff5050);
     --agpc-btn-hover: var(--theme-color, #ff5050);
     --agpc-tag-sale: #cc0000;
     --agpc-tag-feat: #2563eb;
@@ -437,7 +437,7 @@
 .agpc__action-bar--mobile {
     margin-top: 12px;
     width: 100%;
-    
+
     .agpc__btn-cart {
         width: 100%;
         background-color: #0f1340 !important;
@@ -450,9 +450,9 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
-        
+
         &:hover {
-            background-color: #fb641b !important;
+            background-color: #ff5050 !important;
         }
     }
 }
@@ -550,11 +550,13 @@
 /* Add to Cart Button */
 .agpc__btn-cart,
 button.agpc__btn-cart {
-    flex: 1 !important; /* Take remaining space */
+    flex: 1 !important;
+    /* Take remaining space */
     padding: 8px 12px !important;
     background: var(--agpc-btn-bg) !important;
     color: #ffffff !important;
-    font-size: 11px !important; /* Smaller font for compactness */
+    font-size: 11px !important;
+    /* Smaller font for compactness */
     font-weight: 700 !important;
     letter-spacing: 0.03em !important;
     text-transform: uppercase !important;

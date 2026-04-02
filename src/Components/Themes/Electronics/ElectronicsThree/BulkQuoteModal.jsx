@@ -202,10 +202,10 @@ const BulkQuoteModal = ({ open, onClose }) => {
           z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 15px;
         }
         .hwb-modal-container {
-          width: 100%; max-width: 1100px; background: #fff; border-radius: 20px;
+          width: 100%; max-width: 1000px; background: #fff; border-radius: 20px;
           overflow: hidden; box-shadow: 0 40px 100px -20px rgba(0,0,0,0.4);
           animation: modal_pop 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-          max-height: 95vh; display: flex; flex-direction: column;
+          max-height: 92vh; display: flex; flex-direction: column;
         }
         @keyframes modal_pop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
@@ -213,90 +213,113 @@ const BulkQuoteModal = ({ open, onClose }) => {
 
         /* ASIDE WITH BANNER */
         .hwb-modal-aside {
-          width: 38%; background: #0f172a url('/assets/images/newbannerimg.webp') no-repeat center center;
+          width: 35%; background: #0f172a url('/assets/images/newbannerimg.webp') no-repeat center center;
           background-size: cover; position: relative; color: #fff; display: flex; flex-direction: column;
         }
         .hwb-aside-bg-overlay {
           position: absolute; top: 0; left: 0; width: 100%; height: 100%;
           background: linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
         }
-        .hwb-aside-content { position: relative; z-index: 2; padding: 50px 40px; display: flex; flex-direction: column; height: 100%; }
-        .hwb-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #fb641b; font-weight: 800; margin-bottom: 20px; display: block; }
-        .hwb-aside-title { font-size: 28px; font-weight: 900; line-height: 1.2; margin-bottom: 30px; }
+        .hwb-aside-content { position: relative; z-index: 2; padding: 40px 30px; display: flex; flex-direction: column; height: 100%; }
+        .hwb-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #ff5050; font-weight: 800; margin-bottom: 20px; display: block; }
+        .hwb-aside-title { font-size: 24px; font-weight: 900; line-height: 1.2; margin-bottom: 25px; }
         .hwb-aside-list { list-style: none; padding: 0; margin: 0; flex: 1; }
-        .hwb-aside-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 14px; font-weight: 600; opacity: 0.9; }
-        .hwb-aside-list li :global(svg) { color: #fb641b; font-size: 20px; }
-        .hwb-help-pill { display: flex; align-items: center; gap: 15px; padding: 15px; background: rgba(255, 255, 255, 0.08); border-radius: 12px; margin-top: auto; }
-        .hwb-help-pill :global(svg) { font-size: 26px; color: #fb641b; }
+        .hwb-aside-list li { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: 13px; font-weight: 600; opacity: 0.9; }
+        .hwb-aside-list li :global(svg) { color: #ff5050; font-size: 18px; }
+        .hwb-help-pill { display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; margin-top: auto; }
+        .hwb-help-pill :global(svg) { font-size: 24px; color: #ff5050; }
         .hwb-help-pill label { display: block; font-size: 10px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin: 0; }
-        .hwb-help-pill strong { font-size: 15px; font-weight: 800; letter-spacing: 0.5px; }
+        .hwb-help-pill strong { font-size: 14px; font-weight: 800; letter-spacing: 0.5px; }
 
         /* MAIN CONTENT - FORM */
-        .hwb-modal-main { width: 62%; background: #fff; position: relative; padding: 50px 45px; overflow-y: auto; }
-        .hwb-header-close { position: absolute; top: 20px; right: 20px; background: #f8fafc; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #0f172a; cursor: pointer; transition: 0.2s; z-index: 10; }
-        .hwb-header-close:hover { background: #fb641b; color: #fff; transform: rotate(90deg); }
+        .hwb-modal-main { width: 65%; background: #fff; position: relative; padding: 40px 45px; overflow-y: auto; }
+        .hwb-header-close { position: absolute; top: 15px; right: 15px; background: #f8fafc; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #0f172a; cursor: pointer; transition: 0.2s; z-index: 100; }
+        .hwb-header-close:hover { background: #ff5050; color: #fff; transform: rotate(90deg); }
 
-        .hwb-form-intro { margin-bottom: 30px; text-align: left; }
-        .hwb-form-intro h3 { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 8px; text-align: left; }
-        .hwb-form-intro p { font-size: 15px; color: #64748b; text-align: left; }
+        .hwb-form-intro { margin-bottom: 25px; text-align: left; }
+        .hwb-form-intro h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 5px; text-align: left; }
+        .hwb-form-intro p { font-size: 14px; color: #64748b; text-align: left; }
 
-        .hwb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 25px; }
+        .hwb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; }
         .hwb-full { grid-column: span 2; }
-        .hwb-input-group { display: flex; flex-direction: column; gap: 6px; position: relative; text-align: left; }
-        .hwb-input-group label { font-size: 11px; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 6px; margin: 0; text-align: left; text-transform: uppercase; }
+        .hwb-input-group { display: flex; flex-direction: column; gap: 4px; position: relative; text-align: left; }
+        .hwb-input-group label { font-size: 10px; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 6px; margin: 0; text-align: left; text-transform: uppercase; }
         .hwb-input-group input, .hwb-input-group select, .hwb-input-group textarea {
-          border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 11px 14px; font-size: 14px; color: #0f172a;
+          border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 10px 12px; font-size: 13.5px; color: #0f172a;
           background: #fcfdfe; transition: all 0.2s; width: 100%; text-align: left;
         }
         .hwb-input-group input:focus, .hwb-input-group select:focus, .hwb-input-group textarea:focus {
-          outline: none; border-color: #fb641b; background: #fff; box-shadow: 0 0 0 4px rgba(251, 100, 27, 0.1);
+          outline: none; border-color: #ff5050; background: #fff; box-shadow: 0 0 0 4px rgba(255, 80, 80, 0.1);
         }
         .hwb-input-group input.err { border-color: #ef4444; background: #fef2f2; }
-        .hwb-input-group span { font-size: 11px; color: #ef4444; font-weight: 700; margin-top: 2px; }
-        .hwb-input-group textarea { height: 80px; resize: none; }
+        .hwb-input-group span { font-size: 10px; color: #ef4444; font-weight: 700; margin-top: 1px; }
+        .hwb-input-group textarea { height: 75px; resize: none; }
 
-        .hwb-alert-err { padding: 12px; background: #fef2f2; border: 1px solid #fee2e2; border-radius: 10px; color: #ef4444; font-size: 13px; text-align: center; margin-top: 15px; }
+        .hwb-alert-err { padding: 10px; background: #fef2f2; border: 1px solid #fee2e2; border-radius: 10px; color: #ef4444; font-size: 12px; text-align: center; margin-top: 12px; }
 
-        .hwb-form-actions { margin-top: 30px; text-align: center; }
+        .hwb-form-actions { margin-top: 25px; text-align: center; }
         .hwb-btn-submit {
-          width: 100%; background: #fb641b; color: #fff; border: none; border-radius: 12px; padding: 16px;
-          font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px;
-          cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(251, 100, 27, 0.3);
+          width: 100%; background: #ff5050; color: #fff; border: none; border-radius: 12px; padding: 14px;
+          font-size: 15px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 10px;
+          cursor: pointer; transition: 0.3s; box-shadow: 0 10px 30px rgba(255, 80, 80, 0.2);
         }
-        .hwb-btn-submit:hover:not(:disabled) { background: #e55a18; transform: translateY(-2px); box-shadow: 0 15px 40px rgba(251, 100, 27, 0.4); }
+        .hwb-btn-submit:hover:not(:disabled) { background: #ff5050; transform: translateY(-2px); }
         .hwb-btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
-        .hwb-legal { margin-top: 12px; font-size: 11px; color: #94a3b8; }
-        .hwb-legal a { color: #fb641b; text-decoration: none; font-weight: 700; }
+        .hwb-legal { margin-top: 10px; font-size: 11px; color: #94a3b8; }
+        .hwb-legal a { color: #ff5050; text-decoration: none; font-weight: 700; }
 
-        .hwb-success-view { text-align: center; padding: 30px 0; }
-        .hwb-success-icon { width: 80px; height: 80px; background: #fb641b; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 45px; margin: 0 auto 25px; }
-        .hwb-success-view h3 { font-size: 24px; font-weight: 900; color: #0f172a; margin-bottom: 15px; }
-        .hwb-success-view p { font-size: 16px; color: #64748b; line-height: 1.5; max-width: 360px; margin: 0 auto 30px; }
-        .hwb-btn-primary { background: #0f172a; color: #fff; padding: 14px 40px; border-radius: 12px; border: none; font-size: 15px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .hwb-success-view { text-align: center; padding: 20px 0; }
+        .hwb-success-icon { width: 70px; height: 70px; background: #ff5050; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 20px; }
+        .hwb-success-view h3 { font-size: 22px; font-weight: 900; color: #0f172a; margin-bottom: 12px; }
+        .hwb-success-view p { font-size: 15px; color: #64748b; line-height: 1.5; max-width: 340px; margin: 0 auto 25px; }
+        .hwb-btn-primary { background: #0f172a; color: #fff; padding: 12px 35px; border-radius: 12px; border: none; font-size: 14px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+
+        /* Smaller Desktops (1366px and below) */
+        @media (max-width: 1400px) {
+           .hwb-modal-container { max-width: 900px; max-height: 95vh; }
+           .hwb-modal-main { padding: 30px 40px; }
+           .hwb-aside-content { padding: 30px 25px; }
+           .hwb-aside-title { font-size: 22px; }
+           .hwb-form-intro h3 { font-size: 20px; }
+           .hwb-grid { gap: 12px 18px; }
+           .hwb-input-group input, .hwb-input-group select, .hwb-input-group textarea { padding: 9px 12px; font-size: 13px; }
+        }
 
         @media (max-width: 900px) {
           .hwb-modal-overlay { padding: 10px; align-items: center; }
-          .hwb-modal-container { border-radius: 15px; max-height: 98vh; }
+          .hwb-modal-container { border-radius: 15px; max-height: 98vh; width: 95% !important; }
           .hwb-modal-wrap { flex-direction: column; overflow-y: auto; }
-          .hwb-modal-aside { 
-            width: 100%; 
-            background-size: cover;
-            padding: 0;
-            min-height: 160px; 
-          }
-          .hwb-aside-content { padding: 30px 20px; }
-          .hwb-aside-title { font-size: 22px; margin-bottom: 15px; }
-          .hwb-aside-list { display: none; } /* Hide list on mobile to save space */
-          .hwb-badge { margin-bottom: 10px; }
-          .hwb-help-pill { margin-top: 10px; padding: 10px; }
           
-          .hwb-modal-main { width: 100%; padding: 25px 20px; }
-          .hwb-grid { grid-template-columns: 1fr; gap: 15px; display: grid !important; }
-          .hwb-input-group label { font-size: 11px; }
-          .hwb-form-intro h3 { font-size: 20px; margin-bottom: 5px; }
-          .hwb-form-intro p { font-size: 14px; }
-          .hwb-modal-top-bar { display: none; } /* Use aside content instead */
-          .hwb-header-close { top: 15px; right: 15px; width: 35px; height: 35px; background: rgba(255,255,255,0.2); color: #fff; }
+          /* HIDE ASIDE ON MOBILE as requested */
+          .hwb-modal-aside { display: none !important; }
+          
+          .hwb-modal-main { width: 100% !important; padding: 35px 20px 20px; }
+          
+          /* ONE INPUT PER LINE STRICT */
+          .hwb-grid { 
+            display: flex !important; 
+            flex-direction: column !important; 
+            gap: 12px !important; 
+          }
+          .hwb-input-group { width: 100% !important; }
+          .hwb-full { grid-column: auto !important; }
+          
+          .hwb-input-group label { font-size: 10px; }
+          .hwb-form-intro h3 { font-size: 19px; margin-bottom: 5px; }
+          .hwb-form-intro p { font-size: 13px; }
+          .hwb-modal-top-bar { display: none; }
+          
+          /* CROSS BUTTON POSITIVE POSITIONING */
+          .hwb-header-close { 
+            display: flex !important; 
+            top: 10px; 
+            right: 10px; 
+            width: 36px; 
+            height: 36px; 
+            background: #f1f5f9; 
+            color: #0f172a; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          }
         }
       `}</style>
     </div>
@@ -324,7 +347,7 @@ export const BulkQuoteButton = () => {
         .hwb-trigger-btn:hover {
           transform: translateY(-3px) scale(1.02);
           box-shadow: 0 12px 35px rgba(251, 100, 27, 0.5);
-          background: #e55a18;
+          background: #ff5050;
         }
       `}</style>
       <BulkQuoteModal open={open} onClose={() => setOpen(false)} />

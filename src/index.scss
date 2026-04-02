@@ -70,7 +70,7 @@
     box-sizing: border-box;
 
     &:focus-within {
-        border-color: var(--theme-color, #fb641b);
+        border-color: var(--theme-color, #ff5050);
         box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.1);
     }
 }
@@ -240,7 +240,7 @@
                     .current-price {
                         font-size: 15px;
                         font-weight: 700;
-                        color: var(--theme-color, #fb641b);
+                        color: var(--theme-color, #ff5050);
                     }
 
                     .old-price {
@@ -440,7 +440,7 @@
     width: 50px !important;
     height: 50px !important;
     border: 3px solid #f3f3f3 !important;
-    border-top: 3px solid var(--theme-color, #fb641b) !important;
+    border-top: 3px solid var(--theme-color, #ff5050) !important;
     border-radius: 50% !important;
     animation: hbxLoaderSpin 1s linear infinite !important;
     position: absolute !important;
@@ -563,7 +563,7 @@
                 transition: color 0.15s ease;
 
                 &:hover {
-                    color: var(--theme-color, #fb641b);
+                    color: var(--theme-color, #ff5050);
                 }
             }
 
@@ -1055,8 +1055,8 @@
 
         &.active {
             .hbx-page-link {
-                background: var(--theme-color, #fb641b);
-                border-color: var(--theme-color, #fb641b);
+                background: var(--theme-color, #ff5050);
+                border-color: var(--theme-color, #ff5050);
                 color: #fff !important;
                 font-weight: 600;
                 box-shadow: 0 4px 12px rgba(251, 100, 27, 0.3);
@@ -1094,8 +1094,8 @@
         user-select: none;
 
         &:hover:not(.disabled):not(.active) {
-            border-color: var(--theme-color, #fb641b);
-            color: var(--theme-color, #fb641b);
+            border-color: var(--theme-color, #ff5050);
+            color: var(--theme-color, #ff5050);
             background-color: rgba(251, 100, 27, 0.05);
             transform: translateY(-3px);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
@@ -1107,8 +1107,8 @@
 
             &:hover:not(.disabled) {
                 background-color: #fff;
-                border-color: var(--theme-color, #fb641b);
-                color: var(--theme-color, #fb641b);
+                border-color: var(--theme-color, #ff5050);
+                color: var(--theme-color, #ff5050);
             }
         }
     }
@@ -1223,12 +1223,12 @@
                 }
 
                 &.active {
-                    color: var(--theme-color, #fb641b);
+                    color: var(--theme-color, #ff5050);
                     background: #fff9f6;
 
                     .hbx-icon-arrow {
                         transform: rotate(180deg);
-                        color: var(--theme-color, #fb641b);
+                        color: var(--theme-color, #ff5050);
                     }
                 }
             }
@@ -1258,7 +1258,7 @@
                         transition: all 0.2s;
 
                         &:hover {
-                            color: var(--theme-color, #fb641b);
+                            color: var(--theme-color, #ff5050);
                             padding-left: 54px;
                         }
                     }
@@ -1266,7 +1266,7 @@
                     &.main-link {
                         a {
                             font-weight: 700;
-                            color: var(--theme-color, #fb641b);
+                            color: var(--theme-color, #ff5050);
                             border-bottom: 1px dashed #eee;
                         }
                     }
@@ -1803,7 +1803,7 @@ h2.display-5.size-28 {
         transition: all 0.2s ease;
 
         &:hover {
-            border-color: #fb641b;
+            border-color: #ff5050;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
     }
@@ -1946,7 +1946,7 @@ h2.display-5.size-28 {
 /* Category Description Styling */
 .category-description {
     background-color: #f8fafc !important;
-    border-left: 4px solid #fb641b !important;
+    border-left: 4px solid #ff5050 !important;
     padding: 20px !important;
     margin-bottom: 30px !important;
     display: none !important;
@@ -2150,7 +2150,7 @@ ul.hwb-aside-list {
             touch-action: manipulation !important;
 
             &:focus {
-                border-color: var(--theme-color, #fb641b) !important;
+                border-color: var(--theme-color, #ff5050) !important;
                 outline: none !important;
                 box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.12) !important;
             }
@@ -2240,7 +2240,7 @@ ul.hwb-aside-list {
         margin-bottom: 0 !important;
 
         &:focus-within {
-            border-color: var(--theme-color, #fb641b) !important;
+            border-color: var(--theme-color, #ff5050) !important;
             box-shadow: 0 0 0 3px rgba(251, 100, 27, 0.12) !important;
         }
 
@@ -2518,7 +2518,7 @@ ul.hwb-aside-list {
             background: #0f172a !important;
             padding: 30px 20px 60px !important;
             color: #fff !important;
-            border-bottom: 4px solid #fb641b !important;
+            border-bottom: 4px solid #ff5050 !important;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
         }
 
@@ -2532,14 +2532,14 @@ ul.hwb-aside-list {
                 width: 70px !important;
                 height: 70px !important;
                 background: #1e293b !important;
-                border: 2px solid #fb641b !important;
+                border: 2px solid #ff5050 !important;
                 border-radius: 12px !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
                 font-size: 28px !important;
                 font-weight: 800 !important;
-                color: #fb641b !important;
+                color: #ff5050 !important;
             }
 
             .hbx-ind-welcome {
@@ -2549,7 +2549,7 @@ ul.hwb-aside-list {
                 .hbx-ind-label {
                     font-size: 11px !important;
                     background: rgba(251, 100, 27, 0.15) !important;
-                    color: #fb641b !important;
+                    color: #ff5050 !important;
                     padding: 2px 8px !important;
                     border-radius: 4px !important;
                     text-transform: uppercase !important;
@@ -2688,7 +2688,7 @@ ul.hwb-aside-list {
             padding: 30px 20px !important;
             margin: 0 !important;
             color: #fff !important;
-            border-bottom: 3px solid #fb641b !important;
+            border-bottom: 3px solid #ff5050 !important;
             display: flex !important;
             align-items: center !important;
             gap: 15px !important;
@@ -2702,7 +2702,7 @@ ul.hwb-aside-list {
                 align-items: center;
                 justify-content: center;
                 font-size: 22px;
-                color: #fb641b;
+                color: #ff5050;
                 cursor: pointer;
             }
 
@@ -2752,7 +2752,7 @@ ul.hwb-aside-list {
                 }
 
                 &.unread {
-                    border-left: 4px solid #fb641b !important;
+                    border-left: 4px solid #ff5050 !important;
                     background: #fff8f5 !important;
                 }
             }
@@ -2787,9 +2787,9 @@ ul.hwb-aside-list {
                         background: #f8fafc !important;
                         border-bottom: 1px solid #f1f5f9 !important;
 
-                        .hbx-icon-arrow { 
-                            transform: rotate(180deg) !important; 
-                            color: #fb641b !important; 
+                        .hbx-icon-arrow {
+                            transform: rotate(180deg) !important;
+                            color: #ff5050 !important;
                         }
                     }
 
@@ -2827,7 +2827,7 @@ ul.hwb-aside-list {
                     .hbx-subcategory-item {
                         list-style: none !important;
                         width: 100% !important;
-                        
+
                         a {
                             display: block !important;
                             padding: 10px 35px !important;
@@ -2838,7 +2838,7 @@ ul.hwb-aside-list {
                             transition: all 0.2s ease !important;
 
                             &:active {
-                                color: #fb641b !important;
+                                color: #ff5050 !important;
                                 background: #fef2f2 !important;
                             }
                         }
