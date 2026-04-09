@@ -62,11 +62,19 @@ const MobileMenu = () => {
           </Link>
         </li>
         <li className={active === 3 ? "active" : ""}>
-          <Link href="/cart" onClick={() => setActive(3)}>
-            <RiShoppingCartLine />
-            {cartProducts?.length > 0 && <span className="cart_qty_cls">{cartProducts?.length}</span>}
+          <div 
+            onClick={() => {
+              setActive(3);
+              setCartCanvas(true);
+            }}
+            style={{ cursor: 'pointer', textAlign: 'center' }}
+          >
+            <div className="position-relative d-inline-block">
+              <RiShoppingCartLine />
+              {cartProducts?.length > 0 && <span className="cart_qty_cls">{cartProducts?.length}</span>}
+            </div>
             <span>{t("Cart")}</span>
-          </Link>
+          </div>
         </li>
         <li className={active === 4 ? "active" : ""}>
           <a href="#" onClick={handleWishlist}>

@@ -1,8 +1,8 @@
 import CustomHeading from '@/Components/Widgets/CustomHeading';
 import Image from 'next/image';
 import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap';
-import dashboardProfile from '../../../../public/assets/images/inner-page/dashboard-profile.png';
-import { LeafSVG } from '@/Components/Widgets/CommonSVG';
+// import dashboardProfile from '../../../../public/assets/images/inner-page/dashboard-profile.png';
+// import { LeafSVG } from '@/Components/Widgets/CommonSVG';
 import { useTranslation } from "react-i18next";
 import { useContext } from 'react';
 
@@ -10,7 +10,7 @@ const ProfileContent = () => {
   const { t } = useTranslation( 'common');
   return (
     <div className='dashboard-profile'>
-      <CustomHeading title={'MyProfile'} svgUrl={<LeafSVG className='icon-width bg-gray' />} svgClass='bg-gray' />
+      <CustomHeading title={'MyProfile'} />
       <div className='dashboard-bg-box'>
         <Row>
           <Col xxl={7}>
@@ -49,7 +49,7 @@ const ProfileContent = () => {
 
           <Col xxl={5}>
             <div className='profile-image'>
-            { dashboardProfile && <Image src={dashboardProfile} className='img-fluid ' alt='dashboard-profile' height={428} width={428} />}
+            {/* { dashboardProfile && <Image src={dashboardProfile} className='img-fluid ' alt='dashboard-profile' height={428} width={428} />} */}
             </div>
           </Col>
         </Row>

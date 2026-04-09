@@ -1,10 +1,10 @@
-import AccountDashboard from '@/Components/Pages/Account/Dashboard'
-import React from 'react'
+import AccountProfile from '@/Components/Pages/Account/Profile';
+import React from 'react';
 
 const AccountProfileComponent = () => {
   return (
-   <AccountDashboard/>
-  )
-}
+    <AccountProfile />
+  );
+};
 
-export default AccountProfileComponent
+export default AccountProfileComponent;

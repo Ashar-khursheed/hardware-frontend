@@ -20,12 +20,14 @@ const WishlistContent = () => {
   const { t } = useTranslation("common");
   const { setCartCanvas } = useContext(ThemeOptionContext);
   const { handleIncDec, openCartSidebar } = useContext(CartContext);
-  const removeFromWishlist = (product) => {
+  const removeFromWishlist = (e, product) => {
+    e.preventDefault();
     removeWishlist(product?.product_id, product?.id);
   };
   const { convertCurrency } = useContext(SettingContext);
 
-  const addToCart = (product) => {
+  const addToCart = (e, product) => {
+    e.preventDefault();
     setCartCanvas(true);
     handleIncDec(1, product);
   };
@@ -72,10 +74,10 @@ const WishlistContent = () => {
                         </div>
                         <div className="col">
                           <div className="icon-box d-flex gap-2 justify-content-center">
-                            <a href={Href} className="icon " onClick={() => removeFromWishlist(product)}>
+                            <a href={Href} className="icon " onClick={(e) => removeFromWishlist(e, product)}>
                               <RiCloseLine />
                             </a>
-                            <a href={Href} className="cart" onClick={() => addToCart(product)}>
+                            <a href={Href} className="cart" onClick={(e) => addToCart(e, product)}>
                               <RiShoppingCartLine />
                             </a>
                           </div>
@@ -93,10 +95,10 @@ const WishlistContent = () => {
 
                     <td>
                       <div className="icon-box d-flex gap-2 justify-content-center">
-                        <a href={Href} className="icon " onClick={() => removeFromWishlist(product)}>
+                        <a href={Href} className="icon " onClick={(e) => removeFromWishlist(e, product)}>
                           <RiCloseLine />
                         </a>
-                        <a href={Href} className="cart" onClick={() => addToCart(product)}>
+                        <a href={Href} className="cart" onClick={(e) => addToCart(e, product)}>
                           <RiShoppingCartLine />
                         </a>
                       </div>

@@ -397,21 +397,85 @@
     height: inherit !important;
 }
 
+/* Force Image Zoom and PDP containers to stay under UI overlays */
+.react-image-zooom,
+.zoomWrapper,
+.product-slider-image,
+.slider-image,
+.sticky-product-height,
+.product-slick,
+.main-image-slider,
+.thumbnail-image-slider,
+.sticky-bottom-cart,
+.stickyCart,
+.product_img_scroll {
+    z-index: 5 !important;
+}
+
+/* NUCLEAR OPTION: When cart is open, force all PDP image content to the bottom of the stack */
+body.cart-open {
+    .react-image-zooom,
+    .zoomWrapper,
+    .product-slider-image,
+    .slider-image,
+    .sticky-product-height,
+    .product-slick,
+    .main-image-slider,
+    .thumbnail-image-slider,
+    .stickyCart,
+    .product_img_scroll,
+    .sticky-bottom-cart,
+    .checkout-page,
+    .checkout-form {
+        z-index: -1 !important;
+    }
+}
+
+/* Fix for Header Stacking Context - MUST be higher than global overlay */
+header, 
+.header-style-1 {
+    z-index: 10000 !important;
+    position: relative; /* Base position to enable z-index */
+}
+
+header.sticky {
+    z-index: 10000 !important;
+}
+
+.main-menu {
+    z-index: auto !important;
+    position: relative !important;
+}
+
+/* Fix Cart sidebar appearing behind or through other elements */
+.add_to_cart,
+#cart_side {
+    z-index: 10001 !important; /* Higher than header and overlay */
+
+    .cart-inner {
+        z-index: 10002 !important;
+        background-color: #fff !important;
+    }
+}
+
+/* Global Overlay (injected via JS for perfect viewport coverage) */
+.cart-global-overlay {
+    /* z-index is set in JS to 9998, which is < 10000 (header) */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* Ensure Home Slider has proper height */
 .home-slider-section .slick-slider,
 .home-slider-section .slick-list,
 .home-slider-section .slick-track,
 .home-slider-section .slick-slide>div {
-    height: 100%;
+    height: 100% !important;
 }
-
-/* Force Image Zoom to stay under UI overlays */
-.react-image-zooom,
-.zoomWrapper {
-    z-index: 10 !important;
-}
-
-/* Fix Cart overlay Z-Index over PDP Zoom */
 
 /* Bulletproof Loader Styles */
 .loader-wrapper-page,
@@ -2850,6 +2914,70 @@ ul.hwb-aside-list {
 
     .hbx-app-footer-spacer {
         height: 120px !important;
+    }
+}
+
+/* Main Menu Desktop Customization */
+@media (min-width: 992px) {
+    #mainnav, .main-navbar {
+        .navbar-nav {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            
+            .nav-item {
+                margin-right: 25px !important;
+                
+                &:last-child {
+                    margin-right: 0 !important;
+                }
+                
+                /* Target top-level links specifically */
+                > a.nav-link,
+                > a.dropdown-item {
+                    color: #0f1340 !important; /* Theme Blue */
+                    font-size: 16px !important; /* Bigger font */
+                    font-weight: 500 !important;
+                    padding: 10px 0 !important;
+                    background: transparent !important;
+                    position: relative !important;
+                    transition: all 0.3s ease !important;
+                    letter-spacing: 0.5px;
+                    display: inline-block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                    
+                    &::after {
+                        content: "" !important;
+                        position: absolute !important;
+                        bottom: 0 !important;
+                        left: 0 !important;
+                        width: 0 !important;
+                        height: 2px !important;
+                        background-color: #ff4c3b !important; /* Theme Orange/Red */
+                        transition: all 0.3s ease !important;
+                        z-index: 1;
+                    }
+                    
+                    &:hover {
+                        color: #ff4c3b !important;
+                        &::after {
+                            width: 100% !important;
+                        }
+                    }
+                }
+                
+                &.active {
+                    > a.nav-link,
+                    > a.dropdown-item {
+                        color: #ff4c3b !important;
+                        &::after {
+                            width: 100% !important;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

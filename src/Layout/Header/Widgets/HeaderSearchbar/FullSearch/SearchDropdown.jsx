@@ -39,7 +39,7 @@ const SearchDropDown = React.forwardRef((props, ref) => {
   const queryParams = searchValue ? { search: searchValue } : null;
 
   return (
-    <div className="search-suggestion-box shadow-lg rounded border mt-1" ref={ref} style={{ overflow: 'hidden' }}>
+    <div className="search-suggestion-box shadow-lg rounded border mt-1" ref={ref} style={{ overflow: 'hidden', position: 'absolute', top: '100%', left: 0, width: '100%', zIndex: 100, backgroundColor: '#fff' }}>
       <div className="p-3 bg-white">
         {(categoryLoading) ? (
           <div className="filter-row filter-skeleton mb-3">

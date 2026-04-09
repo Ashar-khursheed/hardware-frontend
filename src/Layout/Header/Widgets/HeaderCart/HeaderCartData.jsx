@@ -120,15 +120,6 @@ const HeaderCartData = () => {
     };
   }, [themeOption]);
 
-  // useEffect(() => {
-  //   setShippingFreeAmt(settingData?.general?.min_order_free_shipping);
-  //   cartProducts?.forEach((elem) => {
-  //     if (elem?.variation) {
-  //       elem.variation.selected_variation = elem?.variation?.attribute_values?.map((values) => values.value).join("/");
-  //     }
-  //   });
-  // }, [cartProducts, settingData]);
-
   useEffect(() => {
     const total = getTotal(cartProducts);
     const shippingFreeAmount = settingData?.general?.min_order_free_shipping || shippingFreeAmt;
@@ -147,19 +138,43 @@ const HeaderCartData = () => {
       setShippingCal(tempCal);
       setConfetti(0);
     }
-  }, [ settingData, shippingFreeAmt, getTotal(cartProducts )]);
+  }, [settingData, shippingFreeAmt, getTotal(cartProducts)]);
+
+  useEffect(() => {
+    if (cartCanvas) {
+      document.body.classList.add("cart-open");
+      // Create global overlay if not exists to ensure it covers everything (stacking context fix)
+      let overlay = document.getElementById("global-cart-overlay");
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.id = "global-cart-overlay";
+        overlay.className = "cart-global-overlay";
+        overlay.style.position = "fixed";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.width = "100vw";
+        overlay.style.height = "100vh";
+        overlay.style.backgroundColor = "rgba(0,0,0,0.7)";
+        overlay.style.zIndex = "9998";
+        overlay.style.cursor = "pointer";
+        overlay.onclick = () => setCartCanvas(false);
+        document.body.appendChild(overlay);
+      }
+    } else {
+      document.body.classList.remove("cart-open");
+      const overlay = document.getElementById("global-cart-overlay");
+      if (overlay) overlay.remove();
+    }
+    return () => {
+      document.body.classList.remove("cart-open");
+      const overlay = document.getElementById("global-cart-overlay");
+      if (overlay) overlay.remove();
+    };
+  }, [cartCanvas, setCartCanvas]);
 
   return (
     <>
       <div id="cart_side" className={`${cartCanvas ? "open-side" : ""} ${cartStyle === "cart_mini" ? "show-div shopping-cart" : "add_to_cart right right-cart-box"}`}>
-       <div 
-          className="overlay" 
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setCartCanvas(false);
-          }} 
-        />
         <div className="cart-inner">
           <div className="cart_top">
             <h3>

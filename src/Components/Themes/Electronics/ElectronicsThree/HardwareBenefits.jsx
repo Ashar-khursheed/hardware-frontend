@@ -14,7 +14,7 @@ const HardwareBenefits = () => {
             {/* Benefit Items */}
             <div className="benefit-item d-flex mb-4 p-3 bg-white rounded shadow-sm">
               <div className="me-3 d-flex align-items-center">
-                <div style={{ width: 60, height: 60, position: 'relative' }}>
+                <div style={{ width: 80, height: 80, position: 'relative' }}>
                   <Image src="/assets/images/new2.png" alt="Free Delivery" fill style={{ objectFit: 'contain' }} />
                 </div>
               </div>
@@ -63,7 +63,7 @@ const HardwareBenefits = () => {
                     <h4 className="text-black m-0 fs-5">Government Agencies</h4>
                   </div>
                   <div className="d-flex align-items-center gap-3 mb-4">
-                    <div style={{ width: 60, height: 60, position: 'relative', flexShrink: 0 }}>
+                    <div style={{ width: 80, height: 80, position: 'relative', flexShrink: 0 }}>
                       <Image src="/assets/images/logoiconn.png" alt="SAM Logo" fill style={{ objectFit: 'contain' }} />
                     </div>
                     <h4 className="text-black m-0 fs-5">SAM Registered</h4>

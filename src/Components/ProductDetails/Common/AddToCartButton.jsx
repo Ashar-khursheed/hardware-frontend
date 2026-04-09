@@ -14,7 +14,7 @@ const AddToCartButton = ({ productState, addToCart, isLoading, buyNow, extraOpti
       {!productState?.product?.is_external ? (
         <>
           {productState?.product?.type == "simple" ? (
-            <Btn color="transparent" className={`btn-animation  buy-button ${productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? "btn-md scroll-button" : "bg-theme btn-md scroll-button"}`} onClick={addToCart} disabled={productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty}>
+            <Btn color="transparent" className={`btn-animation buy-button bg-theme btn-md scroll-button ${productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? "disabled" : ""}`} onClick={addToCart} disabled={productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty}>
               {productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? null : (
                 <div className="d-inline-block ring-animation">
                   <RiShoppingCartLine className="me-2" />
@@ -23,7 +23,7 @@ const AddToCartButton = ({ productState, addToCart, isLoading, buyNow, extraOpti
               {productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? t("out_of_stock") : t("add_to_cart")}
             </Btn>
           ) : (
-            <Btn color="transparent" className={`btn-animation buy-button ${productState?.selectedVariation ? (productState?.product?.status === 0 || productState?.product?.variations.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.selectedVariation?.quantity < productState?.productQty ? "btn-md scroll-button" : "bg-theme btn-md scroll-button") : "bg-theme btn-md scroll-button"}`} disabled={productState?.selectedVariation ? productState?.product?.status === 0 || productState?.product?.variations.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.selectedVariation?.quantity < productState?.productQty : true} onClick={addToCart}>
+            <Btn color="transparent" className={`btn-animation buy-button bg-theme btn-md scroll-button ${productState?.selectedVariation ? (productState?.product?.status === 0 || productState?.product?.variations.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.selectedVariation?.quantity < productState?.productQty ? "disabled" : "") : "disabled"}`} disabled={productState?.selectedVariation ? productState?.product?.status === 0 || productState?.product?.variations.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.selectedVariation?.quantity < productState?.productQty : true} onClick={addToCart}>
               {productState?.product?.status === 0 || productState?.product?.variations?.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.selectedVariation?.quantity < productState?.productQty ? null : (
                 <div className="d-inline-block ring-animation">
                   <RiShoppingCartLine className="me-2" />
@@ -34,20 +34,18 @@ const AddToCartButton = ({ productState, addToCart, isLoading, buyNow, extraOpti
           )}
           {extraOption !== false ? (
             productState?.product?.type == "simple" ? (
-              <Btn className=" buy-button" onClick={buyNow} disabled={productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? true : false}>
+              <Btn color="transparent" className="btn-animation buy-button bg-theme btn-md scroll-button" onClick={buyNow} disabled={productState?.product?.status === 0 || productState?.product?.stock_status == "out_of_stock" || productState?.product?.quantity < productState?.productQty ? true : false}>
                 {t("buy_now")}
               </Btn>
             ) : (
-              <>
-                <Btn className=" buy-button" onClick={buyNow} disabled={productState?.product?.status === 0 || productState?.product?.variations?.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.product?.stock_status == "out_of_stock" ? true : false}>
-                  {t("buy_now")}
-                </Btn>
-              </>
+              <Btn color="transparent" className="btn-animation buy-button bg-theme btn-md scroll-button" onClick={buyNow} disabled={productState?.product?.status === 0 || productState?.product?.variations?.every((data) => data.status === 0) || productState?.selectedVariation?.stock_status == "out_of_stock" || productState?.product?.stock_status == "out_of_stock" ? true : false}>
+                {t("buy_now")}
+              </Btn>
             )
           ) : null}
         </>
       ) : (
-        <Btn className="btn-md bg-theme scroll-button" onClick={externalProductLink(productState.product.external_url)}>
+        <Btn color="transparent" className="btn-md bg-theme scroll-button" onClick={() => externalProductLink(productState.product.external_url)}>
           {productState?.product?.external_button_text ? productState?.product?.external_button_text : t("buy_now")}
         </Btn>
       )}

@@ -42,12 +42,8 @@ const CheckoutContent = () => {
   const { data: addToCartData, isLoading: addToCartLoader, refetch: addToCartRefatch } = useQuery(
     [AddToCartAPI], 
     () => request({ url: AddToCartAPI }, router), 
-    { enabled: false, refetchOnWindowFocus: false, cacheTime: 0, select: (res) => res?.data }
+    { enabled: !!access_token, refetchOnWindowFocus: false, cacheTime: 0, select: (res) => res?.data }
   );
-
-  useEffect(() => {
-    access_token && !addToCartLoader && addToCartRefatch();
-  }, [addToCartLoader, access_token]);
 
   const { isLoading: themLoad } = useContext(ThemeOptionContext);
 

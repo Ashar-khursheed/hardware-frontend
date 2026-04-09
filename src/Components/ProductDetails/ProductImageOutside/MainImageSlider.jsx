@@ -161,7 +161,7 @@ const MainImageSlider = ({ productState, nav2, sliderRef1, setNav1 }) => {
   };
 
   return (
-    <div className="sticky-top-custom">
+    <div className="sticky-top-custom img">
       <div className="thumbnail-image-slider">
         <Row className="g-sm-4 g-3">
           <Col xs="12">

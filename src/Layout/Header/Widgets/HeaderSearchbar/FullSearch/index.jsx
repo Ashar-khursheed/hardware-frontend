@@ -128,7 +128,7 @@ const FullSearch = () => {
   });
 
   return (
-    <form className="form_search" onSubmit={onHandleSearch} ref={ref}>
+    <form className="form_search" onSubmit={onHandleSearch} ref={ref} style={{ position: 'relative' }}>
       <Input
         className="nav-search nav-search-field"
         onClick={() => setIsComponentVisible(true)}

@@ -24,6 +24,7 @@
 // export default HeaderCart;
 import CartContext from "@/Context/CartContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
+import { usePathname } from "next/navigation";
 import React, { useContext, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { RiShoppingCartLine } from "react-icons/ri";
@@ -37,6 +38,7 @@ const HeaderCart = () => {
     return themeOption?.general?.cart_style ? themeOption?.general?.cart_style : "cart_sidebar";
   });
 
+  const pathName = usePathname();
   const handleCartClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
