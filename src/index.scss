@@ -414,6 +414,7 @@
 
 /* NUCLEAR OPTION: When cart is open, force all PDP image content to the bottom of the stack */
 body.cart-open {
+
     .react-image-zooom,
     .zoomWrapper,
     .product-slider-image,
@@ -432,10 +433,11 @@ body.cart-open {
 }
 
 /* Fix for Header Stacking Context - MUST be higher than global overlay */
-header, 
+header,
 .header-style-1 {
     z-index: 10000 !important;
-    position: relative; /* Base position to enable z-index */
+    position: relative;
+    /* Base position to enable z-index */
 }
 
 header.sticky {
@@ -450,7 +452,8 @@ header.sticky {
 /* Fix Cart sidebar appearing behind or through other elements */
 .add_to_cart,
 #cart_side {
-    z-index: 10001 !important; /* Higher than header and overlay */
+    z-index: 10001 !important;
+    /* Higher than header and overlay */
 
     .cart-inner {
         z-index: 10002 !important;
@@ -465,8 +468,13 @@ header.sticky {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 /* Ensure Home Slider has proper height */
@@ -2917,26 +2925,101 @@ ul.hwb-aside-list {
     }
 }
 
+/* Desktop Header Menu Optimization for Smaller Screens (1200px - 1550px) */
+@media (min-width: 1200px) and (max-width: 1550px) {
+    .header-style-5 {
+        .main-nav {
+            .navbar-nav {
+                li.nav-item {
+                    margin-left: 5px !important;
+                    margin-right: 5px !important;
+
+                    >a,
+                    .nav-link,
+                    .dropdown-item {
+                        padding: 15px 8px !important;
+                        font-size: 13px !important;
+                        font-weight: 600 !important;
+                        letter-spacing: -0.3px !important;
+                    }
+                }
+            }
+        }
+
+        .category-menu {
+            .category-trigger {
+                padding: 10px 12px !important;
+                min-width: unset !important;
+
+                .trigger-text {
+                    font-size: 11px !important;
+                    margin: 0 8px !important;
+                }
+            }
+        }
+    }
+}
+
+/* Even more compact for 1200px - 1366px laptops */
+@media (min-width: 1200px) and (max-width: 1366px) {
+    .header-style-5 {
+        .main-nav {
+            .navbar-nav {
+                li.nav-item {
+                    margin-left: 3px !important;
+                    margin-right: 3px !important;
+
+                    >a,
+                    .nav-link,
+                    .dropdown-item {
+                        padding: 15px 5px !important;
+                        font-size: 12px !important;
+                    }
+                }
+            }
+        }
+
+        .category-menu {
+            .category-trigger {
+                padding: 10px 8px !important;
+
+                .trigger-text {
+                    font-size: 10.5px !important;
+                    margin: 0 5px !important;
+                }
+
+                .trigger-icon {
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+}
+
 /* Main Menu Desktop Customization */
 @media (min-width: 992px) {
-    #mainnav, .main-navbar {
+
+    #mainnav,
+    .main-navbar {
         .navbar-nav {
             display: flex !important;
             flex-direction: row !important;
             align-items: center !important;
-            
+
             .nav-item {
-                margin-right: 25px !important;
-                
+                margin-right: 10px !important;
+
                 &:last-child {
                     margin-right: 0 !important;
                 }
-                
+
                 /* Target top-level links specifically */
-                > a.nav-link,
-                > a.dropdown-item {
-                    color: #0f1340 !important; /* Theme Blue */
-                    font-size: 16px !important; /* Bigger font */
+                >a.nav-link,
+                >a.dropdown-item {
+                    color: #0f1340 !important;
+                    /* Theme Blue */
+                    font-size: 16px !important;
+                    /* Bigger font */
                     font-weight: 500 !important;
                     padding: 10px 0 !important;
                     background: transparent !important;
@@ -2946,7 +3029,7 @@ ul.hwb-aside-list {
                     display: inline-block !important;
                     visibility: visible !important;
                     opacity: 1 !important;
-                    
+
                     &::after {
                         content: "" !important;
                         position: absolute !important;
@@ -2954,23 +3037,27 @@ ul.hwb-aside-list {
                         left: 0 !important;
                         width: 0 !important;
                         height: 2px !important;
-                        background-color: #ff4c3b !important; /* Theme Orange/Red */
+                        background-color: #ff4c3b !important;
+                        /* Theme Orange/Red */
                         transition: all 0.3s ease !important;
                         z-index: 1;
                     }
-                    
+
                     &:hover {
                         color: #ff4c3b !important;
+
                         &::after {
                             width: 100% !important;
                         }
                     }
                 }
-                
+
                 &.active {
-                    > a.nav-link,
-                    > a.dropdown-item {
+
+                    >a.nav-link,
+                    >a.dropdown-item {
                         color: #ff4c3b !important;
+
                         &::after {
                             width: 100% !important;
                         }
