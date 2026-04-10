@@ -25,6 +25,7 @@ export default function robots() {
           '/*?per_page=',
           '/*?orderby=',
           '/*?s=',
+          '/?q=',
 
           // Block old WordPress pagination
           '/shop/page/',
