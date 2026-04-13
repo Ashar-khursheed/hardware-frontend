@@ -4,7 +4,6 @@ import Cookies from "js-cookie";
 import { useContext, useState } from "react";
 import { RiQuestionnaireLine, RiRulerLine, RiTruckLine } from "react-icons/ri";
 import { Progress } from "reactstrap";
-import { useRouter } from "next/navigation";
 import DeliveryReturnModal from "./AllModal/DeliveryReturnModal";
 import QuestionAnswerModal from "./AllModal/QuestionAnswerModal";
 import SizeModal from "./AllModal/SizeModal";
@@ -12,7 +11,6 @@ import SizeModal from "./AllModal/SizeModal";
 const AddProductDetail = ({ productState }) => {
   const isLogin = Cookies.get("uat_multikart");
   const { themeOption } = useContext(ThemeOptionContext);
-  const router = useRouter();
   const { t } = useTranslation("common");
   const [modal, setModal] = useState("");
   const getQTY = productState?.selectedVariation?.quantity ? productState?.selectedVariation?.quantity : productState?.product?.quantity;
@@ -47,12 +45,12 @@ const AddProductDetail = ({ productState }) => {
       {productState?.product?.size_chart_image || (themeOption?.product?.shipping_and_return && productState?.product?.is_return) ? (
         <div className="size-delivery-info">
           {themeOption?.product?.shipping_and_return && productState?.product?.is_return ? (
-            <a onClick={() => router.push(`/product/${productState?.product?.slug}/delivery-return`)}>
+            <a onClick={() => setModal("delivery")}>
               <RiTruckLine /> {t("delivery_return")}
             </a>
           ) : null}
           {isLogin && themeOption?.product?.shipping_and_return && productState?.product?.is_return ? (
-            <a onClick={() => router.push(`/product/${productState?.product?.slug}/ask-a-question`)}>
+            <a onClick={() => setModal("qna")}>
               <RiQuestionnaireLine /> {t("ask_a_question")}
             </a>
           ) : null}

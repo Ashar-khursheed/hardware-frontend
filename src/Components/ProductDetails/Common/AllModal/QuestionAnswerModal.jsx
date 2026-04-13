@@ -51,8 +51,14 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
     return () => setShowBoxMessage();
   }, [message, isAuth]);
 
+  const productImage = productState?.selectedVariation?.variation_image || productState?.product?.product_thumbnail || productState?.selectedVariation?.variation_galleries?.[0] || productState?.product?.product_galleries?.[0];
+
   return (
     <CustomModal modal={modal ? true : false} setModal={setModal} classes={{ modalClass: "theme-modal-2 question-answer-modal", modalHeaderClass: "p-0", customChildren: true }}>
+      <style dangerouslySetInnerHTML={{ __html: `
+        .question-answer-modal { z-index: 100001 !important; }
+        .modal-backdrop { z-index: 100000 !important; }
+      ` }} />
       <ModalHeader className="border-color" toggle={toggle}>
         {t("ask_a_question")}
         <Btn className="btn-close" onClick={() => setModal(false)}>
@@ -77,7 +83,7 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
                 <div className="product-wrapper">
                   <div className="product-image">
                     <Image 
-                      src={getImageUrl(productState?.product?.product_thumbnail) || placeHolderImage} 
+                      src={getImageUrl(productImage) || placeHolderImage} 
                       className="img-fluid" 
                       height={80} 
                       width={80} 

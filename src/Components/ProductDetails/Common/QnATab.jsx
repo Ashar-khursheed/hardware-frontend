@@ -4,7 +4,6 @@ import request from "@/Utils/AxiosUtils";
 import { QuestionAnswerAPI } from "@/Utils/AxiosUtils/API";
 import useUpdate from "@/Utils/Hooks/useUpdate";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RiEditLine } from "react-icons/ri";
@@ -13,7 +12,6 @@ import LikeDisLike from "./LikeDisLike";
 
 const QnATab = ({ productState }) => {
   const { accountData } = useContext(AccountContext);
-  const router = useRouter();
   const [modal, setModal] = useState("");
   const [editData, setEditData] = useState();
   const { t } = useTranslation("common");
@@ -43,7 +41,8 @@ const QnATab = ({ productState }) => {
           {t("have_doubts_regarding_this_product")} ?
           <a
             onClick={() => {
-              router.push(`/product/${productState?.product?.slug}/ask-a-question`);
+              setEditData("Add");
+              setModal("qna");
             }}
           >
             {t("post_your_question")}
