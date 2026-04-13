@@ -47,6 +47,49 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
     }
   );
 
+  const [debouncedValues, setDebouncedValues] = useState(values);
+
+  // Debouncing the typing-heavy values to avoid excessive API calls
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValues(values);
+    }, 5000); // Wait for 5 seconds as requested
+
+    return () => clearTimeout(handler);
+  }, [
+    values["name"],
+    values["email"],
+    values["phone"],
+    values["shipping_address"],
+    values["billing_address"],
+    values["coupon"],
+  ]);
+
+  // Handle immediate changes for non-typing fields
+  useEffect(() => {
+    const typingFields = ["name", "email", "phone", "shipping_address", "billing_address", "coupon"];
+    let changed = false;
+    
+    // If any non-typing field changed, update debouncedValues immediately
+    Object.keys(values).forEach(key => {
+      if (!typingFields.includes(key) && values[key] !== debouncedValues[key]) {
+        changed = true;
+      }
+    });
+
+    if (changed) {
+      setDebouncedValues(values);
+    }
+  }, [
+    values["billing_address_id"],
+    values["shipping_address_id"],
+    values["payment_method"],
+    values["points_amount"],
+    values["wallet_balance"],
+    values["delivery_description"],
+    values["delivery_interval"]
+  ]);
+
   // Submitting data on Checkout for calculation
   useEffect(() => {
     if (!cartProducts || cartProducts.length === 0) return;
@@ -55,47 +98,47 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
     if (settingData?.activation?.guest_checkout && !access_token) {
       // Only call API if we have all required guest checkout fields
       const hasRequiredGuestFields = 
-        values["name"] && 
-        values["email"] && 
-        values["phone"] &&
-        values["shipping_address"]?.street &&
-        values["shipping_address"]?.city &&
-        values["shipping_address"]?.pincode &&
-        values["shipping_address"]?.country_id &&
-        values["shipping_address"]?.state_id &&
-        values["payment_method"];
+        debouncedValues["name"] && 
+        debouncedValues["email"] && 
+        debouncedValues["phone"] &&
+        debouncedValues["shipping_address"]?.street &&
+        debouncedValues["shipping_address"]?.city &&
+        debouncedValues["shipping_address"]?.pincode &&
+        debouncedValues["shipping_address"]?.country_id &&
+        debouncedValues["shipping_address"]?.state_id &&
+        debouncedValues["payment_method"];
       
       if (hasRequiredGuestFields && cartProducts.length > 0) {
         const guestCheckoutData = {
-          name: values["name"],
-          email: values["email"],
-          phone: values["phone"],
-          country_code: values["country_code"],
-          shipping_address: values["shipping_address"],
-          billing_address: values["billing_address"]?.same_shipping 
-            ? values["shipping_address"] 
-            : values["billing_address"],
+          name: debouncedValues["name"],
+          email: debouncedValues["email"],
+          phone: debouncedValues["phone"],
+          country_code: debouncedValues["country_code"],
+          shipping_address: debouncedValues["shipping_address"],
+          billing_address: debouncedValues["billing_address"]?.same_shipping 
+            ? debouncedValues["shipping_address"] 
+            : debouncedValues["billing_address"],
           delivery_description: "standard",
-          delivery_interval: values["delivery_interval"] || "",
-          payment_method: values["payment_method"],
+          delivery_interval: debouncedValues["delivery_interval"] || "",
+          payment_method: debouncedValues["payment_method"],
           products: cartProducts,
-          coupon: values["coupon"] || "",
-          points_amount: values["points_amount"] || 0,
-          wallet_balance: values["wallet_balance"] || 0
+          coupon: debouncedValues["coupon"] || "",
+          points_amount: debouncedValues["points_amount"] || 0,
+          wallet_balance: debouncedValues["wallet_balance"] || 0
         };
         mutate(guestCheckoutData);
       }
     } 
     // Digital only products (logged in user)
     else if (access_token && addToCartData?.is_digital_only) {
-      if (values["billing_address_id"] && cartProducts.length > 0) {
+      if (debouncedValues["billing_address_id"] && cartProducts.length > 0) {
         const targetObject = {
-          coupon: values["coupon"] || "",
-          billing_address_id: values["billing_address_id"],
-          points_amount: values["points_amount"] || 0,
-          payment_method: values["payment_method"] || "cod", // Default for calculation
+          coupon: debouncedValues["coupon"] || "",
+          billing_address_id: debouncedValues["billing_address_id"],
+          points_amount: debouncedValues["points_amount"] || 0,
+          payment_method: debouncedValues["payment_method"] || "cod", // Default for calculation
           products: cartProducts,
-          wallet_balance: values["wallet_balance"] || 0,
+          wallet_balance: debouncedValues["wallet_balance"] || 0,
         };
         
         console.log('Digital-only - calling /api/checkout:', targetObject);
@@ -105,20 +148,20 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
     // Regular checkout with shipping (logged in user)
     else if (access_token && cartProducts.length > 0) {
       const hasRequiredFields = 
-        values["billing_address_id"] && 
-        values["shipping_address_id"]; // Remove payment_method requirement for API call
+        debouncedValues["billing_address_id"] && 
+        debouncedValues["shipping_address_id"]; // Remove payment_method requirement for API call
       
       if (hasRequiredFields) {
         const targetObject = {
-          coupon: values["coupon"] || "",
-          billing_address_id: values["billing_address_id"],
-          shipping_address_id: values["shipping_address_id"],
-          delivery_description: values["delivery_description"] || "standard",
-          delivery_interval: values["delivery_interval"] || "",
-          points_amount: values["points_amount"] || 0,
-          payment_method: values["payment_method"] || "cod", // Default to cod for calculation
+          coupon: debouncedValues["coupon"] || "",
+          billing_address_id: debouncedValues["billing_address_id"],
+          shipping_address_id: debouncedValues["shipping_address_id"],
+          delivery_description: debouncedValues["delivery_description"] || "standard",
+          delivery_interval: debouncedValues["delivery_interval"] || "",
+          points_amount: debouncedValues["points_amount"] || 0,
+          payment_method: debouncedValues["payment_method"] || "cod", // Default to cod for calculation
           products: cartProducts,
-          wallet_balance: values["wallet_balance"] || 0,
+          wallet_balance: debouncedValues["wallet_balance"] || 0,
         };
         
         console.log('Logged-in user - calling /api/checkout:', targetObject);
@@ -128,17 +171,7 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
   }, [
     cartProducts,
     cartTotal,
-    values["name"],
-    values["email"],
-    values["phone"],
-    values["shipping_address"],
-    values["billing_address"],
-    values["billing_address_id"], 
-    values["shipping_address_id"],
-    values["payment_method"],
-    values["points_amount"],
-    values["wallet_balance"],
-    values["coupon"],
+    debouncedValues,
     access_token,
     settingData?.activation?.guest_checkout
   ]);

@@ -567,10 +567,10 @@ const ElectronicsThree = () => {
               <h3 className=" mb-4 text-black">HARDWARE BOX BENEFITS</h3>
 
               {/* Benefit Items */}
-              <div className="d-flex mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/new2.png" alt="Save" width="60" />
+                  <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                    <img src="/assets/images/new2.png" alt="Save" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
                   </div>
                 </div>
                 <div>
@@ -579,10 +579,10 @@ const ElectronicsThree = () => {
                 </div>
               </div>
 
-              <div className="d-flex mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/BiJKSR.png" alt="Genuine Products" width="60" />
+                  <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                    <img src="/assets/images/BiJKSR.png" alt="Secure Payment" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
                   </div>
                 </div>
                 <div>
@@ -591,22 +591,24 @@ const ElectronicsThree = () => {
                 </div>
               </div>
 
-              <div className="d-flex mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/voyGMG.png" alt="Genuine Products" width="60" />
-                  </div>                  </div>
+                  <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                    <img src="/assets/images/voyGMG.png" alt="Returns" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                  </div>
+                </div>
                 <div>
                   <h5 className="fw-bold mb-1">EASY RETURNS</h5>
                   <p className="mb-0 small text-muted">Hassle-free process</p>
                 </div>
               </div>
 
-              <div className="d-flex mb-3">
+              <div className="d-flex align-items-center mb-3">
                 <div className="me-3">
-                  <div className="colorful">
-                    <img src="/assets/images/callicon.png" alt="Genuine Products" width="60" />
-                  </div>                  </div>
+                  <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                    <img src="/assets/images/callicon.png" alt="Support" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                  </div>
+                </div>
                 <div>
                   <h5 className="fw-bold mb-1">24/7 CUSTOMER SUPPORT</h5>
                   <p className="mb-0 small text-muted">We are here to help</p>
@@ -619,28 +621,33 @@ const ElectronicsThree = () => {
               <div className="bg-white border p-4 h-100">
                 <div className="row d-flex">
                   {/* SAM Info */}
-                  <div className="col-md-6 d-flex align-items-center border-end    ">
-                    <div className="row gap-3">
-
-                      <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/new1.png" alt="Government" className="" height="60" />
-                        <h4 className=" text-black">Government Agencies</h4>
+                  <div className="col-md-6 d-flex align-items-center border-end">
+                    <div className="row g-3 w-100">
+                      <div className="col-12 d-flex align-items-center gap-3">
+                        <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                          <img src="/assets/images/new1.png" alt="Government" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                        </div>
+                        <h4 className="text-black m-0 fs-6">Government Agencies</h4>
                       </div>
-                      <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/logoiconn.png" alt="SAM Logo" className="" height="60" width="60" />
-                        <h4 className=" text-black">SAM Registered</h4>
+                      <div className="col-12 d-flex align-items-center gap-3">
+                        <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                          <img src="/assets/images/logoiconn.png" alt="SAM Logo" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                        </div>
+                        <h4 className="text-black m-0 fs-6">SAM Registered</h4>
                       </div>
-                      <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/Banking.png" alt="Banking" className="" height="60" />
-                        <h4 className=" text-black">Banking & Financial Services</h4>
+                      <div className="col-12 d-flex align-items-center gap-3">
+                        <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                          <img src="/assets/images/Banking.png" alt="Banking" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                        </div>
+                        <h4 className="text-black m-0 fs-6">Banking & Financial Services</h4>
                       </div>
-                      <div className="d-flex align-items-center gap-4">
-                        <img src="/assets/images/Education.png" alt="Education" className="" height="60" />
-                        <h4 className=" text-black">Universities & Research Institutions</h4>
+                      <div className="col-12 d-flex align-items-center gap-3">
+                        <div style={{ minWidth: '70px', width: '70px', height: '70px', border: '1px solid #ff4e50', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '2px' }}>
+                          <img src="/assets/images/Education.png" alt="Education" style={{ maxWidth: '85%', maxHeight: '85%', objectFit: 'contain' }} />
+                        </div>
+                        <h4 className="text-black m-0 fs-6">Universities & Research Institutions</h4>
                       </div>
-
                     </div>
-
                   </div>
 
 
