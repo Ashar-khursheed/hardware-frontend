@@ -53,7 +53,7 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedValues(values);
-    }, 5000); // Wait for 5 seconds as requested
+    }, 1500); // Wait for 1.5 seconds (snappier than 5s)
 
     return () => clearTimeout(handler);
   }, [

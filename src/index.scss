@@ -461,6 +461,25 @@ header.sticky {
     }
 }
 
+/* NUCLEAR FIX FOR MODALS (Delivery & Return, Ask a Question, etc.) */
+/* Ensure modals are ALWAYS in front of the header (which is 10000) */
+.modal-backdrop {
+    z-index: 10050 !important;
+}
+
+.modal {
+    z-index: 10051 !important;
+}
+
+.theme-modal-2 {
+    z-index: 10052 !important;
+
+    .modal-content {
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2) !important;
+        border: 1px solid #eee !important;
+    }
+}
+
 /* Global Overlay (injected via JS for perfect viewport coverage) */
 .cart-global-overlay {
     /* z-index is set in JS to 9998, which is < 10000 (header) */
@@ -1551,6 +1570,38 @@ h2.display-5.size-28 {
         svg.ri-question-fill,
         svg.ri-questionnaires-line {
             display: none !important;
+        }
+    }
+}
+
+/* Fix for Delivery & Return link being cut off or overlapped */
+.size-delivery-info {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px 30px !important;
+    margin: 25px 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+
+    a {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        padding: 5px 0 !important;
+        color: #444 !important;
+        font-weight: 500 !important;
+        text-decoration: none !important;
+        transition: color 0.2s ease !important;
+        border-bottom: 1px dotted transparent !important;
+
+        svg {
+            font-size: 1.2rem !important;
+            vertical-align: middle !important;
+        }
+
+        &:hover {
+            color: var(--theme-color, #ff5050) !important;
+            border-bottom-color: #ff5050 !important;
         }
     }
 }

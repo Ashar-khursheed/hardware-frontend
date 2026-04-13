@@ -38,12 +38,7 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
             {access_token && <ApplyCoupon values={values} setFieldValue={setFieldValue} data={data} storeCoupon={storeCoupon} setStoreCoupon={setStoreCoupon} errorCoupon={errorCoupon} appliedCoupon={appliedCoupon} setAppliedCoupon={setAppliedCoupon} mutate={mutate} isLoading={isLoading} />}
           </div>
           <div>
-            <div className="custom-box-loader">
-              {isLoading && (
-                <div className="box-loader">
-                  <Loader />
-                </div>
-              )}
+            <div className={`custom-box-loader ${isLoading ? 'opacity-75' : ''}`}>
               <ul className="sub-total">
                 <li>
                   {t("subtotal")}
@@ -77,7 +72,10 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
                 ) : null}
                 <li className="list-total">
                   {t("total")}
-                  <span className="count">{convertCurrency(displayTotal?.toFixed(2))}</span>
+                  <span className="count">
+                    {isLoading && <small className="text-muted fw-normal me-2" style={{ fontSize: '11px' }}>Calculating...</small>}
+                    {convertCurrency(displayTotal?.toFixed(2))}
+                  </span>
                 </li>
               </ul>
               <PlaceOrder values={values} errors={errors} />
