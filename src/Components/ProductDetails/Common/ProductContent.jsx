@@ -119,16 +119,16 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
           <>
             <div className="size-delivery-info">
               {productState?.product?.size_chart_image && productState?.product?.size_chart_image.original_url && (
-                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); setModal("size"); }}>
+                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); router.push(`/product/${productState?.product?.slug}/size-chart`); }}>
                   <RiRulerLine /> {t("size_chart")}
                 </a>
               )}
               {themeOption?.product?.shipping_and_return && productState?.product?.is_return ? (
-                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); setModal("delivery"); }}>
+                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); router.push(`/product/${productState?.product?.slug}/delivery-return`); }}>
                   <RiTruckLine /> {t("delivery_return")}
                 </a>
               ) : null}
-              <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); setModal("qna"); }}>
+              <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); router.push(`/product/${productState?.product?.slug}/ask-a-question`); }}>
                 <RiQuestionnaireLine /> {t("ask_a_question")}
               </a>
 

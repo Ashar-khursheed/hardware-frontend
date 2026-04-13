@@ -8,6 +8,7 @@ import { QuestionAnswerAPI } from "@/Utils/AxiosUtils/API";
 import useCreate from "@/Utils/Hooks/useCreate";
 import { Form, Formik } from "formik";
 import Cookies from "js-cookie";
+import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import Image from "next/image";
 import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -76,7 +77,7 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
                 <div className="product-wrapper">
                   <div className="product-image">
                     <Image 
-                      src={productState?.product?.product_thumbnail?.original_url || placeHolderImage} 
+                      src={getImageUrl(productState?.product?.product_thumbnail) || placeHolderImage} 
                       className="img-fluid" 
                       height={80} 
                       width={80} 
