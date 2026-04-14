@@ -31,14 +31,14 @@ const DeliveryReturnContent = ({ params }) => {
               <Card className="policy-card hbx-animate-up">
                 <CardBody className="p-sm-5 p-4">
                   <div className="title-box mb-4 pb-3 border-bottom d-flex justify-content-between align-items-center">
-                    <h2 className="mb-0">{t("delivery_and_return")}</h2>
-                    <Btn 
-                      title="Back to Product" 
-                      className="btn-outline btn-sm" 
-                      onClick={() => router.push(`/product/${params}`)} 
+                    <h2 className="mb-0">{t("Delivery And Return")}</h2>
+                    <Btn
+                      title="Back to Product"
+                      className="btn-outline btn-sm"
+                      onClick={() => router.push(`/product/${params}`)}
                     />
                   </div>
-                  
+
                   <div className="policy-content" dangerouslySetInnerHTML={{ __html: themeOption?.product?.shipping_and_return }} />
                 </CardBody>
               </Card>
