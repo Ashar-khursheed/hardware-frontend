@@ -124,7 +124,7 @@ const ProductContent = ({ productState, setProductState, productAccordion, noDet
                 </a>
               )}
               {themeOption?.product?.shipping_and_return && productState?.product?.is_return ? (
-                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); setModal("delivery"); }}>
+                <a href="javascript:void(0)" onClick={(e) => { e.preventDefault(); router.push(`/product/${productState?.product?.slug}/delivery-return`); }}>
                   <RiTruckLine /> {t("delivery_return")}
                 </a>
               ) : null}

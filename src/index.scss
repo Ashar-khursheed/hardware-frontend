@@ -464,15 +464,15 @@ header.sticky {
 /* NUCLEAR FIX FOR MODALS (Delivery & Return, Ask a Question, etc.) */
 /* Ensuring modals are decisively ABOVE the header (10000) and all other elements */
 .modal-backdrop {
-    z-index: 29999 !important;
+    z-index: 100000 !important;
 }
 
 .modal {
-    z-index: 30000 !important;
+    z-index: 100001 !important;
 }
 
 .theme-modal-2 {
-    z-index: 30001 !important;
+    z-index: 100002 !important;
 
     .modal-content {
         box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3) !important;

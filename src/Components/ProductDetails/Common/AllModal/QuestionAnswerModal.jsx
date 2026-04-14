@@ -55,10 +55,6 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
 
   return (
     <CustomModal modal={modal ? true : false} setModal={setModal} classes={{ modalClass: "theme-modal-2 question-answer-modal", modalHeaderClass: "p-0", customChildren: true }}>
-      <style dangerouslySetInnerHTML={{ __html: `
-        .question-answer-modal { z-index: 100001 !important; }
-        .modal-backdrop { z-index: 100000 !important; }
-      ` }} />
       <ModalHeader className="border-color" toggle={toggle}>
         {t("ask_a_question")}
         <Btn className="btn-close" onClick={() => setModal(false)}>

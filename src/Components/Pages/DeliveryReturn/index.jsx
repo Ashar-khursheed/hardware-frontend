@@ -28,7 +28,7 @@ const DeliveryReturnContent = ({ params }) => {
         <Container>
           <Row>
             <Col lg="10" className="mx-auto">
-              <Card className="policy-card">
+              <Card className="policy-card hbx-animate-up">
                 <CardBody className="p-sm-5 p-4">
                   <div className="title-box mb-4 pb-3 border-bottom d-flex justify-content-between align-items-center">
                     <h2 className="mb-0">{t("delivery_and_return")}</h2>
@@ -55,6 +55,7 @@ const DeliveryReturnContent = ({ params }) => {
           border: none;
           border-radius: 15px;
           box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+          background: #fff;
         }
         .policy-content {
           line-height: 1.8;
@@ -74,6 +75,9 @@ const DeliveryReturnContent = ({ params }) => {
         }
         .policy-content li {
           margin-bottom: 0.5rem;
+        }
+        .policy-content p {
+            margin-bottom: 1rem;
         }
       `}</style>
     </>
