@@ -381,8 +381,8 @@ const FooterThree = () => {
 
               <div className="d-flex align-items-center">
                 <i className="bi bi-envelope-fill text-white me-3 fs-5"></i>
-                <a href="mailto:hello@hardwarebox.com" className="text-white text-decoration-none small">
-                  hello@hardwarebox.com
+                <a href="mailto:hello@thehardwarebox.com" className="text-white text-decoration-none small">
+                  hello@thehardwarebox.com
                 </a>
               </div>
             </Col>
