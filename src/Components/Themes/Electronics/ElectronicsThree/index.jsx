@@ -868,7 +868,7 @@ const ElectronicsThree = () => {
                   <div>
                     <h4 className="fw-bold text-black mb-1">Email Address</h4>
                     <p className="text-muted mb-0">
-                      <a style={{ color: "#212529bf" }} href="mailto:hello@thehardwarebox.com">hello@thehardwarebox.com</a>
+                      <a style={{ color: "#212529bf" }} href="mailto:support@thehardwarebox.com">support@thehardwarebox.com</a>
                     </p>
 
                   </div>
