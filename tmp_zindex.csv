@@ -1,0 +1,13 @@
+#TYPE Selected.Microsoft.PowerShell.Commands.MatchInfo
+"Path","LineNumber","Line"
+"D:\hardware\hardware-frontend\src\Components\Themes\Electronics\ElectronicsThree\BulkQuoteModal.jsx","202","          z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 15px;"
+"D:\hardware\hardware-frontend\src\index.scss","438","    z-index: 10000 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","444","    z-index: 10000 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","455","    z-index: 10001 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","459","        z-index: 10002 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","467","    z-index: 100001 !important; /* Above Header (10000) */"
+"D:\hardware\hardware-frontend\src\index.scss","471","    z-index: 100002 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","480","    z-index: 100003 !important; /* Ensure content is above backdrop */"
+"D:\hardware\hardware-frontend\src\index.scss","484","    z-index: 100002 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","528","    z-index: 999999 !important;"
+"D:\hardware\hardware-frontend\src\index.scss","3148","    z-index: 100005 !important; /* Even higher to be safe */"

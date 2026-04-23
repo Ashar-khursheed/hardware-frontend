@@ -200,6 +200,7 @@ const CartProvider = (props) => {
         sub_total: cloneVariation?.selectedVariation?.sale_price ? updatedQty * cloneVariation?.selectedVariation?.sale_price : updatedQty * productObj?.sale_price,
       };
       isCookie ? !isLoading && setCartProducts((prev) => [...prev, params]) : setCartProducts((prev) => [...prev, params]);
+      ToastNotification("success", "Item added to cart successfully!");
     } else {
       // Checking the Stock QTY of paricular product
       const productStockQty = cart[index]?.variation?.quantity ? cart[index]?.variation?.quantity : cart[index]?.product?.quantity;
@@ -224,6 +225,7 @@ const CartProvider = (props) => {
         };
         isCookie ? !isLoading && setCartProducts([...cart]) : setCartProducts([...cart]);
       }
+      ToastNotification("success", "Item added to cart successfully!");
     }
 
     // Update the productQty state immediately after updating the cartProducts state

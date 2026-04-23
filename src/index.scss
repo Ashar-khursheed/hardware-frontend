@@ -432,16 +432,13 @@ body.cart-open {
     }
 }
 
-/* Fix for Header Stacking Context - MUST be higher than global overlay */
+/* Revised Z-Index Strategy for global consistency */
 header,
+header.sticky,
 .header-style-1 {
-    z-index: 10000 !important;
+    z-index: 1000 !important; 
     position: relative;
     /* Base position to enable z-index */
-}
-
-header.sticky {
-    z-index: 10000 !important;
 }
 
 .main-menu {
@@ -452,32 +449,58 @@ header.sticky {
 /* Fix Cart sidebar appearing behind or through other elements */
 .add_to_cart,
 #cart_side {
-    z-index: 10001 !important;
-    /* Higher than header and overlay */
+    z-index: 1200 !important; /* Above Header and Overlay */
+    position: fixed !important;
 
     .cart-inner {
-        z-index: 10002 !important;
+        z-index: 1201 !important;
         background-color: #fff !important;
     }
 }
 
-/* NUCLEAR FIX FOR MODALS (Delivery & Return, Ask a Question, etc.) */
-/* Ensuring modals are decisively ABOVE the header (10000) and all other elements */
+/* MODAL LAYERING - Decision making: Backdrop < Modal < Content */
+/* Using Browser maximum z-index to force priority */
 .modal-backdrop {
-    z-index: 100000 !important;
+    z-index: 2147483640 !important;
 }
 
 .modal {
-    z-index: 100001 !important;
+    z-index: 2147483641 !important;
+    overflow-y: auto !important;
 }
 
-.theme-modal-2 {
-    z-index: 100002 !important;
+.modal-dialog {
+    margin: 5vh auto !important;
+}
+
+.modal-content {
+    z-index: 2147483647 !important;
+    max-height: 95vh !important;
+    overflow-y: auto !important;
+}
+
+.theme-modal-2,
+.auth-modal {
+    z-index: 100001 !important;
 
     .modal-content {
         box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3) !important;
         border: 1px solid #eee !important;
         background-color: #fff !important;
+        overflow: hidden !important;
+        border-radius: 15px !important;
+    }
+
+    .modal-body {
+        padding: 0 !important;
+    }
+}
+
+.auth-modal .modal-dialog {
+    max-width: 950px !important;
+
+    @media (min-width: 992px) {
+        margin-top: 50px !important;
     }
 }
 
@@ -2254,7 +2277,7 @@ ul.hwb-aside-list {
             line-height: 1.3 !important;
         }
 
-        input,
+        input:not([type="checkbox"]):not([type="radio"]),
         select,
         textarea {
             display: block !important;
@@ -2816,6 +2839,7 @@ ul.hwb-aside-list {
             display: flex !important;
             align-items: center !important;
             gap: 15px !important;
+            margin-top: 20px !important;
 
             .hbx-back-btn {
                 width: 35px;
@@ -3130,4 +3154,135 @@ ul.hwb-aside-list {
 
 li.hbx-subcategory-item {
     width: 100%;
+}
+
+/* --- HARWARE BOX FIXES --- */
+
+/* Issue 1 & 6: Indicator/Toast showing behind logo */
+.Toastify__toast-container {
+    z-index: 6000 !important;
+    position: fixed !important;
+}
+
+/* Issue 4: Bullet points alignment in notifications */
+.notification-list {
+    padding-left: 25px !important;
+
+    li {
+        list-style-type: disc !important;
+        list-style-position: outside !important;
+        margin-bottom: 20px !important;
+        display: list-item !important;
+        /* Ensure it behaves like a list item for bullets */
+
+        h4 {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: #1e293b !important;
+            margin-bottom: 5px !important;
+            display: block !important;
+        }
+
+        h5 {
+            font-size: 11px !important;
+            color: #94a3b8 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 5px !important;
+        }
+    }
+}
+
+/* Issue 2: Checkout alignment fixes for mobile */
+@media (max-width: 767px) {
+    .checkout-section-body {
+        .form-check {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            padding-left: 0 !important;
+            margin: 20px 0 !important;
+            min-height: unset !important;
+            cursor: pointer;
+
+            input[type="checkbox"] {
+                width: 20px !important;
+                height: 20px !important;
+                margin: 0 !important;
+                flex-shrink: 0 !important;
+                position: static !important;
+                cursor: pointer;
+                border: 1px solid #d1d5db !important;
+                -webkit-appearance: checkbox !important;
+                appearance: checkbox !important;
+            }
+
+            label {
+                margin: 0 !important;
+                padding: 0 !important;
+                font-size: 15px !important;
+                font-weight: 500 !important;
+                color: #1e293b !important;
+                cursor: pointer;
+                flex: 1;
+            }
+        }
+
+        .address-selection {
+            width: 100% !important;
+
+            select {
+                width: 100% !important;
+                font-size: 14px !important;
+            }
+        }
+    }
+
+    /* Fix for Cart sidebar being clipped or invisible on mobile */
+    header,
+    .main-menu,
+    .menu-right,
+    .icon-nav {
+        overflow: visible !important;
+    }
+
+    .add_to_cart,
+    #cart_side {
+        width: 320px !important;
+        max-width: 85% !important;
+        transition: right 0.5s ease-in-out !important;
+        background-color: #fff !important;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Fix for cut-off modals on mobile (Address Book, etc.) */
+    .modal {
+        padding-top: 15px !important;
+        z-index: 4000 !important;
+
+        .modal-dialog {
+            margin: 10px auto !important;
+            max-width: 98% !important;
+            width: 98% !important;
+
+            .modal-content {
+                max-height: 90vh !important;
+                overflow-y: auto !important;
+                border-radius: 12px !important;
+
+                padding: 10px;
+            }
+        }
+    }
+
+    .modal-backdrop {
+        z-index: 3000 !important;
+    }
+}
+
+.notification-list li::after {
+
+
+    width: 0px !important;
+
 }

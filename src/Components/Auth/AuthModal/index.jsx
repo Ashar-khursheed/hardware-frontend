@@ -57,11 +57,9 @@ const AuthModal = () => {
   }, [state]);
 
   return (
-    <Modal toggle={() => setOpenAuthModal(false)} className="auth-modal modal-dialog-centered d-block modal-xl fade show" isOpen={openAuthModal}>
-      <div className="modal-dialog ">
-        <div className="modal-content">
-          <ModalBody>
-            <div className="modal-content open">
+    <Modal toggle={() => setOpenAuthModal(false)} centered size="xl" className="auth-modal" isOpen={openAuthModal}>
+      <ModalBody>
+        <div className="modal-content open">
               <div className="d-flex">
                 <div className="right-content w-lg-50 w-100">
                   <div>
@@ -99,10 +97,8 @@ const AuthModal = () => {
                   <Image height={1920} width={1920} src={getImageUrl(themeOption?.popup?.auth?.image_url) || `${ImagePath}/placeholder/auth.png`} alt="login" />
                 </div>
               </div>
-            </div>
-          </ModalBody>
         </div>
-      </div>
+      </ModalBody>
     </Modal>
   );
 };

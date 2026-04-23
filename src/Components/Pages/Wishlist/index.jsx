@@ -28,8 +28,7 @@ const WishlistContent = () => {
 
   const addToCart = (e, product) => {
     e.preventDefault();
-    setCartCanvas(true);
-    handleIncDec(1, product);
+    handleIncDec(1, product, null, null, setCartCanvas);
   };
 
   if (WishlistAPILoading) return <Loader />;

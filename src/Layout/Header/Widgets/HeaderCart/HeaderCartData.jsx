@@ -141,6 +141,16 @@ const HeaderCartData = () => {
   }, [settingData, shippingFreeAmt, getTotal(cartProducts)]);
 
   useEffect(() => {
+    let timer;
+    if (cartCanvas && typeof window !== 'undefined' && window.innerWidth < 992) {
+      timer = setTimeout(() => {
+        setCartCanvas(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [cartCanvas, setCartCanvas]);
+
+  useEffect(() => {
     if (cartCanvas) {
       document.body.classList.add("cart-open");
       // Create global overlay if not exists to ensure it covers everything (stacking context fix)
@@ -154,8 +164,8 @@ const HeaderCartData = () => {
         overlay.style.left = "0";
         overlay.style.width = "100vw";
         overlay.style.height = "100vh";
-        overlay.style.backgroundColor = "rgba(0,0,0,0.7)";
-        overlay.style.zIndex = "9998";
+        overlay.style.backgroundColor = "rgba(0,0,0,0.5)";
+        overlay.style.zIndex = "1";
         overlay.style.cursor = "pointer";
         overlay.onclick = () => setCartCanvas(false);
         document.body.appendChild(overlay);
