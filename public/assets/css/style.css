@@ -43299,3 +43299,8 @@ h2.display-5.size-24 {
         background-position: -200% 0;
     }
 }
+
+
+.modal-content {
+    padding: 20px !important;
+}

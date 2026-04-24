@@ -78,12 +78,12 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
               <div className="product-review-form">
                 <div className="product-wrapper">
                   <div className="product-image">
-                    <Image 
-                      src={getImageUrl(productImage) || placeHolderImage} 
-                      className="img-fluid" 
-                      height={80} 
-                      width={80} 
-                      alt={productState?.product?.name || "Product"} 
+                    <Image
+                      src={getImageUrl(productImage) || placeHolderImage}
+                      className="img-fluid"
+                      height={80}
+                      width={80}
+                      alt={productState?.product?.name || "Product"}
                     />
                   </div>
                   <div className="product-content">
@@ -97,7 +97,7 @@ const QuestionAnswerModal = ({ modal, setModal, productState, update, refetch })
                 </div>
 
                 <div className="review-box form-box">
-                  <SimpleInputField nameList={[{ name: "question", type: "textarea", placeholder: t("your_questions"), rows: "3", toplabel: "YourQuestions", require: "true", colprops: { xs: 12 } }]} />
+                  <SimpleInputField nameList={[{ name: "question", type: "textarea", placeholder: t("your_questions"), rows: "3", toplabel: "Your Questions", require: "true", colprops: { xs: 12 } }]} />
                 </div>
               </div>
               <ModalFooter className="p-0">

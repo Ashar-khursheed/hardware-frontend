@@ -52,7 +52,7 @@ const AuthModal = () => {
     } else if (state == "number") {
       setTitle("LoginWithNumber");
     } else {
-      setTitle("SignIn");
+      setTitle("Sign In");
     }
   }, [state]);
 
@@ -60,43 +60,43 @@ const AuthModal = () => {
     <Modal toggle={() => setOpenAuthModal(false)} centered size="xl" className="auth-modal" isOpen={openAuthModal}>
       <ModalBody>
         <div className="modal-content open">
-              <div className="d-flex">
-                <div className="right-content w-lg-50 w-100">
-                  <div>
-                    <div className="auth-title">
-                      <h3>{t(title)}</h3>
-                      <p>{state == "otp" ? t("verify_email_otp_text") : state == "number" ? t("mobile_login_text") : t("login_text")}</p>
+          <div className="d-flex">
+            <div className="right-content w-lg-50 w-100">
+              <div>
+                <div className="auth-title">
+                  <h3>{t(title)}</h3>
+                  <p>{state == "otp" ? t("verify_email_otp_text") : state == "number" ? t("mobile_login_text") : t("login_text")}</p>
+                </div>
+                {state == "register" && <RegisterForm />}
+                {state == "login" && <LoginForm setState={setState} />}
+                {state == "forgot" && <ForgotPasswordForm setState={setState} />}
+                {state == "otp" && <OTPVerificationForm setState={setState} />}
+                {state == "number" && <NumberLoginForm setState={setState} />}
+                {state !== "forgot" && state !== "otp" && (
+                  <>
+                    <div className="divider">
+                      <span>{t("or")}</span>
                     </div>
-                    {state == "register" && <RegisterForm />}
-                    {state == "login" && <LoginForm setState={setState} />}
-                    {state == "forgot" && <ForgotPasswordForm setState={setState} />}
-                    {state == "otp" && <OTPVerificationForm setState={setState} />}
-                    {state == "number" && <NumberLoginForm setState={setState} />}
-                    {state !== "forgot" && state !== "otp" && (
-                      <>
-                        <div className="divider">
-                          <span>{t("or")}</span>
-                        </div>
-                        <p className="create">
-                          {state == "login" ? t("no_account") : t("have_account")} ?{" "}
-                          <a href={Href} onClick={handleClick}>
-                            {logOrNew ? t("login") : t("register")} {t("Here")}
-                          </a>
-                        </p>
-                        {state == "login" && (
-                          <Btn color="transparent" className="number-btn" onClick={() => setState("number")}>
-                            <RiSmartphoneLine />
-                            {t("login_with_number")}
-                          </Btn>
-                        )}
-                      </>
+                    <p className="create">
+                      {state == "login" ? t("no_account") : t("have_account")} ?{" "}
+                      <a href={Href} onClick={handleClick}>
+                        {logOrNew ? t("login") : t("register")} {t("Here")}
+                      </a>
+                    </p>
+                    {state == "login" && (
+                      <Btn color="transparent" className="number-btn" onClick={() => setState("number")}>
+                        <RiSmartphoneLine />
+                        {t("login_with_number")}
+                      </Btn>
                     )}
-                  </div>
-                </div>
-                <div className="left-img w-lg-50 d-lg-block d-none">
-                  <Image height={1920} width={1920} src={getImageUrl(themeOption?.popup?.auth?.image_url) || `${ImagePath}/placeholder/auth.png`} alt="login" />
-                </div>
+                  </>
+                )}
               </div>
+            </div>
+            <div className="left-img w-lg-50 d-lg-block d-none">
+              <Image height={1920} width={1920} src={getImageUrl(themeOption?.popup?.auth?.image_url) || `${ImagePath}/placeholder/auth.png`} alt="login" />
+            </div>
+          </div>
         </div>
       </ModalBody>
     </Modal>
