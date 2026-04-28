@@ -60,7 +60,16 @@ const DetailsTable = ({ data }) => {
                     ? allProducts?.map((product, i) => (
                         <tr key={i}>
                           <td className="product-image">
-                            <Avatar data={product?.pivot?.variation && product?.pivot?.variation?.variation_image ? product?.pivot?.variation?.variation_image : product?.product_thumbnail ? product?.product_thumbnail : placeHolderImage} name={product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name} customImageClass="img-fluid" />
+                            <Avatar 
+                              data={
+                                product?.pivot?.variation?.variation_image || 
+                                product?.product_thumbnail || 
+                                product?.product_galleries?.[0] || 
+                                placeHolderImage
+                              } 
+                              name={product?.pivot?.variation?.name || product?.name} 
+                              customImageClass="img-fluid" 
+                            />
                           </td>
                           <td>
                             <h6>{product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name}</h6>

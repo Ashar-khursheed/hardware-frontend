@@ -37,13 +37,12 @@ const TableDetails = ({ data }) => {
                         <td className='product-image'>
                           <Avatar
                             data={
-                              product?.pivot?.variation && product?.pivot?.variation?.variation_image
-                                ? product?.pivot?.variation?.variation_image
-                                : product?.product_thumbnail
-                                  ? product?.product_thumbnail
-                                  : placeHolderImage
+                              product?.pivot?.variation?.variation_image ||
+                              product?.product_thumbnail ||
+                              product?.product_galleries?.[0] ||
+                              placeHolderImage
                             }
-                            name={product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name}
+                            name={product?.pivot?.variation?.name || product?.name}
                             customImageClass='img-fluid'
                           />
                         </td>
