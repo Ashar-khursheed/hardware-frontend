@@ -5,9 +5,12 @@ import { Col, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 // import { LeafSVG } from '@/Components/Widgets/CommonSVG';
 import { useTranslation } from "react-i18next";
 import { useContext } from 'react';
+import { useRouter } from "next/navigation";
+import { RiArrowLeftLine } from "react-icons/ri";
 
 const ProfileContent = () => {
   const { t } = useTranslation( 'common');
+  const router = useRouter();
   return (
     <div className='dashboard-profile'>
       <CustomHeading title={'MyProfile'} />
@@ -28,7 +31,10 @@ const ProfileContent = () => {
               </FormGroup>
             </Form>
 
-            <div className='dashboard-title mb-3'>
+            <div className='dashboard-title mb-3 d-flex align-items-center'>
+              <div className="hbx-back-btn d-md-none me-2 cursor-pointer-hover" onClick={() => router.back()}>
+                <RiArrowLeftLine />
+              </div>
               <h3>{t('change_password')}</h3>
             </div>
             <Form>
@@ -44,6 +50,9 @@ const ProfileContent = () => {
                 <Input id='confirmPassword' name='confirmPassword' placeholder={t('enter_confirm_password')} type='password' />
                 <Label htmlFor='confirmPassword'>{t('confirm_password')}</Label>
               </FormGroup>
+              <div className="btn-box mt-3 text-end">
+                <button type="submit" className="btn btn-solid btn-animation">{t('submit') ?? 'Submit'}</button>
+              </div>
             </Form>
           </Col>
 

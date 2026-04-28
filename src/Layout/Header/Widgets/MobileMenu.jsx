@@ -43,38 +43,27 @@ const MobileMenu = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="mobile-menu">
+    <div className="mobile-menu mobile-menu-fix">
       <ul>
         <li className={active === 1 ? "active" : ""}>
-          <Link href="/">
-            <div onClick={() => setActive(1)}>
-              <RiHomeLine />
-              <span>{t("Home")}</span>
-            </div>
+          <Link href="/" onClick={() => setActive(1)}>
+            <RiHomeLine />
+            <span>{t("Home")}</span>
           </Link>
         </li>
         <li className={active === 2 ? "active" : ""}>
-          <Link href="/search">
-            <div onClick={() => setActive(2)}>
-              <RiSearchLine />
-              <span>{t("Search")}</span>
-            </div>
+          <Link href="/search" onClick={() => setActive(2)}>
+            <RiSearchLine />
+            <span>{t("Search")}</span>
           </Link>
         </li>
         <li className={active === 3 ? "active" : ""}>
-          <Link href="/cart">
-            <div 
-              onClick={() => {
-                setActive(3);
-              }}
-              style={{ cursor: 'pointer', textAlign: 'center' }}
-            >
+          <Link href="/cart" onClick={() => setActive(3)}>
               <div className="position-relative d-inline-block">
                 <RiShoppingCartLine />
                 {cartProducts?.length > 0 && <span className="cart_qty_cls">{cartProducts?.length}</span>}
               </div>
               <span>{t("Cart")}</span>
-            </div>
           </Link>
         </li>
         <li className={active === 4 ? "active" : ""}>

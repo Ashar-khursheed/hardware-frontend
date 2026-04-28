@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Loading from "./loading";
 import "../index.scss";
+import "../custom-fixes.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { I18nProvider } from "./i18n/i18n-context";

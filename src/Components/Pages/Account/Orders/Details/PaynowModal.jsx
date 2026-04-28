@@ -69,7 +69,7 @@ const PaynowModal = ({ modal, setModal, params }) => {
                 </div>
               </div>
               <ErrorMessage name={"payment_method"} render={(msg) => <div className="invalid-feedback d-block">{handleModifier(msg)}</div>} />
-              <div className="modal-footer">
+              <div className="modal-footer pay-now-action-buttons">
                 <Btn className=" btn-outline " onClick={() => setModal(false)}>
                   {t("cancel")}
                 </Btn>

@@ -73,8 +73,8 @@ const MyOrders = () => {
 
                           <td>{order.payment_method.toUpperCase()}</td>
                           <td>
-                            <Link href={`/account/order/details/${order.order_number}`} legacyBehavior>
-                              <RiEyeLine />
+                            <Link href={`/account/order/details/${order.order_number}`}>
+                              <span className="cursor-pointer-hover d-inline-block p-1"><RiEyeLine /></span>
                             </Link>
                           </td>
                         </tr>

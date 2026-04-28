@@ -36,8 +36,8 @@ const SubOrdersTable = ({ data }) => {
                       </div>
                     </td>
                     <td>
-                      <Link href={`/account/order/details/${subOrder.order_number}`} legacyBehavior>
-                        <RiEyeLine />
+                      <Link href={`/account/order/details/${subOrder.order_number}`}>
+                        <span className="cursor-pointer-hover d-inline-block p-1"><RiEyeLine /></span>
                       </Link>
                     </td>
                   </tr>

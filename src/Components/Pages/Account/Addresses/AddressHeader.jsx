@@ -12,9 +12,12 @@ import { Card, CardBody } from "reactstrap";
 import AddAddressForm from "./AddAddressForm";
 import AddressData from "./AddressData";
 import { ImagePath } from "@/Utils/Constants";
+import { useRouter } from "next/navigation";
+import { RiArrowLeftLine } from "react-icons/ri";
 
 const AddressHeader = () => {
   const { t } = useTranslation("common");
+  const router = useRouter();
   const [addressState, setAddressState] = useState([]);
   const [editAddress, setEditAddress] = useState();
   const [modal, setModal] = useState("");
@@ -44,9 +47,12 @@ const AddressHeader = () => {
   return (
     <Card>
       <CardBody>
-        <div className="top-sec">
+        <div className="top-sec d-flex align-items-center">
+          <div className="hbx-back-btn d-md-none me-2 cursor-pointer-hover" onClick={() => router.back()}>
+            <RiArrowLeftLine />
+          </div>
           <h3>{t("address_book")}</h3>
-          <Btn tag="a" size="sm" color="transparent" className=" btn-solid" onClick={() => setModal("add")}>
+          <Btn tag="a" size="sm" color="transparent" className=" btn-solid ms-auto" onClick={() => setModal("add")}>
             + {t("add_new")}
           </Btn>
         </div>

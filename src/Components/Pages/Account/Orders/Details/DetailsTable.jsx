@@ -25,6 +25,8 @@ const DetailsTable = ({ data }) => {
       [index]: !prev[index],
     }));
 
+  const allProducts = data?.products?.length > 0 ? data.products : (data?.sub_orders?.flatMap(sub => sub.products || []) || []);
+
   const ref = useRef(null);
   return (
     <>
@@ -44,8 +46,8 @@ const DetailsTable = ({ data }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.products?.length > 0
-                    ? data?.products?.map((product, i) => (
+                  {allProducts?.length > 0
+                    ? allProducts?.map((product, i) => (
                         <tr key={i}>
                           <td className="product-image">
                             <Avatar data={product?.pivot?.variation && product?.pivot?.variation?.variation_image ? product?.pivot?.variation?.variation_image : product?.product_thumbnail ? product?.product_thumbnail : placeHolderImage} name={product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name} customImageClass="img-fluid" />
