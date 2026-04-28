@@ -2,22 +2,34 @@
 .pay-now-action-buttons {
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: flex-end !important; /* Right align as per screenshot */
   gap: 15px !important;
   margin-top: 20px !important;
   width: 100%;
+  padding-right: 20px !important;
 }
-.pay-now-action-buttons button {
+.pay-now-action-buttons button, 
+.pay-now-action-buttons .btn {
   margin: 0 !important;
+  height: 40px !important; /* Force same height */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
 }
 
 /* Issue 5: Mobile menu hover transparency effect */
+.mobile-menu-fix {
+  background-color: #ffffff !important;
+  z-index: 9999 !important; /* Ensure it covers back-to-top and other elements */
+}
+
 .mobile-menu-fix ul li a:hover,
 .mobile-menu-fix ul li a:hover span,
 .mobile-menu-fix ul li a:hover svg {
   background-color: transparent !important;
+  color: var(--theme-color) !important;
   opacity: 1 !important;
-  color: inherit;
 }
 
 .mobile-menu-fix ul li a {

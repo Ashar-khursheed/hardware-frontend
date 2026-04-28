@@ -17,7 +17,10 @@ const ProfileContent = () => {
       <div className='dashboard-bg-box'>
         <Row>
           <Col xxl={7}>
-            <div className='dashboard-title mb-3'>
+            <div className='dashboard-title mb-3 d-flex align-items-center'>
+              <div className="hbx-back-btn d-md-none me-2 cursor-pointer-hover" onClick={() => router.back()}>
+                <RiArrowLeftLine />
+              </div>
               <h3>{t('ProfileAbout')}</h3>
             </div>
             <Form>
@@ -32,9 +35,6 @@ const ProfileContent = () => {
             </Form>
 
             <div className='dashboard-title mb-3 d-flex align-items-center'>
-              <div className="hbx-back-btn d-md-none me-2 cursor-pointer-hover" onClick={() => router.back()}>
-                <RiArrowLeftLine />
-              </div>
               <h3>{t('change_password')}</h3>
             </div>
             <Form>
@@ -50,8 +50,8 @@ const ProfileContent = () => {
                 <Input id='confirmPassword' name='confirmPassword' placeholder={t('enter_confirm_password')} type='password' />
                 <Label htmlFor='confirmPassword'>{t('confirm_password')}</Label>
               </FormGroup>
-              <div className="btn-box mt-3 text-end">
-                <button type="submit" className="btn btn-solid btn-animation">{t('submit') ?? 'Submit'}</button>
+              <div className="btn-box mt-3 mb-4 text-start">
+                <button type="submit" className="btn btn-solid btn-animation hbx-submit-btn">{t('submit') ?? 'Submit'}</button>
               </div>
             </Form>
           </Col>

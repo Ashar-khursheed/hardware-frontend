@@ -25,7 +25,17 @@ const DetailsTable = ({ data }) => {
       [index]: !prev[index],
     }));
 
-  const allProducts = data?.products?.length > 0 ? data.products : (data?.sub_orders?.flatMap(sub => sub.products || []) || []);
+  const extractProducts = (prodData) => {
+    if (Array.isArray(prodData)) return prodData;
+    if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
+    return [];
+  };
+
+  const mainProducts = extractProducts(data?.products);
+  
+  const allProducts = mainProducts.length > 0 
+    ? mainProducts 
+    : (data?.sub_orders?.flatMap(sub => extractProducts(sub?.products)) || data?.order_items || data?.items || []);
 
   const ref = useRef(null);
   return (

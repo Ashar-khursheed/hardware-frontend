@@ -47,11 +47,11 @@ const AddressHeader = () => {
   return (
     <Card>
       <CardBody>
-        <div className="top-sec d-flex align-items-center">
-          <div className="hbx-back-btn d-md-none me-2 cursor-pointer-hover" onClick={() => router.back()}>
+        <div className="hbx-sub-heading-wrap top-sec d-flex align-items-center mb-4">
+          <div className="hbx-back-btn d-md-none" onClick={() => router.back()}>
             <RiArrowLeftLine />
           </div>
-          <h3>{t("address_book")}</h3>
+          <h3 className="mb-0 m-0">{t("address_book")}</h3>
           <Btn tag="a" size="sm" color="transparent" className=" btn-solid ms-auto" onClick={() => setModal("add")}>
             + {t("add_new")}
           </Btn>
