@@ -9,13 +9,20 @@ import SubOrdersTable from "./SubOrdersTable";
 import Loader from "@/Layout/Loader";
 
 const Details = ({ params }) => {
-  const { data, isLoading, refetch } = useQuery([OrderAPI, params], () => request({ url: `${OrderAPI}/${params}` }), {
+  const { data, isLoading, refetch, error } = useQuery(["order", params], async () => {
+    const res = await request({ url: `${OrderAPI}/${params}` });
+    if (res?.response?.status >= 400 || res?.status >= 400) {
+      throw new Error(res?.response?.data?.message || res?.message || 'Failed to fetch order details');
+    }
+    return res;
+  }, {
     enabled: !!(params),
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: true,
     refetchOnMount: true,
     staleTime: 0,
     select: (res) => res?.data,
   });
+
 
   if (isLoading)
     return (
