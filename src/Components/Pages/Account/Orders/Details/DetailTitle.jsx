@@ -62,7 +62,8 @@ const DetailTitle = ({ params, data }) => {
           </div>
         </div>
       </div>
-      <PaynowModal modal={modal} setModal={setModal} params={params} />
+      <PaynowModal modal={modal} setModal={setModal} params={params} orderData={data} />
+
     </>
   );
 };

@@ -9,11 +9,15 @@ import { YupObject, nameSchema } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Form, Formik } from "formik";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { useRouter } from "next/navigation";
+
 import { Col, Input, Label, ModalBody, ModalHeader, Row } from "reactstrap";
 
-const PaynowModal = ({ modal, setModal, params }) => {
+const PaynowModal = ({ modal, setModal, params, orderData }) => {
   const { t } = useTranslation("common");
-  const { settingData } = useContext(SettingContext);
+  const router = useRouter();
+
+  const { settingData, convertCurrency } = useContext(SettingContext);
   const { mutate, isLoading } = useCreate(RePaymentAPI, false, false, "No", (resDta) => {
     if (resDta?.status == 200 || resDta?.status == 201) {
       if (resDta?.data?.["payment_method"] == "cod") {
@@ -23,6 +27,9 @@ const PaynowModal = ({ modal, setModal, params }) => {
       }
     }
   });
+
+  const paymentMethods = settingData?.payment_methods?.filter(payment => payment.name.toLowerCase() === 'stripe') || [];
+
   return (
     <CustomModal modal={modal} setModal={setModal} classes={{ modalClass: 'pay-modal theme-modal-2', customChildren: true }}>
       <ModalHeader className="modal-header">
@@ -34,8 +41,22 @@ const PaynowModal = ({ modal, setModal, params }) => {
         </Btn>
       </ModalHeader>
       <ModalBody>
+        {orderData && (
+          <div className="order-pay-info mb-4 p-3 bg-light rounded">
+            <Row>
+              <Col sm={6}>
+                <p className="mb-1 text-muted">{t("order_number")}</p>
+                <h5 className="mb-0">#{orderData.order_number}</h5>
+              </Col>
+              <Col sm={6} className="text-sm-end mt-2 mt-sm-0">
+                <p className="mb-1 text-muted">{t("total_amount")}</p>
+                <h5 className="mb-0 text-primary">{convertCurrency(orderData.total)}</h5>
+              </Col>
+            </Row>
+          </div>
+        )}
         <Formik
-          initialValues={{ payment_method: "" }}
+          initialValues={{ payment_method: "stripe" }}
           validationSchema={YupObject({
             payment_method: nameSchema,
           })}
@@ -51,29 +72,44 @@ const PaynowModal = ({ modal, setModal, params }) => {
               <div className="checkout-box">
                 <div className="checkout-detail">
                   <Row className="g-3">
-                    {settingData?.payment_methods?.map((payment, i) => (
-                      <Col md={6} key={i}>
-                        <div className="payment-option">
-                          <div className="payment-category w-100">
-                            <div className="form-check">
-                              <Input className="form-check-input" type="radio" name="payment_method" value={payment.name} id={payment.name} onChange={() => setFieldValue("payment_method", payment.name)} />
-                              <Label className="form-check-label" htmlFor={payment.name}>
-                                {ModifyString(payment.name, "upper")}
-                              </Label>
+                    {paymentMethods.length > 0 ? (
+                      paymentMethods.map((payment, i) => (
+                        <Col md={12} key={i}>
+                          <div className="payment-option">
+                            <div className="payment-category w-100">
+                              <div className="form-check">
+                                <Input
+                                  className="form-check-input"
+                                  type="radio"
+                                  name="payment_method"
+                                  value={payment.name}
+                                  id={payment.name}
+                                  checked={values.payment_method === payment.name}
+                                  onChange={() => setFieldValue("payment_method", payment.name)}
+                                />
+                                <Label className="form-check-label d-flex align-items-center justify-content-between" htmlFor={payment.name}>
+                                  {ModifyString(payment.name, "upper")}
+                                  <img src="/assets/images/payment/stripe.png" alt="Stripe" style={{ height: '20px' }} onError={(e) => e.target.style.display='none'} />
+                                </Label>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </Col>
+                      ))
+                    ) : (
+                      <Col md={12}>
+                        <p className="text-danger">{t("no_payment_method_available")}</p>
                       </Col>
-                    ))}
+                    )}
                   </Row>
                 </div>
               </div>
               <ErrorMessage name={"payment_method"} render={(msg) => <div className="invalid-feedback d-block">{handleModifier(msg)}</div>} />
-              <div className="modal-footer pay-now-action-buttons">
+              <div className="modal-footer pay-now-action-buttons mt-4">
                 <Btn className=" btn-outline " onClick={() => setModal(false)}>
                   {t("cancel")}
                 </Btn>
-                <Btn type="submit" className="btn-solid" loading={Number(isLoading)}>
+                <Btn type="submit" className="btn-solid" loading={Number(isLoading)} disabled={!values.payment_method}>
                   {t("submit")}
                 </Btn>
               </div>
@@ -84,5 +120,6 @@ const PaynowModal = ({ modal, setModal, params }) => {
     </CustomModal>
   );
 };
+
 
 export default PaynowModal;

@@ -19,6 +19,18 @@ import TopBar from "../Widgets/TopBar";
 const HeaderSix = () => {
   const { themeOption, setOpenAuthModal, mobileSideBar, setMobileSideBar } =
     useContext(ThemeOptionContext);
+
+  React.useEffect(() => {
+    if (mobileSideBar) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+    };
+  }, [mobileSideBar]);
+
   const router = useRouter();
   const isAuthenticated = Cookies.get("uat_multikart");
   const handleProfileClick = (e) => {
