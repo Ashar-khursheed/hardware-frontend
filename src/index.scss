@@ -1261,6 +1261,9 @@ header.sticky,
         height: 100vh !important;
         z-index: 1045 !important;
         transition: left 0.3s ease-in-out !important;
+        display: flex !important;
+        flex-direction: column !important;
+
 
         &.show {
             left: 0 !important;
@@ -1270,6 +1273,7 @@ header.sticky,
             padding: 20px 24px;
             background: #fcfcfc;
             border-bottom: 1px solid #f0f0f0;
+            flex-shrink: 0;
 
             h5 {
                 font-size: 1.1rem;
@@ -1302,10 +1306,14 @@ header.sticky,
 
         .offcanvas-body {
             padding: 0 !important;
-            overflow-y: auto;
+            overflow-y: auto !important;
+            flex-grow: 1;
+            padding-bottom: 100px !important; /* Extra padding to ensure last items are visible */
+            -webkit-overflow-scrolling: touch;
         }
     }
 }
+
 
 .hbx-static-mobile-menu {
     .hbx-category-list {
