@@ -33,13 +33,17 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
   const extractProducts = (prodData) => {
     if (Array.isArray(prodData)) return prodData;
     if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
+    if (typeof prodData === 'object' && prodData !== null) {
+      const values = Object.values(prodData);
+      if (values.length > 0 && values.every(v => typeof v === 'object')) return values;
+    }
     return [];
   };
 
-  const mainProducts = extractProducts(orderData?.products);
+  const mainProducts = extractProducts(orderData?.products || orderData?.order_products || orderData?.order_items || orderData?.items || orderData?.order?.products || orderData?.order?.order_items);
   const allProducts = mainProducts.length > 0
     ? mainProducts
-    : (orderData?.sub_orders?.flatMap(sub => extractProducts(sub?.products)) || orderData?.order_items || orderData?.items || []);
+    : (orderData?.sub_orders?.flatMap(sub => extractProducts(sub?.products || sub?.order_items || sub?.items)) || []);
 
   return (
     <CustomModal modal={modal} setModal={setModal} classes={{ modalClass: 'pay-modal theme-modal-2', customChildren: true }}>
@@ -68,19 +72,24 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
               <div className="order-items-preview mb-3">
                 <p className="text-muted mb-2 small">{t("items")}:</p>
                 <ul className="list-unstyled">
-                  {allProducts.map((product, idx) => (
-                    <li key={idx} className="d-flex justify-content-between align-items-center mb-1 small">
-                      <span className="text-truncate" style={{ maxWidth: '70%' }}>
-                        {product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name} x {product?.pivot?.quantity || 1}
-                      </span>
-                      <span className="fw-bold">{convertCurrency(product?.pivot?.subtotal || product?.pivot?.single_price || 0)}</span>
-                    </li>
-                  ))}
+                  {allProducts.map((item, i) => {
+                    const product = item?.product || item;
+                    const pivot = item?.pivot || item;
+                    return (
+                      <li key={i} className="d-flex justify-content-between align-items-center mb-1 small">
+                        <span className="text-truncate" style={{ maxWidth: '70%' }}>
+                          {pivot?.variation ? pivot?.variation?.name : product?.name} x {pivot?.quantity || 1}
+                        </span>
+                        <span className="fw-bold">{convertCurrency(pivot?.subtotal || (pivot?.single_price * pivot?.quantity) || pivot?.price || 0)}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             )}
           </div>
         )}
+
 
         <Formik
           initialValues={{ payment_method: "stripe" }}

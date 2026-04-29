@@ -29,19 +29,17 @@ const DetailsTable = ({ data }) => {
     if (Array.isArray(prodData)) return prodData;
     if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
     if (typeof prodData === 'object' && prodData !== null) {
-      // If it's an object with numeric keys, convert to array
       const values = Object.values(prodData);
       if (values.length > 0 && values.every(v => typeof v === 'object')) return values;
     }
     return [];
   };
 
-  const mainProducts = extractProducts(data?.products || data?.order_products || data?.order_items || data?.items);
+  const mainProducts = extractProducts(data?.products || data?.order_products || data?.order_items || data?.items || data?.order?.products || data?.order?.order_items);
   
   const allProducts = mainProducts.length > 0 
     ? mainProducts 
     : (data?.sub_orders?.flatMap(sub => extractProducts(sub?.products || sub?.order_items || sub?.items)) || []);
-
 
   const ref = useRef(null);
   return (
@@ -63,60 +61,63 @@ const DetailsTable = ({ data }) => {
                 </thead>
                 <tbody>
                   {allProducts?.length > 0
-                    ? allProducts?.map((product, i) => (
-                        <tr key={i}>
-                          <td className="product-image">
-                            <Avatar 
-                              data={
-                                product?.pivot?.variation?.variation_image || 
-                                product?.product_thumbnail || 
-                                product?.product_galleries?.[0] || 
-                                placeHolderImage
-                              } 
-                              name={product?.pivot?.variation?.name || product?.name} 
-                              customImageClass="img-fluid" 
-                            />
-                          </td>
-                          <td>
-                            <h6>{product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name}</h6>
-                          </td>
-                          <td>
-                            <h6>{convertCurrency(product?.pivot?.single_price)}</h6>
-                          </td>
-                          <td>
-                            <h6>{product?.pivot?.quantity}</h6>
-                          </td>
-                          <td>
-                            <h6>{convertCurrency(product?.pivot?.subtotal)}</h6>
-                          </td>
-                          <td>
-                            {data.payment_status && product?.is_return === 1 && data.payment_status && data.payment_status === "COMPLETED" && data.order_status && data.order_status.slug == "delivered" && !product?.pivot?.refund_status ? (
-                              <a className="btn btn-solid" href={Href} onClick={() => onModalOpen(product)}>
-                                {t("refund")}
-                              </a>
-                            ) : product.is_return === 0 ? (
-                              <span>{t("non_refundable")}</span>
-                            ) : product?.pivot?.refund_status ? (
-                              <div className={`status-${product?.pivot?.refund_status?.toLowerCase()}`}>
-                                <span>{CapitalizeMultiple(product?.pivot?.refund_status)}</span>
-                              </div>
-                            ) : (
-                              <>
-                              <div className="black-tooltip" id={"refunded" + i}>
-                                {!product?.pivot?.refund_status && <Btn className="btn-solid disabled"> {t("refund")}</Btn>}
-                              </div>
-                                <Tooltip isOpen={tooltipOpen[i]} target={"refunded" + i} toggle={() => toggle(i)}>
-                                {t("EnableAfterDelivery")}
-                              </Tooltip>
-                              </>
-                            )}
-                          </td>
-                        
-                          {/* <td>{product?.is_return === 1 && product?.pivot?.is_refunded === 0 ? <a onClick={() => onModalOpen(product)}>{t("AskForRefund")}</a> : "-"}</td> */}
-                        </tr>
-                      ))
+                    ? allProducts?.map((item, i) => {
+                        const product = item?.product || item;
+                        const pivot = item?.pivot || item;
+                        return (
+                          <tr key={i}>
+                            <td className="product-image">
+                              <Avatar 
+                                data={
+                                  pivot?.variation?.variation_image || 
+                                  product?.product_thumbnail || 
+                                  product?.product_galleries?.[0] || 
+                                  placeHolderImage
+                                } 
+                                name={pivot?.variation?.name || product?.name} 
+                                customImageClass="img-fluid" 
+                              />
+                            </td>
+                            <td>
+                              <h6>{pivot?.variation ? pivot?.variation?.name : product?.name}</h6>
+                            </td>
+                            <td>
+                              <h6>{convertCurrency(pivot?.single_price || pivot?.price || 0)}</h6>
+                            </td>
+                            <td>
+                              <h6>{pivot?.quantity || 1}</h6>
+                            </td>
+                            <td>
+                              <h6>{convertCurrency(pivot?.subtotal || (pivot?.single_price * pivot?.quantity) || pivot?.price || 0)}</h6>
+                            </td>
+                            <td>
+                              {data.payment_status && product?.is_return === 1 && data.payment_status && data.payment_status === "COMPLETED" && data.order_status && data.order_status.slug == "delivered" && !pivot?.refund_status ? (
+                                <a className="btn btn-solid" href={Href} onClick={() => onModalOpen(product)}>
+                                  {t("refund")}
+                                </a>
+                              ) : product.is_return === 0 ? (
+                                <span>{t("non_refundable")}</span>
+                              ) : pivot?.refund_status ? (
+                                <div className={`status-${pivot?.refund_status?.toLowerCase()}`}>
+                                  <span>{CapitalizeMultiple(pivot?.refund_status)}</span>
+                                </div>
+                              ) : (
+                                <>
+                                <div className="black-tooltip" id={"refunded" + i}>
+                                  {!pivot?.refund_status && <Btn className="btn-solid disabled"> {t("refund")}</Btn>}
+                                </div>
+                                  <Tooltip isOpen={tooltipOpen[i]} target={"refunded" + i} toggle={() => toggle(i)}>
+                                  {t("EnableAfterDelivery")}
+                                </Tooltip>
+                                </>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })
                     : null}
                 </tbody>
+
               </Table>
             </div>
           </div>
