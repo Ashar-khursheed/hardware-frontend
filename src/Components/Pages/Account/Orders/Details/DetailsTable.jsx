@@ -30,16 +30,35 @@ const DetailsTable = ({ data }) => {
     if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
     if (typeof prodData === 'object' && prodData !== null) {
       const values = Object.values(prodData);
-      if (values.length > 0 && values.every(v => typeof v === 'object')) return values;
+      if (values.length > 0 && values.every(v => typeof v === 'object' && v !== null)) return values;
     }
     return [];
   };
 
-  const mainProducts = extractProducts(data?.products || data?.order_products || data?.order_items || data?.items || data?.order?.products || data?.order?.order_items);
-  
-  const allProducts = mainProducts.length > 0 
-    ? mainProducts 
-    : (data?.sub_orders?.flatMap(sub => extractProducts(sub?.products || sub?.order_items || sub?.items)) || []);
+  const searchForProducts = (obj) => {
+    if (!obj || typeof obj !== 'object') return [];
+    
+    // Common keys where products/items are stored
+    const keys = ['products', 'order_products', 'order_items', 'items', 'order_details', 'sub_orders'];
+    
+    for (const key of keys) {
+      if (key === 'sub_orders' && Array.isArray(obj[key])) {
+        const subProducts = obj[key].flatMap(sub => extractProducts(sub.products || sub.order_items || sub.items));
+        if (subProducts.length > 0) return subProducts;
+      }
+      const found = extractProducts(obj[key]);
+      if (found.length > 0) return found;
+    }
+    
+    // If not found, check if the object itself is a wrapper (like { data: { ... } } or { order: { ... } })
+    if (obj.data && typeof obj.data === 'object') return searchForProducts(obj.data);
+    if (obj.order && typeof obj.order === 'object') return searchForProducts(obj.order);
+    
+    return [];
+  };
+
+  const allProducts = searchForProducts(data);
+
 
   const ref = useRef(null);
   return (
@@ -64,6 +83,16 @@ const DetailsTable = ({ data }) => {
                     ? allProducts?.map((item, i) => {
                         const product = item?.product || item;
                         const pivot = item?.pivot || item;
+                        
+                        // Extract price from various possible locations
+                        const price = pivot?.single_price || pivot?.price || product?.price || product?.unit_price || item?.price || item?.unit_price || 0;
+                        
+                        // Extract quantity
+                        const quantity = pivot?.quantity || product?.quantity || item?.quantity || item?.qty || 1;
+                        
+                        // Extract subtotal
+                        const subtotal = pivot?.subtotal || (price * quantity) || item?.subtotal || 0;
+
                         return (
                           <tr key={i}>
                             <td className="product-image">
@@ -82,13 +111,13 @@ const DetailsTable = ({ data }) => {
                               <h6>{pivot?.variation ? pivot?.variation?.name : product?.name}</h6>
                             </td>
                             <td>
-                              <h6>{convertCurrency(pivot?.single_price || pivot?.price || 0)}</h6>
+                              <h6>{convertCurrency(price)}</h6>
                             </td>
                             <td>
-                              <h6>{pivot?.quantity || 1}</h6>
+                              <h6>{quantity}</h6>
                             </td>
                             <td>
-                              <h6>{convertCurrency(pivot?.subtotal || (pivot?.single_price * pivot?.quantity) || pivot?.price || 0)}</h6>
+                              <h6>{convertCurrency(subtotal)}</h6>
                             </td>
                             <td>
                               {data.payment_status && product?.is_return === 1 && data.payment_status && data.payment_status === "COMPLETED" && data.order_status && data.order_status.slug == "delivered" && !pivot?.refund_status ? (
@@ -117,6 +146,7 @@ const DetailsTable = ({ data }) => {
                       })
                     : null}
                 </tbody>
+
 
               </Table>
             </div>

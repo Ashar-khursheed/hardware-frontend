@@ -35,15 +35,28 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
     if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
     if (typeof prodData === 'object' && prodData !== null) {
       const values = Object.values(prodData);
-      if (values.length > 0 && values.every(v => typeof v === 'object')) return values;
+      if (values.length > 0 && values.every(v => typeof v === 'object' && v !== null)) return values;
     }
     return [];
   };
 
-  const mainProducts = extractProducts(orderData?.products || orderData?.order_products || orderData?.order_items || orderData?.items || orderData?.order?.products || orderData?.order?.order_items);
-  const allProducts = mainProducts.length > 0
-    ? mainProducts
-    : (orderData?.sub_orders?.flatMap(sub => extractProducts(sub?.products || sub?.order_items || sub?.items)) || []);
+  const searchForProducts = (obj) => {
+    if (!obj || typeof obj !== 'object') return [];
+    const keys = ['products', 'order_products', 'order_items', 'items', 'order_details', 'sub_orders'];
+    for (const key of keys) {
+      if (key === 'sub_orders' && Array.isArray(obj[key])) {
+        const subProducts = obj[key].flatMap(sub => extractProducts(sub.products || sub.order_items || sub.items));
+        if (subProducts.length > 0) return subProducts;
+      }
+      const found = extractProducts(obj[key]);
+      if (found.length > 0) return found;
+    }
+    if (obj.data && typeof obj.data === 'object') return searchForProducts(obj.data);
+    if (obj.order && typeof obj.order === 'object') return searchForProducts(obj.order);
+    return [];
+  };
+
+  const allProducts = searchForProducts(orderData);
 
   return (
     <CustomModal modal={modal} setModal={setModal} classes={{ modalClass: 'pay-modal theme-modal-2', customChildren: true }}>
@@ -75,12 +88,16 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
                   {allProducts.map((item, i) => {
                     const product = item?.product || item;
                     const pivot = item?.pivot || item;
+                    const price = pivot?.single_price || pivot?.price || product?.price || product?.unit_price || item?.price || item?.unit_price || 0;
+                    const quantity = pivot?.quantity || product?.quantity || item?.quantity || item?.qty || 1;
+                    const subtotal = pivot?.subtotal || (price * quantity) || item?.subtotal || 0;
+
                     return (
                       <li key={i} className="d-flex justify-content-between align-items-center mb-1 small">
                         <span className="text-truncate" style={{ maxWidth: '70%' }}>
-                          {pivot?.variation ? pivot?.variation?.name : product?.name} x {pivot?.quantity || 1}
+                          {pivot?.variation ? pivot?.variation?.name : product?.name} x {quantity}
                         </span>
-                        <span className="fw-bold">{convertCurrency(pivot?.subtotal || (pivot?.single_price * pivot?.quantity) || pivot?.price || 0)}</span>
+                        <span className="fw-bold">{convertCurrency(subtotal)}</span>
                       </li>
                     );
                   })}
