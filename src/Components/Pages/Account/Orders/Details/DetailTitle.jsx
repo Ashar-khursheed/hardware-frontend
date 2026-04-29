@@ -42,11 +42,12 @@ const DetailTitle = ({ params, data }) => {
       <div className="title-header">
         <div className="d-flex align-items-center flex-wrap gap-2 mb-2 justify-content-between">
           <h5>
-            <a href={Href} onClick={() => router.back()}>
+            <a href={Href} onClick={() => router.push('/account/order')}>
               <RiArrowLeftLine />
             </a>
             {`${t("order_number")}: #${params}`}
           </h5>
+
           <div className="right-option">
             {(data?.payment_status === "FAILED" || data?.payment_status === "PENDING") && data?.order_status && data?.order_status?.slug != "cancelled" && data?.payment_method != "cod" && (
               <a className="btn btn-md fw-bold text-light theme-bg-color" onClick={() => setModal(true)}>

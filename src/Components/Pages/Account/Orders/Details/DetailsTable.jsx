@@ -28,14 +28,20 @@ const DetailsTable = ({ data }) => {
   const extractProducts = (prodData) => {
     if (Array.isArray(prodData)) return prodData;
     if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
+    if (typeof prodData === 'object' && prodData !== null) {
+      // If it's an object with numeric keys, convert to array
+      const values = Object.values(prodData);
+      if (values.length > 0 && values.every(v => typeof v === 'object')) return values;
+    }
     return [];
   };
 
-  const mainProducts = extractProducts(data?.products);
+  const mainProducts = extractProducts(data?.products || data?.order_products || data?.order_items || data?.items);
   
   const allProducts = mainProducts.length > 0 
     ? mainProducts 
-    : (data?.sub_orders?.flatMap(sub => extractProducts(sub?.products)) || data?.order_items || data?.items || []);
+    : (data?.sub_orders?.flatMap(sub => extractProducts(sub?.products || sub?.order_items || sub?.items)) || []);
+
 
   const ref = useRef(null);
   return (

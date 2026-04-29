@@ -30,6 +30,17 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
 
   const paymentMethods = settingData?.payment_methods?.filter(payment => payment.name.toLowerCase() === 'stripe') || [];
 
+  const extractProducts = (prodData) => {
+    if (Array.isArray(prodData)) return prodData;
+    if (prodData?.data && Array.isArray(prodData.data)) return prodData.data;
+    return [];
+  };
+
+  const mainProducts = extractProducts(orderData?.products);
+  const allProducts = mainProducts.length > 0
+    ? mainProducts
+    : (orderData?.sub_orders?.flatMap(sub => extractProducts(sub?.products)) || orderData?.order_items || orderData?.items || []);
+
   return (
     <CustomModal modal={modal} setModal={setModal} classes={{ modalClass: 'pay-modal theme-modal-2', customChildren: true }}>
       <ModalHeader className="modal-header">
@@ -43,7 +54,7 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
       <ModalBody>
         {orderData && (
           <div className="order-pay-info mb-4 p-3 bg-light rounded">
-            <Row>
+            <Row className="mb-3 border-bottom pb-2">
               <Col sm={6}>
                 <p className="mb-1 text-muted">{t("order_number")}</p>
                 <h5 className="mb-0">#{orderData.order_number}</h5>
@@ -53,8 +64,24 @@ const PaynowModal = ({ modal, setModal, params, orderData }) => {
                 <h5 className="mb-0 text-primary">{convertCurrency(orderData.total)}</h5>
               </Col>
             </Row>
+            {allProducts.length > 0 && (
+              <div className="order-items-preview mb-3">
+                <p className="text-muted mb-2 small">{t("items")}:</p>
+                <ul className="list-unstyled">
+                  {allProducts.map((product, idx) => (
+                    <li key={idx} className="d-flex justify-content-between align-items-center mb-1 small">
+                      <span className="text-truncate" style={{ maxWidth: '70%' }}>
+                        {product?.pivot?.variation ? product?.pivot?.variation?.name : product?.name} x {product?.pivot?.quantity || 1}
+                      </span>
+                      <span className="fw-bold">{convertCurrency(product?.pivot?.subtotal || product?.pivot?.single_price || 0)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
+
         <Formik
           initialValues={{ payment_method: "stripe" }}
           validationSchema={YupObject({
