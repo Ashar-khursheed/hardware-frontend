@@ -39,7 +39,7 @@ const DetailsTable = ({ data }) => {
     if (!obj || typeof obj !== 'object') return [];
     
     // Common keys where products/items are stored
-    const keys = ['products', 'order_products', 'order_items', 'items', 'order_details', 'sub_orders'];
+    const keys = ['products', 'order_products', 'order_items', 'items', 'order_details', 'sub_orders', 'order_data'];
     
     for (const key of keys) {
       if (key === 'sub_orders' && Array.isArray(obj[key])) {
@@ -51,8 +51,9 @@ const DetailsTable = ({ data }) => {
     }
     
     // If not found, check if the object itself is a wrapper (like { data: { ... } } or { order: { ... } })
-    if (obj.data && typeof obj.data === 'object') return searchForProducts(obj.data);
-    if (obj.order && typeof obj.order === 'object') return searchForProducts(obj.order);
+    if (obj.data && typeof obj.data === 'object' && obj.data !== obj) return searchForProducts(obj.data);
+    if (obj.order && typeof obj.order === 'object' && obj.order !== obj) return searchForProducts(obj.order);
+
     
     return [];
   };

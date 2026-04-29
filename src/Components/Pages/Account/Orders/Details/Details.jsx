@@ -12,8 +12,11 @@ const Details = ({ params }) => {
   const { data, isLoading, refetch } = useQuery([OrderAPI, params], () => request({ url: `${OrderAPI}/${params}` }), {
     enabled: !!(params),
     refetchOnWindowFocus: false,
+    refetchOnMount: true,
+    staleTime: 0,
     select: (res) => res?.data,
   });
+
   if (isLoading)
     return (
       <div className="box-loader">
