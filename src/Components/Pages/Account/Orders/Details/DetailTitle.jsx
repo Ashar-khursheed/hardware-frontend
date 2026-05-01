@@ -42,7 +42,7 @@ const DetailTitle = ({ params, data }) => {
       <div className="title-header">
         <div className="d-flex align-items-center flex-wrap gap-2 mb-2 justify-content-between">
           <h5>
-            <Btn color="transparent" className="p-0" onClick={() => router.push('/account/order')}>
+            <Btn color="transparent" className="p-0 " style={{ cursor: 'pointer', backgroundColor: 'transparent !important' }} onClick={() => router.push('/account/order')}>
               <RiArrowLeftLine />
             </Btn>
             {`${t("order_number")}: #${params}`}
