@@ -67,17 +67,19 @@ const AuthModal = () => {
                   <h3>{t(title)}</h3>
                   <p>{state == "otp" ? t("verify_email_otp_text") : state == "number" ? t("mobile_login_text") : t("login_text")}</p>
                 </div>
-                {state == "register" && <RegisterForm />}
-                {state == "login" && <LoginForm setState={setState} />}
-                {state == "forgot" && <ForgotPasswordForm setState={setState} />}
-                {state == "otp" && <OTPVerificationForm setState={setState} />}
-                {state == "number" && <NumberLoginForm setState={setState} />}
+                <div className="hbx-auth-form-container">
+                  {state == "register" && <RegisterForm setState={setState} />}
+                  {state == "login" && <LoginForm setState={setState} />}
+                  {state == "forgot" && <ForgotPasswordForm setState={setState} />}
+                  {state == "otp" && <OTPVerificationForm setState={setState} />}
+                  {state == "number" && <NumberLoginForm setState={setState} />}
+                </div>
                 {state !== "forgot" && state !== "otp" && (
                   <>
                     <div className="divider">
                       <span>{t("or")}</span>
                     </div>
-                    <p className="create">
+                    <p className="create hbx-auth-link-fix">
                       {state == "login" ? t("no_account") : t("have_account")} ?{" "}
                       <a href={Href} onClick={handleClick}>
                         {logOrNew ? t("login") : t("register")} {t("Here")}

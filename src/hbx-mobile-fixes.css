@@ -1,0 +1,75 @@
+/* Unique fixes for Hardware Box Mobile Issues */
+
+/* Issue 1: Address Edit Submit Button Visibility */
+.hbx-address-footer-fix {
+    margin-top: 20px !important;
+    padding: 15px 0 !important;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    z-index: 9;
+    border-top: 1px solid #eee;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@media (max-width: 576px) {
+    .hbx-address-footer-fix {
+        padding: 10px !important;
+        margin-top: 10px !important;
+    }
+    
+    .hbx-address-footer-fix button {
+        flex: 1;
+        padding: 10px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Issue 3: Auth Modal Alignment and Login Link Visibility */
+.hbx-auth-link-fix {
+    margin-top: 20px !important;
+    text-align: center;
+    padding-bottom: 25px;
+    font-size: 16px;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.hbx-auth-link-fix a {
+    color: #ef3f4e;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid #ef3f4e;
+    padding-bottom: 2px;
+}
+
+@media (max-width: 576px) {
+    .hbx-auth-modal-body {
+        padding: 15px !important;
+    }
+    
+    .hbx-auth-link-fix {
+        margin-top: 15px !important;
+    }
+}
+
+/* Fix for the registration form container to ensure scrollability */
+.hbx-auth-form-container {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.hbx-auth-form-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.hbx-auth-form-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}

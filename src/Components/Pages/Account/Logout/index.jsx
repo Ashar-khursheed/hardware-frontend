@@ -21,8 +21,13 @@ const LogoutComponent = () => {
     });
 
     useEffect(() => {
-        mutate({});
-    }, [mutate]);
+        const isAuthenticated = Cookies.get("uat_multikart");
+        if (!isAuthenticated) {
+            router.push("/");
+        } else {
+            mutate({});
+        }
+    }, [mutate, router]);
 
     return (
         <div style={{ height: '70vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

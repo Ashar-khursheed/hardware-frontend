@@ -4,10 +4,20 @@ import { AllCountryCode } from "@/Data/CountryCode";
 import Btn from "@/Elements/Buttons/Btn";
 import { Form } from "formik";
 import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 import { Col, ModalFooter, Row } from "reactstrap";
 
-const SelectForm = ({ values, isLoading, data, setModal, isFooterDisplay = true }) => {
+const SelectForm = ({ values, isLoading, data, setModal, isFooterDisplay = true, setFieldValue }) => {
   const { t } = useTranslation("common");
+  useEffect(() => {
+    if (values?.["country_id"]) {
+      const selectedCountry = data?.find((country) => Number(country.id) === Number(values?.["country_id"]));
+      const stateExists = selectedCountry?.state?.find((state) => Number(state.id) === Number(values?.["state_id"]));
+      if (!stateExists && values?.["state_id"]) {
+        setFieldValue("state_id", "");
+      }
+    }
+  }, [values?.["country_id"], data, setFieldValue]);
   return (
     <Form>
       <Row>
@@ -75,7 +85,7 @@ const SelectForm = ({ values, isLoading, data, setModal, isFooterDisplay = true 
 
         <Col xs="12">
           {isFooterDisplay && (
-            <ModalFooter className="ms-auto justify-content-end save-back-button mt-0">
+            <ModalFooter className="ms-auto justify-content-end save-back-button mt-0 hbx-address-footer-fix">
               <Btn className="btn-md btn-outline fw-bold" color="transparent" onClick={() => setModal(false)}>
                 {t("cancel")}
               </Btn>

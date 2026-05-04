@@ -9,9 +9,9 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "reactstrap";
 
-const RegisterForm = () => {
+const RegisterForm = ({ setState }) => {
   const [showBoxMessage, setShowBoxMessage] = useState();
-  const { mutate, isLoading } = useCreate(RegisterAPI, false, false, "Register Successfully", false, false, false, false, setShowBoxMessage);
+  const { mutate, isLoading } = useCreate(RegisterAPI, false, false, "Register Successfully", () => setState("login"), false, false, false, setShowBoxMessage);
   const { t } = useTranslation("common");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
 

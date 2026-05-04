@@ -46,6 +46,8 @@ const AddAddressForm = ({ mutate, isLoading, type, editAddress, setEditAddress, 
         }
 
         values["pincode"] = values["pincode"].toString();
+        values["country_id"] = Number(values["country_id"]);
+        values["state_id"] = Number(values["state_id"]);
         mutate(values);
       }}
     >
