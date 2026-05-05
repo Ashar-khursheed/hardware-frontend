@@ -112,7 +112,8 @@ export default async function RootLayout({ children }) {
             gtag('config', 'G-C52RSE232C');
           `}
         </Script>
-        <meta name="google-site-verification" content="U028eglUD0pstHKDNZYTk0nPzteP8wR1vTfvx-m6BQU" />
+        <meta name="google-site-verification" content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko" />
+
       </head>
       <body suppressHydrationWarning={true}>
         <Suspense fallback={<Loading />}>
