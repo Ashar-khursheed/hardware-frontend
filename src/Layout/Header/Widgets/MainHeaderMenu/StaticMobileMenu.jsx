@@ -80,9 +80,9 @@ const staticCategories = [
     {
         id: "powersupply",
         title: "Power Supply & Protection",
-        path: "/category/power-supply--and-protection",
+        path: "/category/power-supply-and-protection",
         child: [
-            { title: "Power Supply", path: "/category/power-supply--and-protection" },
+            { title: "Power Supply", path: "/category/power-supply" },
             { title: "Power Adapters & Chargers", path: "/category/power-adapters-chargers" },
             { title: "Power Distributions", path: "/category/power-distributions" },
         ],
