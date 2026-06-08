@@ -291,7 +291,7 @@ const HeaderSix = () => {
                             onMouseEnter={() => setActiveCategory("powersupply")}
                             className={`category-item ${activeCategory === "powersupply" ? "active" : ""}`}
                           >
-                            <Link href="/category/power-supply" className="category-link">
+                            <Link href="/category/power-supply-and-protection" className="category-link">
                               <span>Power Supply & Protection</span>
                               <svg className="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M9 18l6-6-6-6" />
@@ -648,7 +648,7 @@ const HeaderSix = () => {
                               <h4>Power Supply & Protection</h4>
                             </div>
                             <div className="subcategory-grid">
-                              <Link href="/category/power-supply" className="subcategory-item">
+                              <Link href="/category/power-supply--and-protection" className="subcategory-item">
                                 <span className="dot"></span>Power Supply
                               </Link>
                               <Link href="/category/power-adapters-chargers" className="subcategory-item">
@@ -660,7 +660,7 @@ const HeaderSix = () => {
                             </div>
 
                             {/* <div className="promo-banner-wrapper">
-                              <Link href="/category/power-supply" className="promo-banner">
+                              <Link href="/category/power-supply--and-protection" className="promo-banner">
                                 <div className="promo-banner-content">
                                   <div className="promo-badge">HOT DEAL</div>
                                   <h3 className="promo-title">Up to 10% OFF</h3>

@@ -80,9 +80,9 @@ const staticCategories = [
     {
         id: "powersupply",
         title: "Power Supply & Protection",
-        path: "/category/power-supply",
+        path: "/category/power-supply--and-protection",
         child: [
-            { title: "Power Supply", path: "/category/power-supply" },
+            { title: "Power Supply", path: "/category/power-supply--and-protection" },
             { title: "Power Adapters & Chargers", path: "/category/power-adapters-chargers" },
             { title: "Power Distributions", path: "/category/power-distributions" },
         ],
@@ -146,14 +146,14 @@ const StaticMobileMenu = () => {
                 {staticCategories.map((cat) => (
                     <li key={cat.id} className="hbx-category-item">
                         <div className={`hbx-category-header ${activeId === cat.id ? "active" : ""}`}>
-                            <Link 
-                                href={cat.path.trim()} 
+                            <Link
+                                href={cat.path.trim()}
                                 className="hbx-category-title"
                                 onClick={handleLinkClick}
                             >
                                 {cat.title}
                             </Link>
-                            <div 
+                            <div
                                 className="hbx-toggle-icon"
                                 onClick={() => toggleAccordion(cat.id)}
                                 style={{ padding: '0 15px', cursor: 'pointer' }}
