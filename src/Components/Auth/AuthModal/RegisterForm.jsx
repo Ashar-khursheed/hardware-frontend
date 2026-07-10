@@ -1,11 +1,14 @@
 import SearchableSelectInput from "@/Components/Widgets/InputFields/SearchableSelectInput";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
+import SettingContext from "@/Context/SettingContext";
 import { AllCountryCode } from "@/Data/CountryCode";
 import Btn from "@/Elements/Buttons/Btn";
 import { RegisterAPI } from "@/Utils/AxiosUtils/API";
+import { getRecaptchaConfig } from "@/Utils/CustomFunctions/RecaptchaUtils";
 import useCreate from "@/Utils/Hooks/useCreate";
-import { YupObject, emailSchema, nameSchema, passwordConfirmationSchema, passwordSchema, phoneSchema } from "@/Utils/Validation/ValidationSchema";
+import { YupObject, emailSchema, nameSchema, passwordConfirmationSchema, passwordSchema, phoneSchema, recaptchaSchema } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "reactstrap";
 
@@ -13,10 +16,14 @@ const RegisterForm = ({ setState }) => {
   const [showBoxMessage, setShowBoxMessage] = useState();
   const { mutate, isLoading } = useCreate(RegisterAPI, false, false, "Register Successfully", () => setState("login"), false, false, false, setShowBoxMessage);
   const { t } = useTranslation("common");
+  const { settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
+  const reCaptchaRef = useRef();
   const [checkboxChecked, setCheckboxChecked] = useState(false);
 
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         name: "",
         email: "",
@@ -24,6 +31,7 @@ const RegisterForm = ({ setState }) => {
         password_confirmation: "",
         country_code: "91",
         phone: "",
+        recaptcha: "",
       }}
       validationSchema={YupObject({
         name: nameSchema,
@@ -31,8 +39,16 @@ const RegisterForm = ({ setState }) => {
         password: passwordSchema,
         password_confirmation: passwordConfirmationSchema,
         phone: phoneSchema,
+        recaptcha: recaptchaEnabled ? recaptchaSchema : "",
       })}
-      onSubmit={mutate}
+      onSubmit={(values, { resetForm }) => {
+        mutate(values, {
+          onSuccess: () => {
+            resetForm();
+            reCaptchaRef.current?.reset();
+          },
+        });
+      }}
     >
       {({ errors, touched, setFieldValue }) => (
         <Form className="auth-form-box">
@@ -83,6 +99,16 @@ const RegisterForm = ({ setState }) => {
               </div>
             </div>
           </div>
+
+          {recaptchaEnabled && (
+            <div className="auth-box form-box mb-3">
+              <RecaptchaField
+                ref={reCaptchaRef}
+                error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                onChange={(value) => setFieldValue("recaptcha", value)}
+              />
+            </div>
+          )}
 
           <Btn loading={isLoading} type="submit" className={`btn ${Object.keys(errors).length === 0 && checkboxChecked ? "" : "disabled"}`}>
             {t("create_account")}

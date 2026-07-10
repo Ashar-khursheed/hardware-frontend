@@ -7,8 +7,9 @@ const nextConfig = {
     // Keep the API URLs pointing to your local backend
     // API_PROD_URL: "https://hardwareapi.in-sourceit.com/api", // Local Laravel API URL
     // storageURL: "https://hardwareapi.in-sourceit.com/", // Local Laravel Storage URL
-    API_PROD_URL: "https://hardware.sparccpk.org/api", // Local Laravel API URL
-    storageURL: "https://hardware.sparccpk.org", // Local Laravel Storage URL
+    API_PROD_URL: process.env.API_PROD_URL || "https://hardware.sparccpk.org/api", // Local Laravel API URL
+    storageURL: process.env.storageURL || "https://hardware.sparccpk.org", // Local Laravel Storage URL
+    NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY: process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_KEY || "",
   },
 
   // Performance optimizations
@@ -51,6 +52,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "d3243ix3g2hwoc.cloudfront.net",
+        pathname: "/**",
       },
       {
         protocol: "https",
@@ -80,15 +82,6 @@ const nextConfig = {
 
   // Removing custom CSS/SCSS configuration to use built-in support
   webpack: (config, { dev, isServer }) => {
-    // If additional custom loaders are necessary, keep those, but remove CSS/SCSS rules
-    config.module.rules = config.module.rules.filter(
-      (rule) =>
-        !(
-          rule.test &&
-          (rule.test.toString().includes(".scss") ||
-            rule.test.toString().includes(".css"))
-        )
-    );
 
     // Production optimizations
     if (!dev && !isServer) {

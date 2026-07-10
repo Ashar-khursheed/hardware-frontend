@@ -20,8 +20,30 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const ProductDetails = ({ params }) => {
-  return <ProductDetailContent params={params?.productSlug} />;
+const ProductDetails = async ({ params }) => {
+  let productData = null;
+  try {
+    const response = await axios.get(`${process.env.API_PROD_URL}/product/slug/${params?.productSlug}`, {
+      httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+    });
+    productData = response?.data;
+  } catch (err) {
+    console.error("Error fetching product details for schema:", err);
+  }
+
+  return (
+    <>
+      {productData?.schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: productData.schema
+          }}
+        />
+      )}
+      <ProductDetailContent params={params?.productSlug} />
+    </>
+  );
 };
 
 export default ProductDetails;

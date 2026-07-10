@@ -9,6 +9,7 @@ import Cookies from "js-cookie";
 import { usePathname, useSearchParams } from "next/navigation";
 import NextTopLoader from "nextjs-toploader";
 import { useContext, useEffect, useState } from "react";
+import BulkQuotePopupModal from "./BulkQuotePopupModal";
 import ExitModal from "./ExitModal";
 import Footers from "./Footer";
 import Headers from "./Header";
@@ -197,6 +198,7 @@ const SubLayout = ({ children }) => {
         {children}
       </div>
       <AuthModal />
+      <BulkQuotePopupModal />
       {theme != "full_page" && <Footers />}
       {themeOption?.general?.customizer_enable && <ThemeCustomizer />}
       <NextTopLoader showSpinner={false} color={themeColor || "#2874f0"} height={4} crawl={true} showAtBottom={false} />
