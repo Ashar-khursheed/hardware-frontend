@@ -1,9 +1,27 @@
-
 import PagesContent from '@/Components/Page/PagesContent'
+import axios from 'axios';
+import https from 'https';
 
-export async function generateMetadata({ params }) { 
+async function getPageDetails(slug) {
+    console.log("=== getPageDetails Start ===");
+    console.log("Fetching slug:", slug);
+    console.log("API URL:", `${process.env.API_PROD_URL}/page/slug/${slug}`);
+    try {
+        const response = await axios.get(`${process.env.API_PROD_URL}/page/slug/${slug}`, {
+            httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+        });
+        console.log("API Response Status:", response?.status);
+        console.log("API Response Data:", response?.data);
+        return response?.data;
+    } catch (err) {
+        console.error("Error fetching page details:", err.message || err);
+        return null;
+    }
+}
+
+export async function generateMetadata({ params }) {
     // fetch data
-    const pagesData = await fetch(`${process.env.API_PROD_URL}page/slug/${params?.slug}`).then((res) => res.json()).catch((err) => console.error("err", err))
+    const pagesData = await getPageDetails(params?.slug);
     return {
         openGraph: {
             title: pagesData?.meta_title,
@@ -25,11 +43,24 @@ export async function generateMetadata({ params }) {
         },
     }
 }
-const Pages = ({ params }) => {
-    {params}
+
+const Pages = async ({ params }) => {
+    const pagesData = await getPageDetails(params?.slug);
+
     return (
-        params && <PagesContent params={params.slug} />
-    )
+        <>
+            {pagesData?.schema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: pagesData.schema
+                    }}
+                />
+            )}
+
+            {params && <PagesContent params={params.slug} />}
+        </>
+    );
 }
 
 export default Pages

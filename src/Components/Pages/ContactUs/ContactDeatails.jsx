@@ -11,7 +11,7 @@ const ContactDetails = () => {
       <div className="premium-footer-social">
         <ul className="premium-social-list">
           <li>
-            <a target="_blank" href="https://facebook.com/" rel="noreferrer">
+            <a target="_blank" href="https://www.facebook.com/people/Thehardwarebox/61589035546495/?locale=en_GB" rel="noreferrer">
               <RiFacebookFill />
             </a>
           </li>
@@ -21,7 +21,7 @@ const ContactDetails = () => {
             </a>
           </li> */}
           <li>
-            <a target="_blank" href="https://instagram.com/" rel="noreferrer">
+            <a target="_blank" href="https://www.instagram.com/thehardwarebox" rel="noreferrer">
               <RiInstagramFill />
             </a>
           </li>

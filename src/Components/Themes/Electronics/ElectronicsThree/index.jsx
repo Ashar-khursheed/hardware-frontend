@@ -63,15 +63,21 @@ const CategoryButtonStrip = ({ title, categoryIds }) => {
     <section className="py-4 bg-white section-b-space">
       <div className="container">
         {title && (
-          <h3 className="text-black mb-4" style={{ fontSize: '1.3rem', fontWeight: 700 }}>
+          <h3
+            className="text-black mb-4"
+            style={{ fontSize: '1.3rem', fontWeight: 700 }}
+          >
             {title}
           </h3>
         )}
-        <div style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '12px',
-        }}>
+
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '12px',
+          }}
+        >
           {categories.map((cat) => (
             <Link
               key={cat.id}
@@ -91,12 +97,14 @@ const CategoryButtonStrip = ({ title, categoryIds }) => {
                 whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--theme-color, #2874f0)';
+                e.currentTarget.style.background =
+                  'var(--theme-color, #2874f0)';
                 e.currentTarget.style.color = '#fff';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = '#fff';
-                e.currentTarget.style.color = 'var(--theme-color, #2874f0)';
+                e.currentTarget.style.color =
+                  'var(--theme-color, #2874f0)';
               }}
             >
               {cat.name}

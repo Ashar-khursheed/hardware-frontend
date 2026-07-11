@@ -1,22 +1,40 @@
-import ThemeOptionContext from "@/Context/ThemeOptionsContext";
+import SettingContext from "@/Context/SettingContext";
 import Btn from "@/Elements/Buttons/Btn";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
 import { SubscribeAPI } from "@/Utils/AxiosUtils/API";
+import { getRecaptchaConfig } from "@/Utils/CustomFunctions/RecaptchaUtils";
 import useCreate from "@/Utils/Hooks/useCreate";
-import { YupObject, emailSchema } from "@/Utils/Validation/ValidationSchema";
+import { YupObject, emailSchema, recaptchaSchema } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Container, FormGroup, Row } from "reactstrap";
 
 const FooterNewsLetter = ({ style }) => {
-  const { themeOption } = useContext(ThemeOptionContext);
+  const { settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
   const { t } = useTranslation("common");
+  const reCaptchaRef = useRef();
   const { mutate, isLoading } = useCreate(SubscribeAPI, false, false, "Subscribed Successfully", (resDta) => {
     if (resDta?.status == 200 || resDta?.status == 201) {
       refetch && refetch();
+      reCaptchaRef.current?.reset();
     }
   });
-  const emailValidationSchema = YupObject({ email: emailSchema });
+  const emailValidationSchema = YupObject({
+    email: emailSchema,
+    recaptcha: recaptchaEnabled ? recaptchaSchema : "",
+  });
+
+  const handleSubmit = (values, { resetForm }) => {
+    mutate(values, {
+      onSuccess: () => {
+        resetForm();
+        reCaptchaRef.current?.reset();
+      },
+    });
+  };
+
   return (
     <>
       {style == "basic" && (
@@ -33,13 +51,12 @@ const FooterNewsLetter = ({ style }) => {
                   </div>
                 </Col>
                 <Col lg="6">
-                  <Formik initialValues={{ email: "", }}
+                  <Formik
+                    initialValues={{ email: "", recaptcha: "" }}
                     validationSchema={emailValidationSchema}
-                    onSubmit={(values) => {
-                      mutate(values);
-                    }}
+                    onSubmit={handleSubmit}
                   >
-                    {({ errors, touched }) => (
+                    {({ errors, touched, setFieldValue }) => (
                       <Form className="form-inline subscribe-form auth-form needs-validation">
                         <div className="form-group">
                           <Field type="email" className="form-control" placeholder="Enter Email Address" name="email" />
@@ -49,6 +66,15 @@ const FooterNewsLetter = ({ style }) => {
                             </span>
                           )}
                         </div>
+                        {recaptchaEnabled && (
+                          <div className="mb-2">
+                            <RecaptchaField
+                              ref={reCaptchaRef}
+                              error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                              onChange={(value) => setFieldValue("recaptcha", value)}
+                            />
+                          </div>
+                        )}
                         <Btn loading={isLoading} className="btn-solid" type="submit">
                           {t("subscribe")}
                         </Btn>
@@ -63,15 +89,8 @@ const FooterNewsLetter = ({ style }) => {
       )}
       {style == "simple" && (
         <div className="subscribe-block">
-          {/* <h2>{t("newsletter")}</h2> */}
-          <Formik
-            initialValues={{ email: "" }}
-            validationSchema={emailValidationSchema}
-            onSubmit={(values) => {
-              mutate(values);
-            }}
-          >
-            {({ touched, errors }) => (
+          <Formik initialValues={{ email: "", recaptcha: "" }} validationSchema={emailValidationSchema} onSubmit={handleSubmit}>
+            {({ touched, errors, setFieldValue }) => (
               <Form>
                 <div className="row g-3 d-flex">
                   <Col md="8">
@@ -89,23 +108,23 @@ const FooterNewsLetter = ({ style }) => {
                     </Btn>
                   </Col>
                 </div>
-
+                {recaptchaEnabled && (
+                  <div className="mt-2">
+                    <RecaptchaField
+                      ref={reCaptchaRef}
+                      error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                      onChange={(value) => setFieldValue("recaptcha", value)}
+                    />
+                  </div>
+                )}
               </Form>
             )}
           </Formik>
         </div>
       )}
       {style == "classic" && (
-        <Formik
-          initialValues={{
-            email: "",
-          }}
-          validationSchema={emailValidationSchema}
-          onSubmit={(values) => {
-            mutate(values);
-          }}
-        >
-          {({ touched, errors }) => (
+        <Formik initialValues={{ email: "", recaptcha: "" }} validationSchema={emailValidationSchema} onSubmit={handleSubmit}>
+          {({ touched, errors, setFieldValue }) => (
             <Form className="form-inline align-items-start">
               <FormGroup className="me-3 mb-sm-2 newsletter-custom-mb">
                 <Field type="email" className="form-control" placeholder="Enter Email Address" name="email" />
@@ -115,6 +134,15 @@ const FooterNewsLetter = ({ style }) => {
                   </span>
                 )}
               </FormGroup>
+              {recaptchaEnabled && (
+                <div className="me-3 mb-sm-2">
+                  <RecaptchaField
+                    ref={reCaptchaRef}
+                    error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                    onChange={(value) => setFieldValue("recaptcha", value)}
+                  />
+                </div>
+              )}
               <Btn loading={isLoading} className="btn-solid mb-sm-2" id="subscribe" type="submit">
                 {t("subscribe")}
               </Btn>

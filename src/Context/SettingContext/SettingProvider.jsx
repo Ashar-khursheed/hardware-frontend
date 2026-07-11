@@ -12,14 +12,17 @@ const SettingProvider = (props) => {
   const [selectedCurrency, setSelectedCurrency] = useState({});
   const [settingData, setSettingData] = useState({});
   const [settingObj, setSettingObj] = useState({});
-  const { data, isLoading, refetch } = useQuery([SettingAPI], () => request({ url: SettingAPI }), { enabled: false, refetchOnWindowFocus: false, select: (res) => res?.data?.values });
+  const { data, isLoading, refetch } = useQuery([SettingAPI], () => request({ url: SettingAPI }), {
+    enabled: true,
+    refetchOnWindowFocus: false,
+    select: (res) => res?.data?.values,
+  });
   const pathName = usePathname();
 
   const { setLocalLanguage } = useContext(LanguageContext);
   
   useEffect(() => {
     if (data) {
-      refetch();
       if (data?.maintenance?.maintenance_mode) {
         Cookies.set("maintenance", JSON.stringify(true));
       } else {
@@ -29,11 +32,7 @@ const SettingProvider = (props) => {
       setSettingObj(data);
       setLocalLanguage(data.general.default_language?.locale)
     }
-  }, [ data]);
-
-  useEffect(() => {
-    isLoading && refetch();
-  }, [isLoading]);
+  }, [data]);
   // Convert Currency as per Exchange Rate
   const convertCurrency = useCallback(
     (value) => {

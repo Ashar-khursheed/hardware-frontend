@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import Link from "next/link";
 import { RiCloseLine, RiCheckLine, RiSendPlaneLine, RiPhoneLine, RiBuilding4Line, RiUser3Line, RiArchiveLine } from "react-icons/ri";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
+import SettingContext from "@/Context/SettingContext";
 import { BulkQuoteAPI } from "@/Utils/AxiosUtils/API";
 import request from "@/Utils/AxiosUtils";
+import { getRecaptchaConfig, recaptchaRequiredMessage } from "@/Utils/CustomFunctions/RecaptchaUtils";
 
 // Simple Spinner Element
 const Spinner = () => (
@@ -19,6 +22,9 @@ const URGENCY_LABELS = {
 };
 
 const BulkQuoteModal = ({ open, onClose }) => {
+  const { settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
+  const reCaptchaRef = useRef();
   const [fields, setFields] = useState({
     full_name: "",
     org_name: "",
@@ -28,6 +34,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
     quantity: "",
     urgency: "immediate",
     description: "",
+    recaptcha: "",
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -54,6 +61,7 @@ const BulkQuoteModal = ({ open, onClose }) => {
     if (!fields.phone?.trim()) e.phone = "Phone number is required";
     if (!fields.part_number?.trim()) e.part_number = "Part Number/Product is required";
     if (!fields.quantity?.trim() || isNaN(fields.quantity)) e.quantity = "Valid quantity is required";
+    if (recaptchaEnabled && !fields.recaptcha) e.recaptcha = recaptchaRequiredMessage;
     return e;
   };
 
@@ -74,7 +82,10 @@ const BulkQuoteModal = ({ open, onClose }) => {
         method: "POST",
         data: fields,
       });
-      if (res?.status === 200 || res?.status === 201) setSubmitted(true);
+      if (res?.status === 200 || res?.status === 201) {
+        setSubmitted(true);
+        reCaptchaRef.current?.reset();
+      }
       else setGlobalErr(res?.data?.message || "Something went wrong. Please check your data.");
     } catch (err) {
       setGlobalErr("Could not connect to the server. Please try again.");
@@ -182,6 +193,16 @@ const BulkQuoteModal = ({ open, onClose }) => {
 
                   {globalErr && <div className="hwb-alert-err">{globalErr}</div>}
 
+                  {recaptchaEnabled && (
+                    <div className="hwb-recaptcha-wrap">
+                      <RecaptchaField
+                        ref={reCaptchaRef}
+                        error={errors.recaptcha}
+                        onChange={(token) => handleSetField("recaptcha")(token)}
+                      />
+                    </div>
+                  )}
+
                   <div className="hwb-form-actions">
                     <button type="submit" className="hwb-btn-submit" disabled={loading}>
                       {loading ? <Spinner /> : <>Send Quote Request <RiSendPlaneLine /></>}
@@ -256,6 +277,8 @@ const BulkQuoteModal = ({ open, onClose }) => {
         .hwb-input-group textarea { height: 75px; resize: none; }
 
         .hwb-alert-err { padding: 10px; background: #fef2f2; border: 1px solid #fee2e2; border-radius: 10px; color: #ef4444; font-size: 12px; text-align: center; margin-top: 12px; }
+
+        .hwb-recaptcha-wrap { display: flex; justify-content: center; margin-top: 12px; }
 
         .hwb-form-actions { margin-top: 25px; text-align: center; }
         .hwb-btn-submit {

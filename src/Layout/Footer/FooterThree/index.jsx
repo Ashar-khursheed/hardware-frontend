@@ -402,7 +402,7 @@ const FooterThree = () => {
         <Container>
           <Row className="align-items-center text-white">
             <Col md="4" className="text-center text-md-start text-sm-start">
-              <p className="mb-0 text-white small">© 2025, <strong>The Hardware Box</strong> All rights reserved</p>
+              <p className="mb-0 text-white small">© 2026, <strong>The Hardware Box</strong> All rights reserved</p>
             </Col>
             <Col md="4" className="text-center">
               <div className="d-flex flex-column flex-md-row justify-content-center gap-3">

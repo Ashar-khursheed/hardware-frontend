@@ -1,12 +1,18 @@
+"use client";
 import CategoryContext from "@/Context/CategoryContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import Loader from "@/Layout/Loader";
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
+import request from "@/Utils/AxiosUtils";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
+import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import CollectionLeftSidebar from "../Collection/CollectionLeftSidebar";
+import CategoryDescription from "./CategoryDescription";
 
 const CategoryMainPage = ({ slug }) => {
+  const router = useRouter();
   const { isLoading } = useContext(ThemeOptionContext);
   const [filter, setFilter] = useState({ category: [slug], brand: [], price: [], attribute: [], rating: [], page: 1, sortBy: "asc", field: "created_at" });
   const [brand, attribute, price, rating, sortBy, field, layout, page] = useCustomSearchParams(["brand", "attribute", "price", "rating", "sortBy", "field", "layout", "page"]);
@@ -26,6 +32,39 @@ const CategoryMainPage = ({ slug }) => {
   }, [brand, attribute, price, rating, sortBy, field, page]);
 
   const { categoryData, categoryIsLoading } = useContext(CategoryContext);
+
+  const localCategoryApi = process.env.NEXT_PUBLIC_CATEGORY_API_URL;
+
+  const { data: categoryDetail, isLoading: categoryDetailLoading } = useQuery(
+    ["categorySlug", slug],
+    () => request({ url: `/category/slug/${slug}` }, router),
+    {
+      enabled: !!slug,
+      staleTime: 0,
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      select: (res) => res?.data,
+    }
+  );
+
+  // Dev only: fetch description/content from local API without changing site-wide API
+  const { data: localCategoryContent, isLoading: localContentLoading, isError: localContentError } = useQuery(
+    ["categorySlugLocalContent", slug, "v2"],
+    async () => {
+      const res = await fetch(`${localCategoryApi}/category/slug/${slug}`, {
+        headers: { Accept: "application/json", "accept-lang": "en" },
+      });
+      if (!res.ok) throw new Error("Local category API unavailable");
+      return res.json();
+    },
+    {
+      enabled: !!slug && !!localCategoryApi,
+      staleTime: 0,
+      refetchOnMount: true,
+      refetchOnWindowFocus: false,
+      retry: false,
+    }
+  );
 
   // Recursive function to flatten the category tree
   const flattenCategories = (items) => {
@@ -59,23 +98,30 @@ const CategoryMainPage = ({ slug }) => {
   };
 
   const hierarchy = getCategoryHierarchy(slug, flatCategoryData);
-  const currentCategory = flatCategoryData?.find(cat => cat.slug === slug);
+  const currentCategory = categoryDetail || flatCategoryData?.find(cat => cat.slug === slug) || (!localContentError ? localCategoryContent : null);
 
-  if (categoryIsLoading) return <Loader />;
+  const displayHeading = (!localContentError && localCategoryContent?.heading) || currentCategory?.heading;
+  const displayDescription = (!localContentError && localCategoryContent?.description) || currentCategory?.description;
+  const displayContent = (!localContentError && localCategoryContent?.content) || currentCategory?.content;
+
+  // In local dev mode (local category API set), render as soon as local content is ready
+  // instead of blocking on the live API, which may be unreachable offline.
+  if (localCategoryApi) {
+    if (localContentLoading) return <Loader />;
+  } else if (categoryIsLoading || categoryDetailLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
       <Breadcrumbs subNavigation={hierarchy} />
 
-      {/* Category Header Section */}
-      <div className="category-header-section py-4 bg-white border-bottom">
-        <div className="container">
-          <h1 className="fw-bold mb-2 text-dark h2">{currentCategory?.name || slug?.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h1>
-          {currentCategory?.description && (
-            <p className="text-muted mb-0 lead" style={{ fontSize: '1.1rem' }} dangerouslySetInnerHTML={{ __html: currentCategory.description }} />
-          )}
-        </div>
-      </div>
+      <CategoryDescription
+        heading={displayHeading}
+        slug={slug}
+        description={displayDescription}
+        content={displayContent}
+      />
 
       <CollectionLeftSidebar filter={filter} setFilter={setFilter} hideCategory categorySlug={slug} categoryId={currentCategory?.id} />
     </>

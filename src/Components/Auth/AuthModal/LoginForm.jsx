@@ -1,23 +1,26 @@
 import SettingContext from "@/Context/SettingContext";
 import Btn from "@/Elements/Buttons/Btn";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
 import { Href } from "@/Utils/Constants";
+import { getRecaptchaConfig } from "@/Utils/CustomFunctions/RecaptchaUtils";
 import useHandleLogin from "@/Utils/Hooks/useLogin";
 import { YupObject, emailSchema, passwordSchema, recaptchaSchema } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React, { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Label } from "reactstrap";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const LoginForm = ({ setState }) => {
   const [showBoxMessage, setShowBoxMessage] = useState();
   const { mutate, isLoading } = useHandleLogin(setShowBoxMessage);
   const { t } = useTranslation("common");
   const { settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
 
   const reCaptchaRef = useRef();
   return (
     <Formik
+      enableReinitialize
       initialValues={{
         email: "",
         password: "",
@@ -26,7 +29,7 @@ const LoginForm = ({ setState }) => {
       validationSchema={YupObject({
         email: emailSchema,
         password: passwordSchema,
-        recaptcha: settingData?.google_reCaptcha?.status ? recaptchaSchema : "",
+        recaptcha: recaptchaEnabled ? recaptchaSchema : "",
       })}
       onSubmit={mutate}
     >
@@ -49,16 +52,13 @@ const LoginForm = ({ setState }) => {
               {t("forgot_password")}?
             </a>
           </div>
-          {settingData?.google_reCaptcha?.status && (
-            <div>
-              <ReCAPTCHA
+          {recaptchaEnabled && (
+            <div className="mb-3">
+              <RecaptchaField
                 ref={reCaptchaRef}
-                sitekey={settingData?.google_reCaptcha?.site_key}
-                onChange={(value) => {
-                  setFieldValue("recaptcha", value);
-                }}
+                error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                onChange={(value) => setFieldValue("recaptcha", value)}
               />
-              {errors.recaptcha && touched.recaptcha && <ErrorMessage name="recaptcha" render={(msg) => <div className="invalid-feedback d-block">{errors.recaptcha}</div>} />}
             </div>
           )}
           <Btn loading={isLoading} type="submit">
