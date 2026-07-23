@@ -107,13 +107,13 @@ export default async function RootLayout({ children }) {
             gtag('config', 'G-C52RSE232C');
           `}
         </Script>
-        <Script
+        {/* <Script
           src="https://api.luziostore.com/widget.js"
           data-agent-id="019f6660-eb74-7271-94b1-6e0ecc293b29"
           data-api-base="https://api.luziostore.com/api/v1"
           async
           strategy="afterInteractive"
-        />
+        /> */}
 
         <meta name="google-site-verification" content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko" />
 
