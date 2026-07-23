@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Form, Formik } from "formik";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import Image from "next/image";
@@ -10,20 +10,25 @@ import { useQuery } from "@tanstack/react-query";
 
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import SimpleInputField from "@/Components/Widgets/InputFields/SimpleInputField";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
 import Btn from "@/Elements/Buttons/Btn";
 import { placeHolderImage } from "@/Components/Widgets/Placeholder";
 import SettingContext from "@/Context/SettingContext";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import { QuestionAnswerAPI, ProductAPI } from "@/Utils/AxiosUtils/API";
+import { getRecaptchaConfig } from "@/Utils/CustomFunctions/RecaptchaUtils";
 import useCreate from "@/Utils/Hooks/useCreate";
 import request from "@/Utils/AxiosUtils";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
+import { nameSchema, recaptchaSchema, YupObject } from "@/Utils/Validation/ValidationSchema";
 import Loader from "@/Layout/Loader";
 
 const AskQuestionContent = ({ params }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
-  const { convertCurrency } = useContext(SettingContext);
+  const { convertCurrency, settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
+  const reCaptchaRef = useRef();
   const { setOpenAuthModal } = useContext(ThemeOptionContext);
   const [message, setShowBoxMessage] = useState();
   const isAuth = Cookies.get("uat_multikart");
@@ -104,19 +109,27 @@ const AskQuestionContent = ({ params }) => {
                   )}
 
                   <Formik
+                    enableReinitialize
                     initialValues={{
                       question: "",
                       product_id: ProductData?.id,
+                      recaptcha: "",
                     }}
+                    validationSchema={YupObject({
+                      question: nameSchema,
+                      recaptcha: recaptchaEnabled ? recaptchaSchema : "",
+                    })}
                     onSubmit={(values) => {
                       if (!isAuth) {
                         setOpenAuthModal(true);
                         return;
                       }
-                      mutate(values);
+                      mutate(values, {
+                        onSuccess: () => reCaptchaRef.current?.reset(),
+                      });
                     }}
                   >
-                    {() => (
+                    {({ errors, touched, setFieldValue }) => (
                       <Form className="custom-form">
                         <div className="review-box form-box mb-4">
                           <SimpleInputField
@@ -133,6 +146,15 @@ const AskQuestionContent = ({ params }) => {
                             ]}
                           />
                         </div>
+                        {recaptchaEnabled && (
+                          <div className="mb-4">
+                            <RecaptchaField
+                              ref={reCaptchaRef}
+                              error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                              onChange={(value) => setFieldValue("recaptcha", value)}
+                            />
+                          </div>
+                        )}
                         <div className="button-group d-flex gap-3">
                           <Btn
                             title="Submit Question"

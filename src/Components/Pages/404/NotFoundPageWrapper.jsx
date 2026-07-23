@@ -2,12 +2,12 @@
 import NotFoundPage from "@/Components/Pages/404";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import Loader from "@/Layout/Loader";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
-const NotFound = ({ params }) => {
+const NotFoundPageWrapper = () => {
   const { isLoading, themeOption } = useContext(ThemeOptionContext);
   if (isLoading && !themeOption?.general) return <Loader />;
-  return <NotFoundPage params={params} />;
+  return <NotFoundPage />;
 };
 
-export default NotFound;
+export default NotFoundPageWrapper;

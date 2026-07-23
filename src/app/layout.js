@@ -83,11 +83,6 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="google" content="notranslate" />
 
-        {/* Default Index and Follow for SEO */}
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
         {/* Combined Google Fonts - Single request for better performance */}
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yellowtail&family=Cormorant:wght@400;500;600;700&family=Recursive:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fraunces:wght@400;500;600;700;800;900&display=swap"
@@ -124,6 +119,30 @@ export default async function RootLayout({ children }) {
 
       </head>
       <body suppressHydrationWarning={true}>
+
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "The Hardware Box",
+        "url": "https://www.thehardwarebox.com/",
+        "logo": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1 8328835303",
+          "contactType": "customer service",
+          "contactOption": "TollFree",
+          "areaServed": "US",
+          "availableLanguage": "en" 
+        }
+      }
+    `}
+        </Script>
         <Suspense fallback={<Loading />}>
           <LayoutProviders>
             {children}
@@ -149,6 +168,7 @@ async function LayoutProviders({ children }) {
   }
 
   const lng = await detectLanguage();
+
 
   return (
     <I18nProvider language={lng}>

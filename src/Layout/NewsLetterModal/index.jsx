@@ -1,14 +1,17 @@
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
+import SettingContext from "@/Context/SettingContext";
 import Btn from "@/Elements/Buttons/Btn";
+import RecaptchaField from "@/Components/Widgets/RecaptchaField";
 import { SubscribeAPI } from "@/Utils/AxiosUtils/API";
+import { getRecaptchaConfig } from "@/Utils/CustomFunctions/RecaptchaUtils";
 import { ImagePath, storageURL } from "@/Utils/Constants";
 import { getImageUrl } from "@/Utils/CustomFunctions/GetImageUrl";
 import useCreate from "@/Utils/Hooks/useCreate";
-import { emailSchema, YupObject } from "@/Utils/Validation/ValidationSchema";
+import { emailSchema, recaptchaSchema, YupObject } from "@/Utils/Validation/ValidationSchema";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Cookies from "js-cookie";
 import Image from "next/image";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Container, Modal, ModalBody, Row } from "reactstrap";
 
@@ -16,6 +19,9 @@ const NewsLetterModal = ({ setMakeExitActive }) => {
   const { t } = useTranslation("common");
   const [isOpen, setIsOpen] = useState(false);
   const { themeOption } = useContext(ThemeOptionContext);
+  const { settingData } = useContext(SettingContext);
+  const { enabled: recaptchaEnabled } = getRecaptchaConfig(settingData);
+  const reCaptchaRef = useRef();
 
   const { mutate, isLoading } = useCreate(SubscribeAPI, false, false, "Subscribed Successfully", (resDta) => {
     if (resDta?.status == 200 || resDta?.status == 201) {
@@ -55,20 +61,39 @@ const NewsLetterModal = ({ setMakeExitActive }) => {
                   <p>{themeOption?.popup?.news_letter?.description}</p>
                 </div>
                 <Formik
+                  enableReinitialize
                   initialValues={{
                     email: "",
+                    recaptcha: "",
                   }}
-                  validationSchema={YupObject({ email: emailSchema })}
-                  onSubmit={(values) => {
-                    mutate(values);
-                    setIsOpen(false);
+                  validationSchema={YupObject({
+                    email: emailSchema,
+                    recaptcha: recaptchaEnabled ? recaptchaSchema : "",
+                  })}
+                  onSubmit={(values, { resetForm }) => {
+                    mutate(values, {
+                      onSuccess: () => {
+                        resetForm();
+                        reCaptchaRef.current?.reset();
+                        setIsOpen(false);
+                      },
+                    });
                   }}
                 >
-                  {({ errors, touched }) => (
+                  {({ errors, touched, setFieldValue }) => (
                     <Form className="auth-form">
                       <div className="form-group text-center mb-0">
                         <Field type="email" className="form-control mb-3 input-padding" placeholder={t("enter_your_email")} name="email" />
                         {errors?.email && touched?.email && <ErrorMessage name="email" render={(msg) => <div className="invalid-feedback d-block">{errors?.email}</div>} />}
+                        {recaptchaEnabled && (
+                          <div className="mb-3 d-flex justify-content-center">
+                            <RecaptchaField
+                              ref={reCaptchaRef}
+                              error={errors.recaptcha && touched.recaptcha ? errors.recaptcha : ""}
+                              onChange={(value) => setFieldValue("recaptcha", value)}
+                            />
+                          </div>
+                        )}
                         <Btn loading={isLoading} className="btn-solid" type="submit">
                           <span className="d-sm-inline-block d-none">{t("subscribe")}</span>
                         </Btn>
