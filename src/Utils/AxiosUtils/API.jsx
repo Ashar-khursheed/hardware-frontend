@@ -62,6 +62,9 @@ export const CompareAPI = "/compare";
 // Attributes API
 export const AttributesAPI = "/attribute";
 
+// Category-scoped dynamic filters (Connector, Length, Voltage, etc.)
+export const CategoryFiltersAPI = "/category-filters";
+
 // Wallet API
 export const WalletConsumerAPI = "/wallet/consumer";
 

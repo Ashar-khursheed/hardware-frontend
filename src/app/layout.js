@@ -83,6 +83,7 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="google" content="notranslate" />
 
+
         {/* Combined Google Fonts - Single request for better performance */}
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yellowtail&family=Cormorant:wght@400;500;600;700&family=Recursive:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fraunces:wght@400;500;600;700;800;900&display=swap"
@@ -118,8 +119,35 @@ export default async function RootLayout({ children }) {
 
         <meta name="google-site-verification" content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko" />
 
+        {/* Google Tag Manager */}
+        <Script
+          id="google-tag-manager"
+          strategy="afterInteractive"
+        >
+          {`
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event:'gtm.js'
+      });
+
+      var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),
+          dl=l!='dataLayer'?'&l='+l:'';
+
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+
+      f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5XPX3DVX');
+  `}
+        </Script>
+
       </head>
       <body suppressHydrationWarning={true}>
+
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XPX3DVX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <Script
           id="organization-schema"
@@ -141,6 +169,73 @@ export default async function RootLayout({ children }) {
           "areaServed": "US",
           "availableLanguage": "en" 
         }
+      }
+    `}
+        </Script>
+
+        <Script
+          id="localbusiness-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "The Hardware Box",
+        "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+        "@id": "https://www.thehardwarebox.com/#localbusiness",
+        "url": "https://www.thehardwarebox.com/",
+        "telephone": "+1 8328835303",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "postalCode": "78731",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 30.34154,
+          "longitude": -97.75460
+        }
+      }
+    `}
+        </Script>
+
+        <Script
+          id="computerstore-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "ComputerStore",
+        "@id": "https://www.thehardwarebox.com/#computerstore",
+        "name": "The Hardware Box",
+        "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+        "url": "https://www.thehardwarebox.com/",
+        "email": "support@thehardwarebox.com",
+        "telephone": "+1 8328835303",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
+          "addressLocality": "Austin",
+          "addressRegion": "Texas",
+          "postalCode": "78731",
+          "addressCountry": {
+            "@type": "Country",
+            "name": "US"
+          }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 30.34154,
+          "longitude": -97.75460
+        },
+        "priceRange": "From $10"
       }
     `}
         </Script>

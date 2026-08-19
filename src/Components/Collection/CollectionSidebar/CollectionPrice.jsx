@@ -7,7 +7,7 @@ import { Collapse } from "reactstrap";
 
 const CollectionPrice = ({ filter, setFilter, attributeAPIData, isOffCanvas, open, toggle }) => {
   const router = useRouter();
-  const [category, attribute, sortBy, field, rating, layout] = useCustomSearchParams(["category", "attribute", "sortBy", "field", "rating", "layout"]);
+  const [category, attribute, brand, sortBy, field, rating, layout, category_filters] = useCustomSearchParams(["category", "attribute", "brand", "sortBy", "field", "rating", "layout", "category_filters"]);
   const { t } = useTranslation("common");
   const pathname = usePathname();
 
@@ -30,10 +30,10 @@ const CollectionPrice = ({ filter, setFilter, attributeAPIData, isOffCanvas, ope
       };
     });
     if (temp.length > 0) {
-      const queryParams = new URLSearchParams({ ...category, ...attribute, ...sortBy, ...field, ...rating, ...layout, price: temp }).toString();
+      const queryParams = new URLSearchParams({ ...category, ...attribute, ...brand, ...sortBy, ...field, ...rating, ...layout, ...category_filters, price: temp }).toString();
       router.push(`${pathname}?${queryParams}`);
     } else {
-      const queryParams = new URLSearchParams({ ...category, ...attribute, ...sortBy, ...field, ...rating, ...layout }).toString();
+      const queryParams = new URLSearchParams({ ...category, ...attribute, ...brand, ...sortBy, ...field, ...rating, ...layout, ...category_filters }).toString();
       router.push(`${pathname}?${queryParams}`);
     }
   };

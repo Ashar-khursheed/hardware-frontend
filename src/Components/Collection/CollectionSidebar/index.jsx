@@ -11,6 +11,7 @@ import { Collapse } from "reactstrap";
 import CollectionAttributes from "./CollectionAttributes";
 import CollectionBrand from "./CollectionBrand";
 import CollectionCategory from "./CollectionCategory";
+import CollectionCategoryFilters from "./CollectionCategoryFilters";
 import CollectionFilter from "./CollectionFilter";
 import CollectionPrice from "./CollectionPrice";
 import CollectionRating from "./CollectionRating";
@@ -19,7 +20,7 @@ import "./UniqueFilters.scss";
 const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rightSideClass, sellerClass, isAttributes = true, hideCategory, categorySlug, categoryId }) => {
   const { collectionMobile, setCollectionMobile, openOffCanvas, setOpenOffCanvas } = useContext(ThemeOptionContext);
   const { t } = useTranslation("common");
-  const [open, setOpen] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"]);
+  const [open, setOpen] = useState(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"]);
 
   const toggle = (id) => {
     if (open.includes(id)) {
@@ -105,6 +106,17 @@ const CollectionSidebar = ({ filter, setFilter, isOffcanvas, basicStoreCard, rig
                     isOffCanvas={isOffcanvas}
                     filter={filter}
                     setFilter={setFilter}
+                    attributeAPIData={attributeAPIData}
+                    open={open}
+                    toggle={toggle}
+                  />
+
+                  <CollectionCategoryFilters
+                    isOffCanvas={isOffcanvas}
+                    filter={filter}
+                    setFilter={setFilter}
+                    categorySlug={categorySlug}
+                    categoryId={categoryId}
                     attributeAPIData={attributeAPIData}
                     open={open}
                     toggle={toggle}

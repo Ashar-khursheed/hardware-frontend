@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { AccordionBody, Input, Label } from "reactstrap";
 
 const CollectionBrand = ({ filter, setFilter, categorySlug, categoryId }) => {
-  const [category, attribute, price, rating, sortBy, field, layout] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "layout"]);
+  const [category, attribute, price, rating, sortBy, field, layout, category_filters] = useCustomSearchParams(["category", "attribute", "price", "rating", "sortBy", "field", "layout", "category_filters"]);
   const { brandState, isLoading, refetch } = useContext(BrandContext);
   const [showList, setShowList] = useState();
   const { t } = useTranslation("common");
@@ -89,10 +89,10 @@ const CollectionBrand = ({ filter, setFilter, categorySlug, categoryId }) => {
       };
     });
     if (temp.length > 0) {
-      const queryParams = new URLSearchParams({ ...category, ...attribute, ...price, ...sortBy, ...field, ...rating, ...layout, brand: temp }).toString();
+      const queryParams = new URLSearchParams({ ...category, ...attribute, ...price, ...sortBy, ...field, ...rating, ...layout, ...category_filters, brand: temp }).toString();
       router.push(`${pathname}?${queryParams}`);
     } else {
-      const queryParams = new URLSearchParams({ ...category, ...attribute, ...price, ...sortBy, ...field, ...rating, ...layout }).toString();
+      const queryParams = new URLSearchParams({ ...category, ...attribute, ...price, ...sortBy, ...field, ...rating, ...layout, ...category_filters }).toString();
       router.push(`${pathname}?${queryParams}`);
     }
   };

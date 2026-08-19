@@ -268,7 +268,7 @@ const FooterThree = () => {
             {/* Column 7 - Power Supply & Protection */}
             <Col xs={12} md={6} lg={3}>
               <h4 className="fw-bold text-white mb-3 text-uppercase">
-                <a href="/category/power-supply" className="text-white text-decoration-none">Power Supply & Protection</a>
+                <a href="/category/power-supply-and-protection" className="text-white text-decoration-none">Power Supply & Protection</a>
               </h4>
               <p className="small text-white mb-1">
                 <a href="/category/power-supply" className="text-white text-decoration-none">Power Supply</a>

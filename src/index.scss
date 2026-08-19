@@ -606,13 +606,12 @@ header.sticky,
     }
 }
 
-.brand-logo img {
-    max-width: 170px;
-    height: auto;
-    object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-}
+// .brand-logo img {
+//     max-width: 170px;
+//     height: auto;
+//     object-fit: contain;
+//     image-rendering: -webkit-optimize-contrast;
+// }
 
 @media (max-width: 576px) {
     .phoneimg {
@@ -739,24 +738,27 @@ header.sticky,
     }
 
     .category-short-description,
-    p {
-        max-width: 100%;
-        line-height: 1.6;
-        color: #555;
+    .category-expanded-content,
+    .category-short-description *,
+    .category-expanded-content * {
         font-size: 14px !important;
         font-weight: 400 !important;
         font-family: 'Lato', sans-serif !important;
+        line-height: 1.6;
+        color: #555;
     }
 
     .category-short-description {
+        max-width: 100%;
         color: #555 !important;
+        margin-bottom: 0;
     }
 
     .category-short-description a,
     .category-expanded-content a {
         color: #ff5050 !important;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 400 !important;
 
         &:hover {
             text-decoration: underline;
@@ -767,6 +769,7 @@ header.sticky,
         background: transparent !important;
         background-color: transparent !important;
         border: none !important;
+        outline: none !important;
         box-shadow: none !important;
         color: #ff5050 !important;
         font-family: 'Lato', sans-serif !important;
@@ -776,10 +779,13 @@ header.sticky,
 
         &:hover,
         &:focus,
-        &:active {
+        &:active,
+        &:focus-visible {
             background: transparent !important;
             color: #ff5050 !important;
             text-decoration: underline;
+            border: none !important;
+            outline: none !important;
             box-shadow: none !important;
         }
     }
@@ -787,10 +793,6 @@ header.sticky,
     .category-expanded-content {
         display: none;
         color: #555;
-        font-size: 14px;
-        font-weight: 400 !important;
-        line-height: 1.6;
-        font-family: 'Lato', sans-serif !important;
 
         &.is-visible {
             display: block;
@@ -798,15 +800,17 @@ header.sticky,
 
         h1,
         h2,
-        h3 {
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 24px !important;
+            font-weight: 700 !important;
             font-family: 'Montserrat', sans-serif !important;
-            color: #1a1a1a;
-        }
-
-        h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 1.25rem 0 0.75rem;
+            color: #1a1a1a !important;
+            line-height: 1.3 !important;
+            text-transform: none;
+            margin: 1.25rem 0 0.6rem;
         }
 
         h2:first-child {
@@ -814,25 +818,31 @@ header.sticky,
         }
 
         p {
+            display: block;
             margin-bottom: 0.75rem;
-            font-family: 'Lato', sans-serif !important;
             font-weight: 400 !important;
         }
 
-        ul {
+        ul,
+        ol {
+            display: block !important;
+            list-style: disc !important;
+            list-style-position: outside !important;
             margin: 0 0 0.75rem;
             padding-left: 1.25rem;
 
             li {
-                margin-bottom: 0.35rem;
-                font-family: 'Lato', sans-serif !important;
+                display: list-item !important;
+                list-style: disc !important;
+                margin-bottom: 0.5rem;
                 font-weight: 400 !important;
             }
         }
 
-        strong {
-            font-weight: 700 !important;
-            color: #333;
+        strong,
+        b {
+            font-weight: 400 !important;
+            color: #555;
         }
     }
 }
@@ -1083,9 +1093,9 @@ header.sticky,
 
 @media (max-width: 991px) {
     .hbx-premium-blog-detail {
-        .blog-title-box h1 {
-            font-size: 1.75rem !important;
-        }
+        // .blog-title-box h1 {
+        //     font-size: 1.75rem !important;
+        // }
 
         .hbx-premium-blog-content p {
             font-size: 1rem;

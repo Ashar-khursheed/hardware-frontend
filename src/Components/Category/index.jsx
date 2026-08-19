@@ -4,6 +4,7 @@ import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import Loader from "@/Layout/Loader";
 import Breadcrumbs from "@/Utils/CommonComponents/Breadcrumb";
 import request from "@/Utils/AxiosUtils";
+import { parseCategoryFilters } from "@/Utils/CategoryFilterUtils";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
@@ -14,8 +15,8 @@ import CategoryDescription from "./CategoryDescription";
 const CategoryMainPage = ({ slug }) => {
   const router = useRouter();
   const { isLoading } = useContext(ThemeOptionContext);
-  const [filter, setFilter] = useState({ category: [slug], brand: [], price: [], attribute: [], rating: [], page: 1, sortBy: "asc", field: "created_at" });
-  const [brand, attribute, price, rating, sortBy, field, layout, page] = useCustomSearchParams(["brand", "attribute", "price", "rating", "sortBy", "field", "layout", "page"]);
+  const [filter, setFilter] = useState({ category: [slug], brand: [], price: [], attribute: [], categoryFilters: {}, rating: [], page: 1, sortBy: "asc", field: "created_at" });
+  const [brand, attribute, price, rating, sortBy, field, layout, page, category_filters] = useCustomSearchParams(["brand", "attribute", "price", "rating", "sortBy", "field", "layout", "page", "category_filters"]);
   useEffect(() => {
     setFilter((prev) => {
       return {
@@ -25,11 +26,12 @@ const CategoryMainPage = ({ slug }) => {
         attribute: attribute ? attribute?.attribute?.split(",") : [],
         price: price ? price?.price?.split(",") : [],
         rating: rating ? rating?.rating?.split(",") : [],
+        categoryFilters: parseCategoryFilters(category_filters?.category_filters || ""),
         sortBy: sortBy ? sortBy?.sortBy : "asc",
         field: field ? field?.field : "created_at",
       };
     });
-  }, [brand, attribute, price, rating, sortBy, field, page]);
+  }, [brand, attribute, price, rating, sortBy, field, page, category_filters]);
 
   const { categoryData, categoryIsLoading } = useContext(CategoryContext);
 

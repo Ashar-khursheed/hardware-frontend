@@ -5,19 +5,28 @@ import { useSearchParams } from "next/navigation";
 import React, { useContext, useState } from "react";
 import { Col } from "reactstrap";
 import Category from "./Category";
-import RecentPost from "./RecentPost";
 import Tags from "./Tags";
 
 const Sidebar = ({ isLoading }) => {
   const [open, setOpen] = useState("1");
+
   const searchParams = useSearchParams();
+
   const { categoryIsLoading } = useContext(CategoryContext);
   const { themeOption } = useContext(ThemeOptionContext);
+
   const querySidebar = searchParams.get("sidebar");
+
   const styleObj = {
-    no_sidebar: { class: "d-none" },
-    right_sidebar: { class: "order-lg-2" },
+    no_sidebar: {
+      class: "d-none",
+    },
+
+    right_sidebar: {
+      class: "order-lg-2",
+    },
   };
+
   const toggle = (id) => {
     if (open === id) {
       setOpen();
@@ -25,18 +34,31 @@ const Sidebar = ({ isLoading }) => {
       setOpen(id);
     }
   };
+
   return (
-    <Col xxl={3} lg={4} className={styleObj[querySidebar ?? themeOption?.blog?.blog_sidebar_type]?.class || ""}>
-      <div className="blog-sidebar">
+    <Col
+      xxl={12}
+      lg={12}
+      className={
+        styleObj[
+          querySidebar ?? themeOption?.blog?.blog_sidebar_type
+        ]?.class || ""
+      }
+    >
+      <div className="blog-sidebar hbx-clean-sidebar">
+
         {isLoading ? (
           <SKBlogSidebar />
         ) : (
           <>
-            <RecentPost />
+            {/* Categories */}
             <Category />
+
+            {/* Tags */}
             <Tags />
           </>
         )}
+
       </div>
     </Col>
   );

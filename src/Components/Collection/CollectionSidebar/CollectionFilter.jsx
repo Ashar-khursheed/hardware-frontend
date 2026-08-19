@@ -1,3 +1,4 @@
+import { serializeCategoryFilters } from "@/Utils/CategoryFilterUtils";
 import { useCustomSearchParams } from "@/Utils/Hooks/useCustomSearchParams";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -14,6 +15,12 @@ const CollectionFilter = ({ filter, setFilter, categorySlug }) => {
   const splitFilter = (filterKey) => {
     return filter && filter[filterKey] ? filter[filterKey] : [];
   };
+
+  const flattenCategoryFilters = () => {
+    const cf = filter?.categoryFilters || {};
+    return Object.values(cf).flat();
+  };
+
   const filterObj = {
     category: splitFilter("category"),
     attribute: splitFilter("attribute"),
@@ -21,9 +28,18 @@ const CollectionFilter = ({ filter, setFilter, categorySlug }) => {
     rating: splitFilter("rating"),
     brand: splitFilter("brand"),
   };
+
   const mergeFilter = () => {
-    setSelectedFilters([...filterObj["category"], ...filterObj["brand"], ...filterObj["attribute"], ...filterObj["price"], ...filterObj["rating"].map((val) => (val.startsWith("rating ") ? val : `rating ${val}`))]);
+    setSelectedFilters([
+      ...filterObj["category"],
+      ...filterObj["brand"],
+      ...filterObj["attribute"],
+      ...filterObj["price"],
+      ...flattenCategoryFilters(),
+      ...filterObj["rating"].map((val) => (val.startsWith("rating ") ? val : `rating ${val}`)),
+    ]);
   };
+
   useEffect(() => {
     mergeFilter();
   }, [filter]);
@@ -36,31 +52,35 @@ const CollectionFilter = ({ filter, setFilter, categorySlug }) => {
         }
         return val !== slugValue;
       });
-      mergeFilter();
-      setFilter(filterObj);
-      const params = {};
-      Object.keys(filterObj).forEach((key) => {
-        if (filterObj[key].length > 0) {
-          params[key] = filterObj[key].join(",");
-        }
-      });
-      const queryParams = new URLSearchParams({ ...params, ...layout }).toString();
-      router.push(`${pathname}?${queryParams}`);
     });
+
+    const nextCategoryFilters = { ...(filter?.categoryFilters || {}) };
+    Object.keys(nextCategoryFilters).forEach((groupSlug) => {
+      nextCategoryFilters[groupSlug] = nextCategoryFilters[groupSlug].filter((v) => v !== slugValue);
+      if (!nextCategoryFilters[groupSlug].length) {
+        delete nextCategoryFilters[groupSlug];
+      }
+    });
+
+    mergeFilter();
+    setFilter({ ...filterObj, categoryFilters: nextCategoryFilters });
+
+    const params = {};
+    Object.keys(filterObj).forEach((key) => {
+      if (filterObj[key].length > 0) {
+        params[key] = filterObj[key].join(",");
+      }
+    });
+    const serialized = serializeCategoryFilters(nextCategoryFilters);
+    if (serialized) {
+      params.category_filters = serialized;
+    }
+    const queryParams = new URLSearchParams({ ...params, ...layout }).toString();
+    router.push(`${pathname}?${queryParams}`);
   };
 
-  // const clearParams = () => {
-  //   setSelectedFilters([]);
-  //   setFilter({ category: categorySlug ? [categorySlug] : [], attribute: [], price: [], rating: [] });
-  //   router.push(layout ? `${pathname}?layout=${layout?.layout}` : pathname);
-  // };
-
   const clearParams = () => {
-    // Get the current path without query parameters
-    const pathWithoutQuery = pathname;
-
-    // Navigate to the same route without query parameters
-    router.push(pathWithoutQuery);
+    router.push(pathname);
   };
 
   const ModifyWord = (value) => {
