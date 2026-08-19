@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import Cookies from "js-cookie";
 import ShippingAddressSection from "./CheckoutFormData/ShippingAddressSection";
 import AddressSelection from "./CheckoutFormData/AddressSelection";
+import ShippingMethodSection from "./CheckoutFormData/ShippingMethodSection";
 import PaymentMethodSection from "./CheckoutFormData/PaymentMethodSection";
 
 const CheckoutForm = ({ values, setFieldValue, errors, addToCartData }) => {
@@ -44,6 +45,14 @@ const CheckoutForm = ({ values, setFieldValue, errors, addToCartData }) => {
             values={values}
           />
         )}
+      </div>
+
+      <div className="hbx-checkout-step-item">
+        <ShippingMethodSection
+          values={values}
+          setFieldValue={setFieldValue}
+          errors={errors}
+        />
       </div>
 
       <div className="hbx-checkout-step-item">

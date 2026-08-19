@@ -13,12 +13,40 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
   const router = useRouter();
   const { settingData } = useContext(SettingContext);
   const access_token = Cookies.get("uat_multikart");
-  const { cartProducts, setCartProducts } = useContext(CartContext);
+  const { cartProducts, setCartProducts, getTotal } = useContext(CartContext);
   const [getOrderNumber, setGetOrderNumber] = useState("");
   const [errorOrder, setErrorOrder] = useState("");
   const [disable, setDisable] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showBoxMessage, setShowBoxMessage] = useState(null); // Add this for useCreate
+  const [showBoxMessage, setShowBoxMessage] = useState(null);
+
+  const syncWithShipStation = async (orderRes, orderNumber) => {
+    try {
+      await fetch('/api/shipstation/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderNumber: orderNumber || `ORD-${Date.now()}`,
+          orderDate: new Date().toISOString(),
+          customerName: values["name"] || values["shipping_address"]?.title || 'Valued Customer',
+          customerEmail: values["email"] || orderRes?.consumer?.email || orderRes?.email || '',
+          phone: values["phone"] || '',
+          shippingAddress: values["shipping_address"] || {},
+          billingAddress: values["billing_address"] || {},
+          items: cartProducts || [],
+          total: Number(values["shipping_cost"] || 0) + Number(getTotal(cartProducts || [])),
+          shippingCost: Number(values["shipping_cost"] || 0),
+          carrierCode: values["carrier_code"] || 'stamps_com',
+          serviceCode: values["service_code"] || 'usps_priority_mail',
+          serviceName: values["delivery_description"] || 'USPS Priority Mail',
+          paymentMethod: values["payment_method"] || 'cod'
+        })
+      });
+      console.log('ShipStation Order Synced Successfully with accounts@convexns.com');
+    } catch (e) {
+      console.warn('ShipStation Sync Error:', e);
+    }
+  };
 
   const { data, mutate, isLoading } = useCreate(
     OrderAPI, // url
@@ -34,6 +62,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
 
         const isGuest = resDta?.data?.is_guest || resDta?.is_guest;
         const consumerEmail = resDta?.data?.consumer?.email || resDta?.email || resDta?.data?.email;
+
+        // Sync order to ShipStation account
+        await syncWithShipStation(resDta?.data || resDta, orderNumber);
 
         // Handle Cash on Delivery
         if (values["payment_method"] == "cod" || values["payment_method"] == "bank_transfer") {
@@ -52,11 +83,9 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         // Handle Stripe Payment
         else if (values["payment_method"] == "stripe") {
           const redirectUrl = resDta?.data?.url || resDta?.url;
-          // If backend returns a payment URL (for Stripe Checkout)
           if (redirectUrl) {
             window.open(redirectUrl, "_self");
           }
-          // If using Stripe Elements (direct payment)
           else if (values["stripe_instance"]) {
             await handleStripePayment(resDta?.data || resDta);
           }
@@ -69,7 +98,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           }
         }
       } else {
-        // Log the full error for debugging
         console.error('Order API Error:', {
           status: resDta?.status,
           message: resDta?.data?.message || resDta?.message,
@@ -89,7 +117,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
     false, // notHandler
     null, // setCouponError
     null, // refetch
-    setShowBoxMessage, // setShowBoxMessage (9th parameter)
+    setShowBoxMessage, // setShowBoxMessage
     null, // responseType
     (err) => { // errFunction
       console.error('Order API Error Handler:', err);
@@ -107,14 +135,12 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         throw new Error("Stripe hasn't loaded yet");
       }
 
-      // Get card element
       const cardNumberElement = elements.getElement("cardNumber");
 
       if (!cardNumberElement) {
         throw new Error("Card element not found");
       }
 
-      // Create payment method
       const { error, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
         card: cardNumberElement,
@@ -136,7 +162,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         return;
       }
 
-      // If backend requires payment intent confirmation
       if (orderData?.client_secret) {
         const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
           orderData.client_secret,
@@ -153,7 +178,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         }
 
         if (paymentIntent.status === 'succeeded') {
-          // Payment successful
           if (!orderData?.is_guest) {
             router.push(`/account/order/details/${orderData.order_number}`);
           } else {
@@ -166,9 +190,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           setCartProducts([]);
         }
       } else {
-        // Just send payment method ID to backend
-        console.log('Payment method created:', paymentMethod.id);
-        // Backend will handle the rest
         if (!orderData?.is_guest) {
           router.push(`/account/order/details/${orderData.order_number}`);
         } else {
@@ -191,7 +212,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
 
   useEffect(() => {
     if (!access_token) {
-      // Guest checkout validation - check if required fields are filled
       const requiredFieldsFilled = Boolean(
         values["name"] &&
         values["email"] &&
@@ -200,62 +220,21 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         values["shipping_address"]?.city &&
         values["shipping_address"]?.pincode &&
         values["shipping_address"]?.country_id &&
-        values["shipping_address"]?.state_id && // State is required for shipping calculation
+        values["shipping_address"]?.state_id &&
         values["payment_method"]
       );
 
-      // TEMPORARILY IGNORE ERRORS - just check required fields
-      // const criticalErrors = Object.keys(errors).filter(key => 
-      //   key !== 'password' && key !== 'create_account'
-      // );
-      // const hasCriticalErrors = criticalErrors.length > 0;
-      const hasCriticalErrors = false; // Disable error checking temporarily
-
+      const hasCriticalErrors = false;
       const isStripeNotComplete = values["payment_method"] === "stripe" && !values["stripe_card_complete"];
-
       const shouldDisable = !requiredFieldsFilled || hasCriticalErrors || isStripeNotComplete;
 
-      console.log('Guest Checkout Button State:', {
-        requiredFieldsFilled,
-        hasCriticalErrors,
-        allErrors: errors, // Show all errors
-        isStripeNotComplete,
-        paymentMethod: values["payment_method"],
-        stripeCardComplete: values["stripe_card_complete"],
-        shouldDisable,
-        // Show which fields are filled
-        fieldStatus: {
-          name: !!values["name"],
-          email: !!values["email"],
-          phone: !!values["phone"],
-          street: !!values["shipping_address"]?.street,
-          city: !!values["shipping_address"]?.city,
-          pincode: !!values["shipping_address"]?.pincode,
-          country_id: !!values["shipping_address"]?.country_id,
-          state_id: !!values["shipping_address"]?.state_id
-        }
-      });
-
-      // Disable if: required fields not filled OR stripe not complete
       setDisable(shouldDisable);
     } else {
-      // Logged in user validation
       const hasRequiredFields = values["billing_address_id"] &&
-        values["shipping_address_id"] && // Add shipping address check
+        values["shipping_address_id"] &&
         values["payment_method"];
       const isStripeNotComplete = values["payment_method"] === "stripe" && !values["stripe_card_complete"];
-
       const shouldDisable = !hasRequiredFields || isStripeNotComplete;
-
-      console.log('Logged In Button State:', {
-        hasRequiredFields,
-        billing_address_id: values["billing_address_id"],
-        shipping_address_id: values["shipping_address_id"],
-        payment_method: values["payment_method"],
-        isStripeNotComplete,
-        stripeCardComplete: values["stripe_card_complete"],
-        shouldDisable
-      });
 
       setDisable(shouldDisable);
     }
@@ -265,8 +244,14 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
     console.log('Place Order clicked - values:', values);
     setIsProcessing(true);
 
+    const shipstationOrderData = {
+      shipping_cost: values["shipping_cost"] || 0,
+      carrier_code: values["carrier_code"] || "",
+      service_code: values["service_code"] || "",
+      delivery_description: values["delivery_description"] || "standard",
+    };
+
     if (settingData?.activation?.guest_checkout && !access_token) {
-      // Guest checkout - prepare proper data structure
       const guestOrderData = {
         name: values["name"],
         email: values["email"],
@@ -283,10 +268,10 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         coupon: values["coupon"] || "",
         points_amount: values["points_amount"] || 0,
         wallet_balance: values["wallet_balance"] || 0,
-        create_account: values["create_account"] || false, // Required for Laravel guest checkout
-        password: values["password"] || "", // Include password if creating account
-        password_confirmation: values["password"] || "", // Laravel requires this to match password
-        // DON'T send stripe_instance to backend - only use it in frontend
+        create_account: values["create_account"] || false,
+        password: values["password"] || "",
+        password_confirmation: values["password"] || "",
+        ...shipstationOrderData
       };
 
       console.log('Guest order data (sending to backend):', guestOrderData);
@@ -298,7 +283,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         setIsProcessing(false);
       }
     } else {
-      // Logged-in user checkout
       if (access_token && values["billing_address_id"] && values["shipping_address_id"] && values["payment_method"]) {
         const targetObject = {
           coupon: values["coupon"] || "",
@@ -310,7 +294,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           payment_method: values["payment_method"],
           products: cartProducts,
           wallet_balance: values["wallet_balance"] || 0,
-          // DON'T send stripe_instance to backend
+          ...shipstationOrderData
         };
 
         console.log('Logged in order data (sending to backend):', targetObject);
@@ -323,7 +307,6 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
         }
       }
 
-      // Digital-only products (logged in user)
       if (addToCartData?.is_digital_only && values["billing_address_id"] && values["payment_method"]) {
         const targetObject1 = {
           coupon: values["coupon"] || "",
@@ -332,7 +315,7 @@ const PlaceOrder = ({ values, addToCartData, errors }) => {
           payment_method: values["payment_method"],
           products: cartProducts,
           wallet_balance: values["wallet_balance"] || 0,
-          // DON'T send stripe_instance to backend
+          ...shipstationOrderData
         };
 
         console.log('Digital only order data (sending to backend):', targetObject1);

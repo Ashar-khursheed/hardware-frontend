@@ -87,7 +87,9 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
     values["points_amount"],
     values["wallet_balance"],
     values["delivery_description"],
-    values["delivery_interval"]
+    values["delivery_interval"],
+    values["shipping_cost"],
+    values["shipping_rate_id"]
   ]);
 
   // Submitting data on Checkout for calculation
@@ -118,13 +120,15 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
           billing_address: debouncedValues["billing_address"]?.same_shipping 
             ? debouncedValues["shipping_address"] 
             : debouncedValues["billing_address"],
-          delivery_description: "standard",
+          delivery_description: debouncedValues["delivery_description"] || "standard",
           delivery_interval: debouncedValues["delivery_interval"] || "",
           payment_method: debouncedValues["payment_method"],
           products: cartProducts,
           coupon: debouncedValues["coupon"] || "",
           points_amount: debouncedValues["points_amount"] || 0,
-          wallet_balance: debouncedValues["wallet_balance"] || 0
+          wallet_balance: debouncedValues["wallet_balance"] || 0,
+          shipping_cost: debouncedValues["shipping_cost"],
+          shipping_rate_id: debouncedValues["shipping_rate_id"]
         };
         mutate(guestCheckoutData);
       }
@@ -162,12 +166,15 @@ const CheckoutSidebar = ({ values, setFieldValue, errors, addToCartData }) => {
           payment_method: debouncedValues["payment_method"] || "cod", // Default to cod for calculation
           products: cartProducts,
           wallet_balance: debouncedValues["wallet_balance"] || 0,
+          shipping_cost: debouncedValues["shipping_cost"],
+          shipping_rate_id: debouncedValues["shipping_rate_id"]
         };
         
         console.log('Logged-in user - calling /api/checkout:', targetObject);
         mutate(targetObject);
       }
     }
+
   }, [
     cartProducts,
     cartTotal,

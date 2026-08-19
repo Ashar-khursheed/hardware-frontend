@@ -1,4 +1,3 @@
-
 import NoDataFound from "@/Components/Widgets/NoDataFound";
 import CartContext from "@/Context/CartContext";
 import SettingContext from "@/Context/SettingContext";
@@ -17,12 +16,27 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
   const { t } = useTranslation("common");
   const access_token = Cookies.get("uat_multikart");
 
-  // Use API data if available, otherwise fall back to cart total
+  // Subtotal calculation
   const hasApiData = data?.data?.total?.sub_total !== undefined;
-  const displaySubTotal = hasApiData ? data?.data?.total?.sub_total : cartTotal;
-  const displayShipping = hasApiData ? data?.data?.total?.shipping_total : null;
-  const displayTax = hasApiData ? data?.data?.total?.tax_total : null;
-  const displayTotal = hasApiData ? data?.data?.total?.total : cartTotal;
+  const displaySubTotal = hasApiData ? Number(data?.data?.total?.sub_total) : Number(cartTotal || 0);
+
+  // ShipStation shipping cost calculation
+  const shipStationCost = values?.shipping_cost !== undefined && values?.shipping_cost !== null 
+    ? Number(values.shipping_cost)
+    : null;
+
+  const displayShipping = shipStationCost !== null 
+    ? shipStationCost 
+    : (hasApiData && data?.data?.total?.shipping_total !== undefined ? Number(data?.data?.total?.shipping_total) : 0);
+
+  const displayTax = hasApiData && data?.data?.total?.tax_total !== undefined ? Number(data?.data?.total?.tax_total) : 0;
+  
+  const couponDiscount = (appliedCoupon === "applied" && data?.data?.total?.coupon_total_discount) 
+    ? Number(data?.data?.total?.coupon_total_discount) 
+    : 0;
+
+  // Grand total calculation
+  const displayTotal = displaySubTotal + displayShipping + displayTax - couponDiscount;
 
   return (
     <div className="checkout-details ">
@@ -46,12 +60,15 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
                 </li>
                 <li>
                   {t("shipping")}
-                  <span className="count">
-                    {displayShipping !== null && displayShipping >= 0
-                      ? convertCurrency(displayShipping?.toFixed(2))
-                      : t("-")}
+                  <span className="count font-weight-bold text-primary">
+                    {displayShipping === 0 ? 'FREE' : convertCurrency(displayShipping?.toFixed(2))}
                   </span>
                 </li>
+                {values?.delivery_description && (
+                  <li className="text-muted small py-1" style={{ fontSize: '12px' }}>
+                    <i className="ri-truck-line me-1"></i> {values.delivery_description}
+                  </li>
+                )}
                 <li>
                   {t("tax")}
                   <span className="count">
@@ -74,7 +91,7 @@ const BillingSummary = ({ data, values, setFieldValue, isLoading, mutate, storeC
                   {t("total")}
                   <span className="count">
                     {isLoading && <small className="text-muted fw-normal me-2" style={{ fontSize: '11px' }}>Calculating...</small>}
-                    {convertCurrency(displayTotal?.toFixed(2))}
+                    {convertCurrency(Math.max(0, displayTotal)?.toFixed(2))}
                   </span>
                 </li>
               </ul>
