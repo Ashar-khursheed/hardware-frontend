@@ -83,7 +83,6 @@ export default async function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="google" content="notranslate" />
 
-
         {/* Combined Google Fonts - Single request for better performance */}
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yellowtail&family=Cormorant:wght@400;500;600;700&family=Recursive:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&family=Courgette&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Fraunces:wght@400;500;600;700;800;900&display=swap"
@@ -108,14 +107,13 @@ export default async function RootLayout({ children }) {
             gtag('config', 'G-C52RSE232C');
           `}
         </Script>
-        {/* <Script
-          src="https://chats.in-sourceit.com/widget.js"
-          data-agent-id="019d6a83-e889-70c1-8824-408baa373051"
-          data-api-key="ab_live_c4d9e309be0c41cf96833c4f837dc10b"
-          data-api-base="https://chats.in-sourceit.com/api/v1"
+        <Script
+          src="https://api.luziostore.com/widget.js"
+          data-agent-id="019f6660-eb74-7271-94b1-6e0ecc293b29"
+          data-api-base="https://api.luziostore.com/api/v1"
           async
           strategy="afterInteractive"
-        /> */}
+        />
 
         <meta name="google-site-verification" content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko" />
 
@@ -147,8 +145,6 @@ export default async function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning={true}>
 
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XPX3DVX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
         <Script
           id="organization-schema"
           type="application/ld+json"
@@ -169,73 +165,6 @@ export default async function RootLayout({ children }) {
           "areaServed": "US",
           "availableLanguage": "en" 
         }
-      }
-    `}
-        </Script>
-
-        <Script
-          id="localbusiness-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
-          {`
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "The Hardware Box",
-        "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
-        "@id": "https://www.thehardwarebox.com/#localbusiness",
-        "url": "https://www.thehardwarebox.com/",
-        "telephone": "+1 8328835303",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
-          "addressLocality": "Austin",
-          "addressRegion": "TX",
-          "postalCode": "78731",
-          "addressCountry": "US"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 30.34154,
-          "longitude": -97.75460
-        }
-      }
-    `}
-        </Script>
-
-        <Script
-          id="computerstore-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
-          {`
-      {
-        "@context": "https://schema.org",
-        "@type": "ComputerStore",
-        "@id": "https://www.thehardwarebox.com/#computerstore",
-        "name": "The Hardware Box",
-        "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
-        "url": "https://www.thehardwarebox.com/",
-        "email": "support@thehardwarebox.com",
-        "telephone": "+1 8328835303",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
-          "addressLocality": "Austin",
-          "addressRegion": "Texas",
-          "postalCode": "78731",
-          "addressCountry": {
-            "@type": "Country",
-            "name": "US"
-          }
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 30.34154,
-          "longitude": -97.75460
-        },
-        "priceRange": "From $10"
       }
     `}
         </Script>
