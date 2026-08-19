@@ -1,52 +1,126 @@
 "use client";
+
 import NoDataFound from "@/Components/Widgets/NoDataFound";
 import { placeHolderImage } from "@/Components/Widgets/Placeholder";
-import BlogContext from "@/Context/BlogContext";
 import request from "@/Utils/AxiosUtils";
 import { BlogAPI } from "@/Utils/AxiosUtils/API";
 import { showMonthWiseDateAndTime } from "@/Utils/CustomFunctions/DateFormate";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
-const RecentPost = () => {
-  // const { blogState, refetch } = useContext(BlogContext);
-  const { data: blogState, isLoading, refetch } = useQuery([BlogAPI], () => request({ url: BlogAPI, params: { paginate: 5 } }), { enabled: false, refetchOnWindowFocus: false, select: (res) => res?.data?.data });
+const RecentPost = ({
+  currentSlug,
+  title = "Related Blogs",
+  limit = 3,
+}) => {
+
+  const {
+    data: blogState,
+    isLoading,
+    refetch,
+  } = useQuery(
+    [BlogAPI, currentSlug],
+    () =>
+      request({
+        url: BlogAPI,
+        params: {
+          paginate: 10,
+        },
+      }),
+    {
+      enabled: false,
+      refetchOnWindowFocus: false,
+      select: (res) => res?.data?.data,
+    }
+  );
 
   useEffect(() => {
-    isLoading && refetch();
-  }, [isLoading]);
-  // useEffect(() => {
-  //   refetch();
-  // }, []);
+    refetch();
+  }, [refetch]);
+
   const { t } = useTranslation("common");
+
+  const relatedBlogs =
+    blogState
+      ?.filter((blog) => blog?.slug !== currentSlug)
+      ?.slice(0, limit) || [];
+
   return (
-    <div className="theme-card">
-      <h4>{t("recent_blog")}</h4>
-      {blogState?.length > 0 ? (
-        <ul className="recent-blog">
-          {blogState?.slice(0, 5).map((blog, index) => (
-            <li key={index}>
-              <div className="media blog-box">
-                <div className="blog-image">
-                  <Image height={340} width={280} className="img-fluid lazyload" src={blog?.blog_thumbnail?.original_url ? blog?.blog_thumbnail?.original_url : placeHolderImage} alt="blog-image" />
+    <section className="hbx-related-blogs">
+
+      <div className="hbx-related-heading">
+        <span />
+        <h2>{title}</h2>
+        <span />
+      </div>
+
+      {isLoading ? (
+        <div className="hbx-related-loading">
+          Loading...
+        </div>
+      ) : relatedBlogs?.length > 0 ? (
+
+        <div className="hbx-related-grid">
+
+          {relatedBlogs.map((blog, index) => (
+
+            <article
+              className="hbx-related-card"
+              key={blog?.id || index}
+            >
+
+              <Link href={`/blog/${blog?.slug}`}>
+
+                <div className="hbx-related-image">
+
+                  <Image
+                    height={220}
+                    width={360}
+                    className="img-fluid"
+                    src={
+                      blog?.blog_thumbnail?.original_url ||
+                      placeHolderImage
+                    }
+                    alt={blog?.title || "Related Blog"}
+                  />
+
                 </div>
-                <div className="media-body blog-content">
-                  <h6>{showMonthWiseDateAndTime(blog?.created_at)}</h6>
-                  <Link href={`/blog/${blog?.slug}`} legacyBehavior>
-                    <h5>{blog.title}</h5>
-                  </Link>
+
+                <div className="hbx-related-content">
+
+                  <span className="hbx-related-date">
+                    {showMonthWiseDateAndTime(blog?.created_at)}
+                  </span>
+
+                  <h3>
+                    {blog?.title}
+                  </h3>
+
+                  <span className="hbx-read-more">
+                    Read More →
+                  </span>
+
                 </div>
-              </div>
-            </li>
+
+              </Link>
+
+            </article>
+
           ))}
-        </ul>
+
+        </div>
+
       ) : (
-        <NoDataFound customClass="bg-light no-data-added" title="no_blog" />
+        <NoDataFound
+          customClass="bg-light no-data-added"
+          title="no_blog"
+        />
       )}
-    </div>
+
+    </section>
   );
 };
 

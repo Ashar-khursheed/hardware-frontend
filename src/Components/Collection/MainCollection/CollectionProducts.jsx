@@ -4,7 +4,8 @@ import ProductBox from "@/Components/Widgets/ProductBox";
 import ProductSkeleton from "@/Components/Widgets/SkeletonLoader/ProductSkeleton";
 import ThemeOptionContext from "@/Context/ThemeOptionsContext";
 import request from "@/Utils/AxiosUtils";
-import { ProductAPI } from "@/Utils/AxiosUtils/API";
+import { CategoryFiltersAPI, ProductAPI } from "@/Utils/AxiosUtils/API";
+import { serializeCategoryFilters } from "@/Utils/CategoryFilterUtils";
 import { ImagePath } from "@/Utils/Constants";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -12,6 +13,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Col, Row } from "reactstrap";
 import ListProductBox from "./ListProductBox";
+
+const normalizeSku = (sku) => String(sku || "").trim().replace(/=+$/, "").toUpperCase();
 
 const CollectionProducts = ({ filter, grid, infiniteScroll, categorySlug, authorSlug, publicationSlug, setTotalProducts }) => {
   const { themeOption } = useContext(ThemeOptionContext);
@@ -23,16 +26,105 @@ const CollectionProducts = ({ filter, grid, infiniteScroll, categorySlug, author
   const param = useSearchParams();
   const tagParam = param.get("tag");
   const [isMounted, setIsMounted] = useState(false);
+  const localCategoryApi = process.env.NEXT_PUBLIC_CATEGORY_API_URL;
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  const fetchMatchingSkus = async (serializedFilters) => {
+    if (!localCategoryApi || !serializedFilters || !categorySlug) return null;
+    try {
+      const qs = new URLSearchParams({
+        category_slug: categorySlug,
+        category_filters: serializedFilters,
+      });
+      const res = await fetch(`${localCategoryApi}${CategoryFiltersAPI}/skus?${qs.toString()}`, {
+        headers: { Accept: "application/json", "accept-lang": "en" },
+      });
+      if (!res.ok) return null;
+      const json = await res.json();
+      return (json?.data || []).map(normalizeSku).filter(Boolean);
+    } catch {
+      return null;
+    }
+  };
+
   const fetchData = async () => {
+    const serializedFilters = serializeCategoryFilters(filter?.categoryFilters);
+    const matchingSkus = await fetchMatchingSkus(serializedFilters);
+    const useLocalSkuFilter = !!localCategoryApi && !!serializedFilters && Array.isArray(matchingSkus);
+
+    // No SKUs match this Connector+Length combination in Excel
+    if (useLocalSkuFilter && matchingSkus.length === 0) {
+      return {
+        data: {
+          data: [],
+          total: 0,
+          per_page: filter?.paginate ?? 30,
+          current_page: page,
+          last_page: 1,
+          from: null,
+          to: null,
+        },
+      };
+    }
+
+    // When we have exact Part#s, fetch each by search so AND results aren't missed
+    // (they may not appear in the parent category product dump).
+    if (useLocalSkuFilter && matchingSkus.length > 0 && matchingSkus.length <= 80) {
+      const seen = new Set();
+      const found = [];
+
+      await Promise.all(
+        matchingSkus.map(async (sku) => {
+          const res = await request({
+            url: ProductAPI,
+            params: {
+              search: sku,
+              status: 1,
+              paginate: 10,
+            },
+          });
+          for (const product of res?.data?.data || []) {
+            const productSku = normalizeSku(product?.sku);
+            const name = normalizeSku(product?.name);
+            const match =
+              productSku === sku ||
+              name === sku ||
+              name.startsWith(`${sku} `) ||
+              name.startsWith(`${sku}-`);
+            if (match && !seen.has(product.id)) {
+              seen.add(product.id);
+              found.push(product);
+            }
+          }
+        })
+      );
+
+      const perPage = filter?.paginate ?? 30;
+      const start = (page - 1) * perPage;
+      const pageItems = found.slice(start, start + perPage);
+      const total = found.length;
+      const lastPage = Math.max(1, Math.ceil(total / perPage) || 1);
+
+      return {
+        data: {
+          data: pageItems,
+          total,
+          per_page: perPage,
+          current_page: page,
+          last_page: lastPage,
+          from: total === 0 ? null : start + 1,
+          to: total === 0 ? null : start + pageItems.length,
+        },
+      };
+    }
+
     const params = {
-      page,
+      page: useLocalSkuFilter ? 1 : page,
       status: 1,
-      paginate: filter?.paginate ?? 30,
+      paginate: useLocalSkuFilter ? 500 : filter?.paginate ?? 30,
       field: filter?.field ?? "created_at",
       price: filter?.price?.join(",") ?? "",
       category: categorySlug ? categorySlug : filter?.category?.join(",") || tagParam,
@@ -41,12 +133,51 @@ const CollectionProducts = ({ filter, grid, infiniteScroll, categorySlug, author
       sortBy: filter?.sortBy ?? "asc",
       rating: filter?.rating?.join(",") ?? "",
       attribute: filter?.attribute?.join(",") ?? "",
+      category_filters: useLocalSkuFilter ? "" : serializedFilters,
       store_slug: slug ? slug : null,
       created_at: filter?.created_at ?? "",
       author_slug: authorSlug ? authorSlug : filter?.author_slug,
       publication_slug: publicationSlug ? publicationSlug : filter?.publication_slug,
     };
-    return request({ url: ProductAPI, params });
+
+    const response = await request({ url: ProductAPI, params });
+
+    if (useLocalSkuFilter && response?.data?.data) {
+      const skuSet = new Set(matchingSkus);
+      const filtered = response.data.data.filter((product) => {
+        const productSku = normalizeSku(product?.sku);
+        if (productSku && skuSet.has(productSku)) return true;
+        const name = normalizeSku(product?.name);
+        if (!name) return false;
+        for (const sku of skuSet) {
+          if (name === sku || name.startsWith(`${sku} `) || name.startsWith(`${sku}-`)) {
+            return true;
+          }
+        }
+        return false;
+      });
+      const perPage = filter?.paginate ?? 30;
+      const start = (page - 1) * perPage;
+      const pageItems = filtered.slice(start, start + perPage);
+      const total = filtered.length;
+      const lastPage = Math.max(1, Math.ceil(total / perPage) || 1);
+
+      return {
+        ...response,
+        data: {
+          ...response.data,
+          data: pageItems,
+          total,
+          per_page: perPage,
+          current_page: page,
+          last_page: lastPage,
+          from: total === 0 ? null : start + 1,
+          to: total === 0 ? null : start + pageItems.length,
+        },
+      };
+    }
+
+    return response;
   };
 
   const { data, fetchNextPage, isRefetching, isLoading, fetchStatus, refetch } = useInfiniteQuery({

@@ -606,13 +606,12 @@ header.sticky,
     }
 }
 
-.brand-logo img {
-    max-width: 170px;
-    height: auto;
-    object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-}
+// .brand-logo img {
+//     max-width: 170px;
+//     height: auto;
+//     object-fit: contain;
+//     image-rendering: -webkit-optimize-contrast;
+// }
 
 @media (max-width: 576px) {
     .phoneimg {
@@ -1083,9 +1082,9 @@ header.sticky,
 
 @media (max-width: 991px) {
     .hbx-premium-blog-detail {
-        .blog-title-box h1 {
-            font-size: 1.75rem !important;
-        }
+        // .blog-title-box h1 {
+        //     font-size: 1.75rem !important;
+        // }
 
         .hbx-premium-blog-content p {
             font-size: 1rem;

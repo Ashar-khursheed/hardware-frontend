@@ -37,7 +37,7 @@ const BlogDetail = () => {
     <>
       <Breadcrumbs title={breadcrumbTitle} subNavigation={[{ name: "Blog", link: "/blog" }]} />
       <WrapperComponent classes={{ sectionClass: "blog-section blog-page ratio2_3 section-b-space", fluidClass: "container" }} customCol={true}>
-        <Sidebar isLoading={isLoading} />
+        {/* <Sidebar isLoading={isLoading} /> */}
         <BlogCard page={page} setPage={setPage} BlogData={BlogData} isLoading={isLoading} />
       </WrapperComponent>
     </>
