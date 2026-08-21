@@ -41432,6 +41432,16 @@ width: 300px !important;
     padding: 60px 0;
 }
 
+.hero-banner-section h1 {
+    font-size: clamp(22px, 4vw, 36px) !important;
+    line-height: 1.2 !important;
+}
+
+.hero-banner-section .btn {
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
 .btn:hover {
     font-family: 'Poppins', sans-serif !important;
     color: #ff5050 !important;

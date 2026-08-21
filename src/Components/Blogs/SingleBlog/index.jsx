@@ -388,7 +388,7 @@ const SingleBlog = ({ params }) => {
 
                 <Image
                   src={Blog.blog_thumbnail.original_url}
-                  alt={Blog?.title || "Blog Banner"}
+                  alt={Blog?.thumbnail_alt || Blog?.title || "Blog Banner"}
                   fill
                   priority
                   sizes="100vw"

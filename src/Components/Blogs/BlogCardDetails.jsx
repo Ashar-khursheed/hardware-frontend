@@ -74,7 +74,7 @@ const BlogCardDetails = ({ Blog, mobileToc }) => {
               src={Blog.blog_thumbnail.original_url}
               loading="lazy"
               className="img-fluid"
-              alt={Blog?.title || "Blog Image"}
+              alt={Blog?.thumbnail_alt || Blog?.title || "Blog Image"}
             />
           ) : null}
         </div>

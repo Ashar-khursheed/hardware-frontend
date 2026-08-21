@@ -13,7 +13,7 @@ const BlogCardContain = ({ blog }) => {
             {blog?.blog_thumbnail?.original_url && (
               <Image
                 src={blog?.blog_thumbnail?.original_url || placeHolderImage}
-                alt="blog-image"
+                alt={blog?.thumbnail_alt || blog?.title || "blog-image"}
                 height={900}
                 width={900}
               />

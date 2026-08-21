@@ -43,7 +43,7 @@ const HomeBlog = ({ blogIds, blogEffect, type, sliderClass, slideOptions }) => {
                         <img
                           src={blog.blog_thumbnail.original_url}
                           className="img-fluid"
-                          alt=""
+                          alt={blog?.thumbnail_alt || blog?.title || ""}
                         />
                       </div>
                       <div className="blog-details text-start p-0">
@@ -69,7 +69,7 @@ const HomeBlog = ({ blogIds, blogEffect, type, sliderClass, slideOptions }) => {
                   <Link href={`/blog/${blog?.slug}`} legacyBehavior><span>
                     <div className={blogEffect ? blogEffect : "classic-effect"}>
                       <div className="bg-size" style={{ backgroundImage: `url(${blog.blog_thumbnail.original_url})` }}>
-                        <img src={blog.blog_thumbnail.original_url} className="img-fluid bg-img d-none" alt="blog-image" />
+                        <img src={blog.blog_thumbnail.original_url} className="img-fluid bg-img d-none" alt={blog?.thumbnail_alt || blog?.title || "blog-image"} />
                       </div>
                       <span></span>
                     </div>

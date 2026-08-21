@@ -222,29 +222,6 @@ export default async function RootLayout({ children }) {
       </head>
       <body suppressHydrationWarning={true}>
 
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
-          {`
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "The Hardware Box",
-        "url": "https://www.thehardwarebox.com/",
-        "logo": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+1 8328835303",
-          "contactType": "customer service",
-          "contactOption": "TollFree",
-          "areaServed": "US",
-          "availableLanguage": "en" 
-        }
-      }
-    `}
-        </Script>
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
