@@ -80,7 +80,12 @@ export default async function RootLayout({ children }) {
       <head>
         {/* Preconnect to Google Fonts for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         <meta name="google" content="notranslate" />
 
         {/* Combined Google Fonts - Single request for better performance */}
@@ -89,23 +94,23 @@ export default async function RootLayout({ children }) {
           rel="stylesheet"
         />
 
-
         {/* Local CSS */}
         <link rel="stylesheet" href="/assets/css/style.css" />
 
-        {/* Google Analyticss */}
+        {/* Google Analytics */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-C52RSE232C"
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-C52RSE232C');
-          `}
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C52RSE232C');
+    `}
         </Script>
         <Script
           src="https://api.luziostore.com/widget.js"
@@ -115,33 +120,105 @@ export default async function RootLayout({ children }) {
           strategy="afterInteractive"
         />
 
-        <meta name="google-site-verification" content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko" />
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="epeq1bBiL7iMs09lWmDHbnljSVjNdJLpxky4us0lvko"
+        />
 
         {/* Google Tag Manager */}
-        <Script
-          id="google-tag-manager"
-          strategy="afterInteractive"
-        >
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event:'gtm.js'
-      });
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event:'gtm.js'
+        });
 
-      var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),
-          dl=l!='dataLayer'?'&l='+l:'';
+        var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),
+            dl=l!='dataLayer'?'&l='+l:'';
 
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
 
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-5XPX3DVX');
-  `}
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5XPX3DVX');
+    `}
         </Script>
 
+        {/* Website Structured Data */}
+        <script
+          id="website-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.thehardwarebox.com/#organization",
+                  "name": "The Hardware Box",
+                  "url": "https://www.thehardwarebox.com/",
+                  "logo": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+1 8328835303",
+                    "contactType": "customer service",
+                    "contactOption": "TollFree",
+                    "areaServed": "US",
+                    "availableLanguage": "en"
+                  }
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://www.thehardwarebox.com/#localbusiness",
+                  "name": "The Hardware Box",
+                  "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+                  "url": "https://www.thehardwarebox.com/",
+                  "telephone": "+1 8328835303",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
+                    "addressLocality": "Austin",
+                    "addressRegion": "TX",
+                    "postalCode": "78731",
+                    "addressCountry": "US"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 30.34154,
+                    "longitude": -97.75460
+                  }
+                },
+                {
+                  "@type": "ComputerStore",
+                  "@id": "https://www.thehardwarebox.com/#computerstore",
+                  "name": "The Hardware Box",
+                  "image": "https://www.thehardwarebox.com/_next/image?url=https%3A%2F%2Fd3243ix3g2hwoc.cloudfront.net%2F18264%2FHardware-Box-Final-logo-red-03-1-1.webp&w=384&q=75",
+                  "url": "https://www.thehardwarebox.com/",
+                  "email": "support@thehardwarebox.com",
+                  "telephone": "+1 8328835303",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "5900 Balcones Drive # 22288 Austin, TX 78731",
+                    "addressLocality": "Austin",
+                    "addressRegion": "Texas",
+                    "postalCode": "78731",
+                    "addressCountry": "US"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 30.34154,
+                    "longitude": -97.75460
+                  },
+                  "priceRange": "From $10"
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body suppressHydrationWarning={true}>
 
@@ -168,11 +245,22 @@ export default async function RootLayout({ children }) {
       }
     `}
         </Script>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5XPX3DVX"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
         <Suspense fallback={<Loading />}>
           <LayoutProviders>
             {children}
           </LayoutProviders>
         </Suspense>
+
       </body>
     </html>
   );
