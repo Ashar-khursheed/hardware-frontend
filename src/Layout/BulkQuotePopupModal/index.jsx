@@ -35,6 +35,16 @@ const BulkQuotePopupModal = () => {
   }, []);
 
   useEffect(() => {
+    const handleOpenPopup = () => {
+      setIsOpen(true);
+    };
+    window.addEventListener("open-bulk-quote-popup", handleOpenPopup);
+    return () => {
+      window.removeEventListener("open-bulk-quote-popup", handleOpenPopup);
+    };
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";

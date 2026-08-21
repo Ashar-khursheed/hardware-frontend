@@ -301,8 +301,8 @@ const ElectronicsThree = () => {
        }
      }
 
-     body,
-     html {
+      body,
+      html {
        margin: 0;
        padding: 0;
      }
@@ -316,15 +316,22 @@ const ElectronicsThree = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-7 hbx-animate-up hbx-delay-1">
-              <h2 className="fw-bold text-white mb-3">
-                Can’t Find Computer Parts? <br /> We’ve Got You Covered
-              </h2>
+              <h1 className="fw-bold text-white mb-3">
+                Can’t Find Computer Parts Online? We’ve Got You Covered
+              </h1>
               <p className="mb-4 text-white">
                 At Hardware Box, we are dealing with the sourcing of high-quality computer hardware and networking equipment to businesses, IT professionals, and system builders.
               </p>
-              <Link href="/category/switches" className="btn ">
-                Shop Now
-              </Link>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.dispatchEvent(new CustomEvent("open-bulk-quote-popup"));
+                }}
+                className="btn"
+              >
+                Request a Quote
+              </a>
             </div>
           </div>
         </div>

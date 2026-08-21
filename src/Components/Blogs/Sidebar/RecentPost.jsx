@@ -84,7 +84,7 @@ const RecentPost = ({
                       blog?.blog_thumbnail?.original_url ||
                       placeHolderImage
                     }
-                    alt={blog?.title || "Related Blog"}
+                    alt={blog?.thumbnail_alt || blog?.title || "Related Blog"}
                   />
 
                 </div>

@@ -114,7 +114,7 @@ const MenuMedia = ({ menu }) => {
                   <div className="blog-box sticky-blog">
                     <div className="blog-box-image">
                       <Link href={`/blog/${blog?.slug}`} className="blog-image" legacyBehavior>
-                        {blog?.blog_thumbnail && <Image src={blog?.blog_thumbnail ? blog?.blog_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={blog.title} height={299} width={398} />}
+                        {blog?.blog_thumbnail && <Image src={blog?.blog_thumbnail ? blog?.blog_thumbnail?.original_url : placeHolderImage} className="img-fluid" alt={blog?.thumbnail_alt || blog.title} height={299} width={398} />}
                       </Link>
                     </div>
                     <Link href={`/blog/${blog?.slug}`} legacyBehavior><span>
